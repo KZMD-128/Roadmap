@@ -3,15 +3,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Roadmap</title>
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#edf0f7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#06070c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#edf0f7">
+<meta name="color-scheme" content="light dark">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Roadmap">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="icon" type="image/png" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<script>try{var _t=localStorage.getItem('rm_th')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=_t}catch(e){document.documentElement.dataset.theme='light'}</script>
+<script>try{var _t=localStorage.getItem('rm_th')==='dark'?'dark':'light';document.documentElement.dataset.theme=_t;var _m=document.querySelector('meta[name=theme-color]');if(_m)_m.content=_t==='dark'?'#06070c':'#edf0f7'}catch(e){document.documentElement.dataset.theme='light'}</script>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============ Token: sáng ============ */
@@ -395,7 +395,7 @@ $('#bk').onclick=()=>{const m=$('#mask');m.classList.remove('hide');
  m.innerHTML=`<div class="dlg glass" data-spot><h3>Sao lưu / khôi phục</h3><label>Copy đoạn này cất đi để sao lưu. Muốn khôi phục thì dán dữ liệu cũ vào rồi bấm Nhập.<textarea id="bx" rows="9">${esc(JSON.stringify(D))}</textarea></label><div class="row"><button id="f_x">Đóng</button><button class="p" id="f_in">Nhập dữ liệu</button></div></div>`;
  $('#f_x').onclick=()=>m.classList.add('hide');
  $('#f_in').onclick=()=>{try{const o=JSON.parse($('#bx').value);if(!Array.isArray(o.nodes))throw 0;D=Object.assign({nodes:[],hw:[],ideas:[],sent:{}},o);path=[];save();m.classList.add('hide');render();camFocus();renderHw();renderIdeas();renderBub();check();toast('Đã nhập dữ liệu')}catch(e){toast('Dữ liệu không hợp lệ')}}};
-const setTheme=t=>{R.dataset.theme=t;try{localStorage.setItem('rm_th',t)}catch(e){}};
+const setTheme=t=>{R.dataset.theme=t;try{localStorage.setItem('rm_th',t)}catch(e){}try{document.querySelector('meta[name=theme-color]').content=t==='dark'?'#06070c':'#edf0f7'}catch(e){}};
 $('#th').onclick=()=>{const t=R.dataset.theme=='dark'?'light':'dark';
  try{document.startViewTransition&&!RM?document.startViewTransition(()=>setTheme(t)):setTheme(t)}catch(e){setTheme(t)}};
 
