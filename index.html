@@ -1060,6 +1060,44 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
 @media(max-width:560px){#dkH{gap:8px 6px}#dkH .dkc,#dkH .dkin{min-height:44px;padding:10px 18px;font-size:15.5px}}
 @media(prefers-reduced-motion:reduce){.dkpill{transition-duration:.01s}}
 
+
+/* ===== Phím tắt (chữ mờ gợi ý) · loa từng từ · đồng hồ giờ học ===== */
+.kh{font-size:11.5px;letter-spacing:.04em;line-height:1;color:var(--mut);opacity:.6;text-align:center;pointer-events:none;user-select:none}
+.lqbc{display:flex;flex-direction:column;align-items:stretch;gap:6px;min-width:0}
+.lqbc.k1{flex:1}.lqbc.k2{flex:2}
+.lqbtn .lqbc button{width:100%;flex:none}
+.lqbc:has(button.hide){display:none}
+.lqkh{position:absolute;top:60px;right:14px;width:42px;z-index:2}
+.lq.emp .lqkh,.lq.fin .lqkh{display:none}
+#lq.rev:not(.dn) .lqkh{display:none}
+.lqnx[hidden]+.lqnxkh{display:none}
+.lq .lqnxkh{display:none}.lq.fin .lqnxkh{display:block;margin-top:-4px}
+.wdw{display:inline-flex;align-items:center;gap:4px;min-width:0}
+.wdexh{display:flex;align-items:center;gap:6px}
+.wdsp{width:26px;height:26px;padding:0;justify-content:center;border-radius:50%;color:var(--mut);flex:none}
+.wdsp:hover{background:var(--rule);color:var(--ink)}
+.wdsp .i{width:15px;height:15px}
+.wdsp.on{color:#fff;background:linear-gradient(135deg,var(--ac1),var(--ac2))}
+@property --c{syntax:"<color>";inherits:true;initial-value:#888}
+.ltm{display:none;--c:var(--mut);align-items:center;gap:9px;padding:9px 15px;border-radius:999px;background:var(--fill);color:var(--c);font-size:14.5px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:.02em;cursor:default;user-select:none;transition:color .5s ease,background .5s ease}
+.app.en .ltm{display:inline-flex;margin-left:auto}
+.ltm{background:color-mix(in srgb,var(--c) 15%,transparent)}
+.ltm .ltd{width:9px;height:9px;border-radius:50%;background:var(--c);box-shadow:0 0 0 0 transparent;transition:background .5s ease}
+.ltm.s-g{--c:#2fb457}.ltm.s-y{--c:#e09a00}.ltm.s-r{--c:var(--red)}
+.ltm.s-g .ltd{animation:ltp 1.4s ease-in-out infinite}
+@keyframes ltp{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 45%,transparent)}50%{box-shadow:0 0 0 6px transparent}}
+@media(max-width:520px){.app.en .ltm{padding:8px 11px;font-size:13.5px}.app.en #th2{margin-left:0}}
+@media(prefers-reduced-motion:reduce){.ltm.s-g .ltd{animation:none}}
+/* đồng hồ: thanh nền tự cạn dần 6 giây (xanh phủ kín cả viên thuốc → vàng → hết = đỏ) */
+.ltm{position:relative;overflow:hidden;isolation:isolate;padding:9px 18px 9px 15px;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 28%,transparent)}
+.ltm::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;transform-origin:left center;transform:scaleX(0);
+ background:linear-gradient(90deg,color-mix(in srgb,var(--c) 38%,transparent),color-mix(in srgb,var(--c) 18%,transparent))}
+.ltm.run::before{animation:ltdrain 6s linear forwards,ltcol 6s linear forwards}
+@keyframes ltdrain{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+@keyframes ltcol{0%,60%{--c:#2fb457}70%,100%{--c:#e09a00}}
+.ltm.s-g .ltt-w,.ltm.s-y .ltt-w{text-shadow:0 0 14px color-mix(in srgb,var(--c) 40%,transparent)}
+@media(prefers-reduced-motion:reduce){.ltm.run::before{animation-duration:.01s}}
+
 </style></head><body>
 <svg style="display:none"><defs>
 <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></symbol>
@@ -1108,6 +1146,7 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
     <button class="fi" data-v="en" role="tab" aria-selected="false" id="enbtn"><svg class="i"><use href="#i-book"/></svg><span>English</span><em class="nb">Mới</em></button>
     <button class="fi" data-v="st" role="tab" aria-selected="false" id="stbtn"><svg class="i"><use href="#i-learn"/></svg><span>Study</span><em class="nb">Mới</em></button></div>
    <div class="crumbs" id="crumbs"></div>
+   <div class="ltm" id="ltm" title="Thời gian đã học hôm nay. Xanh: đang tính giờ · Vàng: sắp dừng (4 giây không học) · Đỏ: tạm dừng (6 giây không học)"><i class="ltd"></i><span id="ltt">00:00</span></div>
    <button class="p" id="add"></button>
    <button class="g enb" id="th2" aria-label="Sáng / tối"><svg class="i"><use href="#i-theme"/></svg></button>
    <div class="dock" id="dock">
@@ -1225,12 +1264,12 @@ Các từ tôi cần học:
      <div class="lqworkspace">
       <aside class="lqvisual glass" id="lqvisual" aria-label="Mẹo ghi nhớ"><div class="wextra quizextra" id="lqtip"></div></aside>
       <main class="lqcenter">
-       <div class="lqc glass" id="lqc" data-spot><button class="stb lqst" id="lqst" type="button" aria-label="Đánh dấu từ cần nhớ" title="Đánh dấu từ cần nhớ"><svg class="i"><use href="#i-star"/></svg></button><button class="lqsp" id="lqsp" type="button" title="Nghe phát âm" aria-label="Nghe phát âm từ tiếng Anh"><svg class="i"><use href="#i-speaker"/></svg></button><b id="lqw"></b><small id="lqpos"></small><small id="lqq"></small><div class="fopt" data-side="l"></div></div>
+       <div class="lqc glass" id="lqc" data-spot><button class="stb lqst" id="lqst" type="button" aria-label="Đánh dấu từ cần nhớ" title="Đánh dấu từ cần nhớ"><svg class="i"><use href="#i-star"/></svg></button><button class="lqsp" id="lqsp" type="button" title="Nghe phát âm" aria-label="Nghe phát âm từ tiếng Anh"><svg class="i"><use href="#i-speaker"/></svg></button><span class="kh lqkh">Ctrl</span><b id="lqw"></b><small id="lqpos"></small><small id="lqq"></small><div class="fopt" data-side="l"></div></div>
        <div class="lqi"><input id="lqa" placeholder="Nhập nghĩa tiếng Việt…" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Nghĩa tiếng Việt">
-        <div class="lqbtn"><button class="sk" id="lqz">Bỏ qua</button><button class="p" id="lqk">Kiểm tra</button></div></div>
+        <div class="lqbtn"><div class="lqbc k1"><button class="sk" id="lqz">Bỏ qua</button><span class="kh">Tab</span></div><div class="lqbc k2"><button class="p" id="lqk">Kiểm tra</button><span class="kh">Enter</span></div></div></div>
        <div class="lqx"><div class="lqr" id="lqr" aria-live="polite"></div></div>
        <button class="p lqre" id="lqre">Học lại từ đầu</button>
-       <button class="p lqnx" id="lqnx" type="button" hidden></button>
+       <button class="p lqnx" id="lqnx" type="button" hidden></button><span class="kh lqnxkh">Enter</span>
        <button class="lqe" id="lqe"><svg class="i"><use href="#i-plus"/></svg>Thêm từ vựng</button>
        <div id="dkH" class="dkrow"></div>
       </main>
@@ -1805,13 +1844,14 @@ const WL=()=>{const L=WALL();return CF().ostar?L.filter(w=>w.s):L}; /* bật "Ch
 let fi=0,fPlay=true,fT=0,fH=0,fB=0;
 document.documentElement.style.setProperty('--fms',FMS+'ms');
 const webImage=u=>{try{const x=new URL(String(u||'').trim());return /^https?:$/.test(x.protocol)?x.href:''}catch(e){return''}};
-function wdRows(rows){return Array.isArray(rows)?rows.filter(x=>x&&x.w).map(x=>`<span class="wdtag"><b>${esc(x.w)}</b>${x.pos?`<small>${esc(x.pos)}</small>`:''}${x.m?`<em>${esc(x.m)}</em>`:''}</span>`).join(''):''}
-function wdConf(rows){return Array.isArray(rows)?rows.filter(x=>x&&x.w).map(x=>`<span class="wdtag wdconf"><b>${esc(x.w)}</b>${x.pos?`<small>${esc(x.pos)}</small>`:''}${x.m?`<em>${esc(x.m)}</em>`:''}${x.n?`<span class="wdnote">${esc(x.n)}</span>`:''}</span>`).join(''):''}
+const wdSp=t=>t?`<button type="button" class="wdsp" data-say="${esc(t)}" aria-label="Nghe: ${esc(t)}" title="Nghe phát âm">${ic('speaker')}</button>`:'';
+function wdRows(rows){return Array.isArray(rows)?rows.filter(x=>x&&x.w).map(x=>`<span class="wdtag"><span class="wdw"><b>${esc(x.w)}</b>${wdSp(x.w)}</span>${x.pos?`<small>${esc(x.pos)}</small>`:''}${x.m?`<em>${esc(x.m)}</em>`:''}</span>`).join(''):''}
+function wdConf(rows){return Array.isArray(rows)?rows.filter(x=>x&&x.w).map(x=>`<span class="wdtag wdconf"><span class="wdw"><b>${esc(x.w)}</b>${wdSp(x.w)}</span>${x.pos?`<small>${esc(x.pos)}</small>`:''}${x.m?`<em>${esc(x.m)}</em>`:''}${x.n?`<span class="wdnote">${esc(x.n)}</span>`:''}</span>`).join(''):''}
 function wdExtraHTML(x,open){if(!x)return'';
  const imgs=(Array.isArray(x.images)?x.images:[]).map(webImage).filter(Boolean).slice(0,2),ex=x.example&&typeof x.example=='object'?x.example:{},forms=wdRows(x.forms),related=wdRows(x.related),confused=wdConf(x.confused);
  if(!imgs.length&&!ex.en&&!forms&&!related&&!confused)return'';
  const photos=imgs.map((u,i)=>`<img class="wdphoto" src="${esc(u)}" alt="${esc(x.w||'Từ vựng')} · ảnh ${i+1}" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true">`).join('');
- const photoClass='ph'+imgs.length,example=ex.en?`<div class="wdexample"><small class="wdlabel">Câu ví dụ</small><b>${esc(ex.en)}</b>${ex.vi?`<span>${esc(ex.vi)}</span>`:''}</div>`:'';
+ const photoClass='ph'+imgs.length,example=ex.en?`<div class="wdexample"><div class="wdexh"><small class="wdlabel">Câu ví dụ</small>${wdSp(ex.en)}</div><b>${esc(ex.en)}</b>${ex.vi?`<span>${esc(ex.vi)}</span>`:''}</div>`:'';
   const groups=(forms?`<section class="wdgroup"><small class="wdlabel">Các dạng của từ</small><div class="wdlist">${forms}</div></section>`:'')+(related?`<section class="wdgroup"><small class="wdlabel">Từ liên quan</small><div class="wdlist">${related}</div></section>`:'')+(confused?`<section class="wdgroup warn"><small class="wdlabel">Từ hay nhầm</small><div class="wdlist">${confused}</div></section>`:'');
  const body=`<div class="wdbody">${example}${groups}</div>`,grid=imgs.length==2?`${photos.slice(0,photos.indexOf('<img',1))}${body}${photos.slice(photos.indexOf('<img',1))}`:imgs.length==1?`${photos}${body}`:body;
   const count=[ex.en?'câu ví dụ':'',forms?'các dạng từ':'',related?'từ liên quan':'',confused?'từ hay nhầm':'',imgs.length?imgs.length+' ảnh':''].filter(Boolean).join(' · ');
@@ -1819,7 +1859,7 @@ function wdExtraHTML(x,open){if(!x)return'';
 function wdStudyHTML(x){if(!x)return'';
  const ex=x.example&&typeof x.example=='object'?x.example:{},forms=wdRows(x.forms),related=wdRows(x.related),confused=wdConf(x.confused);
  if(!ex.en&&!forms&&!related&&!confused)return'<div class="wdempty">Chưa có câu ví dụ hoặc từ liên quan cho từ này. Từ được thêm bằng prompt sẽ hiện các chi tiết tại đây.</div>';
- const example=ex.en?`<div class="wdexample"><small class="wdlabel">Câu ví dụ</small><b>${esc(ex.en)}</b>${ex.vi?`<span>${esc(ex.vi)}</span>`:''}</div>`:'';
+ const example=ex.en?`<div class="wdexample"><div class="wdexh"><small class="wdlabel">Câu ví dụ</small>${wdSp(ex.en)}</div><b>${esc(ex.en)}</b>${ex.vi?`<span>${esc(ex.vi)}</span>`:''}</div>`:'';
  const group=(title,items,cls)=>items?`<section class="wdgroup${cls?' '+cls:''}"><small class="wdlabel">${title}</small><div class="wdlist">${items}</div></section>`:'';
  const n=Number(!!forms)+Number(!!related)+Number(!!confused),groups=`<div class="wdstudygrid${n<2?' one':''}">${group('Các dạng của từ',forms)}${group('Từ liên quan',related)}${group('Từ hay nhầm',confused,'warn')}</div>`;
  return `<div class="wdstudy">${example}${n?groups:''}</div>`}
@@ -2243,7 +2283,68 @@ $('#lqz').onclick=()=>{if(lqCur&&lqSt=='ask')lqBack(lqCur.id);lqNext(true)};
 $('#lqnx').onclick=()=>{const n=dkNextDeck();if(n)keepAnchor(()=>setDeckForce(n.id))};
 $('#lqre').onclick=()=>{const Q=LQ();WL().forEach(x=>{delete Q.st[x.id];delete Q.c[x.id]});lqBag=[];lqLast=null;lqN={ok:0,nr:0,bad:0};Q.n={ok:0,nr:0,bad:0};save();lqNext(true)};
 $('#lqe').onclick=()=>{setTab('v');$('#fdn').click()};
-lqA.onkeydown=e=>{if(e.key!='Enter'||e.isComposing||e.keyCode==229)return;e.preventDefault();lqSt=='ask'?lqCheck():lqNext(true)};
+lqA.onkeydown=e=>{if(e.key!='Enter'||e.isComposing||e.keyCode==229)return;e.preventDefault();lqTouch();lqSt=='ask'?lqCheck():lqNext(true)};
+/* =====================================================================
+   Tab Học: phím tắt (Tab = Bỏ qua · Enter = Kiểm tra / Từ tiếp theo · Ctrl = Loa), loa từng từ, đồng hồ giờ học
+   ===================================================================== */
+/* --- Đồng hồ giờ học (thanh trên cùng) ---
+   Tương tác = nhập chữ, bấm loa, Kiểm tra, Bỏ qua, Từ tiếp theo, ★, Học lại, phím tắt... (chỉ tính khi đang ở tab Học).
+   Đổi tab / di chuyển Capy / lướt web KHÔNG tính.
+   Xanh: đang tính giờ · 4 giây không tương tác → vàng (vẫn tính) · thêm 2 giây → đỏ (dừng đếm) · tương tác lại là chạy tiếp. */
+const LT_Y=4000,LT_R=6000,LTM={last:0,tick:Date.now(),st:'n',dirty:false,sv:0,txt:''};
+const ltDay=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const ltData=()=>{const k=ltDay();if(!D.lqt||D.lqt.d!=k||!(D.lqt.ms>=0))D.lqt={d:k,ms:0};return D.lqt};
+const ltFmt=ms=>{const s=Math.floor(ms/1000),h=Math.floor(s/3600),m=Math.floor(s%3600/60),c=s%60,p=n=>String(n).padStart(2,'0');return h?`${h}:${p(m)}:${p(c)}`:`${p(m)}:${p(c)}`};
+function lqTouch(){if(VW!='en'||ET!='h')return;const n=Date.now(),el=$('#ltm'),resume=LTM.st=='r'||LTM.st=='n'||LTM.st=='y';
+ if(LTM.st=='r'||LTM.st=='n')LTM.tick=n;LTM.last=n;ltStep();
+ el.classList.remove('run');void el.offsetWidth;el.classList.add('run');
+ if(resume&&!RM)el.animate([{transform:'scale(1)'},{transform:'scale(1.07)'},{transform:'scale(1)'}],{duration:340,easing:'cubic-bezier(.3,1.4,.5,1)'})}
+function ltStep(){const n=Date.now(),idle=LTM.last?n-LTM.last:Infinity,st=!LTM.last?'n':idle<LT_Y?'g':idle<LT_R?'y':'r',
+ dt=Math.min(Math.max(n-LTM.tick,0),1500);LTM.tick=n;
+ const d=ltData();if(st=='g'||st=='y'){d.ms+=dt;LTM.dirty=true}
+ if(LTM.dirty&&n-LTM.sv>5000){save();LTM.dirty=false;LTM.sv=n}
+ const el=$('#ltm'),tx=ltFmt(d.ms);
+ if(st!=LTM.st){LTM.st=st;el.classList.remove('s-g','s-y','s-r');if(st!='n')el.classList.add('s-'+st)}
+ if(tx!=LTM.txt){LTM.txt=tx;$('#ltt').textContent=tx}}
+setInterval(ltStep,250);ltStep();
+addEventListener('pagehide',()=>{if(LTM.dirty){save();LTM.dirty=false}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&LTM.dirty){save();LTM.dirty=false}});
+lqA.addEventListener('input',lqTouch);
+document.addEventListener('click',e=>{if(VW!='en'||ET!='h')return;if(e.target.closest&&e.target.closest('#lqk,#lqz,#lqsp,#lqnx,#lqre,#lqst,#lq .wdsp'))lqTouch()},true);
+
+/* --- Loa trên từng chip (các dạng của từ, từ liên quan, từ hay nhầm) và câu ví dụ --- */
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.wdsp');if(!b)return;
+ e.preventDefault();e.stopPropagation();const t=b.dataset.say;if(!t||!spCan())return;
+ document.querySelectorAll('.wdsp.on').forEach(x=>x.classList.remove('on'));
+ const off=()=>b.classList.remove('on');b.classList.add('on');setTimeout(off,4000);speak([t],true,off);
+ b.blur();if(b.closest('#lq'))lqOpen()},true);
+
+/* --- Phím tắt --- */
+let lqCtl=false,lqTabT=0; /* Tab (Bỏ qua) cách nhau tối thiểu 0,8 giây, giữ phím không bị chạy liên tục */
+const lqKeyOK=e=>{if(VW!='en'||ET!='h'||e.altKey||e.metaKey||e.isComposing||e.keyCode==229)return false;
+ const m=$('#mask');if(m&&!m.classList.contains('hide'))return false;
+ const t=e.target,tg=t&&t.tagName;if((tg=='INPUT'||tg=='TEXTAREA'||tg=='SELECT')&&t!==lqA)return false;
+ if(t&&t.isContentEditable)return false;return true};
+const lqSkip=()=>{if(lqCur&&lqSt=='ask')lqBack(lqCur.id);lqNext(true)};
+addEventListener('keydown',e=>{
+ if(e.key=='Control'){if(!e.repeat)lqCtl=true;return}
+ lqCtl=false;
+ if(!lqKeyOK(e))return;
+ if(e.key=='Tab'&&!e.shiftKey&&!e.ctrlKey){
+  if(lqCur){e.preventDefault();const n=Date.now();
+   if(lqSt=='ask'&&!e.repeat&&n-lqTabT>=800){lqTabT=n;lqTouch();lqSkip()}}}
+ else if(e.key=='Enter'&&!e.shiftKey&&!e.ctrlKey&&e.target!==lqA){
+  const t=e.target,tg=t&&t.tagName,soft=t&&t.closest&&t.closest('.lqsp,.wdsp,.stb');
+  if(tg&&/^(BUTTON|A|SELECT|SUMMARY)$/.test(tg)&&!soft)return;
+  if(lqCur){e.preventDefault();lqTouch();lqSt=='ask'?lqCheck():lqNext(true)}
+  else{const nb=$('#lqnx');if(nb&&!nb.hidden){e.preventDefault();lqTouch();nb.click()}}}
+});
+addEventListener('keyup',e=>{if(e.key!='Control')return;const go=lqCtl;lqCtl=false;
+ if(!go||!lqKeyOK(e)||!lqCur||(CF().orev&&lqSt=='ask'))return; /* Việt→Anh: chưa trả lời thì không đọc để khỏi lộ đáp án */
+ lqTouch();lqSay(true)});
+addEventListener('pointerdown',()=>{lqCtl=false},true);
+addEventListener('blur',()=>{lqCtl=false});
+
 
 /* =====================================================================
    Study: đếm giờ học + nghỉ ngơi, toàn màn hình, video YouTube tùy chọn (tự lặp) làm nền, chuông báo
