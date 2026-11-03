@@ -1123,6 +1123,38 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
 @keyframes wcd{to{transform:scaleX(0)}}
 @media(prefers-reduced-motion:reduce){.wthumb{transition-duration:.01s}.wtb.arm::after{animation-duration:.01s}}
 
+
+/* ===== Thanh bên: lưới tất cả từ gốc tiếng Anh (cuộn được) + xóa tất cả ===== */
+.wtabact{position:relative;display:inline-flex;align-items:center;gap:8px}
+.wtabact.arm .wdelall{display:none}
+.wtabact.arm .wconf{display:inline-flex;animation:wp .45s cubic-bezier(.3,1.4,.5,1) both}
+.wtabp.empty .wtabact{display:none}
+.wtabscroll{max-height:min(60vh,520px);overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;border-radius:12px}
+.wwarn{display:flex;gap:9px;align-items:flex-start;padding:10px 12px;border-radius:14px;font-size:12.5px;line-height:1.5;color:var(--nrx);background:var(--nrt);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--nr) 45%,transparent)}
+.wwarn[hidden]{display:none}
+.wwarn .i{width:16px;height:16px;margin-top:1px}
+.wwarn b{font-weight:700}
+.wtabscroll{container:wtb/inline-size}
+.wtabg{display:flex;flex-direction:column;gap:14px;padding:1px}
+.wtabg[hidden]{display:none}
+.wtabright{display:flex;align-items:center;gap:8px 10px;flex-wrap:wrap}
+/* mỗi nhóm = một khối màu riêng, tiêu đề dính ở đầu khi cuộn */
+.wgp{--cc:var(--c-blue);--wc:2;border-radius:16px;background:rgba(var(--cc),var(--ca));box-shadow:inset 0 0 0 1.5px rgba(var(--cc),.5)}
+.wgph{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 12px;border-radius:16px 16px 0 0;background:color-mix(in srgb,rgb(var(--cc)) 24%,var(--bg));color:color-mix(in srgb,rgb(var(--cc)) 70%,var(--ink));font-size:13.5px;font-weight:700;letter-spacing:-.01em}
+.wgph b{display:inline-flex;align-items:center;gap:8px;font-weight:700}
+.wgph b::before{content:"";width:9px;height:9px;border-radius:50%;background:rgb(var(--cc));flex:none}
+.wgph span{padding:2px 10px;border-radius:999px;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums;background:rgba(var(--cc),.26);box-shadow:inset 0 0 0 .5px rgba(var(--cc),.5)}
+.wgpg{display:grid;grid-template-columns:repeat(var(--wc),minmax(0,1fr));margin:0 6px 6px;border-radius:11px;overflow:hidden;background:var(--tile)}
+.wtc{padding:8px 6px 8px 9px;font-size:12.5px;font-weight:600;line-height:1.35;overflow-wrap:anywhere;box-shadow:0 0 0 .5px rgba(var(--cc),.34)}
+.wtc.e{background:rgba(var(--cc),.05)}
+@container wtb (min-width:500px){.wgp{--wc:5}}
+@media(min-width:980px){
+ .en2{width:min(1030px,100%);grid-template-columns:minmax(0,640px) minmax(0,1fr);align-items:start}
+ .en2>.ep{grid-column:1}
+ .en2>.wtabp{grid-column:2;grid-row:1 / span 3;position:sticky;top:16px}
+ .wtabscroll{max-height:calc(100vh - 170px)}
+}
+
 /* tổng từ vựng (panel Bộ từ vựng) */
 .wtot{display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:999px;font-size:12.5px;color:var(--mut);white-space:nowrap;background:linear-gradient(135deg,color-mix(in srgb,var(--ac1) 13%,transparent),color-mix(in srgb,var(--ac2) 13%,transparent));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ac1) 22%,transparent)}
 .wtot .i{width:15px;height:15px;color:var(--ac1)}
@@ -1203,6 +1235,7 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
 @media(hover:hover){.wdcrow{transition:box-shadow .2s,background-color .3s}.wdcrow:hover .wdcd{grid-template-rows:1fr;opacity:1}.wdcd{transition-delay:.1s}}
 .wdcd small{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
 .wdcd i{font-style:italic}
+.wdcdiff{padding:6px 9px;border-radius:10px;background:rgba(var(--c-teal),.14);font-weight:500}
 
 /* ===== Thanh phải (Gợi ý cho từ này): chữ to 1.2 lần, rê chuột vào thì bung rộng + chữ to hơn ===== */
 .lqdetailpanel{--k:1.2}
@@ -1369,55 +1402,100 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
     <div class="ep glass" data-spot><h3>Nhập từ vựng</h3>
      <details class="wprompt" open><summary>Prompt mẫu — sao chép sang Gemini/AI</summary><div class="wpbody">
       <div class="hnt">Sao chép prompt, thay dòng trong ngoặc vuông bằng từ cần học rồi dán vào AI.</div>
+      <div class="wwarn" role="note"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.6 2.9 19.4h18.2L12 3.6Z"/><path d="M12 10v4.1M12 17.3v.1"/></svg><span><b>Mỗi lần chỉ đưa cho AI tối đa 10 từ.</b> Nhiều hơn thì AI dễ làm ẩu hoặc ghi sai, nhất là phần so sánh từ. Từ nào còn lại thì làm ở lượt sau.</span></div>
       <div class="wphead"><button id="w_copy" type="button">Sao chép prompt mẫu</button></div>
-      <textarea id="w_prompt" rows="5" readonly spellcheck="false">Hãy tạo dữ liệu từ vựng tiếng Anh cho người Việt theo đúng khuôn ở dưới.
+      <textarea id="w_prompt" rows="5" readonly spellcheck="false">Hãy tạo dữ liệu từ vựng tiếng Anh cho người Việt theo đúng khuôn ở cuối.
 
-Quy tắc từ gốc: nếu từ tôi đưa là dạng đã chia hoặc biến đổi (động từ thêm -ed, -ing, -s/-es, quá khứ bất quy tắc, danh từ số nhiều, tính từ so sánh hơn/nhất...), hãy tự đổi về dạng gốc trong từ điển và dùng dạng gốc đó cho WORD, POS, MEANING (ví dụ: studied → study, children → child, better → good). Dạng tôi nhập vẫn có thể đưa vào FORMS nếu nó thực sự thường gặp. Cụm từ cố định hoặc cụm động từ thì giữ nguyên cụm. Nếu từ đã là dạng gốc thì không đổi.
+ƯU TIÊN: CHÍNH XÁC hơn ĐẦY ĐỦ. Một thông tin sai khiến người học nhớ sai rất lâu. Chỗ nào không chắc chắn đúng theo từ điển Oxford, Cambridge, Longman hoặc Merriam-Webster thì ghi dấu gạch ngang (-) hoặc bỏ mục đó, tuyệt đối không bịa hoặc điền cho đủ. Riêng MEANING, SENTENCE, TIP luôn phải có.
 
- Với mỗi từ, hãy ghi từ loại và nghĩa tiếng Việt; liệt kê các dạng từ thường gặp gồm danh từ/động từ/tính từ/trạng từ, dạng chia cần thiết, và dạng phủ định với tiền tố un-, in-, im-, dis-, non-... nếu thực sự tồn tại. Không tự bịa dạng từ; nếu không có dạng phù hợp, ghi dấu gạch ngang. Thêm 2-5 từ hoặc cụm từ liên quan, mỗi từ có từ loại và nghĩa tiếng Việt. Câu ví dụ viết ở dòng SENTENCE theo quy tắc riêng bên dưới.
+GIỚI HẠN MỖI LƯỢT: tối đa 10 từ. Nếu danh sách có hơn 10 từ, chỉ làm 10 từ đầu tiên, không viết nhanh hay rút gọn để cố làm hết. Sau khối cuối thêm đúng một dòng: CÒN LẠI: các từ chưa làm, cách nhau bằng dấu phẩy. Đây là chỗ duy nhất được viết thêm ngoài khuôn.
 
-Dòng MEANING (nghĩa): liệt kê ĐỦ các nghĩa thông dụng của từ gốc ứng với từ loại ở POS, không chỉ nghĩa đầu tiên hay nghĩa quen thuộc nhất (ví dụ represent: đại diện; biểu thị; tượng trưng cho; miêu tả, chứ không chỉ "đại diện"). Nghĩa nào người học hay gặp khi đọc hiểu, giao tiếp hoặc đi thi đều phải có, kể cả nghĩa trừu tượng, nghĩa bóng và nghĩa theo ngữ cảnh. Mỗi nghĩa viết thật gọn, khoảng 1-4 từ tiếng Việt, đặt cạnh nhau trên MỘT dòng, ngăn cách bằng dấu chấm phẩy (;), xếp từ phổ biến nhất đến ít gặp nhất, tối đa 5 nghĩa (chỉ thêm nghĩa thứ 4-5 khi thật sự phổ biến). Các nghĩa phải khác nhau thật sự, không lặp lại cùng một ý bằng từ đồng nghĩa tiếng Việt. Không giải thích dài, không ngoặc đơn, không ví dụ, không dùng dấu | trong MEANING. Nếu từ chỉ có một nghĩa chính thì ghi đúng một nghĩa, không kéo thêm cho đủ. Nghĩa của từ loại khác (nếu có) để ở FORMS, không trộn vào MEANING.
+QUY TẮC CHUNG
+- Mỗi từ là một khối riêng. Xử lý lần lượt từng từ với mức chi tiết như nhau: từ cuối cùng phải kỹ bằng từ đầu tiên. Cấm viết "tương tự từ trên", cấm dùng chung một khuôn câu cho nhiều từ.
+- Từ loại viết tắt: noun, verb, adj, adv, prep, phrase. Dấu ; ngăn giữa các mục, dấu | ngăn giữa các trường trong một mục. Không dùng ; và | bên trong nội dung. Dấu gạch ngang dùng là - (gạch nối thường).
+- Mọi từ hoặc cụm tiếng Anh bạn viết ra phải có thật trong từ điển. Không tự tạo dạng từ (như ungradual, concernment, gradient-based), không ghép từ.
+- Nghĩa tiếng Việt phải đúng thuật ngữ, không dùng từ tiếng Việt có nghĩa khác (ví dụ index là "chỉ mục", không phải "mục lục" vì mục lục là table of contents).
+- Một từ tiếng Anh chỉ được xuất hiện MỘT lần trong các dòng FORMS, ANTONYMS, RELATED, CONFUSED của cùng một khối.
 
-Dòng SENTENCE (câu ví dụ, mỗi nghĩa một câu): CHỈ ghi câu ví dụ, KHÔNG ghi lại nghĩa tiếng Việt của từ, không đánh số, không gắn nhãn nghĩa. Số câu bằng đúng số nghĩa đã liệt kê ở MEANING và xếp cùng thứ tự: từ có 1 nghĩa thì 1 câu, có 2 nghĩa thì 2 câu, có 3 nghĩa thì 3 câu (tối đa 5 câu). Mỗi câu là một câu tiếng Anh tự nhiên, ngắn (dưới 12 từ), dùng từ đang học ĐÚNG theo nghĩa tương ứng, kèm bản dịch tiếng Việt gọn. Các câu phải khác nhau và thể hiện rõ sự khác nghĩa, không viết hai câu cùng một nghĩa. Mỗi mục theo dạng: câu tiếng Anh | bản dịch tiếng Việt; các mục cách nhau bằng dấu chấm phẩy (;) và tất cả nằm trên MỘT dòng. Không dùng dấu ; hoặc | bên trong nội dung câu hay bản dịch. Ví dụ từ represent có 2 nghĩa thì SENTENCE có đúng 2 câu: SENTENCE: He represents our company abroad. | Anh ấy đại diện cho công ty chúng tôi ở nước ngoài.; The red line represents total sales. | Đường màu đỏ biểu thị tổng doanh số. Từ chỉ có một nghĩa thì ghi đúng một câu.
+QUY TẮC TỪ GỐC: nếu từ tôi đưa là dạng đã chia hoặc biến đổi (-ed, -ing, -s/-es, quá khứ bất quy tắc, số nhiều, so sánh hơn/nhất) thì đổi về dạng gốc trong từ điển cho WORD, POS, MEANING (ví dụ studied → study, children → child, better → good). Thành ngữ, cụm động từ hoặc cụm cố định có trong từ điển thì giữ nguyên cụm. Nếu tôi đưa một cụm tự ghép (không phải cụm cố định trong từ điển) thì vẫn giữ nguyên cụm làm WORD, dịch nghĩa theo cụm, FORMS ghi dạng của từ chính, còn ANTONYMS, CONFUSED, COMPARE ghi - trừ khi có từ hoặc cụm cố định thật.
 
-Dòng TIP (mẹo ghi nhớ): BẮT BUỘC có cho MỌI từ, không bỏ trống, không ghi dấu gạch ngang. TIP là một liên tưởng giúp người học tự hình dung ra nghĩa của từ, KHÔNG phải câu nhắc lại nghĩa: tuyệt đối không dùng nghĩa tiếng Việt của từ đó, cũng không dùng từ đồng nghĩa trực tiếp của nó trong TIP. Chỉ nêu hình ảnh, tình huống, thành phần cấu tạo hoặc từ cùng họ để người học nhìn vào là liên tưởng tới nghĩa. Viết bằng tiếng Việt, 1-2 câu, trên một dòng, đi thẳng vào liên tưởng (không mở đầu bằng "Mẹo:").
-Chọn cách ĐẦU TIÊN dùng được, theo thứ tự ưu tiên:
-1) Cấu tạo thật của từ: nêu tiền tố / gốc / hậu tố rõ ràng và nghĩa của từng phần, KHÔNG ghép lại thành nghĩa của cả từ. Ví dụ: collaborate: co- (cùng nhau) + labor (lao động), hình dung nhiều người xắn tay áo cùng khiêng một khúc gỗ nặng. Chỉ dùng khi các thành phần thật sự tồn tại.
-2) Từ cùng họ, cùng gốc mà người học thường đã biết. Ví dụ: strengthen liên hệ với strong và strength, đuôi -en cũng có trong widen, deepen, loosen.
-3) Hình ảnh hoặc tình huống đời sống cụ thể, đọc lên là hình dung ra ngay. Ví dụ: bracket: thanh kim loại hình chữ L bắt chặt vào tường, phía trên đặt cả một tấm kệ đầy sách. Cách này dùng được cho mọi từ, nên luôn luôn có TIP.
-4) Chỉ khi ba cách trên không dùng được: liên tưởng âm thanh với tiếng Việt, nhưng cách đọc phải thật sự giống và hình ảnh trong câu liên tưởng phải gợi đúng nghĩa của từ.
-Cấm: nhắc lại nghĩa của từ; ghép âm vô nghĩa hoặc phiên âm gượng ép; bịa nguồn gốc (không chắc thì chuyển sang cách 3); câu chung chung kiểu "hãy cố gắng nhớ", "từ này rất hay gặp". Trước khi trả lời, tự kiểm tra từng TIP: có chứa nghĩa tiếng Việt của từ hoặc từ đồng nghĩa của nó không? Nếu có, viết lại.
+QUY TẮC TỪNG DÒNG
 
-Thêm 1-3 từ hay bị nhầm với từ đang học: viết hoặc đọc na ná nhưng nghĩa khác (ví dụ affect/effect, principal/principle). Mỗi mục ghi từ tiếng Anh | từ loại | nghĩa tiếng Việt | điểm khác biệt ngắn so với từ đang học (một câu tiếng Việt). Nếu thật sự không có từ dễ nhầm thì ghi dấu gạch ngang; không tự bịa.
+POS: từ loại chính (một hoặc hai từ loại phổ biến nhất).
 
-Dòng ANTONYMS (trái nghĩa): 1-3 từ trái nghĩa thật sự của từ đang học (ví dụ increase ↔ decrease), mỗi mục gồm từ tiếng Anh | từ loại | nghĩa tiếng Việt. Không lặp lại dạng phủ định bằng tiền tố đã có ở FORMS. Không có từ trái nghĩa thì ghi dấu gạch ngang; không tự bịa.
+MEANING: các nghĩa thông dụng của từ gốc ứng với từ loại ở POS, xếp từ phổ biến nhất đến ít gặp, tối đa 5, trên MỘT dòng ngăn bằng dấu ;. Mỗi nghĩa phải là một nghĩa RIÊNG trong từ điển. Nếu hai cách dịch chỉ là cách nói khác của cùng một nghĩa thì gộp thành MỘT nghĩa (ví dụ "chỉ ra; cho thấy; biểu thị" là một nghĩa, không phải ba). Mỗi nghĩa 1-4 từ tiếng Việt, không giải thích, không ngoặc đơn. Từ chỉ có một nghĩa chính thì ghi đúng một nghĩa. Nghĩa của từ loại khác để ở FORMS.
 
-Dòng COMPARE (bảng phân biệt từ gần nghĩa): đây là mục QUAN TRỌNG, không được bỏ qua tùy ý và không được rút gọn khi danh sách từ dài. BẮT BUỘC làm khi ít nhất một nghĩa ở MEANING trùng hoặc gần trùng nghĩa tiếng Việt với một từ tiếng Anh thông dụng khác, tức là người Việt dịch ra gần như giống nhau (ví dụ collaborate / cooperate vì cùng dịch là hợp tác; concern / involve / relate to; affect / influence). Chọn 1-3 từ gần nghĩa đáng so sánh nhất, liệt kê CHÍNH từ đang học đứng đầu rồi tới các từ gần nghĩa (tổng cộng 2-4 mục). Mỗi mục: từ tiếng Anh | điểm nhấn nghĩa, sắc thái hoặc mức độ trang trọng (tiếng Việt, ngắn) | khi nào dùng + cấu trúc hoặc cụm đi kèm (tiếng Việt, ngắn) | một ví dụ tiếng Anh rất ngắn. Phải chỉ ra được điểm KHÁC nhau cụ thể, không viết kiểu "nghĩa tương tự". Không dùng dấu ; và dấu | bên trong nội dung. Chỉ được ghi dấu gạch ngang khi đã tự kiểm tra từng nghĩa ở MEANING và thật sự không có từ tiếng Anh nào dịch ra giống (thường chỉ với tên riêng hoặc thuật ngữ rất hẹp); không tự bịa. Trước khi trả lời, kiểm tra lại từng từ: nếu COMPARE đang là dấu gạch ngang mà vẫn nghĩ ra được một từ tiếng Anh có cùng nghĩa tiếng Việt với một nghĩa ở MEANING thì phải viết lại COMPARE.
+FIELD: tên lĩnh vực của từ, chọn theo quy tắc phân loại lĩnh vực ghi riêng ở phần ĐỊNH DẠNG bên dưới.
 
-Chỉ trả kết quả theo mẫu dưới đây, không Markdown, không code fence, không viết lời dẫn. Mỗi mục trong FORMS và RELATED theo thứ tự: tiếng Anh | từ loại | nghĩa tiếng Việt; các mục cách nhau bằng dấu chấm phẩy; riêng CONFUSED có thêm trường thứ tư là điểm khác biệt. SENTENCE gồm các mục theo thứ tự: câu tiếng Anh | bản dịch tiếng Việt, các mục cách nhau bằng dấu chấm phẩy. Nếu có nhiều từ: mỗi từ là MỘT khối riêng, đủ từng dòng WORD, POS, MEANING, FIELD, FORMS, ANTONYMS, RELATED, CONFUSED, COMPARE, SENTENCE, TIP; mỗi trường nằm trên một dòng riêng (không gộp nhiều trường vào một dòng); giữa hai khối liên tiếp đặt đúng một dòng chỉ gồm ---; không đặt --- ở đầu hoặc sau khối cuối; không bỏ sót từ nào trong danh sách.
+FORMS: các dạng từ loại khác có thật (noun, verb, adj, adv), dạng chia bất quy tắc hoặc đổi chính tả (studies, running, indices), dạng phủ định có thật (un-, in-, im-, dis-, non-). Không liệt kê dạng chia theo quy tắc (-ed, -ing, -s). Tối đa 6 mục. Một dạng có nhiều từ loại thì gộp trong một mục (ví dụ concerning | prep, adj | ...). Không có thì ghi -.
+
+ANTONYMS: 1-3 từ trái nghĩa THẬT của nghĩa chính ở MEANING. Phép thử: thay từ đang học trong câu bằng từ trái nghĩa thì nghĩa câu phải đảo ngược, không đạt thì bỏ (ví dụ originate không phải trái nghĩa của imitate). Không lặp dạng phủ định đã có ở FORMS. Không có thì ghi -.
+
+RELATED: 2-5 từ hoặc cụm có thật, cùng chủ đề hoặc gần nghĩa. Mỗi mục: từ | từ loại | nghĩa tiếng Việt.
+
+CONFUSED: 1-3 từ CÓ THẬT mà người học dễ nhầm khi đọc nhanh vì viết hoặc đọc gần giống cả từ (không phải chỉ giống đuôi -ate, -tion, -ment) nhưng nghĩa khác. Không liệt kê chính từ đang học, dạng của nó hay từ đồng nghĩa. Mỗi mục: từ | từ loại | nghĩa tiếng Việt | một câu nói rõ giống ở đâu và khác ở đâu. Không có thì ghi -.
+
+COMPARE (bảng phân biệt từ gần nghĩa): mục này giúp người học biết mỗi từ khác từ đang học ở điểm nào và khi nào nên chọn từ nào. Đây cũng là mục dễ sai nhất, nên chỉ viết điều bạn chắc chắn đúng; chưa chắc thì ghi - hoặc bỏ từ đó, không viết cho đủ.
+a) Chọn 1-3 từ hoặc cụm mà người Việt dễ dùng lẫn vì dịch gần giống nhau hoặc cùng gợi một ý (ví dụ collaborate / cooperate; affect / influence; tend to / habit). Được phép khác từ loại. Khi khác từ loại, "điểm khác" phải nêu đủ cả khác nghĩa thế nào lẫn mỗi từ đi vào câu bằng cấu trúc nào (tend to + động từ nguyên thể, còn have a habit of + V-ing). Nếu bản dịch tiếng Việt của một nghĩa dễ lẫn với một khái niệm tiếng Anh khác thì ưu tiên so với khái niệm đó. Không có từ nào dễ lẫn thì ghi -, không ép.
+b) Liệt kê CHÍNH từ đang học đứng đầu rồi tới các từ so sánh (tổng 2-4 mục). Mọi từ được nhắc tên trong COMPARE đều phải có hàng riêng của nó.
+c) Mỗi mục đúng 5 trường: từ | nghĩa cốt lõi | điểm khác | dùng khi | ví dụ.
+- nghĩa cốt lõi: tối đa 10 từ tiếng Việt, nêu bản chất của từ chứ không chỉ dịch nghĩa.
+- điểm khác: BẮT BUỘC theo mẫu "Nhãn: nội dung". Nhãn chọn MỘT trong: Mức độ, Sắc thái, Phạm vi, Trang trọng, Đối tượng, Kết hợp từ, Văn nói hay văn viết, Tích cực hay tiêu cực, Ngữ pháp. Nhãn phải khớp với nội dung: "Ngữ pháp" chỉ khi hai từ khác cấu trúc đi kèm, "Trang trọng" chỉ khi khác độ trang trọng, "Tích cực hay tiêu cực" chỉ khi khác sắc thái khen chê. Ưu tiên khác biệt về nghĩa, sắc thái, mức độ. Hàng của từ đang học: CHỈ nêu nét riêng của chính nó, KHÔNG nhắc tên từ khác (phần đối chiếu nằm ở các hàng bên dưới). Hàng của từ so sánh: viết theo dạng "(từ so sánh) thì ..., còn (từ đang học) thì ...", gọi tên cả hai. Cấm câu mơ hồ như "nghĩa tương tự", "phổ biến hơn", "tùy ngữ cảnh", "nhấn mạnh hơn" mà không nói nhấn mạnh cái gì.
+- dùng khi: mô tả LOẠI tình huống tổng quát (chủ ngữ, đối tượng, văn cảnh, mức độ) kèm cấu trúc hoặc cụm đi kèm quan trọng nhất. Không lấy một hoạt động cụ thể làm điều kiện. Tối đa 25 từ tiếng Việt.
+- ví dụ: một câu tiếng Anh tự nhiên dưới 10 từ, dùng đúng nghĩa đang được so sánh và thể hiện đúng điểm khác đã nêu.
+d) Độ chính xác: chỉ viết điểm khác mà bạn chắc chắn đúng. Không chắc thì đổi sang tiêu chí chắc hơn, không có tiêu chí chắc thì bỏ từ đó. Không gán nghĩa tốt hoặc xấu, hay giới hạn phạm vi dùng cho một từ nếu từ điển không ghi (ví dụ habit là từ trung tính, có thói quen tốt lẫn xấu). Không khẳng định tuyệt đối bằng "luôn", "chỉ dùng", "không bao giờ" trừ khi là quy tắc ngữ pháp chắc chắn.
+e) Hai ví dụ mẫu chỉ để học cách viết, không chép nội dung:
+COMPARE: collaborate | cùng bỏ công sức làm ra một sản phẩm chung | Phạm vi: dùng khi các bên cùng đóng góp để tạo ra kết quả chung như nghiên cứu, dự án, tác phẩm | Công việc có sản phẩm chung, collaborate with + người, collaborate on + việc | Two labs collaborate on a vaccine.; cooperate | chịu phối hợp, không gây cản trở | Phạm vi: cooperate thì thiên về làm theo hoặc hỗ trợ khi được yêu cầu, còn collaborate thì cùng đóng góp để tạo ra thứ gì đó | Khi một bên nghe theo yêu cầu của bên có thẩm quyền, cooperate with + người | Please cooperate with the police.
+COMPARE: tend to | thường xảy ra theo xu hướng | Sắc thái: nói một việc hay xảy ra theo xu hướng chung, chưa chắc đã thành nếp | Nói về xu hướng của người hoặc vật, tend to + động từ nguyên thể | I tend to wake up early.; habit | thói quen đã thành nếp | Sắc thái: habit thì là hành vi lặp lại đến mức thành nếp, thường làm gần như không cần nghĩ và có thể tốt hoặc xấu, còn tend to thì chỉ là xu hướng chưa chắc đã thành nếp | Nói về nếp sinh hoạt cố định, have a habit of + V-ing, a good habit | He has a habit of waking up early.
+
+SENTENCE: số câu bằng ĐÚNG số nghĩa ở MEANING, cùng thứ tự (mỗi nghĩa một câu, tối đa 5). Mỗi mục: câu tiếng Anh tự nhiên dưới 12 từ dùng từ đang học đúng theo nghĩa tương ứng | bản dịch tiếng Việt tự nhiên và chính xác (không dịch từng chữ). Các câu phải thể hiện rõ sự khác nghĩa. Không ghi nhãn nghĩa, không đánh số.
+
+TIP (mẹo ghi nhớ): BẮT BUỘC có cho mọi từ. Là một liên tưởng giúp người học tự hình dung ra nghĩa, KHÔNG nhắc lại nghĩa tiếng Việt và không dùng từ đồng nghĩa của từ đó. Viết tiếng Việt, 1-2 câu, một dòng, đi thẳng vào liên tưởng. Chọn cách ĐẦU TIÊN dùng được:
+1) Cấu tạo thật của từ: tiền tố, gốc, hậu tố có thật và nghĩa từng phần, không ghép lại thành nghĩa cả từ (ví dụ collaborate: co- cùng nhau + labor lao động, hình dung nhiều người cùng khiêng một khúc gỗ nặng).
+2) Từ cùng họ mà người học thường đã biết, nêu rõ điểm chung giúp đoán nghĩa (ví dụ strengthen liên hệ với strong, đuôi -en cũng có trong widen, deepen).
+3) Hình ảnh hoặc tình huống đời sống cụ thể, đọc lên là hình dung ra ngay (ví dụ bracket: thanh kim loại hình chữ L bắt chặt vào tường, phía trên đặt cả tấm kệ đầy sách).
+Cấm: liên tưởng âm thanh hoặc ghép âm tiếng Việt; bịa nguồn gốc (không chắc thì dùng cách 3); chỉ liệt kê dạng từ (như "liên hệ với gently và gentleness"); viết lập luận hay giải thích về cách bạn chọn mẹo; câu chung chung kiểu "hãy cố nhớ".
+
+KIỂM TRA TRƯỚC KHI TRẢ LỜI (làm thầm cho từng từ, chỗ nào chưa đạt thì viết lại ngay):
+1) Số câu SENTENCE bằng số nghĩa MEANING; không có nghĩa trùng nhau.
+2) Mọi từ tiếng Anh viết ra đều có thật; không dạng từ bịa; không từ nào lặp ở FORMS, ANTONYMS, RELATED, CONFUSED.
+3) Mỗi ANTONYM qua phép thử đảo nghĩa.
+4) COMPARE: nhãn khớp nội dung; mọi từ được nhắc đều có hàng riêng; hàng đầu không nhắc từ khác; không câu nào chưa chắc đúng; ví dụ minh họa đúng điểm khác; "dùng khi" không phải một hoạt động cụ thể.
+5) TIP: không chứa nghĩa tiếng Việt hay từ đồng nghĩa; không chỉ liệt kê dạng từ; không có lập luận; nguồn gốc nếu có thì chắc chắn đúng.
+6) Mỗi trường nằm trên một dòng riêng; không có ; hoặc | trong nội dung.
+
+ĐỊNH DẠNG: chỉ trả kết quả theo khuôn dưới đây, không Markdown, không code fence, không viết lời dẫn. Giữa hai khối liên tiếp đặt đúng một dòng chỉ gồm ---; không đặt --- ở đầu hoặc sau khối cuối.
 
 WORD: từ tiếng Anh
-POS: từ loại chính (noun, verb, adj, adv...)
-MEANING: các nghĩa thông dụng của từ gốc, gọn, ngăn bằng dấu ;
-FORMS: từ tiếng Anh | từ loại | nghĩa tiếng Việt; từ tiếng Anh | từ loại | nghĩa tiếng Việt
-ANTONYMS: từ trái nghĩa | từ loại | nghĩa tiếng Việt; từ trái nghĩa | từ loại | nghĩa tiếng Việt
-RELATED: từ tiếng Anh | từ loại | nghĩa tiếng Việt; từ tiếng Anh | từ loại | nghĩa tiếng Việt
-CONFUSED: từ hay nhầm | từ loại | nghĩa tiếng Việt | khác biệt ngắn so với từ đang học; từ hay nhầm | từ loại | nghĩa tiếng Việt | khác biệt ngắn
-COMPARE: từ đang học | điểm nhấn nghĩa | khi nào dùng, cấu trúc | ví dụ ngắn; từ gần nghĩa | điểm nhấn nghĩa | khi nào dùng, cấu trúc | ví dụ ngắn
-SENTENCE: câu ví dụ cho nghĩa 1 | dịch tiếng Việt; câu ví dụ cho nghĩa 2 | dịch tiếng Việt (mỗi nghĩa ở MEANING đúng một câu, chỉ ghi câu và bản dịch, không ghi lại nghĩa)
-TIP: liên tưởng giúp hình dung ra nghĩa (cấu tạo từ, họ từ hoặc hình ảnh đời sống), không nhắc lại nghĩa của từ, 1-2 câu tiếng Việt trên một dòng, không bao giờ để trống
+POS: từ loại chính
+MEANING: nghĩa 1; nghĩa 2
+FIELD: tên lĩnh vực (chọn theo quy tắc phân loại lĩnh vực)
+FORMS: từ | từ loại | nghĩa; từ | từ loại | nghĩa
+ANTONYMS: từ | từ loại | nghĩa; từ | từ loại | nghĩa
+RELATED: từ | từ loại | nghĩa; từ | từ loại | nghĩa
+CONFUSED: từ | từ loại | nghĩa | giống ở đâu khác ở đâu; từ | từ loại | nghĩa | giống ở đâu khác ở đâu
+COMPARE: từ đang học | nghĩa cốt lõi | Nhãn: nét riêng của từ đang học | dùng khi + cấu trúc | ví dụ; từ so sánh | nghĩa cốt lõi | Nhãn: (từ so sánh) thì ..., còn (từ đang học) thì ... | dùng khi + cấu trúc | ví dụ
+SENTENCE: câu tiếng Anh cho nghĩa 1 | dịch tiếng Việt; câu tiếng Anh cho nghĩa 2 | dịch tiếng Việt
+TIP: liên tưởng giúp hình dung nghĩa, 1-2 câu tiếng Việt trên một dòng
 ---
 
-Các từ tôi cần học:
-[THAY DÒNG NÀY BẰNG TỪ CẦN THÊM, MỖI TỪ MỘT DÒNG]</textarea>
+NHẮC LẠI: tối đa 10 từ; chính xác hơn đầy đủ; không chắc thì ghi - hoặc bỏ; từ cuối kỹ bằng từ đầu.
+
+Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
+[THAY DÒNG NÀY BẰNG TỪ CẦN THÊM, TỐI ĐA 10 TỪ]</textarea>
            </div></details>
      <textarea id="w_in" rows="5" placeholder="Dán kết quả AI vào đây…"></textarea>
+     <div class="wwarn" id="w_lim" role="status" hidden><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.6 2.9 19.4h18.2L12 3.6Z"/><path d="M12 10v4.1M12 17.3v.1"/></svg><span></span></div>
           <button class="lqsn" id="w_sp" style="justify-self:start;margin:2px 0 8px"></button>
      <button class="p" id="w_add" style="justify-content:center">Thêm từ vựng</button></div>
     <div class="ep glass" data-spot><div class="ephd"><h3>Từ vựng đã nhập<small id="wcount"></small></h3>
      <div class="wtb" id="wtb"><div class="wseg" id="wseg" data-v="in" role="group" aria-label="Sắp xếp từ vựng"><i class="wthumb"></i><button type="button" class="on" data-sort="in" aria-pressed="true" title="Sắp theo thứ tự nhập vào">Thứ tự nhập</button><button type="button" data-sort="az" aria-pressed="false" title="Sắp theo bảng chữ cái A → Z">A → Z</button></div>
       <button type="button" class="wdelall" id="wdelall" title="Xóa tất cả từ vựng trong bộ này"><svg class="i"><use href="#i-trash"/></svg>Xóa hết</button>
       <div class="wconf"><span id="wcfq"></span><button type="button" class="wcy" id="wcy">Xóa</button><button type="button" class="wcn" id="wcn">Hủy</button></div></div></div><div id="wl"></div></div>
+    <aside class="ep glass wtabp empty" id="wtab" data-spot aria-label="Tất cả từ gốc"><div class="ephd"><h3>Tất cả từ gốc<small id="wtabn"></small></h3>
+     <div class="wtabright"><div class="wtabact" id="wtabact"><button type="button" class="wdelall" id="wtabdel" title="Xóa toàn bộ từ vựng ở tất cả các bộ"><svg class="i"><use href="#i-trash"/></svg>Xóa tất cả</button>
+      <div class="wconf"><span id="wtabq"></span><button type="button" class="wcy" id="wtaby">Xóa</button><button type="button" class="wcn" id="wtabc">Hủy</button></div></div></div></div>
+     <div class="wtabscroll"><div class="wtabg" id="wtabb"></div><p class="em" id="wtabe" style="padding:12px">Chưa có từ vựng nào.</p></div></aside>
    </div>
     <div class="en1 lq hide" data-s="h" id="lq">
      <div class="lqtop">
@@ -1618,7 +1696,7 @@ function seedDefaults(){
  antonyms:[{w:'indifference',pos:'noun',m:'sự thờ ơ'},{w:'ignore',pos:'verb',m:'phớt lờ, bỏ qua'}],
  related:[{w:'worry',pos:'verb',m:'lo lắng'},{w:'anxiety',pos:'noun',m:'sự lo âu'},{w:'regarding',pos:'prep',m:'về vấn đề'}],
  confused:[{w:'concert',pos:'noun',m:'buổi hòa nhạc',n:'Chỉ viết gần giống; concert là sự kiện âm nhạc, không liên quan đến concern.'},{w:'consent',pos:'noun',m:'sự đồng ý',n:'Consent là chấp thuận cho phép, còn concern là mối bận tâm hoặc việc dính tới ai.'}],
- compare:[{w:'concern',m:'Việc gì đó đụng đến lợi ích của ai, hoặc khiến ai lo',u:'Chủ ngữ thường là vấn đề; hay dùng be concerned about/with',e:'This issue concerns everyone.'},{w:'involve',m:'Bao gồm hoặc kéo ai vào như một phần tất yếu',u:'Nhấn vào việc tham gia hay đòi hỏi; involve + V-ing, be involved in',e:'The job involves travelling.'},{w:'relate to',m:'Có mối liên hệ logic hay kết nối giữa hai thứ',u:'Chỉ quan hệ giữa hai đối tượng; relate to + danh từ',e:'The question relates to cost.'}],
+ compare:[{w:'concern',m:'Việc gì đó chạm đến ai hoặc khiến ai lo',d:'Sắc thái: concern có thể là làm ai lo hoặc dính tới ai, còn involve chỉ là bao gồm và relate to chỉ là có liên hệ, cả hai đều không gây lo lắng',u:'Chủ ngữ thường là vấn đề hay sự việc, dùng be concerned about/with',e:'This issue concerns everyone.'},{w:'involve',m:'Kéo ai hoặc việc gì vào như một phần tất yếu',d:'Phạm vi: involve nói việc gì đòi hỏi hoặc gồm những gì, còn concern nói việc đó ảnh hưởng tới lợi ích của ai',u:'Mô tả công việc hay quá trình, involve + V-ing, be involved in + việc',e:'The job involves travelling.'},{w:'relate to',m:'Có sợi dây liên hệ giữa hai thứ',d:'Ngữ pháp: relate to nối hai đối tượng với nhau và không có nghĩa lo lắng, còn concern có thể mang cảm xúc lo',u:'Khi chỉ muốn nói hai thứ có liên quan, relate to + danh từ',e:'The question relates to cost.'}],
  examples:[{en:'The new policy concerns every employee in the company.',vi:'Chính sách mới liên quan đến mọi nhân viên trong công ty.'},{en:'His silence concerns me.',vi:'Sự im lặng của anh ấy làm tôi lo.'}],
  images:[],tip:'con- (cùng nhau) + cern (sàng, lọc): hình dung chiếc sàng rung lên, hạt nào lọt xuống thì chuyện ấy đã gắn vào bạn.'}]}
  save()}
@@ -2021,7 +2099,7 @@ const wdSp=t=>t?`<button type="button" class="wdsp" data-say="${esc(t)}" aria-la
 function wdRows(rows){return Array.isArray(rows)?rows.filter(x=>x&&x.w).map(x=>`<span class="wdtag"><span class="wdw"><b>${esc(x.w)}</b>${wdSp(x.w)}</span>${x.pos?`<small>${esc(x.pos)}</small>`:''}${x.m?`<em>${esc(x.m)}</em>`:''}</span>`).join(''):''}
 function wdConf(rows){return Array.isArray(rows)?rows.filter(x=>x&&x.w).map(x=>`<span class="wdtag wdconf"><span class="wdw"><b>${esc(x.w)}</b>${wdSp(x.w)}</span>${x.pos?`<small>${esc(x.pos)}</small>`:''}${x.m?`<em>${esc(x.m)}</em>`:''}${x.n?`<span class="wdnote">${esc(x.n)}</span>`:''}</span>`).join(''):''}
 function wdCmp(x){const r=Array.isArray(x.compare)?x.compare.filter(a=>a&&a.w):[];if(r.length<2)return'';const me=wKey(x.w),have=new Set(D.words.map(v=>wKey(v.w)));
- return`<div class="wdcmp">${r.map(a=>{const cur=wKey(a.w)==me;return`<div class="wdcrow${cur?' cur on':''}" data-cmp><div class="wdch"><b>${esc(a.w)}</b>${wdSp(a.w)}${cur?'<i class="wdcb">đang học</i>':have.has(wKey(a.w))?'<i class="wdcb own">có trong bộ</i>':''}<em>${esc(a.m||'')}</em></div><div class="wdcd"><div class="wdci"><div class="wdcin">${a.u?`<span><small>Dùng khi</small>${esc(a.u)}</span>`:''}${a.e?`<span><small>Ví dụ</small><i>${esc(a.e)}</i></span>`:''}</div></div></div></div>`}).join('')}</div>`}
+ return`<div class="wdcmp">${r.map(a=>{const cur=wKey(a.w)==me;return`<div class="wdcrow${cur?' cur on':''}" data-cmp><div class="wdch"><b>${esc(a.w)}</b>${wdSp(a.w)}${cur?'<i class="wdcb">đang học</i>':have.has(wKey(a.w))?'<i class="wdcb own">có trong bộ</i>':''}<em>${esc(a.m||'')}</em></div><div class="wdcd"><div class="wdci"><div class="wdcin">${a.d?`<span class="wdcdiff"><small>${cur?'Nét riêng của từ này':'Khác từ đang học'}</small>${esc(a.d)}</span>`:''}${a.u?`<span><small>Dùng khi</small>${esc(a.u)}</span>`:''}${a.e?`<span><small>Ví dụ</small><i>${esc(a.e)}</i></span>`:''}</div></div></div></div>`}).join('')}</div>`}
 function wdExtraHTML(x,open){if(!x)return'';
  const imgs=(Array.isArray(x.images)?x.images:[]).map(webImage).filter(Boolean).slice(0,2),exs=wdExamples(x),forms=wdRows(x.forms),related=wdRows(x.related),confused=wdConf(x.confused),ants=wdRows(x.antonyms),cmp=wdCmp(x);
  if(!imgs.length&&!exs.length&&!forms&&!related&&!confused&&!ants&&!cmp)return'';
@@ -2082,7 +2160,7 @@ function speak(list,force,done){if((!spOn&&!force)||!spCan()||!list.length)retur
   list.forEach(t=>{const u=new SpeechSynthesisUtterance(t);u.lang='en-US';if(spVoice)u.voice=spVoice;u.rate=.9;if(done){u.onend=u.onerror=done}speechSynthesis.speak(u)})}catch(e){}}
 if(spCan()){spPick();try{speechSynthesis.addEventListener('voiceschanged',spPick)}catch(e){}}
 function parseWDConf(s){if(!s||s.trim()=='-')return[];return s.split(';').map(part=>part.split('|').map(v=>v.trim())).filter(p=>p[0]&&p[0]!='-'&&p.length>=3).map(p=>({w:p[0],pos:p[1],m:p[2],n:p.slice(3).join(' | ')}))}
-function parseWDCmp(s){if(!s||s.trim()=='-')return[];return s.split(';').map(p=>p.split('|').map(v=>v.trim())).filter(p=>p[0]&&p[0]!='-'&&p.length>=3).map(p=>({w:p[0],m:p[1],u:p[2],e:p.slice(3).join(' | ')}))}
+function parseWDCmp(s){if(!s||s.trim()=='-')return[];return s.split(';').map(p=>p.split('|').map(v=>v.trim())).filter(p=>p[0]&&p[0]!='-'&&p.length>=3).map(p=>p.length>=5?{w:p[0],m:p[1],d:p[2],u:p[3],e:p.slice(4).join(' | ')}:{w:p[0],m:p[1],u:p[2],e:p.slice(3).join(' | ')})} /* 5 trường: từ | nghĩa cốt lõi | điểm khác | dùng khi | ví dụ; dữ liệu cũ 3-4 trường vẫn đọc được */
 function parseWDSenses(s){if(!s||s.trim()=='-')return[];return s.split(';').map(p=>p.split('|').map(v=>v.trim())).filter(p=>p[0]&&p[0]!='-').map(p=>({m:p[0],e:p[1]||'',v:p.slice(2).join(' | ')}))}
 function parseWDExamples(s){if(!s||s.trim()=='-')return[];const segs=[];
  String(s).split(';').forEach(p=>{if(segs.length&&!p.includes('|'))segs[segs.length-1]+=';'+p;else segs.push(p)}); /* ; lạc trong bản dịch thì nối lại */
@@ -2129,6 +2207,10 @@ async function copyPrompt(){const t=$('#w_prompt').value;let ok=false;
  if(!ok){const p=$('#w_prompt');p.focus();p.select();try{ok=document.execCommand('copy')}catch(e){}p.setSelectionRange(0,0)}
  toast(ok?'Đã sao chép prompt':'Không sao chép được, hãy chọn và copy nội dung prompt')}
 $('#w_copy').onclick=copyPrompt;
+/* cảnh báo khi dán kết quả của hơn 10 từ cùng lúc */
+function wLimChk(){const el=$('#w_lim');if(!el)return;const n=(($('#w_in').value||'').match(/\bWORD[ \t]*:/g)||[]).length;
+ if(n>10){el.querySelector('span').innerHTML=`Bạn đang dán <b>${n} từ</b> cùng lúc. Mỗi lượt nên tối đa 10 từ vì AI dễ làm ẩu ở các từ cuối, hãy kiểm tra kỹ phần cuối trước khi thêm.`;el.hidden=false}else el.hidden=true}
+$('#w_in').addEventListener('input',wLimChk);$('#w_add').addEventListener('click',()=>setTimeout(wLimChk,0));
 const spLbl=()=>{$('#w_sp').textContent=spCan()?(spOn?'Tự đọc tiếng Anh (US): bật':'Tự đọc tiếng Anh (US): tắt'):'Trình duyệt chưa hỗ trợ đọc'};
 $('#w_sp').onclick=()=>{if(!spCan())return;spOn=!spOn;try{localStorage.setItem('rm_tts',spOn?'1':'0')}catch(e){}cset('tts',spOn?1:0);spLbl();if(spOn)speak(['English'])};spLbl();
 $('#w_add').onclick=addWords;
@@ -2167,6 +2249,31 @@ function wSort(mode){if((CF().wsort=='az'?'az':'in')==mode)return;
   const dy=t-e.getBoundingClientRect().top;if(Math.abs(dy)<1)return;
   e.animate([{transform:`translateY(${dy}px)`},{transform:'none'}],{duration:620,delay:Math.min(i,12)*14,easing:'cubic-bezier(.3,1.2,.5,1)'})})}
 $('#wseg').onclick=e=>{const b=e.target.closest('[data-sort]');if(b)wSort(b.dataset.sort)};
+
+/* ===== Bảng tất cả từ gốc (mọi bộ) + Xóa tất cả (bấm 2 bước, tự hủy sau 6 giây) ===== */
+var wtabSig=null,wtabT=0;
+function wtabRender(){const b=$('#wtabb');if(!b)return;
+ const L=D.words.slice();if(CF().wsort=='az')L.sort((p,q)=>String(p.w||'').localeCompare(String(q.w||''),'en',{sensitivity:'base',numeric:true}));
+ const G=10,sig=L.map(x=>x.id+'\u0001'+x.w).join('\u0002'); /* mỗi nhóm 10 từ */
+ if(sig===wtabSig)return;wtabSig=sig;
+ const CN=['blue','green','purple','orange','teal','pink'];let h='';
+ for(let i=0;i<L.length;i+=G){const part=L.slice(i,i+G),n=i/G;
+  h+=`<section class="wgp" style="--cc:var(--c-${CN[n%CN.length]})"><div class="wgph"><b>Nhóm ${n+1}</b><span title="${part.length} từ">${i+1}–${i+part.length}</span></div><div class="wgpg">`
+   +part.map(x=>`<div class="wtc">${esc(x.w)}</div>`).join('')
+   +'<div class="wtc e" aria-hidden="true"></div>'.repeat(G-part.length)+'</div></section>'}
+ b.innerHTML=h;
+ $('#wtabn').textContent=L.length?`(${L.length} từ)`:'';
+ $('#wtab').classList.toggle('empty',!L.length);$('#wtabe').hidden=!!L.length;b.hidden=!L.length}
+function wtabArm(on){const a=$('#wtabact');clearTimeout(wtabT);
+ if(on){const n=D.words.length;if(!n)return;$('#wtabq').textContent=`Xóa toàn bộ ${n} từ ở ${new Set(D.words.map(x=>x.dk)).size} bộ?`;a.classList.add('arm');wtabT=setTimeout(()=>wtabArm(false),6000)}
+ else a.classList.remove('arm')}
+function wtabWipe(){const n=D.words.length;wtabArm(false);if(!n)return;
+ const ids=new Set(D.words.map(w=>w.id));D.words=[];
+ [D.lq,D.lq&&D.lq.rv].forEach(q=>{if(q)ids.forEach(id=>{if(q.st)delete q.st[id];if(q.c)delete q.c[id];if(q.w)delete q.w[id]})});
+ lqBag=[];lqCur=null;lqLast=null;lqSt='ask';fi=0;wtabSig='';save();enRender();fSwap(0);fTimer();toast(`Đã xóa toàn bộ ${n} từ vựng`)}
+$('#wtabdel').onclick=()=>wtabArm(true);$('#wtabc').onclick=()=>wtabArm(false);$('#wtaby').onclick=wtabWipe;
+document.addEventListener('click',e=>{if($('#wtabact').classList.contains('arm')&&!e.target.closest('#wtabact'))wtabArm(false)});
+addEventListener('keydown',e=>{if(e.key=='Escape'&&$('#wtabact').classList.contains('arm'))wtabArm(false)});
 
 /* ===== Xóa tất cả từ vựng trong bộ đang chọn (bấm 2 bước, tự hủy sau 6 giây) ===== */
 let wArmT=0,wBusy=0;
@@ -2290,7 +2397,8 @@ ${left>0?`- Chỉ khi không lĩnh vực nào phù hợp mới đặt lĩnh vự
 - Nếu tôi đưa nhiều từ cùng lúc, các từ cùng chủ đề dùng chung một tên lĩnh vực.
 
 `;
- return PROMPT_BASE.replace('Chỉ trả kết quả theo mẫu dưới đây',rule+'Chỉ trả kết quả theo mẫu dưới đây').replace('MEANING: các nghĩa thông dụng của từ gốc, gọn, ngăn bằng dấu ;\n','MEANING: các nghĩa thông dụng của từ gốc, gọn, ngăn bằng dấu ;\nFIELD: tên lĩnh vực (chọn theo quy tắc phân loại lĩnh vực)\n')}
+ const A='ĐỊNH DẠNG: chỉ trả kết quả theo khuôn dưới đây';
+ return PROMPT_BASE.includes(A)?PROMPT_BASE.replace(A,rule+A):PROMPT_BASE+'\n\n'+rule}
 function promptSync(){const t=$('#w_prompt'),v=promptBuild();if(t&&t.value!==v)t.value=v}
 /* sang bộ kế tiếp trong chuỗi (bộ còn từ chưa thuộc) */
 function dkNextDeck(){const i=D.decks.findIndex(d=>d.id==DKE()),st=LQ().st;
@@ -2371,7 +2479,7 @@ function wtotSync(){const n=D.words.length,d=D.decks.length,e=$('#wtn');if(!e)re
  const step=t=>{const k=Math.min(1,(t-t0)/dur),q=1-Math.pow(1-k,3);e.textContent=Math.round(from+(n-from)*q);if(k<1)e._r=requestAnimationFrame(step);else e.textContent=n};
  e._r=requestAnimationFrame(step);
  $('#wtot').animate([{transform:'scale(1)'},{transform:'scale(1.09)',offset:.4},{transform:'scale(1)'}],{duration:520,easing:'cubic-bezier(.3,1.3,.5,1)'})}
-function dkRender(){wtotSync();const k=DKE(),key=JSON.stringify(D.decks.map(d=>[d.id,d.name,D.words.filter(w=>w.dk==d.id).length]))+(dkAdd?1:0)+(dkRen||''),h=dkHTML();
+function dkRender(){wtabRender();wtotSync();const k=DKE(),key=JSON.stringify(D.decks.map(d=>[d.id,d.name,D.words.filter(w=>w.dk==d.id).length]))+(dkAdd?1:0)+(dkRen||''),h=dkHTML();
  ['#dkV','#dkH'].forEach(s=>{const e=$(s);if(!e)return;
   if(e._dkKey===key){const prev=e.querySelector('.dkc.on');e.querySelectorAll('.dkc[data-dk]').forEach(b=>{const on=b.dataset.dk==k;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
    const now=e.querySelector('.dkc.on');dkPill(e,true);
