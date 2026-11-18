@@ -1284,6 +1284,12 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
 .wdexr{display:flex;align-items:flex-start;gap:6px}
 .wdexr b{flex:1 1 auto;min-width:0;overflow-wrap:anywhere}
 .wdexr .wdsp{margin-top:-2px}
+
+/* Cloudflare AI: cài đặt gọn và tập trung */
+.cpold{padding:6px 0;border-top:1px solid var(--rule)}
+.cpold summary{cursor:pointer;font-size:12px;color:var(--mut);padding:5px 0;user-select:none}
+.cpold[open]{display:grid;gap:7px}
+.cpold summary:focus-visible{outline:2px solid var(--ring);outline-offset:3px}
 </style><style>
 /* KZMD128 DAILY - embedded directly into index.html */
 /* KZMD128 Daily — original Roadmap / English CSS remains intact */
@@ -2054,13 +2060,17 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
   <button class="cpib" id="cpx" aria-label="Đóng"><svg class="i"><use href="#i-x"/></svg></button>
  </div>
  <div class="cpset" id="cpsetp"><div><div class="cpsi">
-  <label for="cpkey">OpenAI API key</label>
-  <input id="cpkey" type="password" autocomplete="off" spellcheck="false" placeholder="sk-...">
-  <label for="cpmod">Model</label>
-  <input id="cpmod" list="cpmods" autocomplete="off" spellcheck="false" placeholder="gpt-4o-mini">
-  <datalist id="cpmods"><option value="gpt-4o-mini"><option value="gpt-4.1-mini"><option value="gpt-4o"><option value="gpt-4.1"></datalist>
-  <p>Không bắt buộc: Capy đã tự chat được bằng dịch vụ AI miễn phí. Dán key riêng vào đây nếu muốn chat ổn định hơn. Key chỉ lưu trong trình duyệt này, không nằm trong bản sao lưu.</p>
-  <button class="p" id="cpsave" style="justify-content:center">Lưu</button>
+  <label for="cpworker">Kết nối Gemini qua Cloudflare Worker</label>
+  <input id="cpworker" type="url" autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="https://kzmd128-ai...workers.dev" aria-describedby="cpworkhelp">
+  <p id="cpworkhelp">Chỉ nhập địa chỉ Worker một lần. API Key phải lưu trong Cloudflare Secrets, không điền ở đây và không đưa lên GitHub. Để mọi người dùng website tự kết nối, thêm địa chỉ Worker vào cấu hình WORKER_URL của file.</p>
+  <details class="cpold"><summary>Cấu hình AI cá nhân (tuỳ chọn)</summary>
+    <label for="cpkey">API Key lưu riêng trên thiết bị này</label>
+    <input id="cpkey" type="password" autocomplete="off" spellcheck="false" placeholder="Chỉ dùng khi chạy riêng, không đưa vào HTML">
+    <label for="cpmod">Model cho API cá nhân</label>
+    <input id="cpmod" list="cpmods" autocomplete="off" spellcheck="false" placeholder="gpt-4o-mini">
+    <datalist id="cpmods"><option value="gpt-4o-mini"><option value="gpt-4.1-mini"><option value="gpt-4o"><option value="gpt-4.1"></datalist>
+  </details>
+  <button class="p" id="cpsave" style="justify-content:center">Lưu kết nối</button>
  </div></div></div>
  <div class="cpm" id="cpm" aria-live="polite"></div>
  <div class="cpin">
@@ -3804,14 +3814,12 @@ render();
 (function(){
 const Q=s=>document.querySelector(s);
 const cap=Q('#cpa'),btn=Q('#cpb'),flip=Q('#cpf'),say=Q('#cps'),win=Q('#cpw'),msgs=Q('#cpm'),inp=Q('#cpi'),send=Q('#cpsend'),
- setB=Q('#cpset'),setP=Q('#cpsetp'),keyI=Q('#cpkey'),modI=Q('#cpmod'),sub=Q('#cpsub');
+ setB=Q('#cpset'),setP=Q('#cpsetp'),keyI=Q('#cpkey'),modI=Q('#cpmod'),workerI=Q('#cpworker'),sub=Q('#cpsub');
 const RMO=matchMedia('(prefers-reduced-motion:reduce)').matches,FINE=matchMedia('(pointer:fine)').matches;
-/* >>> DÁN KEY CỦA BẠN VÀO ĐÂY (giữa hai dấu nháy), ví dụ: const BUILTIN_KEY='sk-xxxx'
-   Nếu bạn có server trung gian thì điền địa chỉ vào PROXY_URL và để BUILTIN_KEY trống. <<< */
-const BUILTIN_KEY='',PROXY_URL='';
-/* Nhà cung cấp AI. Mặc định là OpenAI (trả phí).
-   MUỐN DÙNG MIỄN PHÍ bằng Gemini: đổi API_URL thành dòng 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions'
-   và đổi DEF thành 'gemini-2.5-flash', rồi dán key lấy ở aistudio.google.com/apikey vào BUILTIN_KEY ở trên. */
+/* URL Cloudflare Worker công khai (không chứa key). Sau khi tạo Worker, có thể
+   nhập URL ở Capy một lần hoặc điền tại đây để tất cả người dùng dùng chung.
+   KHÔNG đặt Gemini API Key hoặc token bí mật trong index.html/GitHub. */
+const WORKER_URL='';
 const API_URL='https://api.openai.com/v1/chat/completions';
 /* Dịch vụ AI miễn phí, không cần key (Pollinations). Capy tự dùng khi bạn chưa dán key riêng, thử lần lượt từng địa chỉ cho tới khi có cái chạy. */
 const FREE=[{url:'https://gen.pollinations.ai/v1/chat/completions',model:'openai-fast'},{url:'https://text.pollinations.ai/openai',model:'openai'}];
@@ -3896,43 +3904,50 @@ const toEnd=()=>{msgs.scrollTop=msgs.scrollHeight};
 function add(role,text){const d=document.createElement('div');d.className='cpg '+role;d.textContent=text;msgs.appendChild(d);toEnd();return d}
 function typing(){const d=document.createElement('div');d.className='cpg a t';d.innerHTML='<i></i><i></i><i></i>';msgs.appendChild(d);toEnd();return d}
 const saveH=()=>ls.set(HIS,JSON.stringify(hist.slice(-40)));
-const getKey=()=>(ls.get(KEY)||'').trim()||BUILTIN_KEY;
-const hasKey=()=>!!(PROXY_URL||getKey());
-const model=()=>(ls.get(MOD)||'').trim()||DEF;
-window.RMAI={targets(){return hasKey()?[{url:PROXY_URL||API_URL,model:model(),auth:true,key:getKey(),proxy:!!PROXY_URL}]:FREE}};
-function status(){sub.textContent=hasKey()?'Trợ lý AI · '+model():'Trợ lý AI · miễn phí'}
+const WORKER_STORE='rm_ai_worker_url';
+const validWorkerURL=s=>{try{const u=new URL(s);return u.protocol==='https:'&&!u.username&&!u.password&&(!u.hash)&&(!u.search)&&u.hostname&&!u.hostname.endsWith('googleapis.com')}catch(e){return false}};
+const getProxy=()=>{const raw=(WORKER_URL||(ls.get(WORKER_STORE)||'')).trim();return validWorkerURL(raw)?raw.replace(/\/+$/,''):''};
+const getKey=()=>(ls.get(KEY)||'').trim();
+const hasKey=()=>!!(getProxy()||getKey());
+const model=()=>getProxy()?'gemini-2.5-flash':(ls.get(MOD)||'').trim()||DEF;
+window.RMAI={targets(){const p=getProxy();return p?[{url:p,model:model(),auth:false,proxy:true}]:getKey()?[{url:API_URL,model:model(),auth:true,key:getKey(),proxy:false}]:FREE}};
+function status(){sub.textContent=getProxy()?'Gemini · kết nối Cloudflare':getKey()?'Trợ lý AI · '+model():'Trợ lý AI · miễn phí'}
 function welcome(){add('a','Chào bạn! Mình là Capy. Bạn muốn hỏi gì nào?')}
 function load(){msgs.innerHTML='';if(!hist.length)welcome();else hist.slice(-40).forEach(m=>add(m.role=='user'?'u':'a',m.content));status()}
 
 /* ---------- cài đặt ---------- */
 function toggleSet(v){const o=v==null?!setP.classList.contains('open'):v;setP.classList.toggle('open',o);setB.classList.toggle('on',o);
- if(o){keyI.placeholder=hasKey()?'Đã lưu key (nhập key mới để thay)':'sk-...';modI.value=ls.get(MOD)||'';if(FINE)setTimeout(()=>keyI.focus(),300)}}
+ if(o){workerI.value=getProxy();keyI.placeholder=getKey()?'Đã lưu key cá nhân (nhập key mới để thay)':'Chỉ dành cho dùng riêng';modI.value=ls.get(MOD)||'';if(FINE)setTimeout(()=>workerI.focus(),300)}}
 setB.onclick=()=>toggleSet();
 Q('#cpsave').onclick=()=>{
+ const p=workerI.value.trim();
+ if(p&&!validWorkerURL(p)){workerI.setCustomValidity('Cần địa chỉ HTTPS của Cloudflare Worker, không phải API Key.');workerI.reportValidity();return}
+ workerI.setCustomValidity('');
+ if(!WORKER_URL){if(p)ls.set(WORKER_STORE,p.replace(/\/+$/,''));else try{localStorage.removeItem(WORKER_STORE)}catch(e){}}
  const k=keyI.value.trim();if(k)ls.set(KEY,k);
  const m=modI.value.trim();if(m)ls.set(MOD,m);else try{localStorage.removeItem(MOD)}catch(e){}
  keyI.value='';toggleSet(false);status();
- if(hasKey())add('a','Đã lưu. Từ giờ mình dùng key của bạn nhé!');else add('a','Mình sẽ dùng dịch vụ AI miễn phí nhé. Hỏi mình đi nào!');
+ add('a',getProxy()?'Đã lưu địa chỉ Worker. Hãy gửi một tin nhắn để kiểm tra Gemini đã kết nối chưa.':getKey()?'Đã lưu cấu hình AI riêng trên thiết bị.':'Capy đang dùng dịch vụ miễn phí dự phòng.');
  pop(3)};
 Q('#cpclr').onclick=()=>{hist=[];saveH();load();pop(2)};
 
 /* ---------- gọi OpenAI (stream) ---------- */
 function errText(s,m){
- if(s==401)return 'API key không đúng hoặc đã bị thu hồi. Bấm biểu tượng thanh trượt để nhập lại nhé.';
- if(s==429)return 'Bị giới hạn (429): có thể bạn gửi quá nhanh hoặc tài khoản OpenAI hết credit. Kiểm tra mục Billing rồi thử lại.';
- if(s==404)return 'Không tìm thấy model "'+model()+'". Mở cài đặt và đổi sang model khác, ví dụ gpt-4o-mini.';
- return 'OpenAI báo lỗi ('+s+')'+(m?': '+m:'.')}
+ if(s==401||s==403)return 'Chưa được cấp quyền dùng Worker hoặc API Key không hợp lệ. Hãy kiểm tra Cloudflare Secrets và giới hạn truy cập.';
+ if(s==429)return 'Đã chạm giới hạn sử dụng AI (429). Hãy thử lại sau hoặc kiểm tra hạn mức Gemini/Cloudflare.';
+ if(s==404)return 'Không tìm thấy endpoint hoặc model ('+model()+'). Kiểm tra Worker và model Gemini đang dùng.';
+ return 'Dịch vụ AI báo lỗi ('+s+')'+(m?': '+m:'.')}
 async function ask(text){
  add('u',text);hist.push({role:'user',content:text});saveH();
 
  busy=true;send.disabled=true;cap.classList.add('think');
  const wait=typing();let el=null,full='';
  try{
-  const own=hasKey(),targets=own?[{url:PROXY_URL||API_URL,model:model(),auth:true}]:FREE;
+  const own=hasKey(),targets=window.RMAI.targets();
   let r=null,lastErr=null;
   for(const t of targets){
    try{
-    const h={'Content-Type':'application/json'};if(t.auth&&!PROXY_URL)h.Authorization='Bearer '+getKey();
+    const h={'Content-Type':'application/json'};if(t.auth&&!t.proxy)h.Authorization='Bearer '+getKey();
     const rr=await fetch(t.url,{method:'POST',headers:h,body:JSON.stringify({model:t.model,stream:true,messages:[{role:'system',content:SYS},...hist.slice(-20)]})});
     if(rr.ok){r=rr;break}
     let m='';try{const j=await rr.json();const e=j.error;m=typeof e=='string'?e:(e&&e.message)||''}catch(e){}
@@ -3940,7 +3955,7 @@ async function ask(text){
    }catch(e){lastErr=e}}
   if(!r)throw lastErr;
   wait.remove();el=add('a','');
-  if((r.headers.get('content-type')||'').includes('application/json')){try{const j=await r.json();full=j.choices[0].message.content||''}catch(e){}el.textContent=full;toEnd()}
+  if((r.headers.get('content-type')||'').includes('application/json')){try{const j=await r.json();full=j.choices?.[0]?.message?.content||''}catch(e){}el.textContent=full||'Không nhận được nội dung từ AI.';toEnd()}
   else{
   const rd=r.body.getReader(),dec=new TextDecoder();let buf='';
   for(;;){const{done,value}=await rd.read();if(done)break;
