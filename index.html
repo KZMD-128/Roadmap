@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>KZMD128 — Progress, Every Day.</title>
+<title>KZMD 2.0 — Progress, Every Day.</title>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#edf0f7">
-<meta name="description" content="KZMD128 — Roadmap, English và Daily: hành trình tiến bộ mỗi ngày.">
+<meta name="description" content="KZMD 2.0 — Daily, English Coach và Roadmap. AI đồng hành cùng mỗi ngày tiến bộ.">
 <meta name="color-scheme" content="only light">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="KZMD128">
+<meta name="apple-mobile-web-app-title" content="KZMD 2.0">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20256%20256%22%3E%3Cdefs%3E%0A%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20stop-color%3D%22%23152A4F%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23121B37%22%2F%3E%3C%2FlinearGradient%3E%0A%20%3ClinearGradient%20id%3D%22wing%22%20x1%3D%220%22%20y1%3D%221%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20stop-color%3D%22%234B79EF%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2371CBEE%22%2F%3E%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%3Crect%20width%3D%22256%22%20height%3D%22256%22%20rx%3D%2257%22%20fill%3D%22url%28%23bg%29%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M68%2070%20Q68%2064%2074%2064%20H91%20Q97%2064%2097%2070%20V186%20Q97%20192%2091%20192%20H74%20Q68%20192%2068%20186%20Z%22%20fill%3D%22%23F8FBFF%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M110%20127%20L159%2065%20Q162%2062%20168%2062%20H194%20Q200%2062%20196%2068%20L135%20139%20Z%22%20fill%3D%22url%28%23wing%29%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M113%20131%20L136%20113%20L196%20186%20Q201%20192%20193%20192%20H163%20Q159%20192%20156%20188%20Z%22%20fill%3D%22%23F8FBFF%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M161%2065%20H194%20Q200%2065%20196%2071%20L182%2086%20H145%20Z%22%20fill%3D%22white%22%20fill-opacity%3D%22.16%22%2F%3E%0A%3C%2Fsvg%3E">
@@ -1670,6 +1670,224 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
  .cpw { height:min(520px,calc(80dvh - 145px)); }
  .d-modal { max-height:min(75dvh,800px); }
 }
+
+/* KZMD 2.0 — safe Markdown rendering for assistant messages. */
+.cpg.kmd{white-space:normal;min-width:0}
+.cpg.kmd p{margin:0 0 .58em;line-height:1.58;white-space:pre-wrap}
+.cpg.kmd> :last-child{margin-bottom:0}
+.cpg.kmd strong{font-weight:700;color:inherit}
+.cpg.kmd em{font-style:italic}
+.cpg.kmd ul,.cpg.kmd ol{margin:.3em 0 .7em;padding-left:1.4em;line-height:1.55}
+.cpg.kmd li{padding-left:.1em;margin:.2em 0}
+.cpg.kmd li::marker{color:var(--ac1)}
+.cpg.kmd h3,.cpg.kmd h4{margin:.5em 0 .35em;font-size:1.04em;font-weight:700;line-height:1.45}
+.cpg.kmd blockquote{border-left:2px solid var(--ac1);padding:2px 0 2px 10px;margin:.55em 0;color:var(--mut)}
+.cpg.kmd code{font:500 .9em/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;background:var(--fill);border-radius:5px;padding:.08em .3em;overflow-wrap:anywhere}
+.cpg.kmd pre{margin:.5em 0 .65em;padding:10px 12px;overflow:auto;max-width:100%;white-space:pre;border-radius:12px;background:rgba(20,32,57,.10);font-size:12px;line-height:1.55}
+:root[data-theme="dark"] .cpg.kmd pre{background:rgba(0,0,0,.27)}
+.cpg.kmd pre code{background:none;padding:0;white-space:pre;overflow-wrap:normal}
+.cpg.kmd a{color:var(--ac1);text-decoration:underline;text-underline-offset:2px}
+.cpg.kmd hr{border:0;border-top:1px solid var(--rule);margin:9px 0}
+.kz2-news-trigger{display:inline-flex;align-items:center;justify-content:center;gap:4px;flex:none;padding:7px 9px;border-radius:999px;border:1px solid var(--rule);background:var(--fill);font-size:10.5px;font-weight:750;letter-spacing:.03em;color:var(--ac1);transition:transform .3s cubic-bezier(.2,1.5,.4,1),background .25s}
+.kz2-news-trigger:hover{background:var(--ring2);transform:translateY(-2px)}
+.kz2-news-trigger:focus-visible{outline:2px solid var(--ac1);outline-offset:2px}
+@media(max-width:760px){.kz2-news-trigger{padding:6px;min-width:28px;height:29px;font-size:11px}.kz2-news-label{display:none}}
+@media(max-width:350px){.kz2-news-trigger{min-width:22px;padding:4px}}
+/* KZMD 2.0 — one-time editorial launch announcement, scoped to its own overlay. */
+.kz2-announcement[hidden]{display:none!important}
+.kz2-announcement{position:fixed;inset:0;z-index:300;display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:clamp(10px,3vh,26px);background:rgba(9,15,30,.52);-webkit-backdrop-filter:blur(15px) saturate(115%);backdrop-filter:blur(15px) saturate(115%);opacity:0;visibility:hidden;transition:opacity .32s ease,visibility .32s ease}
+.kz2-announcement.show{opacity:1;visibility:visible}
+.kz2-news-card{position:relative;isolation:isolate;width:min(650px,100%);max-height:min(90vh,840px);max-height:min(90dvh,840px);overflow-y:auto;overscroll-behavior:contain;padding:clamp(19px,3vw,32px);border-radius:29px;background:#f9fbff;color:#1b2739;border:1px solid rgba(255,255,255,.9);box-shadow:0 30px 95px rgba(0,10,35,.33);transform:translateY(18px) scale(.965);transition:transform .68s cubic-bezier(.2,1.15,.25,1)}
+.kz2-announcement.show .kz2-news-card{transform:none}
+:root[data-theme="dark"] .kz2-news-card{background:#121b2b;color:#f5f8ff;border-color:rgba(170,196,255,.16)}
+.kz2-news-card::before{content:"";position:absolute;z-index:-1;inset:0 0 auto;height:190px;border-radius:inherit;background:radial-gradient(ellipse at 88% 3%,rgba(92,142,248,.20),transparent 66%);pointer-events:none}
+.kz2-release-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:17px}
+.kz2-eyebrow{display:inline-flex;gap:7px;align-items:center;color:#356ae1;font-size:10.5px;font-weight:750;letter-spacing:.14em;text-transform:uppercase}
+:root[data-theme="dark"] .kz2-eyebrow{color:#8bb9ff}
+.kz2-eyebrow i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#4b83f2;box-shadow:0 0 0 5px rgba(65,123,242,.1)}
+.kz2-close{width:32px;height:32px;padding:0;justify-content:center;font-size:20px;font-weight:400;border-radius:50%;background:rgba(81,111,160,.09);color:inherit}
+.kz2-close:hover{background:rgba(81,111,160,.17)}
+.kz2-news-title{margin:0 0 9px;font-size:clamp(29px,5vw,42px);line-height:1.13;letter-spacing:-.05em;font-weight:750;max-width:590px}
+.kz2-news-title span{background:linear-gradient(105deg,#1777ed,#6760df);color:transparent;background-clip:text;-webkit-background-clip:text}
+.kz2-news-lead{margin:0 0 20px;color:#52617a;font-size:13.5px;line-height:1.72;max-width:560px}
+:root[data-theme="dark"] .kz2-news-lead{color:#abbad0}
+.kz2-update-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 20px}
+.kz2-update{padding:15px 15px 14px;border:1px solid rgba(65,96,148,.10);border-radius:18px;background:rgba(231,238,252,.49)}
+:root[data-theme="dark"] .kz2-update{background:rgba(160,188,239,.07);border-color:rgba(160,188,239,.12)}
+.kz2-update .kz2-no{display:inline-flex;align-items:center;justify-content:center;width:27px;height:27px;margin-bottom:10px;border-radius:9px;color:#286ad6;background:rgba(56,119,232,.12);font-size:12px;font-weight:800}
+.kz2-update h3{margin:0 0 5px;font-size:13.5px;line-height:1.4;letter-spacing:-.015em;font-weight:750}
+.kz2-update p{margin:0;font-size:11.8px;line-height:1.57;color:#5a6980}
+:root[data-theme="dark"] .kz2-update p{color:#afbdd1}
+.kz2-release-bottom{padding-top:16px;border-top:1px solid rgba(65,96,148,.14)}
+.kz2-release-bottom p{margin:0 0 14px;color:#617089;font-size:12px;line-height:1.6}
+:root[data-theme="dark"] .kz2-release-bottom p{color:#afbdd1}
+.kz2-release-actions{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.kz2-release-actions button{font-weight:650;justify-content:center}
+.kz2-release-actions .kz2-start{padding:11px 19px;color:#fff;background:linear-gradient(110deg,#176ee9,#605ae7);box-shadow:0 6px 20px rgba(65,96,229,.22)}
+.kz2-release-actions .kz2-start:hover{filter:brightness(1.07);background:linear-gradient(110deg,#176ee9,#605ae7)}
+.kz2-release-actions .kz2-later{font-size:12px;color:#607086}
+:root[data-theme="dark"] .kz2-release-actions .kz2-later{color:#bdc9dc}
+@media(max-width:600px){.kz2-announcement{padding:10px;align-items:center}.kz2-news-card{border-radius:23px;padding:19px 18px;max-height:calc(100dvh - 20px)}.kz2-news-title{font-size:29px}.kz2-news-lead{font-size:12.5px;margin-bottom:15px}.kz2-update-grid{gap:8px}.kz2-update{padding:12px;border-radius:15px}.kz2-update h3{font-size:12.5px}.kz2-update p{font-size:11px}.kz2-update .kz2-no{margin-bottom:7px}.kz2-release-bottom{padding-top:12px}}
+@media(max-width:370px){.kz2-update-grid{grid-template-columns:1fr}.kz2-update{padding:10px 12px}.kz2-update .kz2-no{margin-bottom:4px}.kz2-news-title{font-size:27px}.kz2-news-lead{line-height:1.5}}
+@media(prefers-reduced-motion:reduce){.kz2-announcement,.kz2-news-card,.kz2-news-trigger{transition:none!important}}
+
+/* KZMD 2.0 · English Học ONLY: 75% card/control scale, full effective width. */
+#en #lq.en1{zoom:.75!important;width:100%!important;max-width:none!important;min-height:calc((100% - var(--th))*1.333333)!important;margin-left:auto!important;margin-right:auto!important;}
+@media(min-width:1240px){#en #lq.en1{height:133.3333%!important;margin-top:calc(-1.333333*var(--th))!important;}}
+@media(max-width:700px){#en #lq.en1{zoom:1!important;width:100%!important;min-height:0!important;}} /* Phone: accessible touch targets */
+@media(max-width:800px) and (pointer:coarse){#en #lq.en1{zoom:1!important;width:100%!important;min-height:0!important;}}
+/* English tabs: fit 4 destinations without overflow on compact screens. */
+@media(max-width:560px){.etbar .tb{padding:0 8px;font-size:11.7px;gap:2px}.etbar .tb .i{display:none}.etb{padding-left:7px;padding-right:7px;gap:4px}}
+@media(max-width:365px){.etbar .tb{padding:0 6px;font-size:10.5px}}
+
+@media(min-width:1000px) and (pointer:fine){.kz2-announcement{zoom:.8}.kz2-news-card{max-height:min(88dvh,840px)}}
+/* Speaking Studio — coherent with KZMD liquid glass system */
+#kspeak [hidden]{display:none!important}
+#kspeak{--ks-line:var(--rule);--ks-muted:var(--mut);display:grid;grid-template-columns:minmax(195px,245px) minmax(0,1fr) minmax(205px,260px);gap:13px;align-items:start;width:min(1380px,100%);margin:0 auto;padding:14px 18px 115px;min-height:calc(100% - var(--th));font-size:13px;line-height:1.5}
+#kspeak.hide{display:none!important}
+#kspeak button{font-size:12.5px}
+#kspeak .ks-pane{border-radius:25px;padding:17px;min-width:0;background:var(--gbg-s);box-shadow:var(--gsh);animation:ksAppear .65s cubic-bezier(.2,1.1,.3,1) both}
+#kspeak .ks-pane:nth-child(2){animation-delay:.08s}#kspeak .ks-pane:nth-child(3){animation-delay:.14s}
+@media(min-width:1081px){#kspeak .ks-pane:last-child{max-height:400px;overflow-y:auto;scrollbar-width:thin}}
+#kspeak h2,#kspeak h3,#kspeak p{margin:0}
+#kspeak h2{font-size:20px;line-height:1.23;letter-spacing:-.035em;font-weight:650}
+#kspeak h3{font-size:13px;font-weight:650}
+#kspeak .ks-eyebrow{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ac1);margin-bottom:7px}
+#kspeak .ks-muted{font-size:11.5px;color:var(--ks-muted);line-height:1.55}
+#kspeak .ks-modes{display:grid;gap:7px;margin:15px 0 13px}
+#kspeak .ks-mode{display:grid;text-align:left;gap:3px;border:1px solid var(--rule);padding:10px 12px;border-radius:14px;background:var(--fill);color:var(--ink);width:100%;transition:background .3s,transform .4s cubic-bezier(.18,1.4,.3,1),border-color .3s}
+#kspeak .ks-mode:hover{transform:translateY(-2px)}#kspeak .ks-mode[aria-pressed=true]{border-color:var(--ring);background:var(--ring2)}
+#kspeak .ks-mode b{font-size:12px;font-weight:650}#kspeak .ks-mode small{font-size:10px;color:var(--mut)}
+#kspeak .ks-section-title{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:15px 0 7px}
+#kspeak .ks-history{max-height:270px;overflow:auto;display:grid;gap:6px}
+#kspeak .ks-history-row{display:grid;gap:2px;width:100%;padding:9px 10px;text-align:left;border-radius:12px;background:var(--fill)}
+#kspeak .ks-history-row span{font-size:10px;color:var(--mut)}
+#kspeak .ks-task-top{display:flex;gap:8px;align-items:center;justify-content:space-between}
+#kspeak .ks-pill{background:var(--ring2);color:var(--ac1);border-radius:999px;padding:5px 10px;font-size:10px;font-weight:700}
+#kspeak .ks-title{margin:13px 0 8px;font-size:clamp(17px,2vw,24px);font-weight:650;letter-spacing:-.025em;line-height:1.45}
+#kspeak .ks-cue{padding:12px 14px;border-radius:15px;background:var(--fill);margin-top:7px;font-size:12px;white-space:pre-wrap;line-height:1.6}
+#kspeak .ks-guide{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+#kspeak .ks-guide span{font-size:10.5px;border:1px solid var(--rule);border-radius:999px;padding:5px 9px;color:var(--mut)}
+#kspeak .ks-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+#kspeak .ks-btn{padding:10px 13px;border-radius:13px;min-height:40px;justify-content:center;background:var(--fill)}
+#kspeak .ks-btn:hover{background:var(--ring2)}
+#kspeak .ks-primary{background:linear-gradient(120deg,var(--ac1),var(--ac2))!important;color:white!important;box-shadow:0 5px 15px var(--ring2)}
+#kspeak .ks-primary:hover{filter:brightness(1.07)}
+#kspeak .ks-btn[disabled]{opacity:.42;cursor:not-allowed}
+#kspeak .ks-mic{width:46px;height:46px;border-radius:50%;padding:0;font-size:22px;flex:none}
+#kspeak .ks-mic.listening{animation:ksMic 1.45s ease-in-out infinite;box-shadow:0 0 0 7px var(--ring2)}
+#kspeak .ks-tools{margin-top:16px;display:grid;gap:11px}
+#kspeak .ks-timer{font-variant-numeric:tabular-nums;font-size:20px;font-weight:650;letter-spacing:-.02em}
+#kspeak .ks-wave{height:36px;display:flex;align-items:center;gap:3px;justify-content:space-between;overflow:hidden;opacity:.7}
+#kspeak .ks-wave i{height:var(--h,18%);width:3px;flex:1;border-radius:6px;background:linear-gradient(var(--ac1),var(--ac2));transform:scaleY(var(--lvl,.2));transition:transform .12s ease}
+#kspeak .ks-live{display:grid;gap:5px;padding:12px;border:1px solid var(--rule);border-radius:16px;background:var(--fill)}
+#kspeak .ks-live textarea{min-height:76px;max-height:220px;resize:vertical;background:transparent;box-shadow:none!important;font-size:12.5px;line-height:1.6;padding:6px}
+#kspeak .ks-live textarea:focus{outline:2px solid var(--ring);outline-offset:0}
+#kspeak .ks-hint{font-size:10.5px;color:var(--mut);line-height:1.55}
+#kspeak .ks-result{margin-top:14px;padding:14px;border-radius:17px;background:var(--fill);display:grid;gap:9px}
+#kspeak .ks-result[hidden]{display:none}
+#kspeak .ks-stat-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#kspeak .ks-stat{padding:10px;background:var(--gbg-s);border-radius:13px}
+#kspeak .ks-stat b{display:block;font-size:17px;font-variant-numeric:tabular-nums}
+#kspeak .ks-stat small{font-size:10px;color:var(--mut)}
+#kspeak .ks-match{display:flex;flex-wrap:wrap;gap:5px}
+#kspeak .ks-match span{padding:3px 5px;border-radius:7px;background:rgba(44,185,100,.14)}
+#kspeak .ks-match .miss{background:rgba(242,161,40,.16);text-decoration:underline dotted}
+#kspeak .ks-feedback{font-size:12px;line-height:1.72;white-space:pre-wrap}
+#kspeak .ks-feedback[hidden]{display:none}
+#kspeak .ks-status{font-size:11px;color:var(--mut)}
+#kspeak .ks-status.warn{color:var(--red)}
+#kspeak .ks-right-list{display:grid;gap:9px;margin:13px 0}
+#kspeak .ks-right-list div{border-top:1px solid var(--rule);padding-top:9px}
+#kspeak .ks-right-list b{display:block;font-size:11.5px}
+#kspeak .ks-right-list p{font-size:11px;color:var(--mut);line-height:1.55;margin-top:3px}
+#kspeak select,#kspeak input[type=text]{padding:9px 11px;border-radius:12px;font-size:12px;background:var(--fill)}
+#kspeak .ks-custom{width:100%;display:none;margin-top:8px}#kspeak[data-mode=sentence] .ks-custom{display:block}
+#kspeak .ks-opt{display:grid;gap:5px;margin-top:12px;font-size:11px;color:var(--mut)}
+@keyframes ksMic{50%{transform:scale(1.1);box-shadow:0 0 0 13px transparent}}
+@keyframes ksAppear{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+@media(max-width:1080px){#kspeak{grid-template-columns:minmax(175px,215px) minmax(0,1fr)}#kspeak .ks-pane:last-child{grid-column:1/-1}}
+@media(max-width:690px){#kspeak{display:flex;flex-direction:column;padding:12px 12px 110px;gap:11px}#kspeak .ks-pane{width:100%;padding:15px;border-radius:20px}#kspeak .ks-modes{grid-template-columns:repeat(2,minmax(0,1fr))}#kspeak .ks-history{max-height:130px}#kspeak .ks-title{font-size:18px}#kspeak .ks-mode{min-height:64px}#kspeak .ks-section-title{margin-top:12px}}
+@media(prefers-reduced-motion:reduce){#kspeak .ks-pane{animation:none}#kspeak .ks-mic.listening{animation:none}#kspeak .ks-mode{transition:none}}
+
+/* Every release item opens its corresponding, already integrated KZMD feature. */
+.kz2-update[role=button]{cursor:pointer;transition:transform .35s cubic-bezier(.2,1.3,.3,1),border-color .2s}
+.kz2-update[role=button]:hover{transform:translateY(-3px);border-color:rgba(49,119,232,.4)}
+.kz2-update[role=button]:focus-visible{outline:2px solid #317beb;outline-offset:2px}
+.kz2-update[role=button]::after{content:"Khám phá ↗";display:block;margin-top:9px;font-size:10px;font-weight:700;color:var(--ac1)}
+/* Keep the same shared contact information, moved to the END of Speaking on small screens, not duplicated as a separate source of truth. */
+#kspeak .ks-contact{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 15px;width:100%;padding:15px 12px 5px;border-top:1px solid var(--rule);font-size:11px;color:var(--mut)}
+.app.en.ks-speaking-active .sig{display:none!important}
+@media(max-width:690px){.app.en.ks-speaking-active .sig{display:none!important}#kspeak .ks-contact{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 15px;width:100%;padding:13px 10px 4px;border-top:1px solid var(--rule);font-size:11px;color:var(--mut)}#kspeak .ks-contact b{width:100%;text-align:center;font-weight:650}#kspeak .ks-contact a{display:inline-flex;align-items:center;gap:5px;color:inherit;text-decoration:none}#kspeak .ks-contact .i{width:12px;height:12px}}
+/* KZMD 2.0 announcement — reveal by a moving liquid-ink wave / wipe. */
+.kz2-news-title .kz2-ink{position:relative;display:inline-block;isolation:isolate;vertical-align:baseline;overflow:hidden}
+.kz2-news-title .kz2-ink>span{display:inline-block;background:linear-gradient(105deg,#1777ed,#6760df);color:transparent;background-clip:text;-webkit-background-clip:text}
+.kz2-announcement.show .kz2-news-title .kz2-ink>span{animation:kz2TypeReveal 1.55s .37s cubic-bezier(.45,0,.15,1) both}
+.kz2-news-title .kz2-ink:after{content:"";position:absolute;top:-5%;bottom:-5%;width:48%;left:0;pointer-events:none;background:linear-gradient(90deg,rgba(68,133,243,0),rgba(47,135,246,.82) 32%,rgba(105,87,237,.89) 74%,rgba(174,212,255,.7));clip-path:polygon(0 0,72% 0,83% 10%,96% 22%,78% 38%,100% 52%,79% 68%,96% 82%,74% 100%,0 100%);transform:translateX(-105%);opacity:0;filter:blur(.3px)}
+.kz2-announcement.show .kz2-news-title .kz2-ink:after{animation:kz2Wave 1.6s .37s cubic-bezier(.45,0,.16,1) both}
+.kz2-announcement.show .kz2-update{animation:kz2Slide .65s cubic-bezier(.2,1.2,.35,1) both;animation-delay:calc(.60s + var(--order,0)*85ms)}
+.kz2-announcement.show .kz2-release-bottom{animation:kz2Slide .7s 1.07s both}
+@keyframes kz2TypeReveal{0%,8%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 -2px 0 0)}}
+@keyframes kz2Wave{0%{opacity:0;transform:translateX(-105%)}10%{opacity:1}82%{opacity:1}100%{opacity:0;transform:translateX(250%)}}
+@keyframes kz2Slide{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.kz2-announcement.show .kz2-update,.kz2-announcement.show .kz2-release-bottom,.kz2-announcement.show .kz2-news-title .kz2-ink>span,.kz2-announcement.show .kz2-news-title .kz2-ink:after{animation:none!important}.kz2-news-title .kz2-ink:after{display:none}}
+
+
+/* English Học: compact cards instead of stretching vertically to fill the viewport. */
+@media(min-width:761px){
+ #en #lq.en1{height:auto!important;min-height:0!important;grid-template-rows:auto auto!important;align-content:start!important;padding-bottom:22px!important}
+ #en #lq .lqworkspace{height:auto!important;min-height:0!important;align-items:start!important}
+ #en #lq .lqcenter .lqc{height:clamp(210px,30vh,310px)!important;min-height:0!important;flex:0 0 auto!important}
+ #en #lq .lqvisual,#en #lq .lqdetailpanel{min-height:0!important;height:auto!important;max-height:clamp(380px,65vh,610px)!important;overflow:auto!important}
+ #en #lq .lqcenter .lqx{min-height:90px!important}
+}
+@media(min-width:1240px){#en #lq.en1{margin-top:calc(-1.333333*var(--th))!important;}}
+
+/* KZMD 2.0 · English learning layout: balanced, taller panels, unobstructed controls. */
+@media (min-width:1240px) and (pointer:fine){
+ #en #lq.en1{height:calc(100dvh - 185px)!important;min-height:0!important;margin-top:calc(-.18 * var(--th))!important;padding-top:12px!important;padding-bottom:14px!important;grid-template-rows:auto minmax(0,1fr)!important;align-content:stretch!important;row-gap:14px!important;}
+ #en #lq .lqworkspace{display:contents!important;}
+ #en #lq .lqvisual,#en #lq .lqdetailpanel{grid-row:1/3!important;height:100%!important;min-height:0!important;max-height:none!important;overflow:auto!important;align-self:stretch!important;}
+ /* Reserve a quiet footer slot in the right panel so the shared profile links never cover vocabulary. */
+ #en #lq .lqdetailpanel{grid-template-rows:minmax(0,1fr) 70px!important;overflow:hidden!important;}
+ #en #lq .lqtop{grid-column:2;grid-row:1;padding-top:0!important;}
+ #en #lq .lqcenter{grid-column:2;grid-row:2;padding-top:25px!important;gap:12px!important;min-height:0!important;}
+ #en #lq .lqcenter .lqc{height:clamp(300px,40vh,385px)!important;min-height:300px!important;flex:none!important;}
+ #en #lq .lqcenter .lqx{min-height:120px!important;}
+ #en #lq .lqcenter .lqi input{min-height:57px!important;}
+}
+@media (min-width:761px) and (max-width:1239px){
+ #en #lq.en1{padding-top:24px!important;row-gap:17px!important;}
+ #en #lq .lqworkspace{align-items:stretch!important;min-height:540px!important;height:auto!important;}
+ #en #lq .lqcenter{padding-top:14px!important;}
+ #en #lq .lqcenter .lqc{height:clamp(260px,38vh,380px)!important;}
+ #en #lq .lqvisual,#en #lq .lqdetailpanel{max-height:none!important;min-height:440px!important;height:100%!important;}
+}
+@media (max-width:760px){#en #lq.en1{padding-top:18px!important}#en #lq .lqcenter{padding-top:8px!important}#en #lq .lqcenter .lqc{min-height:255px!important}}
+/* Version announcement: a 0.9s painted wave reveals every heading and paragraph. */
+.kz2-ink-all{position:relative;display:block;isolation:isolate;overflow:hidden;--paint-delay:0ms;}
+.kz2-ink-all > .kz2-ink-content{display:block;}
+.kz2-announcement.show .kz2-ink-all > .kz2-ink-content{animation:kz2TextPaint .9s var(--paint-delay) cubic-bezier(.36,.02,.16,1) both;}
+.kz2-ink-all::after{content:'';position:absolute;z-index:2;pointer-events:none;inset:-4px auto -4px 0;width:65%;opacity:0;background:linear-gradient(95deg,transparent 1%,#4aa2ef 14%,#3977dc 43%,#6d65e8 70%,rgba(191,220,255,.88) 96%);clip-path:polygon(0 0,87% 0,100% 8%,91% 23%,100% 38%,91% 53%,100% 69%,87% 83%,100% 100%,0 100%);filter:drop-shadow(3px 0 2px rgba(81,119,225,.15));}
+.kz2-announcement.show .kz2-ink-all::after{animation:kz2SweepPaint .9s var(--paint-delay) cubic-bezier(.36,.02,.16,1) both;}
+@keyframes kz2TextPaint{0%,12%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 0 0 0)}}
+@keyframes kz2SweepPaint{0%{transform:translateX(-115%);opacity:0}12%{opacity:1}86%{opacity:1}100%{transform:translateX(165%);opacity:0}}
+.kz2-announcement.show .kz2-update,.kz2-announcement.show .kz2-release-bottom{animation:none!important}
+.kz2-announcement.show .kz2-news-title .kz2-ink>span,.kz2-announcement.show .kz2-news-title .kz2-ink::after{animation:none!important}
+@media(prefers-reduced-motion:reduce){.kz2-announcement.show .kz2-ink-all > .kz2-ink-content,.kz2-announcement.show .kz2-ink-all::after{animation:none!important}.kz2-ink-all::after{display:none}}
+/* Audio preferences apply only within English, without modifying other sections. */
+.kz-voice-control{display:inline-flex;align-items:center;gap:7px;min-width:0;padding:6px 10px;border-radius:19px;font-size:11px;color:var(--mut);border:1px solid var(--rule);background:var(--gbg-s)}
+.kz-voice-control select{width:auto;max-width:160px;padding:3px 4px;font:inherit;font-weight:600;color:var(--ink);background:transparent;border:0;outline:none;cursor:pointer}
+@media(max-width:900px){.kz-voice-control{display:none}}
+#kspeak .ks-ipa{margin-top:12px;padding:12px 14px;border-radius:16px;background:var(--fill);display:grid;gap:7px;}
+#kspeak .ks-ipa b{font-size:12px;font-weight:650}
+#kspeak .ks-ipa .ks-ipa-words{display:flex;flex-wrap:wrap;gap:7px}
+#kspeak .ks-ipa .ks-ipa-word{border-radius:10px;background:var(--gbg-s);padding:6px 8px;font-size:11px;display:grid;gap:2px}
+#kspeak .ks-ipa small{color:var(--mut);font-size:11px}
+#kspeak .ks-pitch{display:grid;gap:5px;margin:10px 0 12px}
+#kspeak .ks-pitch svg{display:block;width:100%;height:78px;border:1px solid var(--rule);border-radius:11px;background:var(--fill)}
+#kspeak .ks-pitch .ks-pitch-legend{font-size:10.5px;color:var(--mut)}
+#kspeak #ks-voice-mode2{font-size:12px}
 </style></head><body>
 <svg style="display:none"><defs>
 <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></symbol>
@@ -1709,12 +1927,64 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
 <symbol id="i-shrink" viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></symbol>
 <symbol id="i-redo" viewBox="0 0 24 24"><path d="M20 12a8 8 0 11-2.6-5.9M20 4v5h-5"/></symbol>
 </defs></svg>
+
+<script>
+/* KZMD English Voice — progressive enhancement; no public API keys. */
+(()=>{
+ 'use strict';
+ const IPA={"hello":"həˈloʊ","world":"wɝld","sentence":"sˈɛntəns","where":"wˈɛɹ","improve":"ˌɪmpɹˈuv","day":"dˈeɪ","life":"lˈaɪf","pronunciation":"pɹoʊnˌʌnsiˈeɪʃən","leader":"lˈidɚ","their":"ðˈɛɹ","schedule":"skˈɛdʒʊl","week":"wˈik","job":"dʒˈɑb","important":"ˌɪmpˈɔɹtənt","spending":"spˈɛndɪŋ","way":"wˈeɪ","writing":"ɹˈaɪtɪŋ","hi":"hˈaɪ","did":"dˈɪd","comfortable":"kˈʌmfɚtəbəl","does":"dˈʌz","ng":"ˈɛŋ","work":"wˈɝk","one":"wˈʌn","the":"ðə","five":"fˈaɪv","changed":"tʃˈeɪndʒd","an":"ˈæn","like":"lˈaɪk","thanks":"θˈæŋks","more":"mˈɔɹ","nine":"nˈaɪn","do":"dˈu","in":"ɪn","book":"bˈʊk","time":"tˈaɪm","teacher":"tˈitʃɚ","words":"wˈɝdz","learned":"lˈɝnd","place":"plˈeɪs","home":"hˈoʊm","something":"sˈʌmθɪŋ","development":"dɪvˈɛləpmənt","english":"ˈɪŋɡlɪʃ","conversation":"kˌɑnvɚsˈeɪʃən","inspire":"ˌɪnspˈaɪɹ","no":"nˈoʊ","night":"nˈaɪt","good":"ɡˈʊd","afternoon":"ˌæftɚnˈun","describe":"dɪskɹˈaɪb","would":"wˈʊd","rhythm":"ɹˈɪðəm","today":"tədˈeɪ","little":"lˈɪtəl","country":"kˈʌntɹi","learning":"lˈɝnɪŋ","here":"hˈiɹ","she":"ʃˈi","want":"wˈɑnt","listen":"lˈɪsən","happened":"hˈæpənd","how":"hˈaʊ","know":"nˈoʊ","remember":"ɹɪmˈɛmbɚ","from":"fɹˈʌm","water":"wˈɔtɚ","year":"jˈɪɹ","hours":"ˈaʊɚz","together":"təɡˈɛðɚ","seven":"sˈɛvən","could":"kˈʊd","usually":"jˈuʒəwəli","motivated":"mˈoʊtəvˌeɪtəd","listening":"lˈɪsənɪŋ","my":"mˈaɪ","concern":"kənsˈɝn","weekends":"wˈikˌɛndz","are":"ˈɑɹ","people":"pˈipəl","prefer":"pɹəfˈɝ","is":"ˈɪz","we":"wˈi","was":"wˈɑz","focus":"fˈoʊkəs","three":"θɹˈi","please":"plˈiz","and":"ənd","skill":"skˈɪl","friends":"fɹˈɛndz","question":"kwˈɛstʃən","actually":"ˈæktʃˌuəli","when":"wˈɛn","or":"ˈɔɹ","education":"ˌɛdʒəkˈeɪʃən","practice":"pɹˈæktəs","at":"ˈæt","motivation":"mˌoʊtəvˈeɪʃən","drink":"dɹˈɪŋk","routine":"ɹutˈin","thorough":"θˈɝoʊ","there":"ðˈɛɹ","progress":"pɹˈɑɡɹˌɛs","minutes":"mˈɪnəts","ti":"tˈi","on":"ˈɑn","explain":"ɪksplˈeɪn","chi":"kˈaɪ","this":"ðˈɪs","four":"fˈɔɹ","family":"fˈæməli","were":"wˈɝ","kind":"kˈaɪnd","daily":"dˈeɪli","matters":"mˈætɚz","schools":"skˈulz","name":"nˈeɪm","why":"wˈaɪ","ten":"tˈɛn","accent":"əksˈɛnt","learn":"lˈɝn","th":"tˈiˈeɪtʃ","teach":"tˈitʃ","part":"pˈɑɹt","makes":"mˈeɪks","so":"sˈoʊ","say":"sˈeɪ","two":"tˈu","nghi":"ɡˈi","spoken":"spˈoʊkən","reading":"ɹˈidɪŋ","can":"kˈæn","new":"nˈu","travel":"tɹˈævəl","not":"nˈɑt","her":"hˈɝ","some":"sˈʌm","big":"bˈɪɡ","it":"ˈɪt","pronounce":"pɹənˈaʊns","thank":"θˈæŋk","society":"səsˈaɪəti","thuy":"tˈu","beautiful":"bjˈutəfəl","should":"ʃˈʊd","difference":"dˈɪfɚəns","develop":"dɪvˈɛləp","better":"bˈɛtɚ","for":"fˈɔɹ","have":"hˈæv","six":"sˈɪks","language":"lˈæŋɡwədʒ","but":"bˈʌt","those":"ðˈoʊz","find":"fˈaɪnd","had":"hˈæd","enjoy":"ˌɛndʒˈɔɪ","understand":"ˌʌndɚstˈænd","student":"stˈudənt","follow":"fˈɑloʊ","though":"ðˈoʊ","tomorrow":"təmˈɑɹˌoʊ","evening":"ˈivnɪŋ","these":"ðˈiz","school":"skˈul","they":"ðˈeɪ","next":"nˈɛkst","study":"stˈʌdi","yesterday":"jˈɛstɚdˌeɪ","food":"fˈud","thought":"θˈɔt","quan":"kwˈɔn","talking":"tˈɔkɪŋ","word":"wˈɝd","ph":"pˈiˈeɪtʃ","then":"ðˈɛn","i":"ˈaɪ","through":"θɹˈu","keeps":"kˈips","write":"ɹˈaɪt","speaking":"spˈikɪŋ","city":"sˈɪti","correct":"kɚˈɛkt","environment":"ɪnvˈaɪɹənmənt","difficult":"dˈɪfəkəlt","person":"pˈɝsən","hint":"hˈɪnt","friend":"fɹˈɛnd","has":"hˈæz","lessons":"lˈɛsənz","sorry":"sˈɑɹi","every":"ˈɛvɚi","if":"ˈɪf","with":"wˈɪð","a":"ə","letter":"lˈɛtɚ","inspires":"ˌɪnspˈaɪɹz","what":"wˈʌt","habits":"hˈæbəts","tasks":"tˈæsks","weekend":"wˈikˌɛnd","his":"hˈɪz","which":"wˈɪtʃ","read":"ɹˈɛd","skills":"skˈɪlz","music":"mjˈuzɪk","lu":"lˈu","eight":"ˈeɪt","our":"ˈaʊɚ","opinion":"əpˈɪnjən","lesson":"lˈɛsən","visiting":"vˈɪzɪtɪŋ","vegetable":"vˈɛdʒtəbəl","studied":"stˈʌdid","to":"tˈu","who":"hˈu","natural":"nˈætʃɚəl","memorable":"mˈɛmɚəbəl","yes":"jˈɛs","practical":"pɹˈæktəkəl","talk":"tˈɔk","me":"mˈi","morning":"mˈɔɹnɪŋ","of":"ˈʌv","he":"hˈi","answer":"ˈænsɚ","stress":"stɹˈɛs","speak":"spˈik","you":"jˈu","your":"jˈɔɹ","free":"fɹˈi","studying":"stˈʌdiɪŋ","be":"bˈi","technology":"tɛknˈɑlədʒi","ra":"ɹˈɑ","am":"ˈæm","because":"bɪkˈɔz","nay":"nˈeɪ","habit":"hˈæbət","them":"ðˈɛm"};
+ window.KZ_IPA=IPA;
+ const WORKER='https://kzmd128-ai.hongphucmod.workers.dev';
+ const hasSpeech=!!window.speechSynthesis&&!!window.SpeechSynthesisUtterance;
+ let currentAudio=null,objectURL='',token=0,voiceList=[],mode='device';
+ try{mode=localStorage.getItem('kz_voice_mode')==='ai'?'ai':'device'}catch(e){}
+ function voices(){try{voiceList=speechSynthesis.getVoices().filter(v=>/^en[-_]/i.test(v.lang));}catch(e){voiceList=[]}}
+ const rank=v=>{const n=(v.name||'').toLowerCase(),l=(v.lang||'').toLowerCase();let x=0;
+  if(/(natural|neural|enhanced|premium|online)/i.test(n))x+=16;
+  if(/(google us english|microsoft.*(aria|jenny|guy|sonia)|samantha|daniel|serena|karen)/i.test(n))x+=12;
+  if(l==='en-us')x+=5;if(!v.localService)x+=3;
+  if(/(compact|espeak|default)/i.test(n))x-=9;
+  return x;};
+ function best(lang){voices();let a=voiceList.filter(v=>v.lang.toLowerCase().replace('_','-')===lang.toLowerCase());
+  if(!a.length)a=voiceList.filter(v=>/^en[-_]/i.test(v.lang));
+  return a.sort((a,b)=>rank(b)-rank(a))[0]||null}
+ function stop(){token++;if(currentAudio){try{currentAudio.pause();currentAudio.src=''}catch(e){}currentAudio=null}
+  if(objectURL){URL.revokeObjectURL(objectURL);objectURL=''}
+  try{speechSynthesis.cancel()}catch(e){}}
+ function fallback(text,lang,rate,done,expected){if(expected!==token)return;if(!hasSpeech){done?.();return}
+  try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=lang;u.rate=rate;
+   u.pitch=1;const v=best(lang);if(v)u.voice=v;
+   u.onend=()=>{if(expected===token)done?.()};u.onerror=()=>{if(expected===token)done?.()};speechSynthesis.speak(u)
+  }catch(e){done?.()}}
+ async function playAI(text,lang,rate,done,expected){
+  if(!/^en-US$/i.test(lang))return fallback(text,lang,rate,done,expected);
+  const ctrl=new AbortController();const t=setTimeout(()=>ctrl.abort(),6500);
+  try{const r=await fetch(WORKER+'/tts',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({text:text.slice(0,450),voice:'luna'}),signal:ctrl.signal});
+   if(!r.ok)throw Error('TTS '+r.status);const audioBlob=await r.blob();if(expected!==token)return;
+   if(!audioBlob.type.startsWith('audio/')||!audioBlob.size)throw Error('Invalid audio');
+   objectURL=URL.createObjectURL(audioBlob);currentAudio=new Audio(objectURL);currentAudio.playbackRate=Math.max(.7,Math.min(1.25,rate));
+   currentAudio.onended=()=>{if(expected!==token)return;URL.revokeObjectURL(objectURL);objectURL='';currentAudio=null;done?.()};
+   await currentAudio.play()
+  }catch(e){fallback(text,lang,rate,done,expected)}finally{clearTimeout(t)}}
+ function speak(text,{lang='en-US',rate=.91,onend}={}){if(!text||!String(text).trim())return;
+  stop();const id=token,content=String(text).trim().slice(0,1100);if(mode==='ai')playAI(content,lang,rate,onend,id);
+  else fallback(content,lang,rate,onend,id)}
+ function sequence(items,{lang='en-US',rate=.91,onend}={}){const list=items.filter(Boolean).map(String);let i=0;
+   function next(){if(i<list.length)speak(list[i++],{lang,rate,onend:next});else onend?.()};next()}
+ function setMode(value){mode=value==='ai'?'ai':'device';try{localStorage.setItem('kz_voice_mode',mode)}catch(e){}
+  ['kz-voice-mode','ks-voice-mode2'].forEach(id=>{const x=document.getElementById(id);if(x)x.value=mode});return mode}
+ window.KZVoice={speak,stop,sequence,setMode,getMode:()=>mode,available:hasSpeech};
+ if(hasSpeech){voices();speechSynthesis.addEventListener?.('voiceschanged',voices)}
+ document.addEventListener('DOMContentLoaded',()=>{['kz-voice-mode','ks-voice-mode2'].forEach(id=>{const s=document.getElementById(id);if(s){s.value=mode;s.addEventListener('change',()=>setMode(s.value))}})});
+})();
+</script>
 <div class="app" id="app">
  <div class="stage"><i class="blob a"></i><i class="blob b"></i><i class="blob c"></i><i class="blob d"></i><i class="glow" id="glow"></i><i class="glow core" id="core"></i></div>
  <div class="main">
   <div class="bar" data-spot>
    <div class="bg glass"></div>
-   <button type="button" class="kz-home" id="kz-home" title="KZMD128 · Về Daily" aria-label="KZMD128 — mở Daily"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><defs><linearGradient id="kzNavBg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#152A4F"/><stop offset="1" stop-color="#121B37"/></linearGradient><linearGradient id="kzNavWing" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#4B79EF"/><stop offset="1" stop-color="#71CBEE"/></linearGradient></defs><rect width="256" height="256" rx="57" fill="url(#kzNavBg)"/><path d="M68 70 Q68 64 74 64 H91 Q97 64 97 70 V186 Q97 192 91 192 H74 Q68 192 68 186 Z" fill="#F8FBFF"/><path d="M110 127 L159 65 Q162 62 168 62 H194 Q200 62 196 68 L135 139 Z" fill="url(#kzNavWing)"/><path d="M113 131 L136 113 L196 186 Q201 192 193 192 H163 Q159 192 156 188 Z" fill="#F8FBFF"/><path d="M161 65 H194 Q200 65 196 71 L182 86 H145 Z" fill="white" fill-opacity=".16"/></svg><span class="kz-word">KZMD128</span></button>
+   <button type="button" class="kz-home" id="kz-home" title="KZMD 2.0 · Về Daily" aria-label="KZMD 2.0 — mở Daily"><svg viewBox="0 0 256 256" aria-hidden="true" focusable="false"><defs><linearGradient id="kzNavBg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#152A4F"/><stop offset="1" stop-color="#121B37"/></linearGradient><linearGradient id="kzNavWing" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#4B79EF"/><stop offset="1" stop-color="#71CBEE"/></linearGradient></defs><rect width="256" height="256" rx="57" fill="url(#kzNavBg)"/><path d="M68 70 Q68 64 74 64 H91 Q97 64 97 70 V186 Q97 192 91 192 H74 Q68 192 68 186 Z" fill="#F8FBFF"/><path d="M110 127 L159 65 Q162 62 168 62 H194 Q200 62 196 68 L135 139 Z" fill="url(#kzNavWing)"/><path d="M113 131 L136 113 L196 186 Q201 192 193 192 H163 Q159 192 156 188 Z" fill="#F8FBFF"/><path d="M161 65 H194 Q200 65 196 71 L182 86 H145 Z" fill="white" fill-opacity=".16"/></svg><span class="kz-word">KZMD 2.0</span></button>
    <div class="seg" id="brand" role="tablist" aria-label="Chọn tính năng" data-v="dy"><i class="thumb"></i>
     <button class="fi act" data-v="dy" role="tab" aria-selected="true" id="stbtn"><svg class="i"><use href="#i-daily"/></svg><span>Daily</span></button>
     <button class="fi" data-v="en" role="tab" aria-selected="false" id="enbtn"><svg class="i"><use href="#i-book"/></svg><span>English</span><em class="nb">Mới</em></button>
@@ -1722,6 +1992,7 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
    <div class="crumbs" id="crumbs"></div>
    <div class="ltm" id="ltm" title="Tổng thời gian đã học (cộng dồn, không reset). Xanh: đang tính giờ · Vàng: sắp dừng (4 giây không học) · Đỏ: tạm dừng (6 giây không học)"><i class="ltd"></i><span id="ltt">00:00</span></div>
    <button class="p" id="add"></button>
+   <button class="kz2-news-trigger" id="kz2-news-trigger" type="button" title="Khám phá bản cập nhật KZMD 2.0" aria-label="Có gì mới trong KZMD 2.0"><span aria-hidden="true">✦</span><span class="kz2-news-label">2.0</span></button>
    <button class="g kz-backup-global" id="bk" type="button" aria-label="Sao lưu / khôi phục tất cả dữ liệu" title="Một bản sao lưu cho Roadmap, English và Daily"><svg class="i"><use href="#i-save"/></svg><span>Dữ liệu</span></button>
    <button class="g" id="hpb" aria-label="Giải thích cách hoạt động" title="Giải thích cách hoạt động" style="font:700 17px/1 inherit;font-family:inherit">?</button>
    <button class="g enb" id="th2" aria-label="Sáng / tối"><svg class="i"><use href="#i-theme"/></svg></button>
@@ -1776,7 +2047,9 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
    <div id="en"><div class="etb"><div class="etbar glass" id="etbar" data-spot role="tablist" aria-label="Học tiếng Anh"><i class="ethumb"></i>
     <button class="tb on" data-t="v" role="tab"><svg class="i"><use href="#i-book"/></svg><span>Từ vựng</span><em id="tv"></em></button>
     <button class="tb" data-t="h" role="tab"><svg class="i"><use href="#i-learn"/></svg><span>Học</span></button>
-    <button class="tb" data-t="c" role="tab"><svg class="i"><use href="#i-chat"/></svg><span>Chat Coach</span></button></div>
+    <button class="tb" data-t="c" role="tab"><svg class="i"><use href="#i-chat"/></svg><span>Chat Coach</span></button>
+    <button class="tb" data-t="s" role="tab"><svg class="i"><use href="#i-speaker"/></svg><span>Luyện nói</span></button></div>
+    <label class="kz-voice-control" title="Chọn chất giọng tiếng Anh, áp dụng cho cả Từ vựng, Học, Coach và Speaking"><span>Giọng đọc</span><select id="kz-voice-mode"><option value="device">Tự nhiên · thiết bị</option><option value="ai">AI · Cloudflare (tùy chọn)</option></select></label>
     <button class="g efx glass" id="efx" data-spot aria-label="Toàn màn hình" title="Toàn màn hình / thu nhỏ (F)"><svg class="i ni"><use href="#i-fit"/></svg><svg class="i xi"><use href="#i-shrink"/></svg></button></div><div class="en1" data-s="v">
     <div class="fcw" id="fcw"><div class="fc" id="fc" aria-label="Lật thẻ"><div class="ff glass" id="ff" data-spot></div><div class="ff bk glass" id="fb"></div></div><div class="fopt" data-side="r"></div></div>
     <div class="dkb glass" data-spot>
@@ -1926,6 +2199,46 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
     </div>
     <aside class="ccr glass" data-spot aria-label="Nhận xét câu vừa nói"><div class="ccrh">Nhận xét câu vừa nói</div><div class="ccrb" id="ccRb"></div></aside>
    </div>
+   <section class="ks-speaking hide" data-s="s" id="kspeak" data-mode="sentence" aria-label="Luyện nói tiếng Anh">
+    <aside class="ks-pane glass">
+      <div class="ks-eyebrow">ENGLISH / SPEAKING</div><h2>Luyện nói tự tin</h2><p class="ks-muted" style="margin-top:7px">Chọn cách luyện, nói thành tiếng và nhận góp ý để tiến bộ từng ngày.</p>
+      <div class="ks-modes" role="group" aria-label="Chọn bài luyện nói">
+       <button class="ks-mode" data-ksmode="sentence" type="button" aria-pressed="true"><b>Luyện một câu</b><small>Nghe · nhắc lại · sửa câu</small></button>
+       <button class="ks-mode" data-ksmode="part1" type="button" aria-pressed="false"><b>IELTS · Part 1</b><small>Trả lời câu hỏi ngắn</small></button>
+       <button class="ks-mode" data-ksmode="part2" type="button" aria-pressed="false"><b>IELTS · Part 2</b><small>1 phút chuẩn bị · 2 phút nói</small></button>
+       <button class="ks-mode" data-ksmode="part3" type="button" aria-pressed="false"><b>IELTS · Part 3</b><small>Lập luận và thảo luận</small></button>
+      </div>
+      <div class="ks-section-title"><h3>Lịch sử luyện tập</h3><span class="ks-muted" id="ks-count">0 lần</span></div>
+      <div class="ks-history" id="ks-history" aria-label="Các lần luyện gần đây"></div>
+    </aside>
+    <main class="ks-pane glass">
+     <div class="ks-task-top"><span class="ks-eyebrow" id="ks-label">LUYỆN MỘT CÂU</span><span class="ks-pill" id="ks-target">Nói rõ từng từ</span></div>
+     <div class="ks-title" id="ks-prompt">Practice makes progress, one day at a time.</div>
+     <div class="ks-cue" id="ks-cue" hidden></div>
+     <input class="ks-custom" id="ks-custom" type="text" maxlength="240" placeholder="Hoặc nhập câu tiếng Anh bạn muốn luyện…" aria-label="Câu luyện nói tự chọn">
+     <div class="ks-ipa" id="ks-ipa" hidden><b>Phát âm mẫu · IPA (Mỹ)</b><div class="ks-ipa-words" id="ks-ipa-words"></div><small>Đây là âm chuẩn cần hướng tới, không phải kết quả đo từng âm của micro.</small></div><div class="ks-guide" id="ks-guide"><span>Nghe mẫu</span><span>Thử nói rõ ràng</span><span>Nhìn lại và cải thiện</span></div>
+     <div class="ks-row" style="margin-top:13px">
+      <button class="ks-btn" type="button" id="ks-listen">🔊 Nghe câu mẫu</button>
+      <button class="ks-btn" type="button" id="ks-next">↻ Câu khác</button>
+      <button class="ks-btn" type="button" id="ks-prep" hidden>Chuẩn bị 60 giây</button>
+     </div>
+     <div class="ks-tools">
+      <div class="ks-row"><button class="ks-btn ks-primary ks-mic" id="ks-record" type="button" aria-label="Bắt đầu thu âm">🎙</button><button class="ks-btn" id="ks-stop" type="button" disabled>⏹ Dừng</button><span class="ks-timer" id="ks-time">00:00</span><span class="ks-status" id="ks-status" role="status">Sẵn sàng luyện nói.</span></div>
+      <div class="ks-wave" id="ks-wave" aria-hidden="true"></div>
+      <div class="ks-live"><label for="ks-transcript"><b>Bạn đã nói</b> <span class="ks-muted">· có thể sửa lại bản chép lời</span></label><textarea id="ks-transcript" rows="3" placeholder="Nhấn micro để nói, hoặc gõ câu trả lời tại đây nếu thiết bị không hỗ trợ nhận dạng giọng nói."></textarea></div>
+      <div class="ks-row"><button class="ks-btn ks-primary" type="button" id="ks-review">Xem kết quả luyện tập</button><button class="ks-btn" id="ks-playback" type="button" hidden>▶ Nghe lại giọng nói</button></div>
+      <div class="ks-hint">Cấp quyền micro khi được hỏi. Trình duyệt có thể gửi âm thanh tới dịch vụ nhận dạng giọng nói. KZMD chỉ gửi <b>bản chép lời</b> đến AI khi bạn chọn “Nhận góp ý từ AI”; không gửi bản ghi âm.</div>
+      <section class="ks-result" id="ks-result" hidden aria-live="polite"><h3>Kết quả của bạn</h3><div class="ks-stat-row" id="ks-stats"></div><div class="ks-match" id="ks-match"></div><div class="ks-pitch" id="ks-pitch" hidden><b>Ngữ điệu ghi nhận từ micro</b><svg viewBox="0 0 480 78" preserveAspectRatio="none" aria-label="Đường cao độ tiếng nói được đo từ âm thanh"><polyline id="ks-pitch-line" points="" fill="none" stroke="var(--ac1)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><small class="ks-pitch-legend">Đường cong là cao độ giọng bạn thực tế; không phải điểm đúng âm hay so sánh với người bản xứ.</small></div><p class="ks-hint" id="ks-assessment-note"></p><button type="button" class="ks-btn ks-primary" id="ks-ai">✦ Nhận góp ý từ AI</button><div class="ks-feedback" id="ks-feedback" hidden></div><button type="button" class="ks-btn" id="ks-followup" hidden>→ Luyện câu hỏi tiếp theo từ AI</button></section>
+     </div>
+    </main>
+    <aside class="ks-pane glass">
+     <div class="ks-eyebrow">YOUR SPEAKING COACH</div><h3>Góp ý đúng chỗ</h3>
+     <div class="ks-right-list"><div><b>Nghe và nói lại</b><p>Phát câu mẫu bằng giọng tiếng Anh của thiết bị rồi tự thử nói theo.</p></div><div><b>Ngữ điệu và ngắt nghỉ</b><p>Quan sát tốc độ và độ thay đổi âm lượng khi nói. Đây là gợi ý luyện nhịp, không phải điểm phát âm.</p></div><div><b>AI nhận xét từng câu</b><p>Góp ý cách diễn đạt, từ vựng, ngữ pháp và cách phát triển ý như một người hướng dẫn.</p></div><div><b>Học tập liền mạch</b><p>Kết quả luyện nói được lưu cùng dữ liệu Roadmap, Daily và English khi bạn sao lưu.</p></div></div>
+     <label class="ks-opt" for="ks-accent">Giọng đọc tham khảo<select id="ks-accent"><option value="en-GB">Anh - Anh (UK)</option><option value="en-US">Anh - Mỹ (US)</option></select></label>
+     <p class="ks-hint" style="margin-top:12px">Đánh giá chính thức IELTS cần người chấm nghe trực tiếp. Bản chép lời không đủ để xác định phát âm từng âm hoặc cho điểm IELTS chính xác.</p>
+    </aside>
+    <footer class="ks-contact" id="ks-contact" aria-label="Thông tin liên hệ chung"></footer>
+   </section>
    </div>
    <div id="st"><div class="stw">
     <div class="stc glass" data-spot>
@@ -2062,7 +2375,7 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
  <div class="cpset" id="cpsetp"><div><div class="cpsi">
   <label for="cpworker">AI — Cloudflare Worker đã kết nối sẵn</label>
   <input id="cpworker" type="url" readonly autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="https://kzmd128-ai...workers.dev" aria-describedby="cpworkhelp">
-  <p id="cpworkhelp">KZMD128 tự sử dụng Worker được cấu hình sẵn. Gemini API Key lưu trong Cloudflare Secrets, không nằm trong file HTML. Nếu AI báo lỗi, hãy kiểm tra cấu hình Workers AI tại Cloudflare.</p>
+  <p id="cpworkhelp">KZMD 2.0 kết nối sẵn với Gemma 4 qua Cloudflare Workers AI. Bạn không cần nhập API Key khi trò chuyện. Nếu AI báo lỗi, hãy kiểm tra Worker và binding AI trong Cloudflare.</p>
   <details class="cpold" hidden><summary>Cấu hình AI cá nhân (tuỳ chọn)</summary>
     <label for="cpkey">API Key lưu riêng trên thiết bị này</label>
     <input id="cpkey" type="password" autocomplete="off" spellcheck="false" placeholder="Chỉ dùng khi chạy riêng, không đưa vào HTML">
@@ -2203,7 +2516,7 @@ function openM(n,isNew){
  setTimeout(()=>$('#f_t').focus(),50)}
 
 $('#bk').onclick=()=>{const m=$('#mask');m.classList.remove('hide');
- m.innerHTML=`<div class="dlg glass" data-spot><h3>Toàn bộ dữ liệu KZMD128</h3>
+ m.innerHTML=`<div class="dlg glass" data-spot><h3>Toàn bộ dữ liệu KZMD 2.0</h3>
  <label>Bản sao lưu gồm toàn bộ web: Roadmap, bài tập, ý tưởng, English, Daily (mục tiêu, tiến độ, nhật ký) và lịch sử Study cũ cùng thiết lập giao diện (sáng/tối, đọc, âm thanh, đang mở ở đâu). Chỉ có một hệ thống dữ liệu và một bản sao lưu chung. Nút Tải file luôn xuất dữ liệu mới nhất; để khôi phục, dán JSON hoặc chọn file rồi bấm Nhập. API key và lịch sử chat Capy lưu riêng vì quyền riêng tư.<textarea id="bx" rows="8">${esc(JSON.stringify(D))}</textarea></label>
  <div class="row" style="justify-content:space-between;flex-wrap:wrap"><button id="f_rs" style="color:var(--red)">Đặt lại mặc định</button>
   <span style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;margin-left:auto"><button id="f_dl">Tải toàn bộ JSON</button><button id="f_pk">Chọn file</button><button id="f_x">Đóng</button><button class="p" id="f_in">Nhập dữ liệu</button></span></div>
@@ -2572,9 +2885,9 @@ let spOn=true,spVoice=null;try{spOn=localStorage.getItem('rm_tts')!=='0'}catch(e
 const spCan=()=>'speechSynthesis' in window&&typeof SpeechSynthesisUtterance!='undefined';
 function spPick(){if(!spCan())return;const v=speechSynthesis.getVoices();
  spVoice=v.find(x=>/^en[-_]US$/i.test(x.lang)&&/Samantha|Google US|Aria|Jenny|Natural|Siri/i.test(x.name))||v.find(x=>/^en[-_]US$/i.test(x.lang))||null}
-function speak(list,force,done){if((!spOn&&!force)||!spCan()||!list.length)return;
- try{speechSynthesis.cancel();if(!spVoice)spPick();
-  list.forEach(t=>{const u=new SpeechSynthesisUtterance(t);u.lang='en-US';if(spVoice)u.voice=spVoice;u.rate=.9;if(done){u.onend=u.onerror=done}speechSynthesis.speak(u)})}catch(e){}}
+function speak(list,force,done){if((!spOn&&!force)||!list?.length)return;
+ if(window.KZVoice){window.KZVoice.sequence(list,{lang:'en-US',rate:.91,onend:done});return}
+ try{speechSynthesis.cancel();if(!spVoice)spPick();list.forEach(t=>{const u=new SpeechSynthesisUtterance(t);u.lang='en-US';if(spVoice)u.voice=spVoice;u.rate=.9;if(done)u.onend=u.onerror=done;speechSynthesis.speak(u)})}catch(e){}}
 if(spCan()){spPick();try{speechSynthesis.addEventListener('voiceschanged',spPick)}catch(e){}}
 function parseWDConf(s){if(!s||s.trim()=='-')return[];return s.split(';').map(part=>part.split('|').map(v=>v.trim())).filter(p=>p[0]&&p[0]!='-'&&p.length>=3).map(p=>({w:p[0],pos:p[1],m:p[2],n:p.slice(3).join(' | ')}))}
 function parseWDCmp(s){if(!s||s.trim()=='-')return[];return s.split(';').map(p=>p.split('|').map(v=>v.trim())).filter(p=>p[0]&&p[0]!='-'&&p.length>=3).map(p=>p.length>=5?{w:p[0],m:p[1],d:p[2],u:p[3],e:p.slice(4).join(' | ')}:{w:p[0],m:p[1],u:p[2],e:p.slice(3).join(' | ')})} /* 5 trường: từ | nghĩa cốt lõi | điểm khác | dùng khi | ví dụ; dữ liệu cũ 3-4 trường vẫn đọc được */
@@ -2934,9 +3247,9 @@ document.addEventListener('focusout',e=>{if(e.target.classList&&e.target.classLi
  if(e.target.classList&&e.target.classList.contains('dkin')&&dkAdd){const v=e.target.value;setTimeout(()=>{if(dkAdd){dkAdd=false;v.trim()?dkMake(v):dkRender()}},120)}});
 
 function setTab(t){if(t==ET){$('#en').scrollTo({top:0,behavior:RM?'auto':'smooth'});return}
- ET=t;cset('tab',t);document.querySelectorAll('.tb').forEach(b=>b.classList.toggle('on',b.dataset.t==t));etThumb();
+ ET=t;cset('tab',t);app.classList.toggle('ks-speaking-active',t==='s');document.querySelectorAll('.tb').forEach(b=>b.classList.toggle('on',b.dataset.t==t));etThumb();
  document.querySelectorAll('#en [data-s]').forEach(e=>e.classList.toggle('hide',e.dataset.s!=t));
- $('#en').scrollTo({top:0});fTimer();if(t=='h'){lqOpen();if(lqSt=='ask')lqSay(false)}if(t=='c'&&window.ccOpen)ccOpen()}
+ $('#en').scrollTo({top:0});fTimer();if(t=='h'){lqOpen();if(lqSt=='ask')lqSay(false)}if(t=='c'&&window.ccOpen)ccOpen();if(t=='s'&&window.ksOpen)window.ksOpen();if(t!='s'&&window.ksLeave)window.ksLeave()}
 
 /* ---- thanh tab English: thumb trượt + chế độ phóng to ---- */
 function etThumb(){const bar=$('#etbar'),on=bar&&bar.querySelector('.tb.on');if(!on)return;bar.style.setProperty('--tx',on.offsetLeft+'px');bar.style.setProperty('--tw',on.offsetWidth+'px')}
@@ -3323,7 +3636,7 @@ stChips();stStat();stVidUI(1);
    Lưu toàn bộ web: mọi thứ (kể cả English) đều nằm trong D nên tự lưu và nằm trong bản sao lưu.
    applyCfg đọc lại thiết lập + vị trí đang mở từ D.cfg; dùng khi mở web và khi nhập sao lưu.
    ===================================================================== */
-const TABS=['v','h','c'];
+const TABS=['v','h','c','s'];
 function applyCfg(){const c=CF();
  if((c.th=='dark'||c.th=='light')&&c.th!==R.dataset.theme)setTheme(c.th);
  if(c.tts!=null)spOn=c.tts!==0;
@@ -3562,7 +3875,7 @@ BOOT=false;
  function showShade(html){closeShade();const shade=document.createElement('div');shade.className='d-modalshade';shade.innerHTML=`<div class="d-modal" role="dialog" aria-modal="true" aria-label="Daily">${html}</div>`;document.body.appendChild(shade);shade.addEventListener('click',e=>{if(e.target===shade)closeShade()});return shade;}
  function closeShade(){const old=document.querySelector('.d-modalshade');if(old)old.remove();}
  function openGoal(gid){const g=gid?getGoal(gid):null,v=formVersion(g),items=Array.isArray(v.items)?v.items:[];
-  const sh=showShade(`<div class="d-modal-head"><div><div class="d-eyebrow">KZMD128 / Daily</div><h2>${g?'Chỉnh sửa mục tiêu':'Thêm mục tiêu'}</h2></div><button class="d-icon-btn" data-dact="close" aria-label="Đóng">${i('x')}</button></div><form class="d-form" id="dGoalForm"><label>Tên mục tiêu<input name="name" maxlength="100" autocomplete="off" required placeholder="Ví dụ: IELTS" value="${ehtml(v.name||'')}"></label><label>Mô tả (không bắt buộc)<textarea name="description" rows="2" maxlength="500" placeholder="Điều bạn muốn ghi nhớ…">${ehtml(v.description||'')}</textarea></label><div class="d-formrow"><label>Kiểu lịch trình<select name="schedule"><option value="daily">Hằng ngày</option><option value="roadmap">Day Roadmap</option><option value="weekly">Theo tuần</option><option value="once">Một lần</option></select></label><label>Đo tiến độ<select name="progress"><option value="checkbox">Checkbox ✓</option><option value="quantity">Số lượng</option><option value="percentage">Phần trăm</option><option value="checklist">Checklist</option></select></label></div><div class="d-formrow"><label>Ngày bắt đầu<input type="date" name="start" required value="${ehtml(v.start||dateKey())}"></label><label data-only="roadmap">Tổng số Day<input type="number" min="1" max="20000" step="1" name="days" value="${v.days||100}"></label></div><div data-only="weekly"><label>Ngày trong tuần</label><div class="d-weekpick">${[['CN',0],['T2',1],['T3',2],['T4',3],['T5',4],['T6',5],['T7',6]].map(([text,n])=>`<button type="button" data-week="${n}">${text}</button>`).join('')}</div></div><div class="d-formrow" data-only="quantity"><label>Chỉ tiêu / ngày<input name="target" type="number" step="any" min="0.000001" value="${v.target||5}"></label><label>Đơn vị<input name="unit" maxlength="30" placeholder="câu, trang, phút…" value="${ehtml(v.unit||'')}"></label></div><div data-only="checklist"><label>Nhiệm vụ con (mỗi dòng một việc)<textarea name="items" rows="4" placeholder="Một việc trên mỗi dòng">${ehtml(items.map(x=>x.name).join('\n'))}</textarea></label><p class="d-formhint">Chỉ tạo nhiệm vụ con khi bạn chọn Checklist. Không tự tạo từ tên mục tiêu.</p></div><p class="d-formhint">Lịch trình và kiểu tiến độ là hai tùy chọn độc lập. Checkbox là mặc định.</p>${g?'<p class="d-formhint" style="color:var(--d-warn)">Thay đổi cấu hình áp dụng từ hôm nay. Các bản ghi và lịch sử trước hôm nay vẫn được giữ nguyên.</p>':''}<div class="d-form-footer"><button type="button" class="d-secondary-btn" data-dact="close">Hủy</button><button type="submit" class="d-primary-btn">${g?'Lưu thay đổi':'Tạo mục tiêu'}</button></div></form>`);
+  const sh=showShade(`<div class="d-modal-head"><div><div class="d-eyebrow">KZMD 2.0 / Daily</div><h2>${g?'Chỉnh sửa mục tiêu':'Thêm mục tiêu'}</h2></div><button class="d-icon-btn" data-dact="close" aria-label="Đóng">${i('x')}</button></div><form class="d-form" id="dGoalForm"><label>Tên mục tiêu<input name="name" maxlength="100" autocomplete="off" required placeholder="Ví dụ: IELTS" value="${ehtml(v.name||'')}"></label><label>Mô tả (không bắt buộc)<textarea name="description" rows="2" maxlength="500" placeholder="Điều bạn muốn ghi nhớ…">${ehtml(v.description||'')}</textarea></label><div class="d-formrow"><label>Kiểu lịch trình<select name="schedule"><option value="daily">Hằng ngày</option><option value="roadmap">Day Roadmap</option><option value="weekly">Theo tuần</option><option value="once">Một lần</option></select></label><label>Đo tiến độ<select name="progress"><option value="checkbox">Checkbox ✓</option><option value="quantity">Số lượng</option><option value="percentage">Phần trăm</option><option value="checklist">Checklist</option></select></label></div><div class="d-formrow"><label>Ngày bắt đầu<input type="date" name="start" required value="${ehtml(v.start||dateKey())}"></label><label data-only="roadmap">Tổng số Day<input type="number" min="1" max="20000" step="1" name="days" value="${v.days||100}"></label></div><div data-only="weekly"><label>Ngày trong tuần</label><div class="d-weekpick">${[['CN',0],['T2',1],['T3',2],['T4',3],['T5',4],['T6',5],['T7',6]].map(([text,n])=>`<button type="button" data-week="${n}">${text}</button>`).join('')}</div></div><div class="d-formrow" data-only="quantity"><label>Chỉ tiêu / ngày<input name="target" type="number" step="any" min="0.000001" value="${v.target||5}"></label><label>Đơn vị<input name="unit" maxlength="30" placeholder="câu, trang, phút…" value="${ehtml(v.unit||'')}"></label></div><div data-only="checklist"><label>Nhiệm vụ con (mỗi dòng một việc)<textarea name="items" rows="4" placeholder="Một việc trên mỗi dòng">${ehtml(items.map(x=>x.name).join('\n'))}</textarea></label><p class="d-formhint">Chỉ tạo nhiệm vụ con khi bạn chọn Checklist. Không tự tạo từ tên mục tiêu.</p></div><p class="d-formhint">Lịch trình và kiểu tiến độ là hai tùy chọn độc lập. Checkbox là mặc định.</p>${g?'<p class="d-formhint" style="color:var(--d-warn)">Thay đổi cấu hình áp dụng từ hôm nay. Các bản ghi và lịch sử trước hôm nay vẫn được giữ nguyên.</p>':''}<div class="d-form-footer"><button type="button" class="d-secondary-btn" data-dact="close">Hủy</button><button type="submit" class="d-primary-btn">${g?'Lưu thay đổi':'Tạo mục tiêu'}</button></div></form>`);
   const form=sh.querySelector('#dGoalForm');form.elements.schedule.value=v.schedule||'daily';form.elements.progress.value=v.progress||'checkbox';form.dataset.week=(v.weekdays||[]).join(',');updateGoalForm(form);
   form.addEventListener('change',e=>{if(e.target.matches('[name=schedule],[name=progress]'))updateGoalForm(form)});
   form.addEventListener('click',e=>{const b=e.target.closest('[data-week]');if(!b)return;const days=new Set((form.dataset.week||'').split(',').filter(x=>x!=='').map(Number));const n=+b.dataset.week;if(days.has(n))days.delete(n);else days.add(n);form.dataset.week=[...days].join(',');updateGoalForm(form)});
@@ -3665,8 +3978,8 @@ const ic=n=>`<svg class="i"><use href="#i-${n}"/></svg>`;
 const toEnd=(smooth)=>log.scrollTo({top:log.scrollHeight,behavior:smooth&&!RMO?'smooth':'auto'});
 
 /* ---------- đọc to tiếng Anh ---------- */
-function spk(t){if(!('speechSynthesis' in window)||!t)return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.95;
- const v=speechSynthesis.getVoices().find(v=>/en[-_]US/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+function spk(t){if(!t)return;if(window.KZVoice){window.KZVoice.speak(t,{lang:'en-US',rate:.94});return}
+ if(!('speechSynthesis' in window))return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.95;speechSynthesis.speak(u)}catch(e){}}
 
 /* ---------- vẽ ---------- */
 function meter(id,v){const e=Q('#'+id),u=e.querySelector('u');e.querySelector('b').innerHTML=v==null?'–':f1(v)+'<em>/10</em>';
@@ -3824,7 +4137,7 @@ const API_URL='https://api.openai.com/v1/chat/completions';
 /* Dịch vụ AI miễn phí, không cần key (Pollinations). Capy tự dùng khi bạn chưa dán key riêng, thử lần lượt từng địa chỉ cho tới khi có cái chạy. */
 const FREE=[{url:'https://gen.pollinations.ai/v1/chat/completions',model:'openai-fast'},{url:'https://text.pollinations.ai/openai',model:'openai'}];
 const SPEED=42,KEY='rm_ai_key',MOD='rm_ai_model',HIS='rm_ai_hist',DEF='gpt-4o-mini';
-const SYS='Bạn là Capy, một chú capybara dễ thương và là trợ lý AI thân thiện. Bạn được kết nối với Gemma 4 qua Cloudflare Workers AI của KZMD128, không phải Gemini API hay GPT-4 của OpenAI. Nếu người dùng hỏi đang sử dụng mô hình nào, hãy giải thích rằng Capy kết nối Gemma 4 qua Cloudflare Workers AI. Đừng tự nhận là GPT-4. Trả lời bằng tiếng Việt (trừ khi người dùng viết bằng ngôn ngữ khác), ngắn gọn, dễ hiểu, giọng ấm áp và hơi vui. Nếu người dùng đang bối rối, hãy giải thích từng bước thật cơ bản.';
+const SYS='Bạn là Capy, một chú capybara dễ thương và là trợ lý AI thân thiện. Bạn được kết nối với Gemma 4 qua Cloudflare Workers AI của KZMD 2.0, không phải Gemini API hay GPT-4 của OpenAI. Nếu người dùng hỏi đang sử dụng mô hình nào, hãy giải thích rằng Capy kết nối Gemma 4 qua Cloudflare Workers AI. Đừng tự nhận là GPT-4. Trả lời bằng tiếng Việt (trừ khi người dùng viết bằng ngôn ngữ khác), ngắn gọn, dễ hiểu, giọng ấm áp và hơi vui. Nếu người dùng đang bối rối, hãy giải thích từng bước thật cơ bản.';
 const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
 const rnd=(a,b)=>a+Math.random()*(b-a);
 
@@ -3901,7 +4214,49 @@ addEventListener('resize',()=>{W=cap.offsetWidth||134;if(open)placeWin()});
 /* ---------- tin nhắn ---------- */
 let hist=[];try{hist=JSON.parse(ls.get(HIS)||'[]').filter(m=>m&&m.content)}catch(e){}
 const toEnd=()=>{msgs.scrollTop=msgs.scrollHeight};
-function add(role,text){const d=document.createElement('div');d.className='cpg '+role;d.textContent=text;msgs.appendChild(d);toEnd();return d}
+/* Capy Markdown: formatting is built from text nodes (never raw AI HTML). */
+function inlineMd(parent,source){
+ const s=String(source||'');let i=0,buf='';
+ const flush=()=>{if(buf){parent.appendChild(document.createTextNode(buf));buf=''}};
+ const node=(tag,value)=>{const e=document.createElement(tag);inlineMd(e,value);parent.appendChild(e)};
+ while(i<s.length){
+  if(s[i]==='\\'&&i+1<s.length&&'*_~`[]\\'.includes(s[i+1])){buf+=s[i+1];i+=2;continue}
+  if(s[i]==='\n'){flush();parent.appendChild(document.createElement('br'));i++;continue}
+  if(s[i]==='['){const b=s.indexOf('](',i+1);if(b>i&&b-i<240){const end=s.indexOf(')',b+2);if(end>b+2){const href=s.slice(b+2,end).trim();try{const u=new URL(href);if(['http:','https:'].includes(u.protocol)){flush();const a=document.createElement('a');a.href=u.href;a.target='_blank';a.rel='noopener noreferrer';inlineMd(a,s.slice(i+1,b));parent.appendChild(a);i=end+1;continue}}catch(e){}}}}
+  if(s[i]==='`'){const j=s.indexOf('`',i+1);if(j>i+1){flush();const e=document.createElement('code');e.textContent=s.slice(i+1,j);parent.appendChild(e);i=j+1;continue}}
+  let hit=false;
+  for(const [mark,tag] of [['**','strong'],['__','strong'],['~~','s'],['*','em'],['_','em']]){
+   if(!s.startsWith(mark,i))continue;
+   if(mark==='_'&&i>0&&/[\w]/.test(s[i-1]))continue;
+   const j=s.indexOf(mark,i+mark.length);
+   if(j<=i+mark.length)continue;
+   if(mark==='_'&&j+1<s.length&&/[\w]/.test(s[j+1]))continue;
+   flush();node(tag,s.slice(i+mark.length,j));i=j+mark.length;hit=true;break;
+  }
+  if(hit)continue;
+  buf+=s[i++];
+ }
+ flush();
+}
+function renderCapyMd(el,source){
+ const s=String(source??'').replace(/\r\n?/g,'\n');const lines=s.split('\n'),frag=document.createDocumentFragment();
+ let i=0;
+ const special=x=>/^\s*```|^\s*#{1,4}\s|^\s*(?:[-*+]\s|\d+[.)]\s)|^\s*>\s?|^\s*---+\s*$/.test(x);
+ while(i<lines.length){
+  const line=lines[i];if(!line.trim()){i++;continue}
+  if(/^\s*```/.test(line)){const body=[];i++;while(i<lines.length&&!/^\s*```/.test(lines[i]))body.push(lines[i++]);if(i<lines.length)i++;const pre=document.createElement('pre'),code=document.createElement('code');code.textContent=body.join('\n');pre.appendChild(code);frag.appendChild(pre);continue}
+  const hd=line.match(/^\s*(#{1,4})\s+(.+)$/);if(hd){const e=document.createElement(hd[1].length<=2?'h3':'h4');inlineMd(e,hd[2]);frag.appendChild(e);i++;continue}
+  if(/^\s*---+\s*$/.test(line)){frag.appendChild(document.createElement('hr'));i++;continue}
+  if(/^\s*>\s?/.test(line)){const arr=[];while(i<lines.length&&/^\s*>\s?/.test(lines[i]))arr.push(lines[i++].replace(/^\s*>\s?/,''));const e=document.createElement('blockquote');inlineMd(e,arr.join('\n'));frag.appendChild(e);continue}
+  const lm=line.match(/^\s*([-*+]|\d+[.)])\s+(.+)$/);
+  if(lm){const ordered=/^\d/.test(lm[1]),list=document.createElement(ordered?'ol':'ul');if(ordered)list.start=Math.max(1,parseInt(lm[1],10)||1);
+   while(i<lines.length){const n=lines[i].match(/^\s*([-*+]|\d+[.)])\s+(.+)$/);if(!n||/^\d/.test(n[1])!==ordered)break;const li=document.createElement('li');inlineMd(li,n[2]);list.appendChild(li);i++}
+   frag.appendChild(list);continue}
+  const arr=[line];i++;while(i<lines.length&&lines[i].trim()&&!special(lines[i]))arr.push(lines[i++]);const e=document.createElement('p');inlineMd(e,arr.join('\n'));frag.appendChild(e);
+ }
+ el.classList.add('kmd');el.replaceChildren(frag);
+}
+function add(role,text){const d=document.createElement('div');d.className='cpg '+role;if(role==='a')renderCapyMd(d,text);else d.textContent=text;msgs.appendChild(d);toEnd();return d}
 function typing(){const d=document.createElement('div');d.className='cpg a t';d.innerHTML='<i></i><i></i><i></i>';msgs.appendChild(d);toEnd();return d}
 const saveH=()=>ls.set(HIS,JSON.stringify(hist.slice(-40)));
 const WORKER_STORE='rm_ai_worker_url';
@@ -3955,14 +4310,14 @@ async function ask(text){
    }catch(e){lastErr=e}}
   if(!r)throw lastErr;
   wait.remove();el=add('a','');
-  if((r.headers.get('content-type')||'').includes('application/json')){try{const j=await r.json();full=j.choices?.[0]?.message?.content||''}catch(e){}el.textContent=full||'Không nhận được nội dung từ AI.';toEnd()}
+  if((r.headers.get('content-type')||'').includes('application/json')){try{const j=await r.json();full=j.choices?.[0]?.message?.content||''}catch(e){}renderCapyMd(el,full||'Không nhận được nội dung từ AI.');toEnd()}
   else{
   const rd=r.body.getReader(),dec=new TextDecoder();let buf='';
   for(;;){const{done,value}=await rd.read();if(done)break;
    buf+=dec.decode(value,{stream:true});const ln=buf.split('\n');buf=ln.pop();
    for(const l of ln){const s=l.trim();if(!s.startsWith('data:'))continue;const d=s.slice(5).trim();if(!d||d=='[DONE]')continue;
-    try{const c=JSON.parse(d).choices[0].delta.content;if(c){full+=c;el.textContent=full;toEnd()}}catch(e){}}}}
-  if(!full)el.textContent='Mình chưa nhận được câu trả lời nào, bạn thử hỏi lại nhé.';
+    try{const c=JSON.parse(d).choices[0].delta.content;if(c){full+=c;renderCapyMd(el,full);toEnd()}}catch(e){}}}}
+  if(!full)renderCapyMd(el,'Mình chưa nhận được câu trả lời nào, bạn thử hỏi lại nhé.');
   else{hist.push({role:'assistant',content:full});saveH()}
   pop(2)
  }catch(e){
@@ -3997,4 +4352,214 @@ async function play(){const my=++run;ns.forEach(n=>n.classList.remove('on'));ln.
 const open=()=>{hp.classList.add('open');hp.setAttribute('aria-hidden','false');play()},close=()=>{run++;hp.classList.remove('open');hp.setAttribute('aria-hidden','true')};
 q('#hpb').onclick=open;q('#hpx').onclick=close;q('#hpr').onclick=play;hp.addEventListener('click',e=>{if(e.target==hp)close()});
 addEventListener('keydown',e=>{if(e.key=='Escape'&&hp.classList.contains('open'))close()})})();</script>
+
+<!-- KZMD 2.0 · Thông báo ra mắt (chỉ hiển thị một lần trên mỗi trình duyệt). -->
+<section class="kz2-announcement" id="kz2-announcement" hidden aria-hidden="true">
+ <div class="kz2-news-card" id="kz2-news-card" role="dialog" aria-modal="true" aria-labelledby="kz2-news-title" aria-describedby="kz2-news-lead" tabindex="-1">
+  <div class="kz2-release-top"><span class="kz2-eyebrow"><i aria-hidden="true"></i> CÓ GÌ MỚI · KZMD 2.0</span><button class="kz2-close" id="kz2-release-close" type="button" aria-label="Đóng thông báo">×</button></div>
+  <h2 class="kz2-news-title" id="kz2-news-title">Học chủ động hơn.<br><span class="kz2-ink"><span>Tiến bộ rõ ràng hơn.</span></span></h2>
+  <p class="kz2-news-lead" id="kz2-news-lead">Chào mừng đến với <strong>KZMD 2.0</strong> — không gian học tập mới, nơi bạn đặt mục tiêu, luyện tập mỗi ngày và có một người bạn AI đồng hành khi cần.</p>
+  <div class="kz2-update-grid">
+   <article class="kz2-update" style="--order:0" role="button" tabindex="0" data-kz-open="capy" aria-label="Mở Capy"><span class="kz2-no">01</span><h3>Capy — Hỏi gì cũng có bạn đồng hành ✦</h3><p>Hỏi bài, tìm ý tưởng, giải thích kiến thức ngay trong KZMD. Không phải chuyển qua ứng dụng khác.</p></article>
+   <article class="kz2-update" style="--order:1" role="button" tabindex="0" data-kz-open="daily" aria-label="Mở Daily"><span class="kz2-no">02</span><h3>Daily — Mỗi ngày đều có dấu ấn</h3><p>Tự đặt mục tiêu, tích hoàn thành, làm bù ngày bỏ lỡ và nhìn lại hành trình qua lịch cùng nhật ký.</p></article>
+   <article class="kz2-update" style="--order:2" role="button" tabindex="0" data-kz-open="speaking" aria-label="Mở Luyện nói"><span class="kz2-no">03</span><h3>Mới: Luyện nói tiếng Anh 🎙</h3><p>Nói theo câu mẫu hoặc thử sức với IELTS Speaking. Nghe lại, xem bản chép lời và nhận góp ý để nói tự tin hơn.</p></article>
+   <article class="kz2-update" style="--order:3" role="button" tabindex="0" data-kz-open="coach" aria-label="Mở Chat Coach"><span class="kz2-no">04</span><h3>English Coach — Có người luyện cùng 1:1</h3><p>Trò chuyện theo chủ đề và được góp ý cách dùng từ, ngữ pháp, cách nói tự nhiên. Roadmap và dữ liệu học vẫn được giữ chung.</p></article>
+  </div>
+  <div class="kz2-release-bottom"><p><strong>Không chỉ đẹp hơn.</strong> KZMD 2.0 giúp bạn biết hôm nay cần làm gì, đã tiến được bao xa và ngày mai có thể tốt hơn thế nào.</p>
+   <div class="kz2-release-actions"><button class="kz2-later" id="kz2-release-later" type="button">Để khám phá sau</button><button class="kz2-start" id="kz2-release-start" type="button">Thử luyện nói ngay <span aria-hidden="true">→</span></button></div>
+  </div>
+ </div>
+</section>
+<script>
+(()=>{
+ const overlay=document.getElementById('kz2-announcement'),card=document.getElementById('kz2-news-card'),trigger=document.getElementById('kz2-news-trigger');
+ /* Wrap all editorial copy for a consistent paint-wave reveal; avoid buttons and labels. */
+ const revealTargets=[...card.querySelectorAll('.kz2-news-title,.kz2-news-lead,.kz2-update h3,.kz2-update p,.kz2-release-bottom p')];
+ revealTargets.forEach((node,i)=>{
+  if(node.classList.contains('kz2-news-title')){
+   node.classList.add('kz2-ink-all');const content=document.createElement('span');content.className='kz2-ink-content';
+   while(node.firstChild)content.appendChild(node.firstChild);node.appendChild(content)
+  }else{node.classList.add('kz2-ink-all');const content=document.createElement('span');content.className='kz2-ink-content';
+   while(node.firstChild)content.appendChild(node.firstChild);node.appendChild(content)}
+  const delay=i<2?i*180:320+Math.floor((i-2)/2)*190+(i%2)*95;
+  node.style.setProperty('--paint-delay',delay+'ms');
+ });
+ const seenKey='kzmd_2_0_release_seen_v3';let lastFocus=null;
+ const seen=()=>{try{return localStorage.getItem(seenKey)==='1'}catch(e){return false}};
+ const mark=()=>{try{localStorage.setItem(seenKey,'1')}catch(e){}};
+ function open(){lastFocus=document.activeElement;overlay.hidden=false;overlay.setAttribute('aria-hidden','false');requestAnimationFrame(()=>{overlay.classList.add('show');card.focus({preventScroll:true})})}
+ function close(){if(overlay.hidden)return;mark();overlay.classList.remove('show');overlay.setAttribute('aria-hidden','true');overlay.hidden=true;if(lastFocus&&lastFocus.isConnected&&typeof lastFocus.focus==='function')lastFocus.focus({preventScroll:true})}
+ document.getElementById('kz2-release-close').addEventListener('click',close);
+ document.getElementById('kz2-release-later').addEventListener('click',close);
+ function goFeature(which){close();try{if(which==='daily')setView('dy');else if(which==='capy')document.getElementById('cpb')?.click();else if(which==='coach'||which==='speaking'){setView('en');setTab(which==='coach'?'c':'s')}}catch(e){}}
+ document.getElementById('kz2-release-start').addEventListener('click',()=>goFeature('speaking'));
+ overlay.addEventListener('click',e=>{const a=e.target.closest('[data-kz-open]');if(a)goFeature(a.dataset.kzOpen)});
+ overlay.addEventListener('keydown',e=>{const a=e.target.closest('[data-kz-open]');if(a&&(e.key==='Enter'||e.key===' ')){e.preventDefault();goFeature(a.dataset.kzOpen)}});
+ trigger.addEventListener('click',open);
+ overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+ document.addEventListener('keydown',e=>{if(overlay.hidden)return;if(e.key==='Escape'){e.preventDefault();close()}if(e.key==='Tab'){const items=[...overlay.querySelectorAll('button:not([disabled])')];if(!items.length)return;const first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+ if(!seen())requestAnimationFrame(()=>setTimeout(()=>{if(!seen())open()},400));
+})();
+</script>
+<script>
+/* KZMD 2.0 · Speaking Studio: mic + local rhythm indicators + opt-in text AI coaching.
+   No claim of phoneme-level / certified IELTS pronunciation scoring. */
+(()=>{
+'use strict';
+const root=document.getElementById('kspeak');if(!root)return;const sharedSig=document.querySelector('.sig'),localSig=document.getElementById('ks-contact');if(sharedSig&&localSig)localSig.innerHTML=sharedSig.innerHTML;
+const q=id=>document.getElementById(id),
+ modes=[...root.querySelectorAll('[data-ksmode]')],
+ prompt=q('ks-prompt'),cue=q('ks-cue'),label=q('ks-label'),target=q('ks-target'),
+ transcript=q('ks-transcript'),status=q('ks-status'),clock=q('ks-time'),
+ start=q('ks-record'),stop=q('ks-stop'),result=q('ks-result'),feedback=q('ks-feedback');
+const tasks={
+ sentence:[
+  {q:'Practice makes progress, one day at a time.'},
+  {q:'I would like to improve my English speaking skills.'},
+  {q:'Learning something new every day keeps me motivated.'},
+  {q:'In my opinion, a good routine makes a big difference.'},
+  {q:'I enjoy spending time with my family on weekends.'}],
+ part1:[
+  {q:'What do you usually do in your free time?',hint:'Hãy nói về sở thích, lý do và một ví dụ.'},
+  {q:'Do you prefer studying in the morning or at night?',hint:'Nêu lựa chọn, giải thích và mở rộng một chi tiết.'},
+  {q:'What kind of music do you enjoy listening to?',hint:'Trả lời tự nhiên trong khoảng 20–40 giây.'},
+  {q:'Is there a place in your city you like visiting?',hint:'Nói một trải nghiệm cụ thể.'}],
+ part2:[
+  {q:'Describe a skill you would like to learn.',hint:'You should say:\n• what the skill is\n• why you want to learn it\n• how you would learn it\nand explain why it matters to you.'},
+  {q:'Describe a memorable day in your life.',hint:'You should say:\n• when it happened\n• where you were\n• who was with you\nand explain why you remember it.'},
+  {q:'Describe a person who inspires you.',hint:'You should say:\n• who this person is\n• how you know them\n• what they do\nand explain why they inspire you.'}],
+ part3:[
+  {q:'Why do some people find it difficult to develop good habits?',hint:'Nêu quan điểm → lý do → ví dụ → kết luận.'},
+  {q:'How has technology changed the way people learn?',hint:'So sánh trước và nay, nêu cả lợi ích lẫn hạn chế.'},
+  {q:'Should schools teach more practical life skills?',hint:'Phân tích nhiều góc nhìn và đưa ví dụ.'},
+  {q:'What makes a good leader in today\'s society?',hint:'Đưa ra hai đặc điểm và lý do thuyết phục.'}]
+};
+const cfg={sentence:['LUYỆN MỘT CÂU','Nghe & nhắc lại',0],part1:['IELTS SPEAKING · PART 1','20–40 giây',45],part2:['IELTS SPEAKING · PART 2','1 phút chuẩn bị · 2 phút nói',120],part3:['IELTS SPEAKING · PART 3','Ý kiến & lập luận',100]};
+const recCtor=window.SpeechRecognition||window.webkitSpeechRecognition;
+let mode='sentence',index={sentence:0,part1:0,part2:0,part3:0},recording=false,
+ recog=null,started=0,timer=0,elapsed=0,restarts=0,finalSpeech='',interim='',
+ mediaStream=null,recorder=null,audioUrl='',audioContext=null,analyser=null,levels=[],silence=0,
+ audioBuffer=null,audioRAF=0,pitchSamples=[],lastAudioSample=0,prepareTimer=null,prepRemaining=0,busy=false;
+const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const words=s=>String(s||'').toLowerCase().replace(/[^a-z\s']/g,' ').split(/\s+/).filter(Boolean);
+const day=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
+const current=()=>{const d=D.speaking||(D.speaking={history:[]});if(!Array.isArray(d.history))d.history=[];return d};
+const setStatus=(s,warn=false)=>{status.textContent=s;status.classList.toggle('warn',warn)};
+const formatSec=n=>String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');
+function storeHistory(item){const d=current();d.history.unshift(item);d.history=d.history.slice(0,30);save();drawHistory()}
+function drawHistory(){const h=current().history;q('ks-count').textContent=h.length+' lượt';q('ks-history').innerHTML=h.length?h.slice(0,8).map((x,i)=>'<button class="ks-history-row" type="button" data-ks-h="'+i+'"><b>'+escape(x.mode==='sentence'?'Luyện câu':x.mode==='part1'?'Part 1':x.mode==='part2'?'Part 2':'Part 3')+'</b><span>'+escape(x.date||'')+' · '+escape((x.text||'').slice(0,56))+'</span></button>').join(''):'<p class="ks-muted">Chưa có buổi luyện nào. Thử bắt đầu bằng một câu nhé.</p>'}
+function clearAudio(){if(audioUrl){URL.revokeObjectURL(audioUrl);audioUrl=''}q('ks-playback').hidden=true}
+function resetSession(){if(recording)finishRecord();if(prepareTimer)clearInterval(prepareTimer);prepareTimer=null;prepRemaining=0;finalSpeech='';interim='';elapsed=0;levels=[];pitchSamples=[];silence=0;transcript.value='';clock.textContent='00:00';result.hidden=true;feedback.hidden=true;feedback.textContent='';q('ks-followup').hidden=true;clearAudio();setStatus(recCtor?'Sẵn sàng luyện nói.':'Thiết bị chưa hỗ trợ nhận dạng giọng nói. Bạn vẫn có thể gõ câu trả lời.');}
+function renderIPA(){const holder=q('ks-ipa'),list=q('ks-ipa-words');const value=currentPrompt();const tokens=words(value).slice(0,24);
+ if(mode!=='sentence'){holder.hidden=true;list.innerHTML='';return}
+ const ipa=window.KZ_IPA||{};const items=tokens.filter(x=>ipa[x]);holder.hidden=!items.length;
+ list.innerHTML=items.map(w=>'<span class="ks-ipa-word"><b>'+escape(w)+'</b><small>/'+escape(ipa[w])+'/</small></span>').join('');}
+function draw(){const t=tasks[mode][index[mode]%tasks[mode].length];root.dataset.mode=mode;
+ modes.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.ksmode===mode)));
+ label.textContent=cfg[mode][0];target.textContent=cfg[mode][1];prompt.textContent=t.q;cue.hidden=!t.hint;cue.textContent=t.hint||'';
+ q('ks-listen').hidden=mode!=='sentence';q('ks-prep').hidden=mode!=='part2';q('ks-prep').textContent='Chuẩn bị 60 giây';q('ks-custom').value='';
+ resetSession();renderIPA();}
+function currentPrompt(){return mode==='sentence'?(q('ks-custom').value.trim()||prompt.textContent):prompt.textContent}
+function detectWords(seq,goal){const a=words(seq),b=words(goal);const m=b.length,n=a.length;
+ let dp=Array.from({length:m+1},()=>Array(n+1).fill(0));for(let i=0;i<=m;i++)dp[i][0]=i;for(let j=0;j<=n;j++)dp[0][j]=j;
+ for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)dp[i][j]=Math.min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1][j-1]+(b[i-1]===a[j-1]?0:1));
+ return{score:Math.max(0,Math.round(100*(1-dp[m][n]/Math.max(m,n,1)))),a,b}}
+function stopAudio(){try{recorder&&recorder.state==='recording'&&recorder.stop()}catch(e){};
+ try{mediaStream?.getTracks().forEach(t=>t.stop())}catch(e){}mediaStream=null;
+ try{audioContext?.close()}catch(e){}audioContext=null;analyser=null;cancelAnimationFrame(audioRAF)}
+function finishRecord(){if(!recording)return;recording=false;clearInterval(timer);timer=0;
+ elapsed=Math.max(1,Math.round((performance.now()-started)/1000));clock.textContent=formatSec(elapsed);
+ try{recog?.stop()}catch(e){}recog=null;stopAudio();start.disabled=false;start.classList.remove('listening');stop.disabled=true;
+ transcript.value=(finalSpeech+' '+interim).trim();setStatus('Đã dừng. Xem lại bản chép lời trước khi nhận xét.');}
+/* Estimate F0 from real microphone audio (autocorrelation). Does NOT score phonemes. */
+function estimatePitch(x,sr){if(!x||x.length<512)return null;
+ const lo=Math.floor(sr/450),hi=Math.min(x.length/2|0,Math.ceil(sr/85));let best=0,bestLag=0;
+ for(let lag=lo;lag<=hi;lag++){
+  let num=0,a=0,b=0;for(let i=0;i<x.length-lag;i+=2){const z=x[i],k=x[i+lag];num+=z*k;a+=z*z;b+=k*k}
+  const corr=num/(Math.sqrt(a*b)+1e-9);if(corr>best){best=corr;bestLag=lag}
+ }
+ return best>.78&&bestLag>0?sr/bestLag:null;}
+function paintAudio(){if(!recording)return;
+ if(analyser&&performance.now()-lastAudioSample>65){lastAudioSample=performance.now();const data=new Float32Array(analyser.fftSize);analyser.getFloatTimeDomainData(data);
+  let power=0;for(const x of data)power+=x*x;const rms=Math.sqrt(power/data.length);
+  levels.push(rms);if(rms<.022)silence++;
+  pitchSamples.push(rms>.025?estimatePitch(data,audioContext.sampleRate):null);
+  root.style.setProperty('--lvl',String(Math.max(.12,Math.min(1.1,rms*7))))}
+ audioRAF=requestAnimationFrame(paintAudio)}
+async function listen(){if(recording)return;
+ if(prepareTimer){clearInterval(prepareTimer);prepareTimer=null;q('ks-prep').textContent='Chuẩn bị 60 giây'}
+ if(!recCtor){setStatus('Trình duyệt không hỗ trợ nhận dạng giọng nói. Hãy nhập câu bạn đã nói.',true);transcript.focus();return}
+ try{
+  mediaStream=await navigator.mediaDevices.getUserMedia({audio:true});
+  if(window.MediaRecorder){let parts=[];recorder=new MediaRecorder(mediaStream);recorder.ondataavailable=e=>{if(e.data.size)parts.push(e.data)};recorder.onstop=()=>{if(parts.length){clearAudio();audioUrl=URL.createObjectURL(new Blob(parts,{type:parts[0]?.type||recorder.mimeType||'audio/webm'}));q('ks-playback').hidden=false}};recorder.start()}
+  const AC=window.AudioContext||window.webkitAudioContext;if(AC){audioContext=new AC();const source=audioContext.createMediaStreamSource(mediaStream);analyser=audioContext.createAnalyser();analyser.fftSize=2048;source.connect(analyser)}
+ }catch(e){setStatus('Không thể dùng micro. Hãy cho phép quyền micro hoặc nhập câu trả lời.',true);stopAudio();return}
+ finalSpeech='';interim='';levels=[];pitchSamples=[];silence=0;transcript.value='';result.hidden=true;clearInterval(timer);recording=true;restarts=0;started=performance.now();start.disabled=true;stop.disabled=false;start.classList.add('listening');
+ setStatus('Đang nghe bạn nói…');
+ function runRec(){if(!recording)return;const r=new recCtor();recog=r;r.lang=q('ks-accent').value;r.continuous=true;r.interimResults=true;r.maxAlternatives=1;
+  r.onresult=e=>{interim='';for(let i=e.resultIndex;i<e.results.length;i++){const v=e.results[i][0].transcript.trim();if(e.results[i].isFinal)finalSpeech+=' '+v;else interim+=' '+v}transcript.value=(finalSpeech+' '+interim).trim()};
+  r.onerror=e=>{if(['not-allowed','service-not-allowed','audio-capture'].includes(e.error)){finishRecord();setStatus('Không nhận được quyền micro hoặc dịch vụ nhận dạng giọng nói.',true)}else if(e.error!=='no-speech')setStatus('Lỗi nhận dạng: '+e.error+' — có thể sửa bản chép lời thủ công.',true)};
+  r.onend=()=>{if(recording&&restarts++<12)setTimeout(runRec,180);else if(recording){finishRecord();setStatus('Đã dừng nhận dạng. Bạn có thể sửa bản chép lời.',true)}};
+  try{r.start()}catch(e){finishRecord();setStatus('Không thể bắt đầu nhận dạng giọng nói trên trình duyệt này.',true)}}
+ runRec();timer=setInterval(()=>{if(!recording)return;elapsed=Math.floor((performance.now()-started)/1000);clock.textContent=formatSec(elapsed);if(cfg[mode][2]>0&&elapsed>=cfg[mode][2])finishRecord()},250);paintAudio();}
+function stats(){if(recording)finishRecord();const text=transcript.value.trim();if(!text){setStatus('Hãy nói hoặc nhập câu trả lời trước khi xem kết quả.',true);transcript.focus();return}
+ const a=words(text),sec=Math.max(1,elapsed),wpm=elapsed?Math.round(a.length/sec*60):null;
+ let varied=null,quiet=null;if(levels.length>10){const mean=levels.reduce((a,b)=>a+b,0)/levels.length;const v=Math.sqrt(levels.reduce((a,b)=>a+(b-mean)**2,0)/levels.length);varied=Math.min(100,Math.round(v*850));quiet=Math.round(100*silence/levels.length)}
+ let match=null;if(mode==='sentence')match=detectWords(text,currentPrompt());
+ const info=[['Số từ',String(a.length)],['Tốc độ',wpm===null?'—':wpm+' từ/phút'],['Biến thiên âm lượng',varied===null?'—':varied+' / 100 (ước lượng)'],['Khoảng lặng',quiet===null?'—':quiet+'% (ước lượng)']];
+ if(match)info.unshift(['Khớp câu mẫu',match.score+'%']);
+ q('ks-stats').innerHTML=info.map(x=>'<div class="ks-stat"><b>'+escape(x[1])+'</b><small>'+escape(x[0])+'</small></div>').join('');
+ q('ks-match').innerHTML=match?match.b.map(x=>'<span class="'+(!match.a.includes(x)?'miss':'')+'">'+escape(x)+'</span>').join(''):'';
+ /* Honest acoustic metrics: pitch contour from recorded PCM, not inferred from text. */
+ const freq=pitchSamples.filter(v=>v&&v>=85&&v<=450);
+ const pitchNode=q('ks-pitch');pitchNode.hidden=freq.length<6;
+ if(!pitchNode.hidden){const down=pitchSamples.length>120?pitchSamples.filter((_,i)=>i%Math.ceil(pitchSamples.length/120)===0):pitchSamples;
+  const y=p=>p?Math.max(5,Math.min(73,74-(p-85)/(450-85)*65)):null;
+  let points=[];const len=Math.max(1,down.length-1);down.forEach((p,i)=>{if(p){points.push((i/len*480).toFixed(1)+','+y(p).toFixed(1))}});
+  q('ks-pitch-line').setAttribute('points',points.join(' '));
+  const min=Math.round(Math.min(...freq)),max=Math.round(Math.max(...freq));
+  pitchNode.querySelector('.ks-pitch-legend').textContent='Từ âm thanh micro: cao độ khoảng '+min+'–'+max+' Hz. Biến thiên cao độ gợi ý nhịp nói; chưa đánh giá đúng/sai từng âm.';
+ }
+ q('ks-assessment-note').textContent=mode==='sentence'?'Từ bị gạch chân là khác biệt trong bản chép lời. Phiên âm IPA là âm chuẩn tham khảo; đường ngữ điệu đo micro là tín hiệu thật, nhưng không thể tự khẳng định chính xác từng âm.':'Tốc độ và độ thay đổi âm lượng chỉ là chỉ báo luyện tập, không tương đương điểm IELTS.';
+ result.hidden=false;feedback.hidden=true;q('ks-followup').hidden=true;q('ks-feedback').textContent='';
+ storeHistory({date:day(),mode,text,prompt:currentPrompt(),duration:elapsed,wpm,match:match?.score??null});
+ setStatus('Đã lưu buổi luyện. Chọn “Nhận góp ý từ AI” nếu muốn phân tích sâu hơn.');
+ if(!reduced)result.animate([{opacity:0,transform:'translateY(13px) scale(.98)'},{opacity:1,transform:'none'}],{duration:500,easing:'cubic-bezier(.2,1.2,.3,1)'});
+ result.scrollIntoView({behavior:reduced?'auto':'smooth',block:'nearest'});}
+function feedbackFallback(text){return 'Chưa kết nối được AI. Bạn có thể thử:\n• Trả lời thành câu đủ chủ ngữ và động từ.\n• Nêu ví dụ cụ thể để phát triển ý.\n• Nghe câu mẫu và luyện nói lại, chú ý ngắt nghỉ tự nhiên.\n\nGóp ý trên là gợi ý chung, không phải đánh giá phát âm.'}
+async function askAI(){if(busy)return;const text=transcript.value.trim();if(!text){setStatus('Cần có bản chép lời trước khi gửi AI.',true);return}
+ const targets=window.RMAI?.targets?.();if(!targets||!targets.length){feedback.hidden=false;feedback.textContent=feedbackFallback(text);return}
+ busy=true;q('ks-ai').disabled=true;feedback.hidden=false;feedback.textContent='Đang đọc câu trả lời và chuẩn bị góp ý…';
+ const sys='Bạn là giáo viên luyện nói tiếng Anh cho người Việt. Chỉ nhận được bản chép lời, KHÔNG được nghe âm thanh. KHÔNG chấm chính xác phát âm, trọng âm, ngữ điệu hay Band IELTS. Hãy nhận xét NGẮN GỌN bằng tiếng Việt: 1 điểm tốt, 2 gợi ý cụ thể về nội dung / ngữ pháp / từ vựng / cách phát triển ý, 1 câu tiếng Anh mẫu tự nhiên theo đúng chủ đề. Nếu luyện một câu hãy nhận xét từ bị nhận dạng khác câu gốc như sự khác biệt văn bản, không khẳng định sai âm. Không nói điểm IELTS. Không dùng bảng Markdown. Cuối phần góp ý, thêm đúng một dòng: Câu hỏi tiếp theo: [một câu hỏi ngắn bằng tiếng Anh liên quan đến đề].';
+ const input='Chế độ: '+mode+'\nĐề: '+currentPrompt()+'\nBản chép lời người học: '+text.slice(0,1800)+'\nThời gian ghi: '+elapsed+' giây.';
+ let err;
+ try{for(const target of targets){const ctrl=new AbortController();const to=setTimeout(()=>ctrl.abort(),30000);
+  try{const headers={'Content-Type':'application/json'};if(target.auth&&target.key&&!target.proxy)headers.Authorization='Bearer '+target.key;
+  const r=await fetch(target.url,{method:'POST',headers,signal:ctrl.signal,body:JSON.stringify({model:target.model,stream:false,messages:[{role:'system',content:sys},{role:'user',content:input}]})});
+  if(!r.ok)throw new Error('HTTP '+r.status);
+  const j=await r.json();const msg=j?.choices?.[0]?.message?.content;
+  if(typeof msg==='string'&&msg.trim()){feedback.textContent=msg.trim().slice(0,1900);const x=msg.match(/(?:Câu hỏi tiếp theo|Follow-up question)\s*:\s*([^\n]+)/i);if(x){q('ks-followup').hidden=false;q('ks-followup').dataset.next=x[1].replace(/^[\[\s]+|[\]\s]+$/g,'').slice(0,230)}try{const row=current().history[0];if(row&&row.text===text){row.feedback=feedback.textContent;save()}}catch(e){}err=null;break}throw new Error('Trống');
+  }catch(e){err=e}finally{clearTimeout(to)}}
+ if(err)feedback.textContent=feedbackFallback(text)+'\n\n(Dịch vụ AI hiện chưa phản hồi.)';
+ }finally{busy=false;q('ks-ai').disabled=false;}}
+q('ks-wave').innerHTML=Array.from({length:36},(_,i)=>'<i style="--h:'+(13+(i*31%61))+'%"></i>').join('');
+root.addEventListener('click',e=>{const m=e.target.closest('[data-ksmode]');if(m){if(recording)finishRecord();mode=m.dataset.ksmode;draw();return}
+ const h=e.target.closest('[data-ks-h]');if(h){const x=current().history[+h.dataset.ksH];if(x){mode=tasks[x.mode]?x.mode:'sentence';if(tasks[mode]){const found=tasks[mode].findIndex(t=>t.q===x.prompt);if(found>=0)index[mode]=found}draw();transcript.value=x.text;if(x.feedback){feedback.hidden=false;feedback.textContent=x.feedback;result.hidden=false;q('ks-stats').innerHTML='<div class="ks-stat"><b>'+escape(x.duration||0)+' giây</b><small>Thời lượng buổi luyện trước</small></div>';q('ks-match').innerHTML='';q('ks-assessment-note').textContent='Lịch sử đã lưu';}setStatus('Đã mở lại bản chép lời. Bạn có thể nhận xét lại.')}return}});
+q('ks-next').onclick=()=>{index[mode]=(index[mode]+1)%tasks[mode].length;draw()};
+q('ks-listen').onclick=()=>{if(window.KZVoice){window.KZVoice.speak(currentPrompt(),{lang:q('ks-accent').value,rate:.86});setStatus('Đang phát câu mẫu với giọng tốt nhất đang có.');return}
+ setStatus('Thiết bị chưa có tính năng đọc văn bản.',true)};
+q('ks-prep').onclick=()=>{if(prepareTimer)clearInterval(prepareTimer);prepRemaining=60;setStatus('Thời gian chuẩn bị: hãy ghi nhanh các ý chính.');const b=q('ks-prep');b.textContent='Chuẩn bị: 60s';prepareTimer=setInterval(()=>{if(--prepRemaining<=0){clearInterval(prepareTimer);prepareTimer=null;b.textContent='Đã hết giờ chuẩn bị';setStatus('Hết 1 phút chuẩn bị. Bắt đầu nói nhé!')}else b.textContent='Chuẩn bị: '+prepRemaining+'s'},1000)};
+start.onclick=listen;stop.onclick=finishRecord;q('ks-review').onclick=stats;q('ks-ai').onclick=askAI;
+q('ks-playback').onclick=()=>{if(!audioUrl)return;const a=new Audio(audioUrl);a.play().catch(()=>setStatus('Không thể phát bản thu trên trình duyệt này.',true))};
+q('ks-followup').onclick=()=>{const next=q('ks-followup').dataset.next;if(!next)return;tasks[mode].push({q:next,hint:'Câu hỏi tiếp nối từ AI — thử phát triển ý rõ ràng và đưa ví dụ.'});index[mode]=tasks[mode].length-1;draw()};
+q('ks-custom').addEventListener('input',renderIPA);
+q('ks-accent').onchange=()=>{try{D.cfg.ksAccent=q('ks-accent').value;save()}catch(e){}};
+try{if(D.cfg?.ksAccent)q('ks-accent').value=D.cfg.ksAccent}catch(e){}
+window.ksLeave=()=>{if(recording)finishRecord();if(prepareTimer){clearInterval(prepareTimer);prepareTimer=null}};
+window.ksOpen=()=>{drawHistory();if(!recCtor)setStatus('Trình duyệt này chưa hỗ trợ nhận dạng giọng nói. Bạn có thể gõ câu để luyện với AI.',true)};
+window.addEventListener('pagehide',()=>{finishRecord();stopAudio()});
+drawHistory();draw();
+})();
+</script>
 </body></html>
