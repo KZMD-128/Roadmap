@@ -1286,7 +1286,7 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
 .wdexr .wdsp{margin-top:-2px}
 
 /* Cloudflare AI: cài đặt gọn và tập trung */
-.cpold{padding:6px 0;border-top:1px solid var(--rule)}
+.cpold{display:none!important;padding:6px 0;border-top:1px solid var(--rule)}
 .cpold summary{cursor:pointer;font-size:12px;color:var(--mut);padding:5px 0;user-select:none}
 .cpold[open]{display:grid;gap:7px}
 .cpold summary:focus-visible{outline:2px solid var(--ring);outline-offset:3px}
@@ -2055,22 +2055,22 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
 <div class="cpw glass" id="cpw" role="dialog" aria-label="Trò chuyện với Capy" inert>
  <div class="cpwh">
   <div class="cpwt"><b>Capy</b><small id="cpsub">Trợ lý AI</small></div>
-  <button class="cpib" id="cpset" aria-label="Cài đặt OpenAI" title="Cài đặt OpenAI"><svg class="i"><use href="#i-sliders"/></svg></button>
+  <button class="cpib" id="cpset" aria-label="Cài đặt Gemini" title="Cài đặt Gemini"><svg class="i"><use href="#i-sliders"/></svg></button>
   <button class="cpib" id="cpclr" aria-label="Xóa cuộc trò chuyện" title="Xóa cuộc trò chuyện"><svg class="i"><use href="#i-trash"/></svg></button>
   <button class="cpib" id="cpx" aria-label="Đóng"><svg class="i"><use href="#i-x"/></svg></button>
  </div>
  <div class="cpset" id="cpsetp"><div><div class="cpsi">
-  <label for="cpworker">Kết nối Gemini qua Cloudflare Worker</label>
-  <input id="cpworker" type="url" autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="https://kzmd128-ai...workers.dev" aria-describedby="cpworkhelp">
-  <p id="cpworkhelp">Chỉ nhập địa chỉ Worker một lần. API Key phải lưu trong Cloudflare Secrets, không điền ở đây và không đưa lên GitHub. Để mọi người dùng website tự kết nối, thêm địa chỉ Worker vào cấu hình WORKER_URL của file.</p>
-  <details class="cpold"><summary>Cấu hình AI cá nhân (tuỳ chọn)</summary>
+  <label for="cpworker">Gemini — Cloudflare Worker đã kết nối sẵn</label>
+  <input id="cpworker" type="url" readonly autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="https://kzmd128-ai...workers.dev" aria-describedby="cpworkhelp">
+  <p id="cpworkhelp">KZMD128 tự sử dụng Worker được cấu hình sẵn. Gemini API Key lưu trong Cloudflare Secrets, không nằm trong file HTML. Nếu AI báo lỗi, hãy kiểm tra cấu hình Cloudflare.</p>
+  <details class="cpold" hidden><summary>Cấu hình AI cá nhân (tuỳ chọn)</summary>
     <label for="cpkey">API Key lưu riêng trên thiết bị này</label>
     <input id="cpkey" type="password" autocomplete="off" spellcheck="false" placeholder="Chỉ dùng khi chạy riêng, không đưa vào HTML">
     <label for="cpmod">Model cho API cá nhân</label>
     <input id="cpmod" list="cpmods" autocomplete="off" spellcheck="false" placeholder="gpt-4o-mini">
     <datalist id="cpmods"><option value="gpt-4o-mini"><option value="gpt-4.1-mini"><option value="gpt-4o"><option value="gpt-4.1"></datalist>
   </details>
-  <button class="p" id="cpsave" style="justify-content:center">Lưu kết nối</button>
+  <button class="p" id="cpsave" style="justify-content:center">Đóng cài đặt</button>
  </div></div></div>
  <div class="cpm" id="cpm" aria-live="polite"></div>
  <div class="cpin">
@@ -3808,7 +3808,7 @@ render();
 })();
 </script><script>
 /* =====================================================================
-   Capy: capybara đi qua đi lại, bấm vào thì có hiệu ứng và mở khung chat với OpenAI.
+   Capy: capybara đi qua đi lại, bấm vào thì có hiệu ứng và mở khung chat với Gemini qua Cloudflare.
    Key + lịch sử chat lưu riêng trong localStorage (rm_ai_*), KHÔNG nằm trong D nên không lọt vào bản sao lưu / GitHub.
    ===================================================================== */
 (function(){
@@ -3819,12 +3819,12 @@ const RMO=matchMedia('(prefers-reduced-motion:reduce)').matches,FINE=matchMedia(
 /* URL Cloudflare Worker công khai (không chứa key). Sau khi tạo Worker, có thể
    nhập URL ở Capy một lần hoặc điền tại đây để tất cả người dùng dùng chung.
    KHÔNG đặt Gemini API Key hoặc token bí mật trong index.html/GitHub. */
-const WORKER_URL='';
+const WORKER_URL='https://kzmd128-ai.hongphucmod.workers.dev';
 const API_URL='https://api.openai.com/v1/chat/completions';
 /* Dịch vụ AI miễn phí, không cần key (Pollinations). Capy tự dùng khi bạn chưa dán key riêng, thử lần lượt từng địa chỉ cho tới khi có cái chạy. */
 const FREE=[{url:'https://gen.pollinations.ai/v1/chat/completions',model:'openai-fast'},{url:'https://text.pollinations.ai/openai',model:'openai'}];
 const SPEED=42,KEY='rm_ai_key',MOD='rm_ai_model',HIS='rm_ai_hist',DEF='gpt-4o-mini';
-const SYS='Bạn là Capy, một chú capybara dễ thương và là trợ lý AI thân thiện. Trả lời bằng tiếng Việt (trừ khi người dùng viết bằng ngôn ngữ khác), ngắn gọn, dễ hiểu, giọng ấm áp và hơi vui. Nếu người dùng đang bối rối, hãy giải thích từng bước thật cơ bản.';
+const SYS='Bạn là Capy, một chú capybara dễ thương và là trợ lý AI thân thiện. Bạn được kết nối với Google Gemini qua Cloudflare Worker của KZMD128, không phải GPT-4 của OpenAI. Nếu người dùng hỏi đang sử dụng mô hình nào, hãy giải thích rằng Capy kết nối Gemini qua Cloudflare và tên phiên bản cụ thể do Worker quyết định. Đừng tự nhận là GPT-4. Trả lời bằng tiếng Việt (trừ khi người dùng viết bằng ngôn ngữ khác), ngắn gọn, dễ hiểu, giọng ấm áp và hơi vui. Nếu người dùng đang bối rối, hãy giải thích từng bước thật cơ bản.';
 const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
 const rnd=(a,b)=>a+Math.random()*(b-a);
 
@@ -3931,7 +3931,7 @@ Q('#cpsave').onclick=()=>{
  pop(3)};
 Q('#cpclr').onclick=()=>{hist=[];saveH();load();pop(2)};
 
-/* ---------- gọi OpenAI (stream) ---------- */
+/* ---------- gọi Gemini (stream) qua Cloudflare ---------- */
 function errText(s,m){
  if(s==401||s==403)return 'Chưa được cấp quyền dùng Worker hoặc API Key không hợp lệ. Hãy kiểm tra Cloudflare Secrets và giới hạn truy cập.';
  if(s==429)return 'Đã chạm giới hạn sử dụng AI (429). Hãy thử lại sau hoặc kiểm tra hạn mức Gemini/Cloudflare.';
