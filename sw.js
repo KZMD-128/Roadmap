@@ -1,26 +1,8 @@
-/* Service worker: luôn lấy bản mới nhất từ mạng trước, chỉ dùng bản lưu khi mất mạng.
-   Nhờ vậy mỗi lần cập nhật index.html trên repo, web tự hiện bản mới, không cần đổi tên cache. */
-const CACHE = 'rm-offline';
-
-self.addEventListener('install', () => { self.skipWaiting(); });
-
-self.addEventListener('activate', e => {
-  e.waitUntil((async () => {
-    for (const k of await caches.keys()) if (k !== CACHE) await caches.delete(k);
-    await self.clients.claim();
-  })());
-});
-
-self.addEventListener('fetch', e => {
-  const r = e.request;
-  if (r.method !== 'GET' || new URL(r.url).origin !== location.origin) return;
-  e.respondWith((async () => {
-    try {
-      const res = await fetch(r, { cache: 'no-cache' }); /* luôn kiểm tra lại với máy chủ, tránh cache 10 phút của GitHub Pages */
-      if (res.status === 200) { try { (await caches.open(CACHE)).put(r, res.clone()); } catch (err) {} }
-      return res;
-    } catch (err) {
-      return (await caches.match(r, { ignoreSearch: true })) || (await caches.match('index.html')) || Response.error();
-    }
-  })());
-});
+/* KZMD128 v4: network-first HTML/JS/CSS; precache current PWA shell for offline use. */
+const CACHE='kzmd128-offline-v4';
+const FILES=['./','./index.html','./daily.css?v=4','./daily.js?v=4','./manifest.webmanifest','./icons/icon-192-v4.png','./icons/icon-512-v4.png','./icons/icon-maskable-512-v4.png','./icons/apple-touch-icon-v4.png','./icons/favicon-32-v4.png','./brand/kzmd128-symbol.svg'];
+self.addEventListener('install',event=>{event.waitUntil((async()=>{try{await (await caches.open(CACHE)).addAll(FILES)}catch(e){}await self.skipWaiting()})())});
+self.addEventListener('activate',event=>{event.waitUntil((async()=>{for(const key of await caches.keys())if(key!==CACHE)await caches.delete(key);await self.clients.claim()})())});
+self.addEventListener('fetch',event=>{const req=event.request;if(req.method!=='GET'||new URL(req.url).origin!==location.origin)return;
+ event.respondWith((async()=>{try{const response=await fetch(req,{cache:'no-cache'});if(response.ok){try{(await caches.open(CACHE)).put(req,response.clone())}catch(e){}}return response}
+ catch(e){return (await caches.match(req,{ignoreSearch:true}))||(req.mode==='navigate'?await caches.match('./index.html'):null)||Response.error()}})())});
