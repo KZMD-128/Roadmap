@@ -2055,14 +2055,14 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
 <div class="cpw glass" id="cpw" role="dialog" aria-label="Trò chuyện với Capy" inert>
  <div class="cpwh">
   <div class="cpwt"><b>Capy</b><small id="cpsub">Trợ lý AI</small></div>
-  <button class="cpib" id="cpset" aria-label="Cài đặt Gemini" title="Cài đặt Gemini"><svg class="i"><use href="#i-sliders"/></svg></button>
+  <button class="cpib" id="cpset" aria-label="Cài đặt AI" title="Cài đặt AI"><svg class="i"><use href="#i-sliders"/></svg></button>
   <button class="cpib" id="cpclr" aria-label="Xóa cuộc trò chuyện" title="Xóa cuộc trò chuyện"><svg class="i"><use href="#i-trash"/></svg></button>
   <button class="cpib" id="cpx" aria-label="Đóng"><svg class="i"><use href="#i-x"/></svg></button>
  </div>
  <div class="cpset" id="cpsetp"><div><div class="cpsi">
-  <label for="cpworker">Gemini — Cloudflare Worker đã kết nối sẵn</label>
+  <label for="cpworker">AI — Cloudflare Worker đã kết nối sẵn</label>
   <input id="cpworker" type="url" readonly autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="https://kzmd128-ai...workers.dev" aria-describedby="cpworkhelp">
-  <p id="cpworkhelp">KZMD128 tự sử dụng Worker được cấu hình sẵn. Gemini API Key lưu trong Cloudflare Secrets, không nằm trong file HTML. Nếu AI báo lỗi, hãy kiểm tra cấu hình Cloudflare.</p>
+  <p id="cpworkhelp">KZMD128 tự sử dụng Worker được cấu hình sẵn. Gemini API Key lưu trong Cloudflare Secrets, không nằm trong file HTML. Nếu AI báo lỗi, hãy kiểm tra cấu hình Workers AI tại Cloudflare.</p>
   <details class="cpold" hidden><summary>Cấu hình AI cá nhân (tuỳ chọn)</summary>
     <label for="cpkey">API Key lưu riêng trên thiết bị này</label>
     <input id="cpkey" type="password" autocomplete="off" spellcheck="false" placeholder="Chỉ dùng khi chạy riêng, không đưa vào HTML">
@@ -3824,7 +3824,7 @@ const API_URL='https://api.openai.com/v1/chat/completions';
 /* Dịch vụ AI miễn phí, không cần key (Pollinations). Capy tự dùng khi bạn chưa dán key riêng, thử lần lượt từng địa chỉ cho tới khi có cái chạy. */
 const FREE=[{url:'https://gen.pollinations.ai/v1/chat/completions',model:'openai-fast'},{url:'https://text.pollinations.ai/openai',model:'openai'}];
 const SPEED=42,KEY='rm_ai_key',MOD='rm_ai_model',HIS='rm_ai_hist',DEF='gpt-4o-mini';
-const SYS='Bạn là Capy, một chú capybara dễ thương và là trợ lý AI thân thiện. Bạn được kết nối với Google Gemini qua Cloudflare Worker của KZMD128, không phải GPT-4 của OpenAI. Nếu người dùng hỏi đang sử dụng mô hình nào, hãy giải thích rằng Capy kết nối Gemini qua Cloudflare và tên phiên bản cụ thể do Worker quyết định. Đừng tự nhận là GPT-4. Trả lời bằng tiếng Việt (trừ khi người dùng viết bằng ngôn ngữ khác), ngắn gọn, dễ hiểu, giọng ấm áp và hơi vui. Nếu người dùng đang bối rối, hãy giải thích từng bước thật cơ bản.';
+const SYS='Bạn là Capy, một chú capybara dễ thương và là trợ lý AI thân thiện. Bạn được kết nối với Gemma 4 qua Cloudflare Workers AI của KZMD128, không phải Gemini API hay GPT-4 của OpenAI. Nếu người dùng hỏi đang sử dụng mô hình nào, hãy giải thích rằng Capy kết nối Gemma 4 qua Cloudflare Workers AI. Đừng tự nhận là GPT-4. Trả lời bằng tiếng Việt (trừ khi người dùng viết bằng ngôn ngữ khác), ngắn gọn, dễ hiểu, giọng ấm áp và hơi vui. Nếu người dùng đang bối rối, hãy giải thích từng bước thật cơ bản.';
 const ls={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
 const rnd=(a,b)=>a+Math.random()*(b-a);
 
@@ -3911,7 +3911,7 @@ const getKey=()=>(ls.get(KEY)||'').trim();
 const hasKey=()=>!!(getProxy()||getKey());
 const model=()=>getProxy()?'gemini-2.5-flash':(ls.get(MOD)||'').trim()||DEF;
 window.RMAI={targets(){const p=getProxy();return p?[{url:p,model:model(),auth:false,proxy:true}]:getKey()?[{url:API_URL,model:model(),auth:true,key:getKey(),proxy:false}]:FREE}};
-function status(){sub.textContent=getProxy()?'Gemini · kết nối Cloudflare':getKey()?'Trợ lý AI · '+model():'Trợ lý AI · miễn phí'}
+function status(){sub.textContent=getProxy()?'AI · Cloudflare Workers':getKey()?'Trợ lý AI · '+model():'Trợ lý AI · miễn phí'}
 function welcome(){add('a','Chào bạn! Mình là Capy. Bạn muốn hỏi gì nào?')}
 function load(){msgs.innerHTML='';if(!hist.length)welcome();else hist.slice(-40).forEach(m=>add(m.role=='user'?'u':'a',m.content));status()}
 
