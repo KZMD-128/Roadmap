@@ -2417,6 +2417,137 @@ button:disabled,[aria-disabled="true"]{opacity:.48;cursor:not-allowed;filter:non
 #daily .d-task-inline-note textarea{position:static;top:auto;left:auto;right:auto;bottom:auto;transform:none;width:100%;}
 @media(prefers-reduced-motion:reduce){#daily .d-task-inline-note textarea{transition:none!important}}
 </style>
+
+<style id="kz-daily-milestones-style">
+/* Daily — compact long-term progress and living, morphing streak fire */
+#daily .d-milestone-section{padding:13px 14px 14px;overflow:visible;isolation:isolate}
+#daily .d-milestone-header{position:relative;z-index:4;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+#daily .d-milestone-header .d-title{font-size:15px;letter-spacing:-.025em;line-height:1.3;margin:0}
+#daily .d-m-title-dot{color:var(--d-accent)}
+#daily .d-milestone-header .d-eyebrow,#daily .d-milestone-header .d-sub{display:none}
+#daily .d-m-date{font-size:10px;white-space:nowrap;color:var(--d-muted);padding:4px 8px;border-radius:999px;border:1px solid var(--d-rule);background:var(--fill)}
+#daily .d-milestone-layout{display:grid;grid-template-columns:126px minmax(0,1fr);align-items:stretch;gap:9px;min-width:0}
+#daily .d-flame-card{--fire-light:.9;position:relative;height:132px;min-height:132px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 5px 9px;overflow:hidden;isolation:isolate;border:1px solid rgba(255,155,81,.23);border-radius:16px;background:radial-gradient(ellipse 78% 75% at 50% 68%,rgba(238,106,30,.12),transparent 95%),linear-gradient(157deg,rgba(45,34,44,.93),rgba(18,23,40,.97));color:#ffefdd;box-shadow:inset 0 1px 0 rgba(255,240,213,.08),0 5px 13px rgba(15,20,38,.08)}
+#daily .d-flame-card:before{content:"";position:absolute;inset:-20px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 53% 57% at 50% 46%,rgba(255,196,111,.35) 0%,rgba(255,127,41,.23) 33%,rgba(224,62,28,.09) 61%,transparent 84%);opacity:var(--fire-light);animation:dFireAmbient 2.8s ease-in-out infinite alternate}
+#daily .d-fire-halo{position:absolute;z-index:0;left:50%;top:8px;width:126px;height:112px;translate:-50% 0;border-radius:50%;pointer-events:none;background:radial-gradient(ellipse,rgba(255,239,170,.35) 0%,rgba(255,153,67,.27) 27%,rgba(228,65,55,.12) 54%,transparent 78%);filter:blur(13px);opacity:var(--fire-light);animation:dFireHalo 2.1s ease-in-out infinite alternate}
+#daily .d-fire-art{height:101px;width:110px;position:relative;flex:none;display:grid;place-items:end center;isolation:isolate;pointer-events:none;filter:drop-shadow(0 0 9px rgba(255,140,55,.36))}
+#daily .d-fire-svg{height:101px;width:94px;position:relative;z-index:1;overflow:visible;transform-origin:50% 100%;filter:drop-shadow(0 0 5px rgba(255,116,43,.24))}
+#daily .d-fire-layers{transform-box:view-box;transform-origin:365px 615px}
+#daily .d-fire-morph{transform-box:view-box;transform-origin:365px 615px}
+#daily .d-fire-outer{animation:dFlameOuter 2.65s ease-in-out infinite alternate}
+#daily .d-fire-inside{animation:dFlameMiddle 2.12s -.55s ease-in-out infinite alternate}
+#daily .d-fire-white{animation:dFlameCore 1.68s -.35s ease-in-out infinite alternate}
+#daily .d-fire-shadow{position:absolute;z-index:0;bottom:3px;left:50%;translate:-50% 0;width:72px;height:6px;border-radius:50%;background:rgba(0,0,0,.28);filter:blur(4px);opacity:.38}
+#daily .d-fire-pool{position:absolute;z-index:0;bottom:3px;width:91px;height:19px;background:radial-gradient(ellipse,rgba(255,198,116,.7),rgba(255,119,48,.24) 46%,transparent 78%);filter:blur(9px);animation:dFireHalo 1.8s ease-in-out infinite alternate}
+#daily .d-fire-ember{position:absolute;z-index:2;width:2px;height:3px;border-radius:50%;bottom:13px;left:calc(14% + var(--n,0)*1%);background:#ffe6b6;box-shadow:0 0 7px rgba(255,190,94,.95);animation:dFireEmber var(--dur,3s) var(--delay,0s) ease-out infinite}
+#daily .d-fire-ember-1{--n:20;--dur:2.6s;--delay:-1.1s;--drift:-18px}
+#daily .d-fire-ember-2{--n:52;--dur:2.1s;--delay:-1.9s;--drift:12px}
+#daily .d-fire-ember-3{--n:31;--dur:3.0s;--delay:-.3s;--drift:9px}
+#daily .d-fire-ember-4{--n:40;--dur:2.3s;--delay:-1.6s;--drift:-9px}
+#daily .d-fire-ember-5{--n:60;--dur:2.7s;--delay:-2.3s;--drift:15px}
+#daily .d-fire-ember-6{--n:27;--dur:2.0s;--delay:-.7s;--drift:-12px}
+#daily .d-fire-ember-7{--n:48;--dur:3.4s;--delay:-3.1s;--drift:6px}
+#daily .d-fire-ember-8{--n:33;--dur:2.5s;--delay:-1.4s;--drift:21px}
+#daily .d-fire-ember-9{--n:44;--dur:2.9s;--delay:-2.7s;--drift:-19px}
+#daily .d-fire-number{z-index:2;position:relative;display:flex;align-items:baseline;gap:5px;margin-top:-2px;white-space:nowrap}
+#daily .d-fire-number strong{font-size:24px;line-height:1;font-weight:760;font-variant-numeric:tabular-nums;letter-spacing:-.05em;color:#fff8e6;text-shadow:0 0 14px rgba(255,171,62,.50)}
+#daily .d-fire-number span{font-size:10px;color:#ffd2a1;font-weight:570}
+#daily .d-fire-description,#daily .d-fire-foot{display:none}
+#daily .d-flame-card[data-fire-stage="dim"]{--fire-light:.36;border-color:rgba(235,156,73,.16)}
+#daily .d-flame-card[data-fire-stage="critical"]{--fire-light:.16;border-color:rgba(234,125,78,.13)}
+#daily .d-flame-card[data-fire-stage="out"]{--fire-light:.06;border-color:rgba(163,144,153,.13)}
+#daily .d-flame-card[data-fire-stage="dim"] .d-fire-art{opacity:.66;filter:drop-shadow(0 0 4px rgba(255,117,35,.18))}
+#daily .d-flame-card[data-fire-stage="critical"] .d-fire-art{opacity:.38;filter:grayscale(.35);scale:.81;transform-origin:50% 96%}
+#daily .d-flame-card[data-fire-stage="out"] .d-fire-art{opacity:.20;filter:grayscale(.85);scale:.68;transform-origin:50% 96%}
+#daily .d-flame-card[data-fire-stage="out"] .d-fire-ember,#daily .d-flame-card[data-fire-stage="critical"] .d-fire-ember{animation-duration:6s;opacity:.3}
+#daily .d-flame-card[data-fire-stage="out"] .d-fire-number strong{color:#cbc5c9;text-shadow:none}
+#daily .d-goal-milestones{display:flex;align-items:stretch;gap:8px;min-width:0;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--d-rule) transparent;padding-bottom:2px;-webkit-overflow-scrolling:touch}
+#daily .d-goal-milestones::-webkit-scrollbar{height:3px}
+#daily .d-goal-milestones::-webkit-scrollbar-thumb{background:var(--d-rule);border-radius:6px}
+#daily .d-m-goal{display:flex;align-items:center;gap:8px;flex:0 0 clamp(205px,49%,248px);min-width:0;height:132px;padding:9px 10px;border:1px solid var(--d-rule);border-radius:16px;background:linear-gradient(145deg,var(--d-soft),transparent);scroll-snap-align:start}
+#daily .d-m-circle{flex:none;position:relative;display:grid;place-items:center;width:57px;height:57px}
+#daily .d-m-circle svg{width:57px;height:57px;transform:rotate(-90deg);overflow:visible}
+#daily .d-m-circle circle{fill:none;stroke-width:8}
+#daily .d-m-ring-bg{stroke:var(--d-rule)}
+#daily .d-m-ring-fill{stroke:var(--d-accent);stroke-linecap:round;transition:stroke-dashoffset .8s cubic-bezier(.23,.85,.25,1);filter:drop-shadow(0 0 4px var(--ring2))}
+#daily .d-m-percent{position:absolute;font-size:12px;font-weight:720;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+#daily .d-m-details{flex:1;min-width:0;display:grid;gap:5px}
+#daily .d-m-kicker{font-size:8px;letter-spacing:.11em;font-weight:700;color:var(--d-muted)}
+#daily .d-m-name{font-size:11.5px;line-height:1.3;font-weight:650;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#daily .d-m-value{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px}
+#daily .d-m-value b{font-size:15px;font-weight:730;letter-spacing:-.035em;color:var(--d-accent);font-variant-numeric:tabular-nums}
+#daily .d-m-value span{font-size:10px;color:var(--d-muted)}
+#daily .d-m-hint{font-size:9px;color:var(--d-muted);line-height:1.35}
+#daily .d-m-empty{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;flex:1;min-height:132px;padding:8px;border:1px dashed var(--d-rule);border-radius:16px;color:var(--d-muted)}
+#daily .d-m-empty span{font-size:19px;color:var(--d-accent)}
+#daily .d-m-empty strong{font-size:11px;margin-top:2px;color:var(--d-strong)}
+#daily .d-m-empty p{font-size:10px;line-height:1.4;max-width:260px;margin:3px 0 0}
+.d-m-formbox{padding:13px;border:1px solid var(--d-rule);border-radius:15px;background:var(--d-soft);display:grid;gap:10px}
+.d-m-form-title{font-size:13px;font-weight:650;color:var(--d-strong);display:flex;gap:8px;align-items:baseline}
+.d-m-form-title small{font-size:10px;font-weight:400;color:var(--d-muted)}
+.d-m-formbox .d-formhint{margin:0;font-size:11px;line-height:1.6}
+/* One ignition flare: the flame grows upward from its base, then settles once. */
+#daily .d-flame-card:is(.d-fire-surge,.d-fire-celebrate){overflow:visible;z-index:3}
+#daily .d-fire-surge .d-fire-layers{animation:dFireIgnite 1.08s cubic-bezier(.12,.74,.22,1) both}
+#daily .d-fire-celebrate .d-fire-layers{animation:dFireIgnite 1.38s cubic-bezier(.12,.74,.22,1) both}
+#daily .d-fire-surge .d-fire-svg{animation:dFireLightPulse 1.08s ease-out both}
+#daily .d-fire-celebrate .d-fire-svg{animation:dFireLightPulse 1.38s ease-out both}
+#daily .d-fire-surge:before,#daily .d-fire-celebrate:before{animation:dFireBurstLight 1.38s ease-out both}
+#daily .d-fire-surge .d-fire-halo,#daily .d-fire-celebrate .d-fire-halo{animation:dFireBurstHalo 1.38s ease-out both}
+#daily .d-fire-celebrate .d-fire-pool{animation:dFirePoolBurst 1.38s ease-out both}
+#daily .d-fire-celebrate .d-fire-ember{animation-duration:.8s;box-shadow:0 0 13px #ffe7b6}
+@keyframes dFlameOuter{0%{transform:skewX(-1deg) scaleX(.985) scaleY(.99)}52%{transform:skewX(1.25deg) scaleX(1.025) scaleY(1.025)}100%{transform:skewX(-.7deg) scaleX(.99) scaleY(1)}}
+@keyframes dFlameMiddle{0%{transform:skewX(1deg) scaleX(.98) scaleY(.99)}55%{transform:skewX(-1.3deg) scaleX(1.035) scaleY(1.025)}100%{transform:skewX(.6deg) scaleX(.99) scaleY(1)}}
+@keyframes dFlameCore{0%{transform:skewX(-.8deg) scaleX(.97) scaleY(.98)}48%{transform:skewX(1deg) scaleX(1.045) scaleY(1.035)}100%{transform:skewX(-.5deg) scaleX(.985) scaleY(1)}}
+@keyframes dFireHalo{0%{scale:.9;opacity:calc(var(--fire-light)*.78)}100%{scale:1.12;opacity:var(--fire-light)}}
+@keyframes dFireAmbient{0%{opacity:calc(var(--fire-light)*.68)}100%{opacity:var(--fire-light)}}
+@keyframes dFireEmber{0%{transform:translate(0,0) scale(.4);opacity:0}15%{opacity:1}58%{opacity:.68}100%{transform:translate(var(--drift,12px),-86px) scale(.12);opacity:0}}
+@keyframes dFireIgnite{0%{transform:scaleY(1)}19%{transform:scaleY(1.32)}34%{transform:scaleY(1.49)}57%{transform:scaleY(1.23)}78%{transform:scaleY(1.08)}100%{transform:scaleY(1)}}
+@keyframes dFireLightPulse{0%{filter:brightness(1)}25%{filter:brightness(1.85)}48%{filter:brightness(1.55)}100%{filter:brightness(1)}}
+@keyframes dFireBurstLight{0%{opacity:var(--fire-light);filter:brightness(1)}28%{opacity:1;filter:brightness(2.25)}58%{opacity:.88;filter:brightness(1.45)}100%{opacity:var(--fire-light);filter:brightness(1)}}
+@keyframes dFireBurstHalo{0%{scale:1;opacity:var(--fire-light)}30%{scale:1.58;opacity:1;filter:brightness(1.65)}62%{scale:1.24;opacity:.82;filter:brightness(1.18)}100%{scale:1;opacity:var(--fire-light);filter:none}}
+@keyframes dFirePoolBurst{0%{scale:1;opacity:1}30%{scale:1.7;opacity:1}66%{scale:1.28;opacity:.82}100%{scale:1;opacity:1}}
+@media(max-width:1100px){#daily .d-milestone-layout{grid-template-columns:115px minmax(0,1fr)}#daily .d-m-goal{flex-basis:clamp(200px,51%,238px)}}
+@media(max-width:860px){#daily .d-milestone-section{order:1}#daily .d-aside .d-journal{order:2}#daily .d-primary>.d-section{order:3}#daily .d-primary>.d-section:last-child{order:4}}
+@media(max-width:590px){#daily .d-milestone-section{padding:12px 11px 13px}#daily .d-milestone-header{margin-bottom:8px}#daily .d-milestone-layout{grid-template-columns:105px minmax(0,1fr);gap:7px}#daily .d-flame-card{height:120px;min-height:120px;border-radius:14px}#daily .d-fire-art{height:91px;width:98px}#daily .d-fire-svg{height:91px;width:83px}#daily .d-fire-halo{width:105px;height:106px}#daily .d-fire-number strong{font-size:22px}#daily .d-fire-number span{font-size:9px}#daily .d-m-goal{height:120px;flex-basis:clamp(193px,86%,215px);padding:7px 9px;border-radius:14px}#daily .d-m-circle,#daily .d-m-circle svg{width:53px;height:53px}#daily .d-m-percent{font-size:11px}#daily .d-m-value b{font-size:14px}}
+@media(max-width:370px){#daily .d-milestone-header .d-title{font-size:14px}#daily .d-m-date{font-size:9px;padding:4px 6px}#daily .d-milestone-layout{grid-template-columns:97px minmax(0,1fr)}#daily .d-fire-art{scale:.95;transform-origin:50% 96%}#daily .d-m-goal{flex-basis:191px;gap:6px}#daily .d-m-circle,#daily .d-m-circle svg{width:49px;height:49px}}
+@media(prefers-reduced-motion:reduce){#daily .d-flame-card:before,#daily .d-fire-halo,#daily .d-fire-morph,#daily .d-fire-svg,#daily .d-fire-pool,#daily .d-fire-ember{animation:none!important}#daily .d-m-ring-fill{transition:none!important}}
+</style>
+<style id="kz-daily-living-fire-v3">
+/* Real flame motion: anchored roots, independently licking tips, rising embers. */
+#daily .d-fire-art{filter:drop-shadow(0 0 8px rgba(255,119,37,.32)) drop-shadow(0 0 18px rgba(255,84,24,.14))}
+#daily .d-flame-card[data-fire-stage="out"] .d-fire-art,#daily .d-flame-card[data-fire-stage="critical"] .d-fire-art{opacity:.78;filter:drop-shadow(0 0 6px rgba(255,115,35,.28)) drop-shadow(0 0 13px rgba(255,79,25,.12));scale:1;transform-origin:50% 96%}
+#daily .d-flame-card[data-fire-stage="out"]{--fire-light:.34}
+#daily .d-flame-card[data-fire-stage="critical"]{--fire-light:.48}
+#daily .d-fire-svg{overflow:visible;filter:drop-shadow(0 0 5px rgba(255,104,31,.20));transform:none}
+#daily .d-fire-layers{transform-box:view-box;transform-origin:365px 616px}
+#daily .d-fire-outer,#daily .d-fire-inside,#daily .d-fire-core{transform-box:view-box;transform-origin:365px 616px;will-change:transform}
+#daily .d-fire-outer{animation:dFlameOuterLick 1.34s cubic-bezier(.38,0,.62,1) infinite}
+#daily .d-fire-inside{animation:dFlameMiddleLick 1.02s cubic-bezier(.38,0,.62,1) infinite}
+#daily .d-fire-core{animation:dFlameCoreLick .82s cubic-bezier(.38,0,.62,1) infinite}
+#daily .d-fire-sparks{position:absolute;z-index:2;left:13px;right:13px;bottom:28px;height:84px;pointer-events:none;overflow:visible}
+#daily .d-fire-ember{position:absolute;left:var(--left);bottom:0;width:var(--size,3px);height:calc(var(--size,3px)*1.55);border-radius:65% 35% 65% 35%;background:linear-gradient(155deg,#ffe49a 0%,#ffb33e 43%,#f36b24 100%);box-shadow:0 0 4px rgba(255,187,73,.9),0 0 9px rgba(255,107,31,.65);opacity:0;transform:translate3d(0,0,0) rotate(25deg) scale(.5);animation:dFireEmberRise var(--dur,2.4s) var(--delay,0s) cubic-bezier(.18,.55,.34,1) infinite;will-change:transform,opacity}
+#daily .d-fire-ember:after{content:"";position:absolute;left:50%;top:55%;width:1.3px;height:15px;width:1.7px;transform:translateX(-50%);border-radius:2px;background:linear-gradient(to bottom,rgba(255,211,118,.9),rgba(255,132,39,.38),transparent);filter:blur(.2px)}
+#daily .d-flame-card[data-fire-stage="dim"] .d-fire-ember{opacity:.55;filter:saturate(.75)}
+#daily .d-flame-card[data-fire-stage="critical"] .d-fire-ember,#daily .d-flame-card[data-fire-stage="out"] .d-fire-ember{animation-duration:var(--dur,2.4s);filter:saturate(.9)}
+/* Completion is a single upward flare; the warm palette stays amber, never white. */
+#daily .d-fire-surge .d-fire-layers{animation:dFireIgniteUp 1.12s cubic-bezier(.12,.72,.22,1) both}
+#daily .d-fire-celebrate .d-fire-layers{animation:dFireIgniteUp 1.42s cubic-bezier(.12,.72,.22,1) both}
+#daily .d-fire-surge .d-fire-svg,#daily .d-fire-celebrate .d-fire-svg{filter:drop-shadow(0 0 10px rgba(255,110,27,.7)) drop-shadow(0 0 24px rgba(255,174,55,.42)) saturate(1.16)}
+#daily .d-fire-surge:before,#daily .d-fire-celebrate:before{animation:dFireWarmBurst 1.42s ease-out both}
+#daily .d-fire-surge .d-fire-halo,#daily .d-fire-celebrate .d-fire-halo{animation:dFireWarmHalo 1.42s ease-out both}
+#daily .d-fire-surge .d-fire-pool,#daily .d-fire-celebrate .d-fire-pool{animation:dFireWarmPool 1.42s ease-out both}
+#daily .d-fire-celebrate .d-fire-ember{animation-duration:.72s;box-shadow:0 0 7px #ffd47b,0 0 16px rgba(255,111,34,.9)}
+@keyframes dFlameOuterLick{0%,100%{transform:scaleY(.99) scaleX(1)}24%{transform:scaleY(1.14) scaleX(.995)}48%{transform:scaleY(1.025) scaleX(1.008)}73%{transform:scaleY(1.16) scaleX(.99)}}
+@keyframes dFlameMiddleLick{0%,100%{transform:scaleY(.97) scaleX(1)}31%{transform:scaleY(1.19) scaleX(.99)}62%{transform:scaleY(1.015) scaleX(1.012)}82%{transform:scaleY(1.16) scaleX(.995)}}
+@keyframes dFlameCoreLick{0%,100%{transform:scaleY(.95) scaleX(1)}38%{transform:scaleY(1.22) scaleX(.99)}69%{transform:scaleY(1.0) scaleX(1.01)}}
+@keyframes dFireEmberRise{0%{opacity:0;transform:translate3d(0,0,0) scale(.38)}12%{opacity:.96}48%{opacity:.86;transform:translate3d(calc(var(--drift)*.42),calc(var(--rise-y)*.48),0) scale(1)}78%{opacity:.58}100%{opacity:0;transform:translate3d(var(--drift),var(--rise-y),0) scale(.14)}}
+@keyframes dFireIgniteUp{0%{transform:scaleY(1)}18%{transform:scaleY(1.22)}34%{transform:scaleY(1.43)}55%{transform:scaleY(1.28)}77%{transform:scaleY(1.09)}100%{transform:scaleY(1)}}
+@keyframes dFireWarmBurst{0%{opacity:var(--fire-light);filter:none}28%{opacity:1;filter:saturate(1.2)}57%{opacity:.88}100%{opacity:var(--fire-light);filter:none}}
+@keyframes dFireWarmHalo{0%{scale:1;opacity:var(--fire-light)}30%{scale:1.48;opacity:1;filter:saturate(1.2)}62%{scale:1.2;opacity:.78}100%{scale:1;opacity:var(--fire-light);filter:none}}
+@keyframes dFireWarmPool{0%{scale:1;opacity:.8}30%{scale:1.55;opacity:1}66%{scale:1.2;opacity:.78}100%{scale:1;opacity:.8}}
+@media(prefers-reduced-motion:reduce){#daily .d-fire-outer,#daily .d-fire-inside,#daily .d-fire-core,#daily .d-fire-ember{animation:none!important}#daily .d-fire-sparks{display:none!important}}
+</style>
 </head><body>
 <svg style="display:none"><defs>
 <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></symbol>
@@ -2965,7 +3096,8 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
      <div class="d-layout">
       <div class="d-primary">
        <section class="d-card d-hero" id="dHero" aria-label="Tổng quan hôm nay"></section>
-       <section class="d-card d-section" aria-label="Mục tiêu hôm nay"><div class="d-head"><div><div class="d-titlewrap"><h2 class="d-title">Mục tiêu hôm nay</h2><span class="d-count" id="dTodayCount">0/0</span></div><p class="d-sub">Bắt đầu từ việc quan trọng nhất.</p></div></div><div id="dTodayList" class="d-tasklist"></div><div id="dEndedList"></div></section>
+       <section class="d-card d-milestone-section" id="dMilestones" aria-label="Tiến độ mục tiêu và chuỗi ngày liên tiếp"><div class="d-milestone-header"><div><div class="d-eyebrow">THE LONG GAME</div><h2 class="d-title">Tiến độ <span class="d-m-title-dot">·</span> Streak</h2><p class="d-sub">Tiến độ tích lũy và ngọn lửa kỷ luật của bạn.</p></div><span class="d-m-date" id="dMilestoneDate"></span></div><div id="dMilestoneBody"></div></section>
+       <section class="d-card d-section" aria-label="Mục tiêu hôm nay"><div class="d-head"><div><div class="d-titlewrap"><h2 class="d-title" id="dTaskHeading">Mục tiêu hôm nay</h2><span class="d-count" id="dTodayCount">0/0</span></div><p class="d-sub" id="dTaskIntro">Bắt đầu từ việc quan trọng nhất.</p></div></div><div id="dTodayList" class="d-tasklist"></div><div id="dEndedList"></div></section>
        <section class="d-card d-section" aria-label="Ngày chưa hoàn thành"><div class="d-pendingbar" id="dPendingHeader"><div><h2 class="d-title">Pending Days <span class="d-bubble" id="dPendingCount">0</span></h2><p class="d-sub">Việc cũ chưa xong? Bạn vẫn có thể làm bù.</p></div><button class="d-icon-btn" id="dPendingToggle" type="button" data-dact="togglepending" aria-expanded="true" title="Thu gọn hoặc mở rộng"><svg class="i"><use href="#i-chev"/></svg></button></div><div id="dPendingBody"></div></section>
       </div>
       <aside class="d-aside">
@@ -4428,6 +4560,7 @@ BOOT=false;
  const SCHEDULE={daily:'Hằng ngày',roadmap:'Theo Day',weekly:'Theo tuần',once:'Một lần'};
  const PROGRESS={checkbox:'Checkbox',quantity:'Số lượng',percentage:'Phần trăm',checklist:'Checklist'};
  const dateKey=()=>today();
+ const selectedDate=()=>safeDate(root().cfg.selected)||dateKey();
  const safeDate=x=>{if(typeof x!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(x))return null;const [y,m,d]=x.split('-').map(Number);if(y<1||m<1||m>12||d<1||d>31)return null;const v=new Date(0);v.setFullYear(y,m-1,d);v.setHours(12,0,0,0);return v.getFullYear()===y&&v.getMonth()===m-1&&v.getDate()===d?x:null};
  const dateLong=x=>x?new Date(x+'T12:00:00').toLocaleDateString('vi-VN',{weekday:'long',day:'numeric',month:'long',year:'numeric'}):'';
  const dtShort=x=>x?new Date(x+'T12:00:00').toLocaleDateString('vi-VN',{day:'2-digit',month:'2-digit',year:'numeric'}):'';
@@ -4461,16 +4594,199 @@ BOOT=false;
   value:0,checked:false,checks:{},notes:'',completedAt:null,completedOn:null,updatedAt:null};return R[k]};
  const itemsFor=(t,r)=>Array.isArray(r?.items)?r.items:(Array.isArray(t.v.items)?t.v.items:[]);
  const typeFor=(t,r)=>MODES.includes(r?.progressType)?r.progressType:t.v.progress;
- function progress(t){const r=getRec(t),mode=typeFor(t,r);if(!r)return 0;
+ function recordProgress(t,r,mode=typeFor(t,r)){
+  if(!r)return 0;
   if(mode==='checkbox')return r.checked?100:0;
   if(mode==='quantity')return Math.round(clamp((validNum(r.value)/Math.max(.0000001,validNum(r.quantityTarget,t.v.target)))*100,0,100)*10)/10;
   if(mode==='percentage')return clamp(r.value,0,100);
   if(mode==='checklist'){const items=itemsFor(t,r);return items.length?Math.round(items.filter(x=>r.checks&&r.checks[x.id]).length/items.length*1000)/10:0}
-  return 0;}
+  return 0;
+ }
+ function progress(t){return recordProgress(t,getRec(t));}
+ // When a goal is edited, update only its effective day's snapshot. Do not rewrite
+ // the previous days' checked boxes, numbers, checklist items, notes or timestamps.
+ function applyVersionToRecord(t,r,previousProgress){
+  if(!t||!r)return;
+  const oldMode=typeFor(t,r),mode=t.v.progress,ratio=clamp(previousProgress,0,100);
+  if(oldMode!==mode){
+   if(mode==='checkbox')r.checked=ratio>=100;
+   else if(mode==='quantity')r.value=Math.round(ratio/100*validNum(t.v.target)*10000)/10000;
+   else if(mode==='percentage')r.value=ratio;
+   else if(mode==='checklist')r.checks=Object.fromEntries((t.v.items||[]).map(x=>[x.id,ratio>=100]));
+  }
+  r.progressType=mode;
+  r.quantityTarget=t.v.target;
+  r.unit=t.v.unit||'';
+  if(mode==='checklist'){
+   r.items=(t.v.items||[]).map(x=>({...x}));
+   const previous=r.checks||{};
+   r.checks=Object.fromEntries(r.items.map(x=>[x.id,!!previous[x.id]]));
+  }else r.items=[];
+  const newProgress=recordProgress(t,r,mode);
+  if(newProgress<100){r.completedAt=null;r.completedOn=null;}
+  else if(previousProgress<100||!r.completedAt){r.completedAt=new Date().toISOString();r.completedOn=dateKey();}
+  r.updatedAt=new Date().toISOString();
+ }
+ // Recover records affected by older versions of the edit-mode bug, even after
+ // reloading on another day. The version valid on each date is authoritative.
+ function reconcileRecordModes(){let changed=false;
+  const goals=new Map(orderedGoals().map(g=>[g.id,g]));
+  for(const [key,r] of Object.entries(root().records)){
+   if(!r)continue;
+   const sep=key.lastIndexOf('|'),g=goals.get(r.goalId||key.slice(0,sep)),day=safeDate(r.date||key.slice(sep+1));
+   if(!g||!day)continue;
+   const t=dayTask(g,day);if(!t||!MODES.includes(t.v.progress)||r.progressType===t.v.progress)continue;
+   const before=recordProgress(t,r);
+   applyVersionToRecord(t,r,before);changed=true;
+  }
+  if(changed)saveDaily();
+ }
  const completed=t=>progress(t)>=100;
  const expandedChecklists=new Set();
  const completedLate=t=>{const r=getRec(t);return completed(t)&&r&&r.completedOn&&r.completedOn>t.date};
  const completedOnTime=t=>{const r=getRec(t);return completed(t)&&r&&r.completedOn===t.date};
+ // Lifetime milestone for each goal. A checkbox / completed checklist / percent
+ // is one session; a quantity goal contributes its actual saved units.
+ // Every record is read against the version effective on ITS OWN day.
+ function milestoneStats(g,asOf=selectedDate()){
+  const v=versionAt(g,asOf)||g.versions[0]||{};
+  const target=Math.max(1,Math.min(10000000,Math.floor(validNum(v.milestoneTarget,300))||300));
+  const unit=String(v.milestoneUnit||'lần').slice(0,30);
+  let count=0,days=0;
+  for(const [key,r] of Object.entries(root().records)){
+   if(!r||(r.goalId||key.slice(0,key.lastIndexOf('|')))!==g.id)continue;
+   const date=safeDate(r.date||key.slice(key.lastIndexOf('|')+1));
+   if(!date||date>asOf)continue;
+   const t=dayTask(g,date);if(!t)continue;
+   const mode=typeFor(t,r);
+   if(mode==='quantity')count+=Math.max(0,validNum(r.value));
+   else if(recordProgress(t,r,mode)>=100)count+=1;
+   if(recordProgress(t,r,mode)>=100)days++;
+  }
+  count=Math.round(count*1000)/1000;
+  return {count,target,unit,days,pct:Math.min(100,Math.max(0,count/target*100))};
+ }
+ // A streak is built from on-time daily completions (ALL scheduled goals).
+ // Up to two missed scheduled days can be rescued; the third burns it out.
+ // The current unfinished day does not count as a miss before midnight.
+ // No-task days (e.g. a weekly schedule) neither add to nor break the streak.
+ function streakStats(asOf=selectedDate()){
+  let earliest=asOf;
+  for(const g of orderedGoals())for(const v of g.versions){
+   const d=safeDate(v.start);if(d&&d<earliest)earliest=d;
+  }
+  let streak=0,gap=0,grace=0,started=false,latest=null;
+  for(let d=asOf,guard=0;d>=earliest&&guard<40000;d=addDate(d,-1),guard++){
+   const tasks=tasksOn(d);if(!tasks.length)continue;
+   const won=tasks.every(completedOnTime);
+   if(!won&&d===asOf&&asOf===dateKey())continue;
+   if(won){
+    if(!started){grace=gap;latest=d;started=true;}
+    streak++;gap=0;
+   }else{
+    gap++;
+    if(gap>2)break;
+   }
+  }
+  return {streak,grace:started?grace:0,last:latest,stage:!streak?'out':grace===2?'critical':grace===1?'dim':'burning'};
+ }
+ const milestoneFmt=n=>new Intl.NumberFormat('vi-VN',{maximumFractionDigits:2}).format(n);
+ // Keep the flame node in the DOM across updates so its idle motion never
+ // restarts when a checkbox, quantity, or note changes.
+ // Morph each jagged tongue with its own rhythm; the base stays planted.
+ // SVG path interpolation is GPU-independent and doesn't require per-frame JS.
+ function createFireVisual(){
+  const morph=(cls,gradient,states,duration,delay)=>`<path class="d-fire-morph ${cls}" d="${states[0]}" fill="url(#${gradient})"><animate attributeName="d" dur="${duration}s" begin="${delay}s" repeatCount="indefinite" calcMode="spline" keyTimes="0;.23;.51;.76;1" keySplines=".35 0 .65 1;.35 0 .65 1;.35 0 .65 1;.35 0 .65 1" values="${[...states,states[0]].join(';')}"></animate></path>`;
+  // Organic flame: the foot stays planted while each tongue stretches upward,
+  // curls, narrows and reforms at a different rhythm. No whole-flame rocking.
+  const outer=[
+   'M398 83 C348 108 310 140 296 180 C282 220 300 253 313 282 C324 306 319 326 303 331 C276 340 251 322 247 270 C221 302 199 344 187 389 C172 446 182 501 212 544 C246 591 308 615 369 616 C443 618 507 592 541 546 C569 507 567 455 547 412 C534 383 516 369 495 361 C502 381 502 400 490 407 C474 417 456 404 458 381 C460 360 479 336 486 310 C498 269 479 231 446 203 C416 178 383 155 383 124 C382 108 389 93 398 83 Z',
+   'M402 43 C365 82 320 127 301 176 C284 220 305 255 318 286 C329 311 322 330 304 336 C275 346 248 323 245 268 C217 304 195 348 184 394 C170 451 182 505 214 547 C249 592 310 616 370 616 C444 617 508 590 542 544 C571 505 568 453 548 410 C535 381 517 367 496 359 C503 380 503 400 490 408 C473 418 455 403 457 380 C459 358 479 333 486 306 C498 265 479 226 445 198 C414 172 389 145 390 111 C391 83 397 58 402 43 Z',
+   'M392 68 C326 102 294 145 286 187 C278 229 301 261 315 291 C327 315 320 333 302 339 C274 348 249 326 247 277 C220 309 198 350 188 395 C175 451 185 505 215 547 C249 592 310 616 370 617 C443 618 507 592 541 546 C569 507 567 455 547 412 C534 383 516 369 495 361 C502 381 502 400 490 407 C474 417 456 404 458 381 C460 360 479 336 486 310 C498 269 479 231 446 203 C416 178 388 149 390 116 C389 96 390 80 392 68 Z',
+   'M405 57 C355 94 315 136 295 183 C278 226 299 260 313 289 C325 313 319 332 302 337 C274 346 248 325 246 274 C219 306 197 348 186 393 C172 450 182 504 213 546 C247 592 309 616 370 616 C443 618 507 592 541 546 C570 507 568 455 548 412 C535 383 517 369 496 361 C503 382 502 401 489 408 C473 418 455 404 457 381 C459 359 478 335 486 309 C498 268 479 230 445 202 C414 176 391 151 392 119 C393 91 400 69 405 57 Z'
+  ];
+  const middle=[
+   'M374 260 C356 280 346 306 344 334 C342 362 346 392 338 414 C331 435 314 441 296 436 C282 432 273 421 268 409 C254 436 246 466 247 497 C248 543 273 578 313 599 C346 617 395 620 434 610 C471 600 495 575 501 542 C507 510 496 470 477 442 C480 459 471 473 455 477 C437 482 419 471 414 454 C410 440 414 421 408 399 C401 371 384 349 368 326 C350 301 352 279 374 260 Z',
+   'M382 226 C365 254 349 291 346 329 C343 364 350 394 339 419 C330 442 311 448 293 440 C278 434 269 419 264 402 C250 433 242 467 245 501 C248 547 275 581 315 601 C349 619 397 621 436 609 C473 598 497 572 503 539 C509 507 497 467 475 439 C479 458 469 475 452 479 C434 484 417 471 412 453 C408 438 413 419 406 397 C399 369 382 347 366 324 C349 299 365 253 382 226 Z',
+   'M368 246 C339 276 337 306 340 337 C343 369 350 397 338 419 C327 440 308 443 291 433 C278 425 271 410 269 393 C252 426 244 463 249 499 C255 544 279 579 316 599 C349 617 395 620 434 610 C471 600 495 575 501 542 C507 510 496 470 477 442 C480 459 471 473 455 477 C437 482 419 471 414 454 C410 440 414 421 408 399 C401 371 384 349 368 326 C353 306 361 275 368 246 Z',
+   'M380 235 C361 260 348 293 345 330 C342 365 348 395 338 417 C329 439 312 445 294 438 C279 432 270 418 266 402 C251 433 244 466 247 500 C251 545 275 580 315 600 C348 618 396 621 435 609 C472 598 496 573 502 540 C508 508 497 468 476 440 C480 459 469 475 452 479 C434 484 417 471 412 453 C408 438 413 419 406 397 C399 369 382 347 366 324 C350 302 360 261 380 235 Z'
+  ];
+  const core=[
+   'M374 416 C363 431 359 448 362 465 C366 485 385 502 405 527 C427 554 439 579 437 592 C434 610 416 616 393 616 C364 617 340 606 323 587 C304 566 294 535 294 502 C293 490 294 480 296 469 C307 495 322 515 338 531 C330 506 329 484 337 463 C344 443 358 425 374 416 Z',
+   'M382 385 C375 408 365 436 365 464 C365 489 388 510 410 536 C432 562 445 584 440 598 C434 615 414 619 391 617 C360 615 336 603 319 582 C301 560 291 530 292 497 C291 484 293 473 297 460 C310 489 326 512 343 529 C333 501 334 478 343 455 C353 427 375 400 382 385 Z',
+   'M366 402 C354 428 358 449 363 470 C369 493 389 513 408 537 C428 562 440 584 437 597 C433 613 414 617 392 616 C363 615 340 605 323 587 C304 566 294 535 294 502 C293 490 294 480 296 469 C307 495 322 515 338 531 C330 506 329 484 337 463 C341 439 354 416 366 402 Z',
+   'M378 394 C370 417 363 443 363 466 C363 489 385 508 406 533 C429 559 442 582 438 596 C433 613 414 618 392 617 C362 617 338 605 321 585 C302 563 292 532 293 499 C292 487 294 477 297 466 C309 494 324 516 340 532 C331 505 331 482 339 460 C347 434 366 408 386 394 Z'
+  ];
+  const sparks=[
+   [12,1.8,-.4,-9,92,3.2],[21,2.4,-1.1,12,116,3.8],[31,1.65,-.7,-14,102,2.8],
+   [40,2.15,-1.8,9,124,3.5],[50,1.9,-.2,-7,96,4.0],[60,2.55,-1.4,16,119,3.0],
+   [70,1.75,-.9,-12,108,3.7],[80,2.3,-2.0,8,128,3.1],[16,2.65,-2.5,18,111,2.9],
+   [27,1.95,-1.6,-18,122,3.6],[47,2.45,-2.2,13,132,3.2],[66,1.7,-1.3,-16,105,4.1],
+   [75,2.8,-2.7,11,126,2.7],[35,2.05,-.5,20,114,3.4],[56,2.6,-1.9,-10,130,3.8],[88,1.85,-1.0,-15,99,3.0]
+  ];
+  return `<div class="d-fire-halo" aria-hidden="true"></div>
+   <div class="d-fire-art" aria-hidden="true">
+    <div class="d-fire-shadow"></div><div class="d-fire-pool"></div>
+    <svg class="d-fire-svg" viewBox="160 35 410 595" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+     <defs>
+      <linearGradient id="d-fire-outer-fill" x1="360" y1="45" x2="390" y2="616" gradientUnits="userSpaceOnUse"><stop stop-color="#e44748"/><stop offset=".58" stop-color="#dc3d43"/><stop offset="1" stop-color="#c92f3b"/></linearGradient>
+      <linearGradient id="d-fire-middle-fill" x1="370" y1="225" x2="390" y2="616" gradientUnits="userSpaceOnUse"><stop stop-color="#ff9a52"/><stop offset=".55" stop-color="#ff8745"/><stop offset="1" stop-color="#ed6b36"/></linearGradient>
+      <linearGradient id="d-fire-core-fill" x1="365" y1="385" x2="390" y2="616" gradientUnits="userSpaceOnUse"><stop stop-color="#ffd85d"/><stop offset=".58" stop-color="#ffc342"/><stop offset="1" stop-color="#ed9b27"/></linearGradient>
+     </defs>
+     <g class="d-fire-layers">
+      ${morph('d-fire-outer','d-fire-outer-fill',outer,1.34,-.2)}
+      ${morph('d-fire-inside','d-fire-middle-fill',middle,1.02,-.58)}
+      ${morph('d-fire-core','d-fire-core-fill',core,.82,-.24)}
+     </g>
+    </svg>
+   </div>
+   <div class="d-fire-sparks" aria-hidden="true">${sparks.map(([left,dur,delay,drift,rise,size])=>`<i class="d-fire-ember" style="--left:${left}%;--dur:${dur}s;--delay:${delay}s;--drift:${drift}px;--rise-y:-${rise}px;--size:${size}px"></i>`).join('')}</div>
+   <div class="d-fire-number"><strong data-streak-count>0</strong><span>ngày streak</span></div>
+   <span class="d-fire-description" data-streak-description></span>`;
+ }
+
+ function renderMilestones(){
+  const view=selectedDate(),stats=streakStats(view),groups=orderedGoals().filter(g=>{const v=versionAt(g,view);return v&&safeDate(v.start)&&v.start<=view&&!(g.archivedAt&&g.archivedAt<=view);});
+  $d('#dMilestoneDate').textContent=view===dateKey()?'Hôm nay':dtShort(view);
+  const host=$d('#dMilestoneBody');
+  if(!host.querySelector('.d-milestone-layout')){
+   host.innerHTML=`<div class="d-milestone-layout"><div class="d-flame-card" data-fire-stage="out" role="status" aria-label="Chuỗi ngày hoàn thành">${createFireVisual()}</div><div class="d-goal-milestones" id="dGoalMilestones" tabindex="0" aria-label="Tiến độ các mục tiêu, cuộn ngang để xem thêm"></div></div>`;
+  }
+  const fire=host.querySelector('.d-flame-card');fire.dataset.fireStage=stats.stage;
+  // Respect reduced-motion preference for native SVG path morphs as well as CSS.
+  if(prefersLess()){const svg=fire.querySelector('.d-fire-svg');if(svg&&svg.pauseAnimations)svg.pauseAnimations();}
+  fire.querySelector('[data-streak-count]').textContent=stats.streak;
+  const subtitle=stats.stage==='out'?'Chưa có chuỗi đang duy trì':stats.grace===2?'Cảnh báo: còn một cơ hội giữ lửa':stats.grace===1?'Lửa yếu đi · Hoàn thành để hồi sinh':(stats.last===view?'Đã hoàn thành · Lửa đang bùng cháy':'Ngọn lửa đang cháy đều');
+  fire.querySelector('[data-streak-description]').textContent=subtitle;
+  // Status is conveyed by the flame and its accessible label, not a large instructional footer.
+  fire.setAttribute('aria-label',`${stats.streak} ngày streak. ${subtitle}`);
+  const goalHost=host.querySelector('#dGoalMilestones');
+  const old=new Map([...goalHost.querySelectorAll('[data-mile-goal]')].map(n=>[n.dataset.mileGoal,n]));
+  const entries=groups.map(g=>{
+   const v=versionAt(g,view),s=milestoneStats(g,view),rad=37,circ=2*Math.PI*rad;
+   let node=old.get(g.id);
+   if(!node){const tpl=document.createElement('template');tpl.innerHTML=`<div class="d-m-goal" data-mile-goal="${ehtml(g.id)}"><div class="d-m-circle"><svg viewBox="0 0 96 96" aria-hidden="true"><circle class="d-m-ring-bg" cx="48" cy="48" r="37"></circle><circle class="d-m-ring-fill" cx="48" cy="48" r="37" stroke-dasharray="${circ}" stroke-dashoffset="${circ}"></circle></svg><span class="d-m-percent"></span></div><div class="d-m-details"><span class="d-m-kicker">MỤC TIÊU TÍCH LŨY</span><strong class="d-m-name"></strong><div class="d-m-value"><b></b><span></span></div><small class="d-m-hint"></small></div></div>`;node=tpl.content.firstElementChild;}
+   node.querySelector('.d-m-percent').textContent=(s.pct>0&&s.pct<10?s.pct.toLocaleString('vi-VN',{maximumFractionDigits:1}):Math.round(s.pct))+'%';
+   node.querySelector('.d-m-name').textContent=v.name||'Mục tiêu';
+   node.querySelector('.d-m-value b').textContent=milestoneFmt(s.count)+' / '+milestoneFmt(s.target);
+   node.querySelector('.d-m-value span').textContent=s.unit;
+   node.querySelector('.d-m-hint').textContent=s.pct>=100?'✦ Bạn đã chạm cột mốc!':`Còn ${milestoneFmt(Math.max(0,s.target-s.count))} ${s.unit} để cán đích`;
+   node.setAttribute('aria-label',`${v.name}: ${milestoneFmt(s.count)} trên ${milestoneFmt(s.target)} ${s.unit}`);
+   const ring=node.querySelector('.d-m-ring-fill');
+   requestAnimationFrame(()=>{if(ring.isConnected)ring.style.strokeDashoffset=String(circ*(1-s.pct/100));});
+   return node;
+  });
+  const preservedScroll=goalHost.scrollLeft;
+  if(entries.length){goalHost.replaceChildren(...entries);goalHost.scrollLeft=preservedScroll;}
+  else goalHost.innerHTML=`<div class="d-m-empty"><span>✦</span><strong>Cột mốc tiếp theo của bạn</strong><p>Tạo một mục tiêu, đặt tổng số lần cần đạt (ví dụ 300 bài) để xem vòng tiến độ lớn dần mỗi ngày.</p></div>`;
+ }
+ function flareFire(celebrate=false){
+  const fire=$d('#dMilestoneBody .d-flame-card');if(!fire||prefersLess())return;
+  fire.classList.remove('d-fire-surge','d-fire-celebrate');void fire.offsetWidth;
+  fire.classList.add(celebrate?'d-fire-celebrate':'d-fire-surge');
+  clearTimeout(fire._flareTimer);fire._flareTimer=setTimeout(()=>fire.classList.remove('d-fire-surge','d-fire-celebrate'),1500);
+ }
+
  function saveDaily(){return save();}
  function mutate(t,kind,value){const r=ensure(t),old=progress(t),mode=typeFor(t,r);
   if(kind==='checked'&&mode==='checkbox')r.checked=!!value;
@@ -4614,11 +4930,13 @@ BOOT=false;
   state.frame=requestAnimationFrame(frame);
  }
  function renderHero(){
-  const summary=daySummary(dateKey()),p=summary.avg,host=$d('#dHero');
-  if(!host.querySelector('.d-hero-top'))host.innerHTML=`<div class="d-hero-top"><div><div class="d-eyebrow" data-hero-date></div><h1 class="d-heading">Today<span style="color:var(--d-accent)">.</span></h1><p data-hero-status></p></div><div class="d-hero-actions"><button type="button" class="d-primary-btn" data-dact="create">${i('plus')} Thêm mục tiêu</button><button type="button" class="d-secondary-btn d-manage-btn" data-dact="manage">${i('list')} Quản lý mục tiêu</button></div></div><div class="d-hero-bottom"><div><div class="d-eyebrow">Tiến độ hôm nay</div><div data-hero-help style="font-size:13px;color:var(--d-muted);margin-top:7px"></div><div class="d-progress-line"><i style="width:0%"></i></div></div><div class="d-ring" style="--a:0%"><b>0%</b><small>PROGRESS</small></div></div>`;
-  host.querySelector('[data-hero-date]').textContent=dateLong(dateKey());
-  host.querySelector('[data-hero-status]').innerHTML=summary.all.length?`Đã xong <b>${summary.done}/${summary.all.length}</b> mục tiêu hôm nay.`:'Hôm nay, tiến thêm một chút.';
-  host.querySelector('[data-hero-help]').textContent=summary.all.length?'Trung bình tiến độ từng mục tiêu.':'Chưa có mục tiêu hôm nay.';
+  const viewDate=selectedDate(),isToday=viewDate===dateKey(),summary=daySummary(viewDate),p=summary.avg,host=$d('#dHero');
+  if(!host.querySelector('.d-hero-top'))host.innerHTML=`<div class="d-hero-top"><div><div class="d-eyebrow" data-hero-date></div><h1 class="d-heading"><span data-hero-heading>Today</span><span style="color:var(--d-accent)">.</span></h1><p data-hero-status></p></div><div class="d-hero-actions"><button type="button" class="d-primary-btn" data-dact="create">${i('plus')} Thêm mục tiêu</button><button type="button" class="d-secondary-btn d-manage-btn" data-dact="manage">${i('list')} Quản lý mục tiêu</button></div></div><div class="d-hero-bottom"><div><div class="d-eyebrow" data-hero-progress-label>Tiến độ hôm nay</div><div data-hero-help style="font-size:13px;color:var(--d-muted);margin-top:7px"></div><div class="d-progress-line"><i style="width:0%"></i></div></div><div class="d-ring" style="--a:0%"><b>0%</b><small>PROGRESS</small></div></div>`;
+  host.querySelector('[data-hero-date]').textContent=dateLong(viewDate);
+  host.querySelector('[data-hero-heading]').textContent=isToday?'Today':viewDate<dateKey()?'Lịch sử':'Ngày đã chọn';
+  host.querySelector('[data-hero-progress-label]').textContent=isToday?'Tiến độ hôm nay':'Tiến độ ngày đã chọn';
+  host.querySelector('[data-hero-status]').innerHTML=summary.all.length?`Đã xong <b>${summary.done}/${summary.all.length}</b> mục tiêu ${isToday?'hôm nay':'của ngày này'}.`:(isToday?'Hôm nay, tiến thêm một chút.':'Không có mục tiêu được giao ngày này.');
+  host.querySelector('[data-hero-help]').textContent=summary.all.length?'Trung bình tiến độ từng mục tiêu.':'Chưa có mục tiêu cho ngày này.';
   animateHeroProgress(summary.all.length?p:0);
  }
  function patchTaskCard(card,t){
@@ -4650,21 +4968,24 @@ BOOT=false;
    if(badge)badge.textContent=`${items.filter(x=>checks[x.id]).length}/${items.length} việc · ${p}%`;
    card.querySelectorAll('[data-dsub]').forEach(field=>{field.checked=!!checks[field.dataset.sub];field.closest('label')?.classList.toggle('checked',field.checked)});
   }
-  const doneMark=card.querySelector('.d-task-actions>.d-status');
+  const doneMark=card.querySelector('.d-task-inline-actions>.d-status');
   if(doneMark)doneMark.remove();
   if(done&&mode!=='checkbox'){
-   const mark=document.createElement('span');mark.className='d-status done';mark.innerHTML=i('check');card.querySelector('.d-task-actions')?.prepend(mark);
+   const mark=document.createElement('span');mark.className='d-status done';mark.innerHTML=i('check');card.querySelector('.d-task-inline-actions')?.prepend(mark);
   }
   return true;
  }
- function renderToday(){const tasks=tasksOn(dateKey());$d('#dTodayCount').textContent=`${tasks.filter(completed).length}/${tasks.length}`;
+ function renderToday(){const viewDate=selectedDate(),isToday=viewDate===dateKey(),tasks=tasksOn(viewDate);
+  $d('#dTaskHeading').textContent=isToday?'Mục tiêu hôm nay':`Mục tiêu · ${dtShort(viewDate)}`;
+  $d('#dTaskIntro').textContent=isToday?'Bắt đầu từ việc quan trọng nhất.':viewDate<dateKey()?'Xem lại hoặc cập nhật những gì bạn đã lưu vào ngày này.':'Mục tiêu dự kiến cho ngày được chọn.';
+  $d('#dTodayCount').textContent=`${tasks.filter(completed).length}/${tasks.length}`;
   const host=$d('#dTodayList'),existing=new Map([...host.querySelectorAll('.d-task[data-goal][data-date]')].map(card=>[recKey(card.dataset.goal,card.dataset.date),card]));
-  if(!tasks.length)host.innerHTML=`<div class="d-empty"><span class="d-empty-symbol">✦</span>Hôm nay chưa có việc nào.<div style="margin-top:13px"><button type="button" class="d-secondary-btn" data-dact="create">${i('plus')} Tạo mục tiêu đầu tiên</button></div></div>`;
+  if(!tasks.length)host.innerHTML=isToday?`<div class="d-empty"><span class="d-empty-symbol">✦</span>Hôm nay chưa có việc nào.<div style="margin-top:13px"><button type="button" class="d-secondary-btn" data-dact="create">${i('plus')} Tạo mục tiêu đầu tiên</button></div></div>`:'<p class="d-empty">Ngày này không có mục tiêu được giao.</p>';
   else{
    const nodes=tasks.map(t=>{
     const key=recKey(t.g.id,t.date),card=existing.get(key);
     if(card&&patchTaskCard(card,t))return card;
-    const temp=document.createElement('template');temp.innerHTML=taskHTML(t);
+    const temp=document.createElement('template');temp.innerHTML=taskHTML(t,{past:viewDate<dateKey()});
     const fresh=temp.content.firstElementChild;fresh._version=t.v;fresh._mode=typeFor(t,getRec(t));return fresh;
    });
    // Reordering via replaceChildren retains listeners, focus and live animations.
@@ -4673,7 +4994,7 @@ BOOT=false;
    host.querySelectorAll('textarea[data-dinline-note]').forEach(resizeInlineNote);
   }
   const finished=orderedGoals().map(g=>({g,v:versionAt(g,dateKey())})).filter(({g,v})=>v&&v.schedule==='roadmap'&&v.days>0&&dateKey()>addDate(v.start,v.days-1)&&!g.archivedAt);
-  $d('#dEndedList').innerHTML=finished.length?`<div class="d-ended"><div class="d-eyebrow">Lộ trình đã kết thúc</div>${finished.map(({g,v})=>{let done=0;for(let n=0;n<v.days;n++){const t=dayTask(g,addDate(v.start,n));if(t&&completed(t))done++}return `<div class="d-ended-row"><div><b>${ehtml(v.name)}</b><small>${dtShort(v.start)} – ${dtShort(addDate(v.start,v.days-1))}</small></div><div><strong>${done}/${v.days} Day</strong><small>${v.days-done} chưa hoàn thành</small></div></div>`}).join('')}</div>`:'';}
+  $d('#dEndedList').innerHTML=isToday&&finished.length?`<div class="d-ended"><div class="d-eyebrow">Lộ trình đã kết thúc</div>${finished.map(({g,v})=>{let done=0;for(let n=0;n<v.days;n++){const t=dayTask(g,addDate(v.start,n));if(t&&completed(t))done++}return `<div class="d-ended-row"><div><b>${ehtml(v.name)}</b><small>${dtShort(v.start)} – ${dtShort(addDate(v.start,v.days-1))}</small></div><div><strong>${done}/${v.days} Day</strong><small>${v.days-done} chưa hoàn thành</small></div></div>`}).join('')}</div>`:'';}
  let pendingExpanded=true,pendingMax=5;
  function renderPending(pending){$d('#dPendingCount').textContent=pending.length;$d('#dPendingToggle').setAttribute('aria-expanded',pendingExpanded);
   $d('#dPendingBody').hidden=!pendingExpanded;if(!pendingExpanded)return;
@@ -4693,7 +5014,10 @@ BOOT=false;
  let journalDate=null,saveTimer=null,journalDirty=false;
  function renderJournal(){const d=safeDate(root().cfg.selected)||dateKey();if(journalDate===d)return;journalDate=d;
   const j=root().journals[d]||{};$d('#dJournalDate').textContent=dtShort(d);
-  $d('#dJournalFields').innerHTML=`<label class="d-journal-entry"><span class="d-journal-prompt">Hôm nay mình đã làm gì?</span><textarea data-djournal="did" aria-label="Hôm nay mình đã làm gì?" placeholder="Viết vài dòng về ngày của bạn…">${ehtml(j.did||'')}</textarea></label>`;
+  // Older saved journals may contain additional fields from the previous Daily UI.
+  // Show those existing fields for their exact date instead of silently hiding them.
+  const legacy=[['learned','Mình đã học được gì?'],['notes','Ghi chú khác']].filter(([key])=>String(j[key]||'').trim());
+  $d('#dJournalFields').innerHTML=`<label class="d-journal-entry"><span class="d-journal-prompt">Hôm nay mình đã làm gì?</span><textarea data-djournal="did" aria-label="Hôm nay mình đã làm gì?" placeholder="Viết vài dòng về ngày của bạn…">${ehtml(j.did||'')}</textarea></label>${legacy.map(([key,label])=>`<label class="d-journal-entry" style="margin-top:12px"><span class="d-journal-prompt">${label} (đã lưu)</span><textarea data-djournal="${key}" aria-label="${label}">${ehtml(j[key]||'')}</textarea></label>`).join('')}`;
   journalDirty=false;$d('#dJournalSaved').textContent=j.updatedAt?'Đã lưu':'Tự động lưu';$d('#dJournalSaved').classList.remove('failed');}
  function saveJournal(){if(!journalDate||!journalDirty)return; journalDirty=false;
   const obj=root().journals[journalDate]||{};
@@ -4705,7 +5029,7 @@ BOOT=false;
   if(btn){const any=['did','learned','notes'].some(k=>String(obj[k]||'').trim());let mark=btn.querySelector('i');if(any&&!mark){mark=document.createElement('i');mark.title='Có nhật ký';btn.appendChild(mark)}else if(!any&&mark)mark.remove()}}
  let lastDay=dateKey();
  function renderAll(){
-  root();renderHero();renderToday();const pending=allPending();renderPending(pending);renderCalendar(pending);renderJournal();
+  root();renderHero();renderToday();renderMilestones();const pending=allPending();renderPending(pending);renderCalendar(pending);renderJournal();
  }
  function completionMotion(gid,date,from,to,rect,dayBefore,dayAfter){
   if(from!==to){const a=dayBefore??from,b=dayAfter??to;window.KZSound?.progress(a,b,'daily');}
@@ -4720,7 +5044,7 @@ BOOT=false;
    const a=n*Math.PI*2/9,rad=39+(n%3)*15;return `<i class="d-spark" style="--x:${(Math.cos(a)*rad).toFixed(0)}px;--y:${(Math.sin(a)*rad-14).toFixed(0)}px;--delay:${n*14}ms;--c:${n%2?'#5bbde8':'#40cfa3'}"></i>`}).join('');
   document.body.appendChild(burst);setTimeout(()=>burst.remove(),1250);
  }
- function refresh(){journalDate=null;lastDay=dateKey();root().cfg.selected=safeDate(root().cfg.selected)||dateKey();root().cfg.month=monthKey(root().cfg.selected);renderAll();}
+ function refresh(){journalDate=null;lastDay=dateKey();root().cfg.selected=safeDate(root().cfg.selected)||dateKey();root().cfg.month=monthKey(root().cfg.selected);reconcileRecordModes();renderAll();}
  function updateGoalForm(form){const schedule=form.querySelector('[name=schedule]').value,progress=form.querySelector('[name=progress]').value;
   form.querySelectorAll('[data-only]').forEach(s=>s.hidden=!s.dataset.only.split(' ').includes(schedule)&&!s.dataset.only.split(' ').includes(progress));
   form.querySelectorAll('[data-week]').forEach(b=>b.classList.toggle('on',(form.dataset.week||'').split(',').map(Number).includes(+b.dataset.week)));}
@@ -4746,22 +5070,29 @@ BOOT=false;
   else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
  });
  function openGoal(gid){const g=gid?getGoal(gid):null,v=formVersion(g),items=Array.isArray(v.items)?v.items:[];
-  const sh=showShade(`<div class="d-modal-head"><div><div class="d-eyebrow">KZMD 2.0 / Daily</div><h2>${g?'Chỉnh sửa mục tiêu':'Thêm mục tiêu'}</h2></div><button class="d-icon-btn" data-dact="close" aria-label="Đóng">${i('x')}</button></div><form class="d-form" id="dGoalForm"><label>Tên mục tiêu<input name="name" maxlength="100" autocomplete="off" required placeholder="Ví dụ: IELTS" value="${ehtml(v.name||'')}"></label><label>Mô tả (tùy chọn)<textarea name="description" rows="2" maxlength="500" placeholder="Điều bạn muốn ghi nhớ…">${ehtml(v.description||'')}</textarea></label><div class="d-formrow"><label>Lịch thực hiện<select name="schedule"><option value="daily">Hằng ngày</option><option value="roadmap">Day Roadmap</option><option value="weekly">Theo tuần</option><option value="once">Một lần</option></select></label><label>Cách theo dõi<select name="progress"><option value="checkbox">Checkbox ✓</option><option value="quantity">Số lượng</option><option value="percentage">Phần trăm</option><option value="checklist">Checklist</option></select></label></div><div class="d-formrow"><label>Ngày bắt đầu<input type="date" name="start" required value="${ehtml(v.start||dateKey())}"></label><label data-only="roadmap">Tổng số Day<input type="number" min="1" max="20000" step="1" name="days" value="${v.days||100}"></label></div><div data-only="weekly"><label>Ngày trong tuần</label><div class="d-weekpick">${[['CN',0],['T2',1],['T3',2],['T4',3],['T5',4],['T6',5],['T7',6]].map(([text,n])=>`<button type="button" data-week="${n}">${text}</button>`).join('')}</div></div><div class="d-formrow" data-only="quantity"><label>Chỉ tiêu / ngày<input name="target" type="number" step="any" min="0.000001" value="${v.target||5}"></label><label>Đơn vị<input name="unit" maxlength="30" placeholder="câu, trang, phút…" value="${ehtml(v.unit||'')}"></label></div><div data-only="checklist"><label>Việc cần làm (mỗi dòng một việc)<textarea name="items" rows="4" placeholder="Một việc trên mỗi dòng">${ehtml(items.map(x=>x.name).join('\n'))}</textarea></label><p class="d-formhint">Mỗi dòng sẽ thành một ô đánh dấu.</p></div><p class="d-formhint">Chọn lịch và cách theo dõi riêng biệt.</p>${g?'<p class="d-formhint" style="color:var(--d-warn)">Thay đổi áp dụng từ hôm nay; lịch sử được giữ.</p>':''}<div class="d-form-footer"><button type="button" class="d-secondary-btn" data-dact="close">Hủy</button><button type="submit" class="d-primary-btn">${g?'Lưu thay đổi':'Tạo mục tiêu'}</button></div></form>`);
+  const sh=showShade(`<div class="d-modal-head"><div><div class="d-eyebrow">KZMD 2.0 / Daily</div><h2>${g?'Chỉnh sửa mục tiêu':'Thêm mục tiêu'}</h2></div><button class="d-icon-btn" data-dact="close" aria-label="Đóng">${i('x')}</button></div><form class="d-form" id="dGoalForm"><label>Tên mục tiêu<input name="name" maxlength="100" autocomplete="off" required placeholder="Ví dụ: IELTS" value="${ehtml(v.name||'')}"></label><label>Mô tả (tùy chọn)<textarea name="description" rows="2" maxlength="500" placeholder="Điều bạn muốn ghi nhớ…">${ehtml(v.description||'')}</textarea></label><div class="d-formrow"><label>Lịch thực hiện<select name="schedule"><option value="daily">Hằng ngày</option><option value="roadmap">Day Roadmap</option><option value="weekly">Theo tuần</option><option value="once">Một lần</option></select></label><label>Cách theo dõi<select name="progress"><option value="checkbox">Checkbox ✓</option><option value="quantity">Số lượng</option><option value="percentage">Phần trăm</option><option value="checklist">Checklist</option></select></label></div><div class="d-formrow"><label>Ngày bắt đầu<input type="date" name="start" required value="${ehtml(v.start||dateKey())}"></label><label data-only="roadmap">Tổng số Day<input type="number" min="1" max="20000" step="1" name="days" value="${v.days||100}"></label></div><div data-only="weekly"><label>Ngày trong tuần</label><div class="d-weekpick">${[['CN',0],['T2',1],['T3',2],['T4',3],['T5',4],['T6',5],['T7',6]].map(([text,n])=>`<button type="button" data-week="${n}">${text}</button>`).join('')}</div></div><div class="d-formrow" data-only="quantity"><label>Chỉ tiêu / ngày<input name="target" type="number" step="any" min="0.000001" value="${v.target||5}"></label><label>Đơn vị<input name="unit" maxlength="30" placeholder="câu, trang, phút…" value="${ehtml(v.unit||'')}"></label></div><div data-only="checklist"><label>Việc cần làm (mỗi dòng một việc)<textarea name="items" rows="4" placeholder="Một việc trên mỗi dòng">${ehtml(items.map(x=>x.name).join('\n'))}</textarea></label><p class="d-formhint">Mỗi dòng sẽ thành một ô đánh dấu.</p></div><div class="d-m-formbox"><div class="d-m-form-title">✦ Đích dài hạn <small>vòng tiến độ tròn</small></div><div class="d-formrow"><label>Tổng số muốn hoàn thành<input type="number" name="milestoneTarget" min="1" max="10000000" step="1" required value="${Math.max(1,Math.floor(validNum(v.milestoneTarget,300))||300)}" placeholder="300"></label><label>Đơn vị tích lũy<input name="milestoneUnit" maxlength="30" value="${ehtml(v.milestoneUnit||'lần')}" placeholder="bài, buổi, lần…"></label></div><p class="d-formhint">Checkbox, checklist hoặc phần trăm hoàn tất: +1 lần/ngày. Số lượng: cộng đúng số đã nhập. Không cộng trùng khi mở lại ngày cũ.</p></div><p class="d-formhint">Chọn lịch và cách theo dõi riêng biệt.</p>${g?'<p class="d-formhint" style="color:var(--d-warn)">Thay đổi áp dụng từ hôm nay; lịch sử được giữ.</p>':''}<div class="d-form-footer"><button type="button" class="d-secondary-btn" data-dact="close">Hủy</button><button type="submit" class="d-primary-btn">${g?'Lưu thay đổi':'Tạo mục tiêu'}</button></div></form>`);
   const form=sh.querySelector('#dGoalForm');form.elements.schedule.value=v.schedule||'daily';form.elements.progress.value=v.progress||'checkbox';form.dataset.week=(v.weekdays||[]).join(',');updateGoalForm(form);
   form.addEventListener('change',e=>{if(e.target.matches('[name=schedule],[name=progress]'))updateGoalForm(form)});
   form.addEventListener('click',e=>{const b=e.target.closest('[data-week]');if(!b)return;const days=new Set((form.dataset.week||'').split(',').filter(x=>x!=='').map(Number));const n=+b.dataset.week;if(days.has(n))days.delete(n);else days.add(n);form.dataset.week=[...days].join(',');updateGoalForm(form)});
   form.addEventListener('submit',e=>{e.preventDefault();const raw=new FormData(form),name=String(raw.get('name')||'').trim(),description=String(raw.get('description')||'').trim(),start=safeDate(raw.get('start'));
    const schedule=raw.get('schedule'),progressMode=raw.get('progress'),days=Number(raw.get('days')),target=Number(raw.get('target')),weekdays=(form.dataset.week||'').split(',').filter(x=>x!=='').map(Number);
+   const milestoneTarget=Number(raw.get('milestoneTarget')),milestoneUnit=String(raw.get('milestoneUnit')||'').trim().slice(0,30)||'lần';
    if(!name||!start){toast('Tên mục tiêu hoặc ngày bắt đầu không hợp lệ.');return}
    if(schedule==='roadmap'&&(!Number.isInteger(days)||days<=0||days>20000)){toast('Tổng số Day phải từ 1 đến 20.000.');return}
    if(schedule==='weekly'&&!weekdays.length){toast('Chọn ít nhất một ngày trong tuần.');return}
    if(progressMode==='quantity'&&(!Number.isFinite(target)||target<=0)){toast('Chỉ tiêu phải lớn hơn 0.');return}
+   if(!Number.isInteger(milestoneTarget)||milestoneTarget<1||milestoneTarget>10000000){toast('Đích tích lũy cần là số nguyên từ 1 đến 10.000.000.');return}
    let newItems=[];if(progressMode==='checklist'){
     const src=String(raw.get('items')||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean).slice(0,100);
     const oldItems=Array.isArray(v.items)?v.items:[],used=new Set();newItems=src.map(name=>{const matched=oldItems.find(x=>x.name===name&&!used.has(x.id));if(matched){used.add(matched.id);return {...matched}}return {id:id(),name}});
    }
-   const nv={from:g?dateKey():DMIN,name,description,start,schedule,progress:progressMode,days:schedule==='roadmap'?days:null,weekdays:schedule==='weekly'?weekdays:[],target:progressMode==='quantity'?target:null,unit:progressMode==='quantity'?String(raw.get('unit')||'').trim():'',items:progressMode==='checklist'?newItems:[]};
-   if(g){g.versions=g.versions.filter(x=>x.from!==dateKey());g.versions.push(nv);g.versions.sort((a,b)=>a.from.localeCompare(b.from));}
+   const nv={from:g?dateKey():DMIN,name,description,start,schedule,progress:progressMode,days:schedule==='roadmap'?days:null,weekdays:schedule==='weekly'?weekdays:[],target:progressMode==='quantity'?target:null,unit:progressMode==='quantity'?String(raw.get('unit')||'').trim():'',milestoneTarget,milestoneUnit,items:progressMode==='checklist'?newItems:[]};
+   if(g){
+    const oldTask=dayTask(g,dateKey()),previousProgress=oldTask?progress(oldTask):0;
+    g.versions=g.versions.filter(x=>x.from!==dateKey());g.versions.push(nv);g.versions.sort((a,b)=>a.from.localeCompare(b.from));
+    const newTask=dayTask(g,dateKey()),record=root().records[recKey(g.id,dateKey())];
+    if(newTask&&record)applyVersionToRecord(newTask,record,previousProgress);
+   }
    else root().goals.push({id:id(),createdAt:new Date().toISOString(),versions:[nv],archivedAt:null});
    if(!saveDaily())return;closeShade();renderAll();toast(g?'Đã cập nhật mục tiêu':'Đã tạo mục tiêu');});
   setTimeout(()=>form.elements.name.focus(),60);}
@@ -4779,28 +5110,28 @@ BOOT=false;
   if(k==='entry'){openEntry(gid,d);return}
   if(k==='showmore'){pendingMax+=10;renderPending(allPending());return}
   if(k==='togglepending'){pendingExpanded=!pendingExpanded;renderPending(allPending());return}
-  if(k==='pickdate'){clearTimeout(saveTimer);saveJournal();root().cfg.selected=d;root().cfg.month=monthKey(d);journalDate=null;saveDaily();renderCalendar(allPending());renderJournal();return}
+  if(k==='pickdate'){clearTimeout(saveTimer);saveJournal();saveVisibleNotes();root().cfg.selected=d;root().cfg.month=monthKey(d);journalDate=null;saveDaily();renderAll();return}
   if(k==='prevmonth'||k==='nextmonth'){let [y,m]=root().cfg.month.split('-').map(Number);const x=new Date(y,m-1+(k==='prevmonth'?-1:1),1);root().cfg.month=x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0');saveDaily();renderCalendar(allPending());return}
-  if(k==='gotoday'){clearTimeout(saveTimer);saveJournal();root().cfg.selected=dateKey();root().cfg.month=monthKey(dateKey());journalDate=null;saveDaily();renderCalendar(allPending());renderJournal();return}
+  if(k==='gotoday'){clearTimeout(saveTimer);saveJournal();saveVisibleNotes();root().cfg.selected=dateKey();root().cfg.month=monthKey(dateKey());journalDate=null;saveDaily();renderAll();return}
   if(k==='archive'){const g=getGoal(gid);if(!g)return;if(g.archivedAt)g.archivedAt=null;else if(confirm('Lưu trữ mục tiêu? Lịch sử được giữ, những ngày tương lai ngừng tạo nhiệm vụ.'))g.archivedAt=dateKey();else return;saveDaily();renderAll();openManage();return}
   if(k==='delete'){const g=getGoal(gid);if(!g)return;const name=g.versions.at(-1)?.name||'';if(!confirm(`Xóa vĩnh viễn "${name}" và tất cả tiến độ của mục tiêu này? Sao lưu JSON trước nếu muốn giữ lại.`))return;
    root().goals=root().goals.filter(x=>x.id!==gid);Object.keys(root().records).filter(key=>key.startsWith(gid+'|')).forEach(key=>delete root().records[key]);saveDaily();renderAll();openManage();return}
   const t=gid&&d?dayTask(getGoal(gid),d):null;if(!t)return;
-  const r=getRec(t),mode=typeFor(t,r),old=progress(t),rect=b.getBoundingClientRect(),dayBefore=daySummary(dateKey()).avg;
+  const r=getRec(t),mode=typeFor(t,r),old=progress(t),rect=b.getBoundingClientRect(),dayBefore=daySummary(selectedDate()).avg,streakBefore=streakStats(dateKey()).streak;
   if(k==='check')mutate(t,'checked',!r?.checked);
   else if(k==='plus'||k==='minus'){const cur=validNum(r?.value);mutate(t,'quantity',cur+(k==='plus'?1:-1));}
   else return;
-  refreshAfterMutation(gid,d);completionMotion(gid,d,old,progress(t),rect,dayBefore,daySummary(dateKey()).avg);}
+  refreshAfterMutation(gid,d);if(old<100&&progress(t)>=100&&d===dateKey())flareFire(streakStats(dateKey()).streak>streakBefore);completionMotion(gid,d,old,progress(t),rect,dayBefore,daySummary(selectedDate()).avg);}
  document.addEventListener('click',e=>{const b=e.target.closest('[data-dsummary]');if(b){const key=recKey(b.dataset.dsummary,b.dataset.date);const det=b.closest('details');if(det?.open)expandedChecklists.delete(key);else expandedChecklists.add(key)}});
  document.addEventListener('click',action);
  document.addEventListener('change',e=>{const target=e.target;
   if(target.matches('[data-dqty],[data-dpercent],[data-dpct],[data-dsub],[data-dnote]')){
-   const gid=target.dataset.dqty||target.dataset.dpercent||target.dataset.dpct||target.dataset.dsub||target.dataset.dnote,dt=target.dataset.date,t=dayTask(getGoal(gid),dt);if(!t)return;const old=progress(t),rect=target.getBoundingClientRect(),dayBefore=daySummary(dateKey()).avg;
+   const gid=target.dataset.dqty||target.dataset.dpercent||target.dataset.dpct||target.dataset.dsub||target.dataset.dnote,dt=target.dataset.date,t=dayTask(getGoal(gid),dt);if(!t)return;const old=progress(t),rect=target.getBoundingClientRect(),dayBefore=daySummary(selectedDate()).avg,streakBefore=streakStats(dateKey()).streak;
    if(target.hasAttribute('data-dqty'))mutate(t,'quantity',target.value);
    else if(target.hasAttribute('data-dpercent')||target.hasAttribute('data-dpct'))mutate(t,'percentage',target.value);
    else if(target.hasAttribute('data-dsub'))mutate(t,'sub',{id:target.dataset.sub,checked:target.checked});
    else if(target.hasAttribute('data-dnote')){mutate(t,'notes',target.value);renderToday();return}
-   refreshAfterMutation(gid,dt);completionMotion(gid,dt,old,progress(t),rect,dayBefore,daySummary(dateKey()).avg);
+   refreshAfterMutation(gid,dt);if(old<100&&progress(t)>=100&&dt===dateKey())flareFire(streakStats(dateKey()).streak>streakBefore);completionMotion(gid,dt,old,progress(t),rect,dayBefore,daySummary(selectedDate()).avg);
   }});
  const NOTE_COMPACT_PX=()=>matchMedia('(max-width:580px)').matches?35:38;
  const noteTimers=new WeakMap();
@@ -4822,6 +5153,7 @@ BOOT=false;
   input.style.overflowY=expanded&&natural>max?'auto':'hidden';
   label.classList.toggle('d-note-overflow',!expanded&&natural>compact+5);
  }
+ function saveVisibleNotes(){$d('#dTodayList').querySelectorAll('textarea[data-dinline-note]').forEach(persistInlineNote);}
  function persistInlineNote(input){clearTimeout(noteTimers.get(input));if(!input.isConnected)return;
   const t=dayTask(getGoal(input.dataset.dinlineNote),input.dataset.date);if(!t)return;
   if(String(getRec(t)?.notes||'')===input.value)return;
@@ -4854,11 +5186,11 @@ BOOT=false;
    root().cfg.month=monthKey(root().cfg.selected||now);root().cfg.lastSeenDay=now;journalDate=null;saveDaily();renderAll();}
  }
  setInterval(syncDay,12000);
- root();const prevSeen=safeDate(root().cfg.lastSeenDay),currentSelected=safeDate(root().cfg.selected);if(!currentSelected||currentSelected===prevSeen)root().cfg.selected=dateKey();root().cfg.lastSeenDay=dateKey();if(!/^\d{4}-\d{2}$/.test(root().cfg.month||'')||(currentSelected===prevSeen&&prevSeen!==dateKey()))root().cfg.month=monthKey(root().cfg.selected);
+ root();reconcileRecordModes();const prevSeen=safeDate(root().cfg.lastSeenDay),currentSelected=safeDate(root().cfg.selected);if(!currentSelected||currentSelected===prevSeen)root().cfg.selected=dateKey();root().cfg.lastSeenDay=dateKey();if(!/^\d{4}-\d{2}$/.test(root().cfg.month||'')||(currentSelected===prevSeen&&prevSeen!==dateKey()))root().cfg.month=monthKey(root().cfg.selected);
  renderAll();
  window.KZDaily={open:()=>{syncDay();renderAll()},refresh,syncDay,
   // pure-ish data helpers exposed for tests and manual inspection
-  inspect:{dayTask,tasksOn,progress,daySummary,allPending,addDate,diff,mutate,root,dayMetrics,completedOnTime}};
+  inspect:{dayTask,tasksOn,progress,daySummary,allPending,addDate,diff,mutate,root,dayMetrics,completedOnTime,milestoneStats,streakStats}};
 })();
 
 </script><script>
@@ -5639,7 +5971,7 @@ window.addEventListener('pagehide',()=>{finishRecord();stopAudio()});
 drawHistory();draw();
 })();
 </script>
-<!-- KZMD Sonic v6: short tactile UI sample + continuous progress sonification -->
+<!-- KZMD Sonic v7: short tactile UI sample + continuous, retargetable progress sonification -->
 <script>
 (()=>{
 'use strict';
@@ -5650,83 +5982,140 @@ const put=(k,v)=>{try{localStorage.setItem(k,String(v))}catch(e){}};
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,Number(v)||0));
 let enabled=(get('kz_sonic_on_v1')??get('rm_snd')??'1')!=='0';
 const volume=clamp(get('kz_sonic_volume_v1')??35,0,100);
-let ctx=null,bus=null,hitSample=null,initPending=false,lastTap=0,progressGroup=null,activeUntil=0;
-let dailySoundEnd=0; // Web Audio clock: start each Daily sweep after the previous one finishes.
+let ctx=null,bus=null,hitSample=null,initPending=false,lastTap=0,progressVoice=null,activeUntil=0;
+let toggleCommitTimer=0,toggleRevision=0,togglePending=false;
+const oneShots=new Set();
 
 const stats={played:0,progress:0,completions:0,clicks:0,grades:0,skipped:0,lastProgressPitch:0};
 const sampleBase64='SUQzBAAAAAAAIlRTU0UAAAAOAAADTGF2ZjYxLjcuMTAzAAAAAAAAAAAAAAD/84TAAAAAAAAAAAAASW5mbwAAAA8AAAAJAAAHgAAzMzMzMzMzMzMzM0xMTExMTExMTExMZmZmZmZmZmZmZmaAgICAgICAgICAgJmZmZmZmZmZmZmZs7Ozs7Ozs7Ozs7PMzMzMzMzMzMzMzObm5ubm5ubm5ubm//////////////8AAAAATGF2YzYxLjE5AAAAAAAAAAAAAAAAJAMwAAAAAAAAB4BjCVh+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/84TEACYB3mwHT8AAA4DJKc5ps6kLYdEEthcDoUCsViGMinLgrRXwc4ma0SghCw4C7FSKkcSlhuH5fMsDLhmEIGGnXIoYdyH6zgKAJiKCOI9ZcM0IMwErIy1tibv26kbjdP2pSUnJW/j+P5GKTm6eNu4/ks5Xjcbvyhy3fl9R2GcM4gSJqkYhDmOfalivGJZjXp+4YbpLADPggJAxrBBYP//8QBhtW0aUFt3YAXU9OINYt0YpNLdlTy220f8qHZv/84TEGy2jDtFvmHgC1GWUG41m0LWFe8cbIZFIQd48gnEGu1EeERTiyQy2Huc5eGZCFopxNTlQDQzk9hUQuNkeURqYU8eTIlVIip1OXwllWRWMkA/UJeOrwINZoU2YMOqvZXOj+TV8RJpay1YrxmRs1Lfesu1ejKXljx8Z3toSCG7YZZvj/VbJeNV9Le+9+79w/3q/3///Gs1MsS7Dj6x//2uPeLPAo56VgAUH40+lElNxoqfL+OpYikdQkrSVFH3/84TEFy3KCpSn2MACG1U6sKPa2gi5sCBYJ5IygkRlMYUJSuqIwMrHAGNhkGCAgZKxDiY94QQl+AKbqwCpjGQmMDjFknRWKZooss+WM4S7mHRpeZnMn0+bSUrZU4S9oo3ItSuSGpHAUXnJO6TLkelMwhLhNewlURnW5Q9hblLWWG2q0apsrctu0VLha7aoX1nH+ne/zuX5ZXLUapj6g4o8IpFBY9ErvBX5V/8sCqqALgft4GlNxEcIWJWMHCuKW/f/84TEEisB/oCmy9NoWFEgwwyz0R2JrAIboBhYIyzgdMKDGgkPsGzCSLoPqkagk2KgioAQQquHIAJ8KqCoI8kIjUF1UTLVOrgGvgw8OEC4jB07lU3LRqWDf8ngvFyHGK1NPFIfzEvq56lTDLGPUkCXM5+woqeS5cI7ao8rpSqJDlCVyEwcRppzR0XQB84q1n+obQfGG4V/VakPTItS5xwCV/4QHFKHbhOB/JuYZ+RLDSLA48PJC/ZdQqBRQ4aV0NL/84TEGSyKFngG082E4t0BkoRBEAo0BczpgRWwQFKpBdZmRRMVCqAeEmPKMyS7KAAlkBANTAgHBUWkiBhwhYCh8qlTmKzJHAUlR7SBYe08vYsGuaCWTPrMtjIQyu4DeFmkYcmvWoYLmhxnl/OI+k8SFBHqNYuA4A5gJ0cBOkEpnBqgMVtbmueAXEmF6Ral2lTW+tEOfDOkR1JCIMMpj4M7f95QOrRKVR8B+UZihgOD5QzAZgwlGx9Q5KZQUBAEhwX/84TEGSrCFnQGzs0wxjTALJJngI4xMwFYAQx4AvagLQ4K7AxQFGSKYyzmmSCQXIgDQeFAAFKJDBk4iIAM0eUApKTCzVoAamyGMyFrMQhyAYc90m2jMt5ey59nuqWHXzgtZzvN2WIz9Ai1ZmzIGqsyZyqsyaUS67jnj+rRuQ/bXf7Wvld571hrM7kQckEgR5FHkiIUeh1yjB1TKiYVLB0cAcxi8yjmYwZqWmkWmlWbjKkBSDxaVnZiCgYVL1JGKKX/84TEISaaBmgHWcgA7NKEGjGiMnvCoZZwsQvEtZymsAA0CkBZkD8g1wEhmueaTpxKsgTsY9SzDZ9wI9DCqHed/s/njjTU3btNjJaemhl1VquCwFjzc2AW2eroh+UyqNXeVa3Na/7OOuf/44b/+////6/LHlrVbPGU5VfHFu+FSjpEOrE1QooCAALACAQCMgMUxAAU24UKEDCihnMrJjOxoojXYwojjDJaQwoYOIlQHDA0hiL8ryaODCAq1OaAHAD/84TEOTRyKky3mdAAXANiREh8eWMmS6IYuMGWVoBwQRA0BSGjqrtQkstgrVamdtmDBmIxIdNrKZM60GPuxLVr63YjAQXELATLZoZjrZ2Wtizhy7JqtnW9VtYSOUyCM0NJyVV5+I25RbqfatVfq475rGXXr2fP////qZ2N29nwsECxFpUkwRFnotzgRB0+FgSOBEsmVy3+3h4+FgycCIePnwycldWuDPyYQgbE6Nk5Wu6tW0OjKNkxXaciSDUmsCH/84TEGiIZMbANzGABASJsBKBsDYnNiCBE+ORJJruWtacnWXeaXc0ue+tZmZy1rayt9la6iCv/E0KRBT4psX3xcQV2R34mhSIKfFN/j4vQV3///C4FPim/kcCpQV0I78TQpEFPxd8I4FSgrsv+KaFcCv//yeC9Bf//xcFVTEFNRTMuMTAwVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVU=';
 function sync(){const icon=btn.querySelector('use');icon?.setAttribute('href',enabled?'#i-speaker':'#i-mute');
  btn.classList.toggle('is-muted',!enabled);btn.setAttribute('aria-pressed',String(enabled));btn.setAttribute('aria-label',enabled?'Tắt âm thanh':'Bật âm thanh');btn.title=enabled?'Tắt âm thanh':'Bật âm thanh';}
 function init(){if(!enabled||!AC||document.hidden)return false;
- try{if(!ctx){ctx=new AC({latencyHint:'interactive'});bus=ctx.createGain();bus.gain.value=.36*volume/100;
+ try{if(!ctx){ctx=new AC({latencyHint:'interactive'});bus=ctx.createGain();bus.gain.value=(!togglePending&&enabled)?.36*volume/100:0;
   const comp=ctx.createDynamicsCompressor();comp.threshold.value=-15;comp.knee.value=12;comp.ratio.value=3;comp.attack.value=.003;comp.release.value=.14;bus.connect(comp);comp.connect(ctx.destination);
   if(!initPending){initPending=true;const bytes=Uint8Array.from(atob(sampleBase64),x=>x.charCodeAt(0));ctx.decodeAudioData(bytes.buffer).then(decoded=>{hitSample=decoded}).catch(()=>{});}}
   if(ctx.state==='suspended')ctx.resume().catch(()=>{});return ctx.state!=='closed';
  }catch(e){return false}}
+// Track short sounds so a mute/toggle can cancel every pending tail.
+function trackOneShot(source,gain){
+ const item={source,gain};oneShots.add(item);
+ source.addEventListener?.('ended',()=>oneShots.delete(item),{once:true});
+ return item;
+}
+function cancelOneShots(){
+ if(!ctx){oneShots.clear();return}
+ const t=ctx.currentTime;
+ for(const item of [...oneShots]){
+  try{const a=item.gain.gain;a.cancelScheduledValues(t);a.setValueAtTime(Math.max(.0001,Number(a.value)||.0001),t);a.linearRampToValueAtTime(.0001,t+.012);item.source.stop(t+.018)}catch(e){}
+ }
+ oneShots.clear();
+}
+function stopProgressVoice(){
+ if(!ctx||!progressVoice)return;
+ const voice=progressVoice;progressVoice=null;
+ const t=ctx.currentTime;holdParam(voice.master.gain,t);
+ voice.master.gain.setTargetAtTime(.0001,t,.005);
+ // The continuous oscillators are disposable: stop them after the tiny mute
+ // ramp so a later re-enable can never revive an old progress tone.
+ voice.oscillators.forEach(({osc})=>{try{osc.stop(t+.022)}catch(e){}});
+}
+function muteBusNow(){
+ if(!ctx||!bus)return;
+ const t=ctx.currentTime;holdParam(bus.gain,t);bus.gain.setTargetAtTime(.0001,t,.006);
+}
 // Tactile click is a carefully damped 158-ms excerpt of the door sample supplied by the user.
-function clickSound(type='tap',pitch=1){if(!ctx)return;
+function clickSound(type='tap',pitch=1){if(!ctx||!bus||!enabled||togglePending)return;
  const t=ctx.currentTime+.005,amp={tap:.64,nav:.50,confirm:.76,toggle:.56,soft:.33,close:.42,back:.42}[type]??.58;
  if(hitSample){const source=ctx.createBufferSource(),g=ctx.createGain(),lp=ctx.createBiquadFilter();source.buffer=hitSample;source.playbackRate.value=pitch*(type==='nav'?1.10:type==='soft'?.93:1);
   lp.type='lowpass';lp.frequency.value=type==='soft'?2100:4100;g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(amp,t+.003);g.gain.exponentialRampToValueAtTime(.0001,t+.145);
-  source.connect(lp);lp.connect(g);g.connect(bus);source.start(t);source.stop(t+.17);}
+  source.connect(lp);lp.connect(g);g.connect(bus);trackOneShot(source,g);source.start(t);source.stop(t+.17);}
  else{const o=ctx.createOscillator(),g=ctx.createGain();o.type='triangle';o.frequency.setValueAtTime(390*pitch,t);o.frequency.exponentialRampToValueAtTime(255*pitch,t+.08);
-  g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(.15*amp,t+.003);g.gain.exponentialRampToValueAtTime(.0001,t+.10);o.connect(g);g.connect(bus);o.start(t);o.stop(t+.11);}
+  g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(.15*amp,t+.003);g.gain.exponentialRampToValueAtTime(.0001,t+.10);o.connect(g);g.connect(bus);trackOneShot(o,g);o.start(t);o.stop(t+.11);}
  stats.played++;
 }
-function warm(kind='tap',pitch=1){if(!enabled||!init()){stats.skipped++;return false}
+function warm(kind='tap',pitch=1){if(!enabled||togglePending||!init()){stats.skipped++;return false}
  const now=performance.now();if(now-lastTap<74){stats.skipped++;return false}lastTap=now;clickSound(kind,pitch);stats.clicks++;return true;}
 function toneFor(p){return 215*Math.pow(2,1.92*clamp(p,0,100)/100)}
-// One smooth, rising sweep follows the 680-ms ring animation; pitch is proportional to Daily completion.
-function progress(from,to,area='daily'){
- const a=clamp(from,0,100),b=clamp(to,0,100);if(!enabled||!init()||Math.abs(a-b)<.01)return;
- const now=performance.now(),up=b>a,finish=b>=99.999&&a<99.999;
- const daily=area==='daily';
- // Unlike other SFX, Daily follows a strict queue. Two fast taps 0→50→100 must be
- // heard as two complete rising sweeps, and the last note starts after the first ends.
- if(!daily&&progressGroup){progressGroup.gain.cancelScheduledValues(ctx.currentTime);progressGroup.gain.setTargetAtTime(.0001,ctx.currentTime,.019);}
- const grp=ctx.createGain();grp.gain.value=1;grp.connect(bus);
- if(!daily)progressGroup=grp;
- const shorter=window.matchMedia?.('(prefers-reduced-motion:reduce)').matches;
- const dur=shorter?.28:(up?.68:.37);
- const t=daily?Math.max(ctx.currentTime+.014,dailySoundEnd+.008):ctx.currentTime+.014;
- const fa=toneFor(a),fb=toneFor(b);
- const voices=[[1,'sine',.25],[2,'sine',.050],[.5,'triangle',.033]];
- voices.forEach(([ratio,type,amount])=>{
-  const osc=ctx.createOscillator(),env=ctx.createGain();osc.type=type;
-  osc.frequency.setValueAtTime(fa*ratio,t);
-  osc.frequency.exponentialRampToValueAtTime(fb*ratio,t+dur*.88);
-  env.gain.setValueAtTime(.0001,t);env.gain.linearRampToValueAtTime(amount*(up?1:.46),t+.03);
-  env.gain.setValueAtTime(amount*(up?1:.46),t+dur*.63);
-  env.gain.exponentialRampToValueAtTime(.0001,t+dur+.06);
-  osc.connect(env);env.connect(grp);osc.start(t);osc.stop(t+dur+.075);
- });
- if(finish){[1,1.5,2].forEach((ratio,i)=>{
-  const osc=ctx.createOscillator(),gain=ctx.createGain(),at=t+dur*.79;
-  osc.type='sine';osc.frequency.value=fb*ratio;
-  gain.gain.setValueAtTime(.0001,at);gain.gain.linearRampToValueAtTime([.11,.08,.034][i],at+.11);
-  gain.gain.exponentialRampToValueAtTime(.0001,at+.48);
-  osc.connect(gain);gain.connect(grp);osc.start(at);osc.stop(at+.49);
- });stats.completions++;}
- // Each Daily step reserves a full timeslot on the audio clock. Don't shorten the
- // step when another checkbox is toggled while its note is still rising.
- if(daily)dailySoundEnd=t+dur+(finish?.48:.018);
- const remain=t+dur+(finish?.5:.12)-ctx.currentTime;
- setTimeout(()=>{try{grp.disconnect()}catch(e){}if(progressGroup===grp)progressGroup=null},Math.max(100,remain*1000+250));
- stats.lastProgressPitch=Math.round(fb);stats.progress++;
- activeUntil=now+(daily?Math.max(0,(dailySoundEnd-ctx.currentTime)*1000):finish?1150:dur*1000);
+// Continuous progress sonification: one persistent voice follows the live progress value.
+// Fast taps retarget the same oscillators; they never enqueue separate sound clips.
+function holdParam(param,now){
+ try{if(typeof param.cancelAndHoldAtTime==='function')param.cancelAndHoldAtTime(now);
+  else{const value=Math.max(.0001,Number(param.value)||.0001);param.cancelScheduledValues(now);param.setValueAtTime(value,now)}}
+ catch(e){try{param.cancelScheduledValues(now);param.setValueAtTime(Math.max(.0001,Number(param.value)||.0001),now)}catch(_){}}
 }
-function grade(state,mastery=0){if(!enabled||!init())return;
+function ensureProgressVoice(){
+ if(progressVoice||!ctx||!bus)return progressVoice;
+ const master=ctx.createGain();master.gain.value=.0001;master.connect(bus);
+ const voices=[[1,'sine',.25],[2,'sine',.050],[.5,'triangle',.033]];
+ const oscillators=voices.map(([ratio,type,amount])=>{
+  const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type=type;gain.gain.value=amount;
+  osc.frequency.value=215*ratio;osc.connect(gain);gain.connect(master);osc.start();
+  return{osc,ratio};
+ });
+ progressVoice={master,oscillators};return progressVoice;
+}
+function completionChime(freq){
+ if(!ctx||!bus)return;
+ const at=ctx.currentTime+.018;
+ [1,1.5,2].forEach((ratio,i)=>{
+  const osc=ctx.createOscillator(),gain=ctx.createGain(),filter=ctx.createBiquadFilter();
+  osc.type='sine';osc.frequency.setValueAtTime(Math.min(1600,freq*ratio),at);
+  filter.type='lowpass';filter.frequency.setValueAtTime(2600,at);
+  gain.gain.setValueAtTime(.0001,at);gain.gain.linearRampToValueAtTime([.075,.048,.024][i],at+.075);
+  gain.gain.exponentialRampToValueAtTime(.0001,at+.58);
+  osc.connect(filter);filter.connect(gain);gain.connect(bus);trackOneShot(osc,gain);osc.start(at);osc.stop(at+.61);
+ });
+}
+function progress(from,to,area='daily'){
+ const a=clamp(from,0,100),b=clamp(to,0,100);
+ if(!enabled||togglePending||!init()||Math.abs(a-b)<.01)return;
+ const now=ctx.currentTime,finish=b>=99.999&&a<99.999;
+ const voice=ensureProgressVoice();if(!voice)return;
+ const targetFreq=toneFor(b),targetGain=.58+.20*(b/100);
+ // Preserve the instantaneous value, then glide to the newest progress target.
+ // A new tap interrupts only the destination of the glide, never the sound itself.
+ holdParam(voice.master.gain,now);
+ voice.master.gain.setTargetAtTime(targetGain,now,.045);
+ voice.oscillators.forEach(({osc,ratio})=>{
+  holdParam(osc.frequency,now);
+  osc.frequency.exponentialRampToValueAtTime(Math.max(35,targetFreq*ratio),now+.72);
+ });
+ // Fade only after the user stops changing progress. A new tap cancels this fade
+ // smoothly by holding the current gain above and continuing the same voice.
+ voice.master.gain.setTargetAtTime(.0001,now+.82,.16);
+ if(finish){completionChime(targetFreq);stats.completions++}
+ stats.lastProgressPitch=Math.round(targetFreq);stats.progress++;
+ activeUntil=performance.now()+1150;
+}
+function grade(state,mastery=0){if(!enabled||togglePending||!init())return;
  if(state==='fin'){progress(65,100,'english');stats.grades++;return}
  if(state==='ok')clickSound('confirm',1.15+clamp(mastery,0,100)/500);
  else if(state==='nr')clickSound('soft',1.04);
  else clickSound('soft',.83);
  stats.grades++;activeUntil=performance.now()+260;
 }
-function setEnabled(v){enabled=!!v;if(!enabled)dailySoundEnd=0;
- put('kz_sonic_on_v1',enabled?'1':'0');put('rm_snd',enabled?'1':'0');
+function setEnabled(v){
+ enabled=!!v;put('kz_sonic_on_v1',enabled?'1':'0');put('rm_snd',enabled?'1':'0');
  try{if(typeof D!=='undefined'&&D.cfg)D.cfg.snd=enabled?1:0}catch(e){}
- if(bus&&ctx)bus.gain.setTargetAtTime(enabled?.36*volume/100:0,ctx.currentTime,.019);
- sync();if(enabled){init();warm('toggle')} }
+ sync();const revision=++toggleRevision;
+ if(toggleCommitTimer){clearTimeout(toggleCommitTimer);toggleCommitTimer=0}
+ // Every toggle invalidates the previous sound state immediately. Nothing from
+ // an intermediate ON/OFF press is allowed to survive into the final state.
+ muteBusNow();stopProgressVoice();cancelOneShots();activeUntil=0;
+ if(!enabled){togglePending=false;return}
+ // Keep the bus closed while the user is still toggling. Init/resume happens
+ // synchronously in the click gesture, but no audio can leak during debounce.
+ togglePending=true;init();
+ toggleCommitTimer=setTimeout(()=>{
+  toggleCommitTimer=0;
+  if(revision!==toggleRevision||!enabled)return;
+  togglePending=false;if(!init())return;
+  const t=ctx.currentTime;holdParam(bus.gain,t);
+  bus.gain.setTargetAtTime(.36*volume/100,t,.018);
+  // Exactly one confirmation for the final ON state; no queued toggle clicks.
+  clickSound('toggle',1);
+ },160);
+}
 btn.addEventListener('click',e=>{e.stopPropagation();setEnabled(!enabled)});
 document.addEventListener('pointerdown',()=>{if(enabled)init()},{capture:true,passive:true});
 document.addEventListener('keydown',e=>{if(enabled&&(e.key==='Enter'||e.key===' '))init()},{capture:true});
