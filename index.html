@@ -2756,9 +2756,6 @@ button:disabled,[aria-disabled="true"]{opacity:.48;cursor:not-allowed;filter:non
  width:100%;font-size:11.5px;color:var(--mut);line-height:1.35;
  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
-.kz-notes-list-empty{
- padding:24px 12px;text-align:center;font-size:12.5px;color:var(--mut);line-height:1.55;
-}
 .kz-notes-editor{display:flex;flex-direction:column;min-width:0;min-height:0;padding:14px 16px 16px;gap:10px}
 .kz-notes-ed-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:32px;flex:none}
 .kz-notes-back{display:none;padding:6px 10px;border-radius:11px;background:var(--fill);font-size:12.5px}
@@ -2792,7 +2789,6 @@ button:disabled,[aria-disabled="true"]{opacity:.48;cursor:not-allowed;filter:non
  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
  text-align:center;padding:24px;color:var(--mut);
 }
-.kz-notes-empty .i{width:28px;height:28px;color:var(--ac1);opacity:.85}
 .kz-notes-empty p{margin:0;font-size:13.5px;line-height:1.55;max-width:260px}
 .kz-notes-drawer[data-empty="1"] .kz-notes-fields,.kz-notes-drawer[data-empty="1"] .kz-notes-del-wrap{display:none}
 .kz-notes-drawer[data-empty="0"] .kz-notes-empty{display:none}
@@ -2805,12 +2801,74 @@ button:disabled,[aria-disabled="true"]{opacity:.48;cursor:not-allowed;filter:non
  .kz-notes-back{display:inline-flex}
  #kz-note-title,#kz-note-body{font-size:16px}
 }
+.kz-notes-drawer [hidden]{display:none!important}
+.kz-notes-body{grid-template-rows:minmax(0,1fr)}
+.kz-notes-head-r{min-width:0}
+.kz-notes-state{overflow:hidden;text-overflow:ellipsis}
+.kz-notes-state:empty{display:none}
+.kz-notes-close{flex:none}
+.kz-notes-drawer[data-empty="1"] .kz-notes-ed-bar{display:none}
+.kz-notes-drawer[data-library-empty="1"][data-empty="1"] .kz-notes-side{display:none}
+.kz-notes-drawer[data-library-empty="1"][data-empty="1"] .kz-notes-editor{display:flex;grid-column:1/-1}
+.kz-notes-empty > .i{width:28px;height:28px;color:var(--ac1);opacity:.85}
+.kz-notes-empty .p .i{width:16px;height:16px;color:inherit}
+.kz-note-title-row{display:flex;align-items:center;gap:8px;flex:none}
+#kz-note-title{flex:1;min-width:0}
+.kz-note-image-count,.kz-note-image-import{
+ flex:none;justify-content:center;gap:6px;min-height:34px;padding:6px 10px;border-radius:10px;
+ font-size:12px;font-weight:600;white-space:nowrap;color:var(--ink);background:var(--fill);
+}
+.kz-note-image-count:hover,.kz-note-image-import:hover{background:var(--ring2)}
+.kz-note-image-count .i,.kz-note-image-import .i{width:15px;height:15px;color:var(--ac1)}
+.kz-note-image-tools{display:flex;align-items:center;flex-wrap:wrap;gap:5px 10px;flex:none}
+.kz-note-image-hint{color:var(--mut);font-size:11.5px;line-height:1.4}
+.kz-note-images{
+ display:flex;gap:7px;flex:none;min-width:0;overflow-x:auto;scrollbar-width:thin;padding:3px 3px 5px;
+}
+.kz-note-thumb,.kz-note-item-thumb{
+ position:relative;display:grid;place-items:center;overflow:hidden;flex:none;isolation:isolate;
+ box-shadow:inset 0 0 0 1px var(--rule);background:var(--fill);color:var(--mut);
+}
+.kz-note-thumb{width:62px;height:53px;border-radius:10px;padding:0}
+.kz-note-thumb:hover{box-shadow:inset 0 0 0 1px var(--ac1);background:var(--ring2)}
+.kz-note-thumb img,.kz-note-item-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.kz-note-thumb .i,.kz-note-item-thumb .i{width:16px;height:16px}
+.kz-note-item{flex:none}
+.kz-note-item-photos{display:flex;max-width:100%;align-items:center;gap:5px;margin-top:3px}
+.kz-note-item-thumb{width:36px;height:30px;border-radius:6px}
+.kz-note-item-thumb:hover{outline:1px solid var(--ac1);outline-offset:1px}
+.kz-note-item-more{color:var(--mut);font-size:10.5px;font-weight:650;white-space:nowrap}
+.kz-note-gallery{
+ width:min(820px,calc(100% - 28px));max-width:none;max-height:calc(100% - 28px);padding:0;
+ overflow:auto;border:1px solid var(--rule);border-radius:20px;color:var(--ink);background:var(--bg);
+ box-shadow:0 24px 88px rgba(4,9,19,.45);
+}
+.kz-note-gallery::backdrop{background:rgba(5,10,20,.72);backdrop-filter:blur(5px)}
+.kz-note-gallery-inner{display:grid;gap:12px;padding:14px}
+.kz-note-gallery-head,.kz-note-gallery-controls{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.kz-note-gallery-head h3{margin:0;font-size:14px;font-weight:650;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kz-note-gallery-frame{
+ display:grid;place-items:center;min-height:min(180px,35dvh);height:min(58dvh,575px);overflow:hidden;
+ border-radius:12px;background:var(--fill);box-shadow:inset 0 0 0 1px var(--rule);
+}
+.kz-note-gallery-frame img{display:block;width:100%;height:100%;min-height:0;object-fit:contain}
+.kz-note-gallery-message{padding:16px;text-align:center;color:var(--mut);font-size:13px}
+.kz-note-gallery-nav,.kz-note-gallery-remove{display:flex;align-items:center;gap:5px}
+.kz-note-gallery-position{min-width:42px;text-align:center;font-size:12px;color:var(--mut);white-space:nowrap}
+.kz-note-gallery-controls button{min-height:32px}
+.kz-note-gallery-controls .kz-notes-del{padding-inline:8px;white-space:nowrap}
+@media(max-width:639px){
+ .kz-note-gallery-inner{gap:9px;padding:10px}
+ .kz-note-gallery-frame{height:min(53dvh,575px)}
+ .kz-note-thumb{width:57px;height:49px}
+}
 @media(prefers-reduced-motion:reduce){
  .kz-notes-tab,.kz-notes-scrim,.kz-notes-drawer,.kz-note-item{transition:none!important}
 }
 </style>
 </head><body>
 <svg style="display:none"><defs>
+<symbol id="i-note-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.4" cy="9" r="1.3"/><path d="m3.5 17 4.2-4 3 2.7 4.6-5 5.3 6"/></symbol>
 <symbol id="i-note" viewBox="0 0 24 24"><path d="M7 3.5h7.5L19.5 8.5V19a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5Z"/><path d="M14 3.5V9h5.5M9 12.5h6M9 16h4.5"/></symbol>
 <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></symbol>
 <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></symbol>
@@ -3374,7 +3432,7 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
  </div>
  <button type="button" class="kz-notes-tab glass" id="kz-notes-tab" aria-label="Mở Ghi chú (Notes)" aria-controls="kz-notes-drawer" aria-expanded="false" title="Ghi chú nhanh (Notes)"><svg class="i" aria-hidden="true"><use href="#i-note"/></svg><span class="kz-notes-tab-lbl">Notes</span></button>
  <div class="kz-notes-scrim" id="kz-notes-scrim" aria-hidden="true"></div>
- <aside class="kz-notes-drawer glass" id="kz-notes-drawer" role="dialog" aria-modal="true" aria-labelledby="kz-notes-heading" aria-hidden="true" data-view="list" data-empty="1">
+ <aside class="kz-notes-drawer glass" id="kz-notes-drawer" role="dialog" aria-modal="true" aria-labelledby="kz-notes-heading" aria-hidden="true" data-view="list" data-empty="1" data-library-empty="1">
   <header class="kz-notes-head">
    <div class="kz-notes-brand"><svg class="i" aria-hidden="true"><use href="#i-note"/></svg><h2 id="kz-notes-heading">Ghi chú</h2></div>
    <div class="kz-notes-head-r"><span class="kz-notes-state" id="kz-notes-state" aria-live="polite">Đã lưu</span><button type="button" class="kz-notes-close" id="kz-notes-close" aria-label="Đóng ghi chú"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button></div>
@@ -3392,13 +3450,46 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
       <div class="kz-notes-del-confirm"><button type="button" class="kz-notes-del-yes" id="kz-notes-del-yes">Xác nhận xóa</button><button type="button" class="kz-notes-del-no" id="kz-notes-del-no">Hủy</button></div>
      </div>
     </div>
-    <div class="kz-notes-fields">
-     <input id="kz-note-title" type="text" maxlength="160" placeholder="Tiêu đề ghi chú…" aria-label="Tiêu đề ghi chú" autocomplete="off">
-     <textarea id="kz-note-body" placeholder="Viết nội dung ghi chú của bạn tại đây…" aria-label="Nội dung ghi chú"></textarea>
+    <div class="kz-notes-fields" id="kz-notes-fields">
+     <div class="kz-note-title-row">
+      <input id="kz-note-title" type="text" maxlength="160" placeholder="Tiêu đề ghi chú…" aria-label="Tiêu đề ghi chú" autocomplete="off">
+      <button type="button" class="kz-note-image-count" id="kz-note-image-count" aria-haspopup="dialog" aria-controls="kz-note-gallery" hidden><svg class="i" aria-hidden="true"><use href="#i-note-image"/></svg><span></span></button>
+     </div>
+     <div class="kz-note-images" id="kz-note-images" role="group" aria-label="Ảnh đính kèm" hidden></div>
+     <textarea id="kz-note-body" placeholder="Viết nội dung ghi chú…" aria-label="Nội dung ghi chú" aria-describedby="kz-note-image-hint"></textarea>
+     <div class="kz-note-image-tools">
+      <button type="button" id="kz-note-image-import" class="kz-note-image-import"><svg class="i" aria-hidden="true"><use href="#i-note-image"/></svg><span>Thêm ảnh</span></button>
+      <span class="kz-note-image-hint" id="kz-note-image-hint">Dán ảnh vào nội dung</span>
+      <input id="kz-note-image-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif,image/bmp,image/x-icon,image/vnd.microsoft.icon" multiple hidden>
+     </div>
     </div>
-    <div class="kz-notes-empty"><svg class="i" aria-hidden="true"><use href="#i-note"/></svg><p>Chưa có ghi chú nào. Tạo một ghi chú nhanh bất cứ lúc nào.</p><button type="button" class="p" id="kz-notes-empty-new"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span>Tạo ghi chú mới</span></button></div>
+    <div class="kz-notes-empty"><svg class="i" aria-hidden="true"><use href="#i-note"/></svg><p>Chưa có ghi chú nào</p><button type="button" class="p" id="kz-notes-empty-new"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span>Tạo ghi chú mới</span></button></div>
    </div>
   </div>
+  <dialog class="kz-note-gallery" id="kz-note-gallery" aria-labelledby="kz-note-gallery-title">
+   <div class="kz-note-gallery-inner">
+    <header class="kz-note-gallery-head">
+     <h3 id="kz-note-gallery-title">Ảnh đính kèm</h3>
+     <button type="button" class="kz-notes-close" id="kz-note-gallery-close" aria-label="Đóng ảnh" autofocus><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </header>
+    <div class="kz-note-gallery-frame">
+     <img id="kz-note-gallery-image" alt="" hidden>
+     <div class="kz-note-gallery-message" id="kz-note-gallery-message" role="status"></div>
+    </div>
+    <div class="kz-note-gallery-controls">
+     <div class="kz-note-gallery-nav">
+      <button type="button" class="kz-notes-close" id="kz-note-gallery-prev" aria-label="Ảnh trước"><svg class="i" aria-hidden="true"><use href="#i-prev"/></svg></button>
+      <span class="kz-note-gallery-position" id="kz-note-gallery-position" aria-live="polite"></span>
+      <button type="button" class="kz-notes-close" id="kz-note-gallery-next" aria-label="Ảnh sau"><svg class="i" aria-hidden="true"><use href="#i-next"/></svg></button>
+     </div>
+     <div class="kz-note-gallery-remove">
+      <button type="button" class="kz-notes-del" id="kz-note-gallery-remove"><svg class="i" aria-hidden="true"><use href="#i-trash"/></svg><span>Xóa ảnh</span></button>
+      <button type="button" class="kz-notes-del-no" id="kz-note-gallery-remove-no" hidden>Hủy</button>
+      <button type="button" class="kz-notes-del-yes" id="kz-note-gallery-remove-yes" hidden>Xóa ảnh này</button>
+     </div>
+    </div>
+   </div>
+  </dialog>
  </aside>
  <div class="mask hide" id="mask"></div><div id="toasts"></div>
 </div>
@@ -6431,76 +6522,214 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
 (()=>{
  'use strict';
  const KEY='kzmd_notes_v1';
- const tab=document.getElementById('kz-notes-tab');
- const scrim=document.getElementById('kz-notes-scrim');
- const drawer=document.getElementById('kz-notes-drawer');
- const closeBtn=document.getElementById('kz-notes-close');
- const newBtn=document.getElementById('kz-notes-new');
- const emptyNewBtn=document.getElementById('kz-notes-empty-new');
- const listEl=document.getElementById('kz-notes-list');
- const stateEl=document.getElementById('kz-notes-state');
- const backBtn=document.getElementById('kz-notes-back');
- const delWrap=document.getElementById('kz-notes-del-wrap');
- const delBtn=document.getElementById('kz-notes-del');
- const delYesBtn=document.getElementById('kz-notes-del-yes');
- const delNoBtn=document.getElementById('kz-notes-del-no');
- const titleEl=document.getElementById('kz-note-title');
- const bodyEl=document.getElementById('kz-note-body');
+ const IMAGE_DB='kzmd_note_images';
+ const IMAGE_STORE='images';
+ const MAX_IMAGE_BYTES=25*1024*1024;
+ const IMAGE_TYPES=new Set(['image/png','image/jpeg','image/webp','image/gif','image/avif','image/bmp','image/x-icon','image/vnd.microsoft.icon']);
+ const IMAGE_EXTENSIONS={png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg',webp:'image/webp',gif:'image/gif',avif:'image/avif',bmp:'image/bmp',ico:'image/x-icon'};
+ const get=id=>document.getElementById(id);
+ const tab=get('kz-notes-tab');
+ const scrim=get('kz-notes-scrim');
+ const drawer=get('kz-notes-drawer');
+ const closeBtn=get('kz-notes-close');
+ const newBtn=get('kz-notes-new');
+ const backBtn=get('kz-notes-back');
+ const listEl=get('kz-notes-list');
+ const stateEl=get('kz-notes-state');
+ const delWrap=get('kz-notes-del-wrap');
+ const titleEl=get('kz-note-title');
+ const bodyEl=get('kz-note-body');
+ const fields=get('kz-notes-fields');
+ const input=get('kz-note-image-input');
+ const countBtn=get('kz-note-image-count');
+ const strip=get('kz-note-images');
+ const gallery=get('kz-note-gallery');
+ const galleryClose=get('kz-note-gallery-close');
+ const galleryTitle=get('kz-note-gallery-title');
+ const galleryImage=get('kz-note-gallery-image');
+ const galleryMessage=get('kz-note-gallery-message');
+ const galleryPrev=get('kz-note-gallery-prev');
+ const galleryNext=get('kz-note-gallery-next');
+ const galleryPosition=get('kz-note-gallery-position');
+ const galleryRemove=get('kz-note-gallery-remove');
+ const galleryRemoveNo=get('kz-note-gallery-remove-no');
+ const galleryRemoveYes=get('kz-note-gallery-remove-yes');
  if(!tab||!scrim||!drawer||!listEl||!titleEl||!bodyEl)return;
 
+ const media=matchMedia('(max-width:639px)');
+ const pendingUploads=new Map();
+ const thumbnails=new Map();
  let notes=[];
  let activeId=null;
  let isDrawerOpen=false;
  let dirty=false;
+ let storageDirty=false;
  let saveTimer=0;
  let armTimer=0;
  let lastTrigger=null;
+ let databasePromise=null;
+ let uploadQueue=Promise.resolve();
+ let galleryImageId=null;
+ let galleryRequest=0;
+ let galleryUrl=null;
 
- const uid=()=>'n_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,6);
- const isBlank=(n)=>!String(n?.title||'').trim()&&!String(n?.content||'').trim();
- const sortNewest=(arr)=>arr.slice().sort((a,b)=>(b.updatedAt-a.updatedAt)||(b.createdAt-a.createdAt));
+ const uid=prefix=>prefix+'_'+Array.from(crypto.getRandomValues(new Uint32Array(3)),part=>part.toString(36)).join('_');
+ const activeNote=()=>notes.find(note=>note.id===activeId);
+ const isBlank=note=>!note||(!note.title.trim()&&!note.content.trim()&&!note.images.length);
+ const sortNewest=arr=>arr.slice().sort((a,b)=>(b.updatedAt-a.updatedAt)||(b.createdAt-a.createdAt));
+ const setStatus=text=>{stateEl.textContent=text};
 
  function loadStore(){
   try{
-   const raw=localStorage.getItem(KEY);
-   if(!raw)return {notes:[],activeId:null};
-   const parsed=JSON.parse(raw);
+   const parsed=JSON.parse(localStorage.getItem(KEY)||'null');
    const list=Array.isArray(parsed)?parsed:(Array.isArray(parsed?.notes)?parsed.notes:[]);
    const seen=new Set();
    const clean=[];
    for(const item of list){
-    if(!item||typeof item!=='object'||typeof item.id!=='string'||!item.id||seen.has(item.id))continue;
-    seen.add(item.id);
+    if(!item||typeof item.id!=='string'||!item.id||seen.has(item.id))continue;
     const createdAt=Number.isFinite(item.createdAt)?item.createdAt:Date.now();
     const updatedAt=Number.isFinite(item.updatedAt)?item.updatedAt:createdAt;
-    clean.push({
+    const images=[];
+    const imageIds=new Set();
+    for(const image of Array.isArray(item.images)?item.images:[]){
+     if(!image||typeof image.id!=='string'||!image.id||imageIds.has(image.id))continue;
+     imageIds.add(image.id);
+     const name=typeof image.name==='string'?image.name.slice(0,160):'';
+     images.push({id:image.id,name:name||'Ảnh đính kèm'});
+    }
+    const note={
      id:item.id,
      title:typeof item.title==='string'?item.title.slice(0,160):'',
      content:typeof item.content==='string'?item.content:'',
-     createdAt,
-     updatedAt
-    });
+     createdAt,updatedAt,images
+    };
+    if(isBlank(note))continue;
+    seen.add(note.id);
+    clean.push(note);
    }
-   const sorted=sortNewest(clean);
-   const savedActive=typeof parsed?.activeId==='string'&&sorted.some(n=>n.id===parsed.activeId)?parsed.activeId:(sorted[0]?.id||null);
-   return {notes:sorted,activeId:savedActive};
+   notes=sortNewest(clean);
+   activeId=notes.some(note=>note.id===parsed?.activeId)?parsed.activeId:(notes[0]?.id||null);
   }catch(e){
-   return {notes:[],activeId:null};
+   notes=[];
+   activeId=null;
   }
  }
 
  function persistStore(){
+  const savedNotes=notes.filter(note=>!isBlank(note));
+  const savedActive=savedNotes.some(note=>note.id===activeId)?activeId:(savedNotes[0]?.id||null);
   try{
-   localStorage.setItem(KEY,JSON.stringify({version:1,activeId,notes}));
+   localStorage.setItem(KEY,JSON.stringify({version:1,activeId:savedActive,notes:savedNotes}));
+   storageDirty=false;
    return true;
   }catch(e){
-   setStatus('Lỗi lưu');
+   storageDirty=true;
+   setStatus('Lỗi lưu ghi chú');
    return false;
   }
  }
 
- function setStatus(text){
-  if(stateEl)stateEl.textContent=text;
+ function imageDatabase(){
+  if(databasePromise)return databasePromise;
+  databasePromise=new Promise((resolve,reject)=>{
+   const request=indexedDB.open(IMAGE_DB,1);
+   request.onupgradeneeded=()=>request.result.createObjectStore(IMAGE_STORE,{keyPath:'id'});
+   request.onsuccess=()=>{
+    const db=request.result;
+    db.onversionchange=()=>{db.close();databasePromise=null};
+    resolve(db);
+   };
+   request.onerror=()=>reject(request.error);
+  }).catch(error=>{
+   databasePromise=null;
+   throw error;
+  });
+  return databasePromise;
+ }
+
+ async function readImage(id){
+  const db=await imageDatabase();
+  return new Promise((resolve,reject)=>{
+   const request=db.transaction(IMAGE_STORE).objectStore(IMAGE_STORE).get(id);
+   request.onsuccess=()=>resolve(request.result);
+   request.onerror=()=>reject(request.error);
+  });
+ }
+
+ async function writeImages(records,remove=false){
+  if(!records.length)return;
+  const db=await imageDatabase();
+  return new Promise((resolve,reject)=>{
+   const tx=db.transaction(IMAGE_STORE,'readwrite');
+   tx.oncomplete=()=>resolve();
+   tx.onabort=()=>reject(tx.error||new Error('Image transaction aborted'));
+   const store=tx.objectStore(IMAGE_STORE);
+   for(const record of records){
+    if(remove)store.delete(record.id);
+    else store.put(record);
+   }
+  });
+ }
+
+ async function prepareImage(file,pasted){
+  const extension=file.name?.split('.').pop()?.toLowerCase();
+  const type=file.type||IMAGE_EXTENSIONS[extension];
+  if(!IMAGE_TYPES.has(type))throw new Error('Định dạng ảnh chưa hỗ trợ');
+  if(file.size>MAX_IMAGE_BYTES)throw new Error('Ảnh vượt quá 25 MB');
+  const blob=file.slice(0,file.size,type);
+  const url=URL.createObjectURL(blob);
+  let thumb;
+  try{
+   const img=new Image();
+   img.src=url;
+   await img.decode();
+   const scale=Math.min(1,144/Math.max(img.naturalWidth,img.naturalHeight));
+   const canvas=document.createElement('canvas');
+   canvas.width=Math.max(1,Math.round(img.naturalWidth*scale));
+   canvas.height=Math.max(1,Math.round(img.naturalHeight*scale));
+   canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+   thumb=await new Promise(resolve=>canvas.toBlob(resolve,'image/webp',.8));
+   if(!thumb)throw new Error('Không tạo được ảnh xem trước');
+  }catch(e){
+   throw new Error('Không đọc được ảnh');
+  }finally{
+   URL.revokeObjectURL(url);
+  }
+  const name=pasted?'Ảnh dán':(file.name?.slice(0,160)||'Ảnh đính kèm');
+  return {id:uid('img'),name,blob,thumb};
+ }
+
+ function releaseThumbnail(id){
+  const thumbnail=thumbnails.get(id);
+  thumbnails.delete(id);
+  thumbnail?.then(url=>{if(url)URL.revokeObjectURL(url)});
+ }
+
+ function makeThumbnail(image,inline){
+  const item=document.createElement(inline?'button':'span');
+  item.className=inline?'kz-note-thumb':'kz-note-item-thumb';
+  item.dataset.imageId=image.id;
+  if(inline){
+   item.type='button';
+   item.setAttribute('aria-label','Mở '+image.name);
+   item.setAttribute('aria-haspopup','dialog');
+  }
+  item.title=image.name;
+  item.innerHTML='<svg class="i" aria-hidden="true"><use href="#i-note-image"/></svg>';
+  let thumbnail=thumbnails.get(image.id);
+  if(!thumbnail){
+   thumbnail=readImage(image.id).then(record=>record?.thumb?URL.createObjectURL(record.thumb):null).catch(()=>null);
+   thumbnails.set(image.id,thumbnail);
+  }
+  thumbnail.then(url=>{
+   if(!url||!item.isConnected||thumbnails.get(image.id)!==thumbnail)return;
+   const img=document.createElement('img');
+   img.alt='';
+   img.decoding='async';
+   img.src=url;
+   item.appendChild(img);
+  });
+  return item;
  }
 
  function disarmDelete(){
@@ -6508,175 +6737,305 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   delWrap.classList.remove('arm');
  }
 
- function armDelete(){
-  clearTimeout(armTimer);
-  delWrap.classList.add('arm');
-  armTimer=setTimeout(disarmDelete,5000);
- }
-
- function displayTitle(n){
-  const t=String(n?.title||'').trim();
-  return t||'Ghi chú chưa đặt tên';
- }
-
- function previewSnippet(n){
-  const c=String(n?.content||'').replace(/\s+/g,' ').trim();
-  if(!c)return 'Chưa có nội dung';
-  return c.length>56?c.slice(0,55)+'…':c;
- }
-
- function pruneBlankExcept(keepId){
-  const before=notes.length;
-  notes=notes.filter(n=>n.id===keepId||!isBlank(n));
-  if(activeId&&!notes.some(n=>n.id===activeId))activeId=notes[0]?.id||null;
-  return notes.length!==before;
+ function pruneBlanks(keepId=null){
+  notes=notes.filter(note=>note.id===keepId||pendingUploads.has(note.id)||!isBlank(note));
+  if(activeId!==keepId&&isBlank(activeNote()))activeId=notes.find(note=>!isBlank(note))?.id||null;
  }
 
  function renderList(){
-  listEl.replaceChildren();
-  if(!notes.length){
-   const empty=document.createElement('div');
-   empty.className='kz-notes-list-empty';
-   empty.textContent='Chưa có ghi chú nào. Bấm “Ghi chú mới” để bắt đầu.';
-   listEl.appendChild(empty);
-   return;
-  }
+  const savedNotes=notes.filter(note=>!isBlank(note));
+  drawer.dataset.libraryEmpty=savedNotes.length?'0':'1';
   const frag=document.createDocumentFragment();
-  for(const n of notes){
+  for(const note of savedNotes){
    const btn=document.createElement('button');
    btn.type='button';
-   btn.className='kz-note-item'+(n.id===activeId?' act':'')+(String(n.title||'').trim()?'':' blank');
-   btn.dataset.nid=n.id;
+   btn.className='kz-note-item'+(note.id===activeId?' act':'')+(note.title.trim()?'':' blank');
+   btn.dataset.nid=note.id;
    btn.setAttribute('role','option');
-   btn.setAttribute('aria-selected',n.id===activeId?'true':'false');
-   const t=document.createElement('span');
-   t.className='kz-note-item-t';
-   t.textContent=displayTitle(n);
-   const p=document.createElement('span');
-   p.className='kz-note-item-p';
-   p.textContent=previewSnippet(n);
-   btn.append(t,p);
+   btn.setAttribute('aria-selected',String(note.id===activeId));
+   const title=document.createElement('span');
+   title.className='kz-note-item-t';
+   title.textContent=note.title.trim()||'Ghi chú chưa đặt tên';
+   btn.appendChild(title);
+   const content=note.content.replace(/\s+/g,' ').trim();
+   if(content){
+    const snippet=document.createElement('span');
+    snippet.className='kz-note-item-p';
+    snippet.textContent=content.length>56?content.slice(0,55)+'…':content;
+    btn.appendChild(snippet);
+   }
+   if(note.images.length){
+    const row=document.createElement('span');
+    row.className='kz-note-item-photos';
+    row.setAttribute('aria-label',note.images.length+' ảnh');
+    for(const image of note.images.slice(0,3))row.appendChild(makeThumbnail(image,false));
+    if(note.images.length>3){
+     const more=document.createElement('span');
+     more.className='kz-note-item-more';
+     more.textContent='+'+(note.images.length-3);
+     row.appendChild(more);
+    }
+    btn.appendChild(row);
+   }
    frag.appendChild(btn);
   }
-  listEl.appendChild(frag);
+  listEl.replaceChildren(frag);
+ }
+
+ function renderImages(note=activeNote()){
+  const images=note?.images||[];
+  countBtn.hidden=!images.length;
+  countBtn.querySelector('span').textContent=images.length+' ảnh';
+  countBtn.setAttribute('aria-label','Xem '+images.length+' ảnh đính kèm');
+  strip.hidden=!images.length;
+  strip.replaceChildren(...images.map(image=>makeThumbnail(image,true)));
  }
 
  function syncEditorFields(){
-  const cur=notes.find(n=>n.id===activeId)||null;
-  drawer.dataset.empty=cur?'0':'1';
-  if(!cur){
-   titleEl.value='';
-   bodyEl.value='';
-   return;
-  }
-  if(titleEl.value!==cur.title)titleEl.value=cur.title;
-  if(bodyEl.value!==cur.content)bodyEl.value=cur.content;
+  const note=activeNote();
+  drawer.dataset.empty=note?'0':'1';
+  titleEl.value=note?.title||'';
+  bodyEl.value=note?.content||'';
+  renderImages(note);
  }
 
  function commitCurrentDraft(){
   clearTimeout(saveTimer);
   saveTimer=0;
-  if(!activeId){dirty=false;return false;}
-  const cur=notes.find(n=>n.id===activeId);
-  if(!cur){dirty=false;return false;}
-  const nextTitle=titleEl.value.slice(0,160);
-  const nextContent=bodyEl.value;
-  if(cur.title!==nextTitle||cur.content!==nextContent){
-   cur.title=nextTitle;
-   cur.content=nextContent;
-   cur.updatedAt=Date.now();
-   notes=sortNewest(notes);
-   persistStore();
-   dirty=false;
-   setStatus('Đã lưu');
-   return true;
-  }
+  const note=activeNote();
+  if(!dirty||!note)return false;
   dirty=false;
-  setStatus('Đã lưu');
-  return false;
+  if(note.title===titleEl.value&&note.content===bodyEl.value){
+   setStatus(pendingUploads.has(note.id)?'Đang lưu ảnh…':(storageDirty?'Lỗi lưu ghi chú':(isBlank(note)?'Bản nháp':'Đã lưu')));
+   return false;
+  }
+  note.title=titleEl.value.slice(0,160);
+  note.content=bodyEl.value;
+  note.updatedAt=Date.now();
+  notes=sortNewest(notes);
+  if(persistStore())setStatus(pendingUploads.has(note.id)?'Đang lưu ảnh…':(isBlank(note)?'Bản nháp':'Đã lưu'));
+  return true;
  }
 
  function scheduleSave(){
   dirty=true;
   setStatus('Đang lưu…');
   clearTimeout(saveTimer);
-  saveTimer=setTimeout(()=>{
-   const changed=commitCurrentDraft();
-   if(changed)renderList();
-  },280);
+  saveTimer=setTimeout(()=>{if(commitCurrentDraft())renderList()},280);
  }
 
- function selectNote(id,{focusTitle=false,focusBody=false,mobileView='editor'}={}){
-  if(activeId&&activeId!==id){
-   commitCurrentDraft();
-   pruneBlankExcept(id);
-  }
-  disarmDelete();
+ function selectNote(id,focusTarget){
+  commitCurrentDraft();
+  const changed=activeId!==id;
+  pruneBlanks(id);
   activeId=id;
-  drawer.dataset.view=mobileView;
-  syncEditorFields();
+  disarmDelete();
+  drawer.dataset.view='editor';
+  if(changed||drawer.dataset.empty==='1')syncEditorFields();
+  const note=activeNote();
   renderList();
-  persistStore();
-  if(focusTitle)requestAnimationFrame(()=>titleEl.focus({preventScroll:true}));
-  else if(focusBody)requestAnimationFrame(()=>bodyEl.focus({preventScroll:true}));
+  if((!storageDirty&&isBlank(note))||persistStore()){
+   setStatus(pendingUploads.has(id)?'Đang lưu ảnh…':(isBlank(note)?'Bản nháp':'Đã lưu'));
+  }
+  if(focusTarget)requestAnimationFrame(()=>{
+   if(isDrawerOpen&&activeId===id&&!gallery.open)focusTarget.focus({preventScroll:true});
+  });
  }
 
  function createNewNote(){
   commitCurrentDraft();
-  disarmDelete();
-  const existingBlank=notes.find(n=>isBlank(n));
-  if(existingBlank){
-   existingBlank.updatedAt=Date.now();
-   notes=sortNewest(notes);
-   selectNote(existingBlank.id,{focusTitle:true,mobileView:'editor'});
-   setStatus('Ghi chú mới');
+  const current=activeNote();
+  if(current&&isBlank(current)){
+   selectNote(current.id,titleEl);
    return;
   }
   const now=Date.now();
-  const fresh={id:uid(),title:'',content:'',createdAt:now,updatedAt:now};
-  notes=sortNewest([fresh,...notes]);
-  activeId=fresh.id;
-  drawer.dataset.view='editor';
-  syncEditorFields();
-  renderList();
-  persistStore();
-  setStatus('Ghi chú mới');
-  requestAnimationFrame(()=>titleEl.focus({preventScroll:true}));
+  const note={id:uid('n'),title:'',content:'',createdAt:now,updatedAt:now,images:[]};
+  notes.unshift(note);
+  selectNote(note.id,titleEl);
+ }
+
+ function queueImages(files,id,pasted=false){
+  const note=notes.find(item=>item.id===id);
+  if(!files.length||!note)return;
+  pendingUploads.set(id,(pendingUploads.get(id)||0)+1);
+  if(id===activeId)setStatus('Đang lưu ảnh…');
+  uploadQueue=uploadQueue.then(async()=>{
+   let status='Đã lưu ảnh';
+   let records=[];
+   try{
+    let skipped=0;
+    let issue='';
+    for(const file of files){
+     if(!notes.includes(note))return;
+     try{records.push(await prepareImage(file,pasted))}catch(e){skipped++;issue=e.message}
+    }
+    if(!notes.includes(note))return;
+    if(!records.length){status=issue;return}
+    await writeImages(records);
+    if(!notes.includes(note)){
+     await writeImages(records,true);
+     return;
+    }
+    if(activeId===id)commitCurrentDraft();
+    const previousImages=note.images;
+    const previousTime=note.updatedAt;
+    note.images=[...note.images,...records.map(({id,name})=>({id,name}))];
+    note.updatedAt=Date.now();
+    if(!persistStore()){
+     note.images=previousImages;
+     note.updatedAt=previousTime;
+     await writeImages(records,true);
+     status='Chưa lưu được ảnh';
+     return;
+    }
+    notes=sortNewest(notes);
+    if(isDrawerOpen){
+     renderList();
+     if(activeId===id)renderImages(note);
+     if(!activeId&&!media.matches)selectNote(id);
+     if(gallery.open&&activeId===id)showGalleryImage();
+    }
+    if(skipped)status='Đã lưu '+records.length+' ảnh · Bỏ qua '+skipped+' ảnh';
+   }catch(e){
+    status='Chưa lưu được ảnh';
+   }finally{
+    const remaining=pendingUploads.get(id)-1;
+    if(remaining)pendingUploads.set(id,remaining);
+    else pendingUploads.delete(id);
+    pruneBlanks(activeId);
+    if(!remaining&&notes.includes(note)&&(activeId===id||!activeId))setStatus(status);
+   }
+  });
  }
 
  function deleteActiveNote(){
-  if(!activeId)return;
-  clearTimeout(saveTimer);
-  saveTimer=0;
-  dirty=false;
+  const note=activeNote();
+  if(!note)return;
+  commitCurrentDraft();
   disarmDelete();
-  const idx=notes.findIndex(n=>n.id===activeId);
-  if(idx<0)return;
-  notes.splice(idx,1);
-  const next=notes[idx]||notes[idx-1]||null;
-  activeId=next?next.id:null;
-  drawer.dataset.view=activeId&&matchMedia('(max-width:639px)').matches?'list':drawer.dataset.view;
+  const before=notes;
+  const index=notes.indexOf(note);
+  notes=notes.filter(item=>item!==note);
+  activeId=(notes[index]||notes[index-1])?.id||null;
+  pruneBlanks();
+  if(!persistStore()){
+   notes=before;
+   activeId=note.id;
+   return;
+  }
+  note.images.forEach(image=>releaseThumbnail(image.id));
+  writeImages(note.images,true).catch(()=>{});
+  if(media.matches)drawer.dataset.view='list';
   syncEditorFields();
   renderList();
-  persistStore();
   setStatus('Đã xóa');
+  (media.matches||!activeId?(activeId?newBtn:get('kz-notes-empty-new')):bodyEl).focus({preventScroll:true});
+ }
+
+ function setImageDelete(armed){
+  galleryRemove.hidden=armed;
+  galleryRemoveYes.hidden=!armed;
+  galleryRemoveNo.hidden=!armed;
+ }
+
+ function clearGalleryImage(){
+  if(galleryUrl)URL.revokeObjectURL(galleryUrl);
+  galleryUrl=null;
+  galleryImage.hidden=true;
+  galleryImage.removeAttribute('src');
+ }
+
+ async function showGalleryImage(){
+  const images=activeNote()?.images||[];
+  if(!images.length){gallery.close();return}
+  const index=Math.max(0,images.findIndex(image=>image.id===galleryImageId));
+  const image=images[index];
+  galleryImageId=image.id;
+  const request=++galleryRequest;
+  setImageDelete(false);
+  clearGalleryImage();
+  galleryTitle.textContent=image.name;
+  galleryImage.alt=image.name;
+  galleryPosition.textContent=(index+1)+' / '+images.length;
+  galleryPrev.disabled=index===0;
+  galleryNext.disabled=index===images.length-1;
+  galleryPrev.hidden=galleryNext.hidden=images.length===1;
+  galleryMessage.hidden=false;
+  galleryMessage.textContent='Đang mở ảnh…';
+  try{
+   const record=await readImage(image.id);
+   if(request!==galleryRequest||!gallery.open)return;
+   if(!record?.blob)throw new Error('Missing image');
+   galleryUrl=URL.createObjectURL(record.blob);
+   galleryImage.src=galleryUrl;
+   await galleryImage.decode();
+   if(request!==galleryRequest||!gallery.open)return;
+   galleryImage.hidden=false;
+   galleryMessage.hidden=true;
+  }catch(e){
+   if(request===galleryRequest&&gallery.open)galleryMessage.textContent='Không mở được ảnh đã lưu';
+  }
+ }
+
+ function openGallery(id){
+  const images=activeNote()?.images;
+  if(!images?.length)return;
+  galleryImageId=id||images[0].id;
+  if(!gallery.open)gallery.showModal();
+  showGalleryImage();
+ }
+
+ function stepGallery(direction){
+  const images=activeNote()?.images;
+  const next=images?.[images.findIndex(image=>image.id===galleryImageId)+direction];
+  if(!next)return;
+  galleryImageId=next.id;
+  showGalleryImage();
+ }
+
+ function removeGalleryImage(){
+  const note=activeNote();
+  const index=note?.images.findIndex(image=>image.id===galleryImageId);
+  if(index===undefined||index<0)return;
+  commitCurrentDraft();
+  const previous=note.images;
+  const previousTime=note.updatedAt;
+  const image=previous[index];
+  note.images=previous.filter(item=>item!==image);
+  note.updatedAt=Date.now();
+  if(!persistStore()){
+   note.images=previous;
+   note.updatedAt=previousTime;
+   galleryMessage.hidden=false;
+   galleryMessage.textContent='Chưa xóa được ảnh';
+   galleryImage.hidden=true;
+   return;
+  }
+  releaseThumbnail(image.id);
+  writeImages([image],true).catch(()=>{});
+  notes=sortNewest(notes);
+  renderList();
+  renderImages(note);
+  setStatus('Đã xóa ảnh');
+  galleryImageId=(note.images[index]||note.images[index-1])?.id||null;
+  if(galleryImageId){
+   showGalleryImage();
+   galleryClose.focus();
+  }else{
+   gallery.close();
+  }
  }
 
  function openDrawer(){
   if(isDrawerOpen)return;
   lastTrigger=document.activeElement instanceof HTMLElement?document.activeElement:tab;
-  const loaded=loadStore();
-  notes=loaded.notes;
-  activeId=loaded.activeId;
-  if(!notes.length){
-   drawer.dataset.view='list';
-  }else{
-   drawer.dataset.view=matchMedia('(max-width:639px)').matches?'list':'editor';
-  }
+  if(!storageDirty&&!pendingUploads.size)loadStore();
+  drawer.dataset.view=media.matches||!activeId?'list':'editor';
   disarmDelete();
   syncEditorFields();
   renderList();
-  setStatus('Đã lưu');
+  setStatus(storageDirty?'Lỗi lưu ghi chú':(pendingUploads.has(activeId)?'Đang lưu ảnh…':(activeId?'Đã lưu':'')));
   isDrawerOpen=true;
   tab.setAttribute('aria-expanded','true');
   scrim.classList.add('open');
@@ -6684,75 +7043,133 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   drawer.classList.add('open');
   drawer.setAttribute('aria-hidden','false');
   requestAnimationFrame(()=>{
-   if(!matchMedia('(max-width:639px)').matches&&notes.length)bodyEl.focus({preventScroll:true});
-   else closeBtn.focus({preventScroll:true});
+   if(isDrawerOpen)(!media.matches&&activeId?bodyEl:closeBtn).focus({preventScroll:true});
   });
  }
 
  function closeDrawer(){
   if(!isDrawerOpen)return;
   commitCurrentDraft();
-  const pruned=pruneBlankExcept(null);
-  if(pruned)persistStore();
+  pruneBlanks();
+  if(storageDirty)persistStore();
   disarmDelete();
   isDrawerOpen=false;
+  if(gallery.open)gallery.close();
   tab.setAttribute('aria-expanded','false');
   scrim.classList.remove('open');
   scrim.setAttribute('aria-hidden','true');
   drawer.classList.remove('open');
   drawer.setAttribute('aria-hidden','true');
-  if(lastTrigger&&document.contains(lastTrigger)&&typeof lastTrigger.focus==='function'){
-   requestAnimationFrame(()=>lastTrigger.focus({preventScroll:true}));
-  }
+  for(const id of thumbnails.keys())releaseThumbnail(id);
+  if(lastTrigger?.isConnected)requestAnimationFrame(()=>lastTrigger.focus({preventScroll:true}));
  }
 
  tab.addEventListener('click',()=>isDrawerOpen?closeDrawer():openDrawer());
  closeBtn.addEventListener('click',closeDrawer);
  scrim.addEventListener('click',closeDrawer);
  newBtn.addEventListener('click',createNewNote);
- emptyNewBtn.addEventListener('click',createNewNote);
+ get('kz-notes-empty-new').addEventListener('click',createNewNote);
  backBtn.addEventListener('click',()=>{
   commitCurrentDraft();
-  pruneBlankExcept(null);
-  renderList();
-  persistStore();
+  pruneBlanks();
+  if(storageDirty)persistStore();
   drawer.dataset.view='list';
+  syncEditorFields();
+  renderList();
+  (activeId?newBtn:get('kz-notes-empty-new')).focus({preventScroll:true});
  });
  listEl.addEventListener('click',e=>{
   const item=e.target.closest('.kz-note-item[data-nid]');
   if(!item)return;
-  selectNote(item.dataset.nid,{focusBody:!matchMedia('(max-width:639px)').matches,mobileView:'editor'});
+  const image=e.target.closest('[data-image-id]');
+  selectNote(item.dataset.nid,image?null:(media.matches?backBtn:bodyEl));
+  if(image)openGallery(image.dataset.imageId);
  });
  titleEl.addEventListener('input',scheduleSave);
  bodyEl.addEventListener('input',scheduleSave);
  titleEl.addEventListener('keydown',e=>{
-  if(e.key==='Enter'&&!e.isComposing){
-   e.preventDefault();
-   bodyEl.focus({preventScroll:true});
+  if(e.key==='Enter'&&!e.isComposing){e.preventDefault();bodyEl.focus({preventScroll:true})}
+ });
+ get('kz-notes-del').addEventListener('click',()=>{
+  disarmDelete();
+  delWrap.classList.add('arm');
+  armTimer=setTimeout(disarmDelete,5000);
+ });
+ get('kz-notes-del-no').addEventListener('click',disarmDelete);
+ get('kz-notes-del-yes').addEventListener('click',deleteActiveNote);
+
+ let pickerTarget=null;
+ get('kz-note-image-import').addEventListener('click',()=>{
+  pickerTarget=activeId;
+  input.click();
+ });
+ input.addEventListener('change',()=>{
+  queueImages(Array.from(input.files),pickerTarget||activeId);
+  input.value='';
+  pickerTarget=null;
+ });
+ input.addEventListener('cancel',()=>{pickerTarget=null});
+ fields.addEventListener('paste',event=>{
+  if(!isDrawerOpen||!activeId||!event.clipboardData)return;
+  const {items,files}=event.clipboardData;
+  const pasted=Array.from(items||[]).filter(item=>item.kind==='file').map(item=>item.getAsFile()).filter(Boolean);
+  const images=(pasted.length?pasted:Array.from(files||[])).filter(file=>file.type.startsWith('image/'));
+  if(!images.length)return;
+  event.preventDefault();
+  queueImages(images,activeId,true);
+ });
+ countBtn.addEventListener('click',()=>openGallery());
+ strip.addEventListener('click',event=>{
+  const item=event.target.closest('[data-image-id]');
+  if(item)openGallery(item.dataset.imageId);
+ });
+ galleryClose.addEventListener('click',()=>gallery.close());
+ galleryPrev.addEventListener('click',()=>stepGallery(-1));
+ galleryNext.addEventListener('click',()=>stepGallery(1));
+ galleryRemove.addEventListener('click',()=>{setImageDelete(true);galleryRemoveNo.focus()});
+ galleryRemoveNo.addEventListener('click',()=>{setImageDelete(false);galleryRemove.focus()});
+ galleryRemoveYes.addEventListener('click',removeGalleryImage);
+ gallery.addEventListener('click',event=>{if(event.target===gallery)gallery.close()});
+ gallery.addEventListener('cancel',event=>{
+  if(galleryRemoveYes.hidden)return;
+  event.preventDefault();
+  setImageDelete(false);
+  galleryRemove.focus();
+ });
+ gallery.addEventListener('close',()=>{
+  if(gallery.open)return;
+  galleryRequest++;
+  clearGalleryImage();
+  if(isDrawerOpen&&document.activeElement===document.body)(countBtn.hidden?bodyEl:countBtn).focus({preventScroll:true});
+ });
+ gallery.addEventListener('keydown',event=>{
+  if(!galleryRemoveYes.hidden)return;
+  if(event.key==='ArrowLeft'||event.key==='ArrowRight'){
+   event.preventDefault();
+   stepGallery(event.key==='ArrowLeft'?-1:1);
   }
  });
- delBtn.addEventListener('click',armDelete);
- delNoBtn.addEventListener('click',disarmDelete);
- delYesBtn.addEventListener('click',deleteActiveNote);
 
  document.addEventListener('keydown',e=>{
-  if(!isDrawerOpen||e.key!=='Escape')return;
-  const mask=document.getElementById('mask');
+  if(!isDrawerOpen||gallery.open||e.key!=='Escape')return;
+  const mask=get('mask');
   if(mask&&!mask.classList.contains('hide'))return;
   if(document.querySelector('.d-modalshade:not([hidden]),#sfs.on,.kz2-announcement.show'))return;
   e.preventDefault();
   e.stopPropagation();
-  if(delWrap.classList.contains('arm')){disarmDelete();return;}
+  if(delWrap.classList.contains('arm')){disarmDelete();return}
   closeDrawer();
  });
+ media.addEventListener('change',()=>{
+  if(isDrawerOpen&&!media.matches)drawer.dataset.view='editor';
+ });
+ function flushDraft(){
+  if(dirty)commitCurrentDraft();
+  else if(storageDirty)persistStore();
+ }
+ window.addEventListener('pagehide',flushDraft);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)flushDraft()});
 
- window.addEventListener('resize',()=>{if(!isDrawerOpen)return;if(!notes.length)drawer.dataset.view='list';else if(!matchMedia('(max-width:639px)').matches)drawer.dataset.view='editor';});
- window.addEventListener('pagehide',()=>{if(dirty||isDrawerOpen){commitCurrentDraft();pruneBlankExcept(null);persistStore();}});
- document.addEventListener('visibilitychange',()=>{if(document.hidden&&(dirty||isDrawerOpen)){commitCurrentDraft();persistStore();}});
-
- const initData=loadStore();
- notes=initData.notes;
- activeId=initData.activeId;
  window.KZNotes={
   open:openDrawer,
   close:closeDrawer,
