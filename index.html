@@ -1399,14 +1399,9 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
 #daily .d-task .d-value-actions{margin-top:8px}
 #daily .d-task:has(.d-task-noteboard) .d-checklist{margin-top:8px}
 #daily .d-aside{min-width:0}
-#daily .d-aside .d-journal{padding:20px 22px}
-#daily .d-journal-entry textarea{min-height:196px;height:196px;resize:vertical;font-size:13px;line-height:1.75;background:var(--d-soft);border:1px solid var(--d-rule)}
-#daily .d-journal-head{margin-bottom:14px}
-#daily .d-journal-tabs{margin-bottom:12px}
-#daily .d-journal-bottom{padding-top:4px}
 @media(max-width:1050px){#daily .d-layout{grid-template-columns:minmax(0,1fr) minmax(275px,320px)}#daily .d-hero{padding:19px}#daily .d-manage-btn{font-size:11.5px;padding:9px 11px}}
-@media(max-width:860px){#daily .d-layout{display:flex;flex-direction:column;gap:13px}#daily .d-primary,#daily .d-aside{display:contents}#daily .d-hero{order:0;width:100%}#daily .d-journal{order:1;width:100%}#daily .d-primary>.d-section{order:2;width:100%}#daily .d-primary>.d-section:last-child{order:3}#daily .d-journal-entry textarea{height:114px;min-height:114px}}
-@media(max-width:580px){#daily .d-hero{min-height:0;padding:18px}#daily .d-hero-top{flex-wrap:wrap;align-items:start}#daily .d-hero-actions{margin-left:0;width:100%;justify-content:space-between;gap:6px}#daily .d-manage-btn{flex:1;min-width:0;font-size:11.5px;padding:9px 8px}#daily .d-hero-actions .d-primary-btn{flex:1;font-size:11.5px;padding:9px 10px}#daily .d-hero-bottom{margin-top:15px;grid-template-columns:minmax(0,1fr) 84px}#daily .d-ring{width:82px;height:82px}#daily .d-ring small{top:53px}#daily .d-section,#daily .d-aside .d-journal{padding:16px}#daily .d-task{padding:11px}#daily .d-task-inline-actions{gap:5px}#daily .d-big-check{height:37px;width:37px;min-width:37px}#daily .d-task-inline-actions .d-icon-btn{height:33px;width:33px}#daily .d-task-noteboard{padding:9px;gap:8px}}
+@media(max-width:860px){#daily .d-layout{display:flex;flex-direction:column;gap:13px}#daily .d-primary,#daily .d-aside{display:contents}#daily .d-hero{order:0;width:100%}#daily .d-primary>.d-section{order:2;width:100%}#daily .d-primary>.d-section:last-child{order:3}}
+@media(max-width:580px){#daily .d-hero{min-height:0;padding:18px}#daily .d-hero-top{flex-wrap:wrap;align-items:start}#daily .d-hero-actions{margin-left:0;width:100%;justify-content:space-between;gap:6px}#daily .d-manage-btn{flex:1;min-width:0;font-size:11.5px;padding:9px 8px}#daily .d-hero-actions .d-primary-btn{flex:1;font-size:11.5px;padding:9px 10px}#daily .d-hero-bottom{margin-top:15px;grid-template-columns:minmax(0,1fr) 84px}#daily .d-ring{width:82px;height:82px}#daily .d-ring small{top:53px}#daily .d-section{padding:16px}#daily .d-task{padding:11px}#daily .d-task-inline-actions{gap:5px}#daily .d-big-check{height:37px;width:37px;min-width:37px}#daily .d-task-inline-actions .d-icon-btn{height:33px;width:33px}#daily .d-task-noteboard{padding:9px;gap:8px}}
 @media(max-width:360px){#daily .d-manage-btn svg{display:none}#daily .d-task-name{font-size:13px}}
 /* Sound control is now a single on/off action; no popover. */
 #kz-sound-trigger[aria-pressed="false"]{opacity:.56}
@@ -1522,13 +1517,6 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
 .d-metrics{margin-top:17px;padding:14px 0 0;border-top:1px solid var(--d-rule);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
 .d-metrics strong{font-size:21px;display:block;letter-spacing:-.04em}
 .d-metrics small{font-size:10px;color:var(--d-muted);line-height:1.5;display:block}
-.d-journal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px}
-.d-journal-fields{display:grid;gap:16px}
-.d-journal-fields label{display:grid;gap:8px;font-size:12px;font-weight:600}
-.d-journal-fields label span{font-size:11px;font-weight:400;color:var(--d-muted)}
-.d-journal-fields textarea{min-height:84px;resize:vertical;line-height:1.65;border-radius:15px;padding:12px 14px;background:var(--fill);font-size:13px}
-.d-journal-save{font-size:11px;color:var(--d-muted);display:flex;align-items:center;gap:5px;margin-top:12px}
-.d-journal-save.failed{color:var(--d-bad)}
 .d-selected{border-top:1px solid var(--d-rule);margin-top:14px;padding-top:15px}
 .d-selected strong{display:block;font-size:12px;margin-bottom:9px}
 .d-selected small{font-size:11px;color:var(--d-muted)}
@@ -1560,7 +1548,7 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
 .d-tiny{font-size:11px;color:var(--d-muted)}
 .d-tiny.d-danger{color:var(--d-bad)}
 @media(max-width:1050px){.d-layout{grid-template-columns:minmax(0,1.15fr) minmax(290px,.8fr)}.d-section{padding:20px}.d-card{border-radius:25px}}
-@media(max-width:790px){.d-layout{grid-template-columns:minmax(0,1fr)}.d-aside{gap:16px}.d-aside .d-journal{order:0}.d-aside .d-calendar{order:1}.d-primary{gap:16px}#daily{padding-top:16px}.d-hero{min-height:unset}}
+@media(max-width:790px){.d-layout{grid-template-columns:minmax(0,1fr)}.d-aside{gap:16px}.d-aside .d-calendar{order:1}.d-primary{gap:16px}#daily{padding-top:16px}.d-hero{min-height:unset}}
 @media(max-width:560px){#daily{padding:10px 12px max(35px,env(safe-area-inset-bottom,20px))}.d-section{padding:18px}.d-hero{padding:21px}.d-heading{font-size:31px}.d-hero-bottom{grid-template-columns:1fr 94px;margin-top:23px}.d-ring{width:90px;height:90px}.d-ring:after{inset:8px}.d-ring b{font-size:20px}.d-ring small{top:58px}.d-primary-btn{padding:10px 12px;font-size:12px}.d-task{padding:13px}.d-calday{min-height:33px}.d-modalshade{align-items:flex-end;padding:0}.d-modal{max-height:91dvh;border-radius:26px 26px 0 0;width:100%;padding:22px 18px max(24px,env(safe-area-inset-bottom,18px))}.d-form .d-formrow{grid-template-columns:1fr 1fr}}
 @media(max-width:375px){.d-form .d-formrow{grid-template-columns:1fr}.d-hero-top{flex-wrap:wrap}.d-calendar-head{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){#daily,.d-task,.d-calday,.d-big-check,.d-progress-line i{transition:none!important;animation:none!important}}
@@ -1622,10 +1610,6 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
 .d-metrics strong{font-size:19px;line-height:1.2}
 .d-metrics small{font-size:10px;line-height:1.45}
 .d-selected{margin-top:11px;padding-top:11px}
-.d-journal{padding:19px}
-.d-journal-fields{gap:12px}
-.d-journal-fields textarea{background:var(--d-soft);border:1px solid var(--d-rule);color:var(--d-strong);min-height:74px}
-.d-journal-fields textarea::placeholder{color:var(--d-muted)}
 .d-hero-actions{flex-wrap:wrap;justify-content:flex-end}
 
 /* Modal deliberately uses its OWN tokens because it lives outside #daily.  */
@@ -1762,25 +1746,9 @@ body.dkdragging,body.dkdragging *{cursor:grabbing!important;-webkit-user-select:
 #daily .d-metrics small{font-size:10.5px;line-height:1.35}
 #daily .d-selected{margin-top:9px;padding-top:9px}
 #daily .d-selected[hidden]{display:none!important}
-#daily .d-journal{padding:17px 18px}
-#daily .d-journal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:7px}
-#daily .d-journal-head .d-title{font-size:16px}
-#daily .d-journal-date{font-size:11px;color:var(--d-muted);white-space:nowrap}
-#daily .d-journal-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;background:var(--d-soft);border:1px solid var(--d-rule);border-radius:12px;padding:4px;margin-bottom:10px}
-#daily .d-jtab{position:relative;justify-content:center;text-align:center;min-width:0;border-radius:9px;padding:8px 4px;font-size:11.5px;color:var(--d-muted);background:transparent;transition:transform .3s cubic-bezier(.24,1.4,.4,1),background .2s,color .2s,box-shadow .2s}
-#daily .d-jtab:hover{color:var(--d-strong)}
-#daily .d-jtab.on{background:var(--d-surface);color:var(--d-strong);box-shadow:0 1px 5px rgba(31,52,83,.09);font-weight:600}
-#daily .d-jtab.on:active{transform:scale(.96)}
-#daily .d-jtab.has-content:after{content:'';width:4px;height:4px;position:absolute;bottom:3px;left:calc(50% - 2px);border-radius:50%;background:var(--d-ok)}
-#daily .d-journal-fields{gap:0}
-#daily .d-journal-entry{display:block}
-#daily .d-journal-entry textarea{width:100%;min-height:94px;height:94px;padding:11px 12px;font-size:12.5px;line-height:1.6;resize:vertical}
-#daily .d-journal-bottom{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
-#daily .d-journal-save{margin:0;font-size:10.5px}
-#daily .d-journal-hint{font-size:10px;color:var(--d-muted);white-space:nowrap}
-@media(max-width:790px){#daily .d-calendar{padding:17px 18px}#daily .d-aside .d-calendar{order:0}#daily .d-aside .d-journal{order:1}}
-@media(max-width:375px){#daily .d-cal-titlebar{flex-wrap:nowrap}#daily .d-journal-hint{font-size:9.5px}}
-@media(prefers-reduced-motion:reduce){#daily .d-go-today,#daily .d-jtab{transition:none!important}}
+@media(max-width:790px){#daily .d-calendar{padding:17px 18px}#daily .d-aside .d-calendar{order:0}}
+@media(max-width:375px){#daily .d-cal-titlebar{flex-wrap:nowrap}}
+@media(prefers-reduced-motion:reduce){#daily .d-go-today{transition:none!important}}
 
 /* KZMD128 · Desktop visual scale: browser at 100% looks like 125%.
    Keep the mobile/touch layout untouched. Browser zoom stays at 100%. */
@@ -2177,7 +2145,6 @@ button:disabled,[aria-disabled="true"]{opacity:.48;cursor:not-allowed;filter:non
 #daily button:active,.ks-btn:active,.fi:active{transform:scale(.97)}
 #daily .d-progress-line i,#daily .d-mini-track i{transition:none!important;will-change:width}
 #daily .d-ring{contain:paint}
-#daily .d-jtab[aria-selected="true"]{color:var(--d-strong)}
 #daily .d-calday[aria-current="date"]{font-weight:700}
 .d-modalshade .d-modal{overscroll-behavior:contain;animation:kx-modal-in var(--kx-slow) var(--kx-ease) both}
 @keyframes kx-modal-in{from{opacity:.65;transform:translateY(var(--kx-shift)) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
@@ -2319,7 +2286,6 @@ button:disabled,[aria-disabled="true"]{opacity:.48;cursor:not-allowed;filter:non
 #daily .d-aside>.d-calendar .d-legend{margin-top:9px;font-size:10px}
 #daily .d-aside>.d-calendar .d-go-today{font-size:10.5px;min-height:29px}
 @media(max-width:860px){
- #daily .d-aside>.d-journal{order:1}
  #daily .d-primary>.d-section{order:2}
  #daily .d-primary>.d-section:last-child{order:3}
  #daily .d-aside>.d-calendar{order:4;width:100%;padding:15px 16px 14px}
@@ -2327,10 +2293,7 @@ button:disabled,[aria-disabled="true"]{opacity:.48;cursor:not-allowed;filter:non
 @media(hover:none){#daily .d-aside>.d-calendar .d-calday{min-height:33px}}
 </style>
 <style>
-/* KZMD v8 — compact Daily row and one-field journal; legacy data preserved. */
-#daily .d-journal-tabs{display:none!important}
-#daily .d-journal-prompt{display:block;margin:0 0 9px;color:var(--d-strong);font-size:12px;font-weight:600}
-#daily .d-journal-entry textarea{width:100%;min-height:170px;height:clamp(170px,25vh,255px);padding:13px 14px;border-radius:15px;resize:vertical;background:var(--d-soft);border:1px solid var(--d-rule);line-height:1.7}
+/* KZMD v8 — compact Daily row. */
 #daily .d-task-topline{display:grid;grid-template-columns:minmax(110px,1.05fr) minmax(95px,1fr) auto;align-items:center;gap:11px;min-width:0}
 #daily .d-task-title-group{min-width:0;overflow-wrap:anywhere}
 #daily .d-task-name{font-size:14px;line-height:1.32}
@@ -2372,7 +2335,6 @@ button:disabled,[aria-disabled="true"]{opacity:.48;cursor:not-allowed;filter:non
  #daily .d-task-inline-actions .d-icon-btn{width:25px;height:30px;padding:3px}
  #daily .d-task-inline-actions .d-icon-btn svg{width:14px;height:14px}
  #daily .d-big-check{width:34px;min-width:34px;height:34px}
- #daily .d-journal-entry textarea{min-height:152px;height:170px}
 }
 @media(max-width:355px){
  #daily .d-task-topline{grid-template-columns:minmax(76px,.95fr) minmax(66px,1fr) auto;gap:4px}
@@ -2508,7 +2470,7 @@ button:disabled,[aria-disabled="true"]{opacity:.48;cursor:not-allowed;filter:non
 @keyframes dFireBurstHalo{0%{scale:1;opacity:var(--fire-light)}30%{scale:1.58;opacity:1;filter:brightness(1.65)}62%{scale:1.24;opacity:.82;filter:brightness(1.18)}100%{scale:1;opacity:var(--fire-light);filter:none}}
 @keyframes dFirePoolBurst{0%{scale:1;opacity:1}30%{scale:1.7;opacity:1}66%{scale:1.28;opacity:.82}100%{scale:1;opacity:1}}
 @media(max-width:1100px){#daily .d-milestone-layout{grid-template-columns:115px minmax(0,1fr)}#daily .d-m-goal{flex-basis:clamp(200px,51%,238px)}}
-@media(max-width:860px){#daily .d-milestone-section{order:1}#daily .d-aside .d-journal{order:2}#daily .d-primary>.d-section{order:3}#daily .d-primary>.d-section:last-child{order:4}}
+@media(max-width:860px){#daily .d-milestone-section{order:1}#daily .d-primary>.d-section{order:3}#daily .d-primary>.d-section:last-child{order:4}}
 @media(max-width:590px){#daily .d-milestone-section{padding:12px 11px 13px}#daily .d-milestone-header{margin-bottom:8px}#daily .d-milestone-layout{grid-template-columns:105px minmax(0,1fr);gap:7px}#daily .d-flame-card{height:120px;min-height:120px;border-radius:14px}#daily .d-fire-art{height:91px;width:98px}#daily .d-fire-svg{height:91px;width:83px}#daily .d-fire-halo{width:105px;height:106px}#daily .d-fire-number strong{font-size:22px}#daily .d-fire-number span{font-size:9px}#daily .d-m-goal{height:120px;flex-basis:clamp(193px,86%,215px);padding:7px 9px;border-radius:14px}#daily .d-m-circle,#daily .d-m-circle svg{width:53px;height:53px}#daily .d-m-percent{font-size:11px}#daily .d-m-value b{font-size:14px}}
 @media(max-width:370px){#daily .d-milestone-header .d-title{font-size:14px}#daily .d-m-date{font-size:9px;padding:4px 6px}#daily .d-milestone-layout{grid-template-columns:97px minmax(0,1fr)}#daily .d-fire-art{scale:.95;transform-origin:50% 96%}#daily .d-m-goal{flex-basis:191px;gap:6px}#daily .d-m-circle,#daily .d-m-circle svg{width:49px;height:49px}}
 @media(prefers-reduced-motion:reduce){#daily .d-flame-card:before,#daily .d-fire-halo,#daily .d-fire-morph,#daily .d-fire-svg,#daily .d-fire-pool,#daily .d-fire-ember{animation:none!important}#daily .d-m-ring-fill{transition:none!important}}
@@ -2685,186 +2647,807 @@ button:disabled,[aria-disabled="true"]{opacity:.48;cursor:not-allowed;filter:non
  .kz-notes-tab .i{width:13px;height:13px}
  .kz-notes-tab-lbl{font-size:8.5px;letter-spacing:.10em}
 }
-.kz-notes-scrim{
- position:absolute;inset:0;z-index:84;
- background:rgba(18,25,42,.22);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);
- opacity:0;visibility:hidden;pointer-events:none;
- transition:opacity .28s cubic-bezier(.22,1,.36,1),visibility 0s .28s;
-}
-:root[data-theme="dark"] .kz-notes-scrim{background:rgba(5,9,18,.48)}
-.kz-notes-scrim.open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .28s cubic-bezier(.22,1,.36,1),visibility 0s}
-.kz-notes-drawer{
- position:absolute;top:12px;bottom:12px;left:12px;width:min(640px,calc(100% - 24px));z-index:85;
- display:flex;flex-direction:column;min-height:0;overflow:hidden;border-radius:26px;
- background:var(--gbg-s);-webkit-backdrop-filter:var(--gf);backdrop-filter:var(--gf);
- box-shadow:var(--gsh),0 24px 70px rgba(8,14,28,.24);border:1px solid var(--rule);
- opacity:0;visibility:hidden;pointer-events:none;
- transform:translate3d(-28px,0,0) scale(.985);
- transition:transform .36s cubic-bezier(.22,1,.36,1),opacity .26s ease,visibility 0s .36s;
- will-change:transform,opacity;
-}
-:root[data-theme="dark"] .kz-notes-drawer{
- background:linear-gradient(155deg,rgba(21,30,48,.96),rgba(14,20,34,.95));
- border-color:rgba(165,194,240,.18);
- box-shadow:inset 0 1px 0 rgba(215,230,255,.12),0 28px 80px rgba(2,5,14,.62);
-}
-.kz-notes-drawer.open{
- opacity:1;visibility:visible;pointer-events:auto;transform:translate3d(0,0,0) scale(1);
- transition:transform .36s cubic-bezier(.22,1,.36,1),opacity .26s ease,visibility 0s;
-}
-.kz-notes-head{
- display:flex;align-items:center;justify-content:space-between;gap:10px;
- padding:14px 16px;border-bottom:1px solid var(--rule);flex:none;
-}
-.kz-notes-brand{display:flex;align-items:center;gap:9px;min-width:0}
-.kz-notes-brand .i{width:17px;height:17px;color:var(--ac1);flex:none}
-.kz-notes-brand h2{margin:0;font-size:15.5px;font-weight:650;letter-spacing:-.02em}
-.kz-notes-head-r{display:flex;align-items:center;gap:8px}
-.kz-notes-state{
- font-size:11.5px;color:var(--mut);padding:4px 9px;border-radius:999px;background:var(--fill);
- white-space:nowrap;
-}
 .kz-notes-close{width:32px;height:32px;padding:0;justify-content:center;color:var(--mut);border-radius:50%}
 .kz-notes-close:hover{background:var(--fill);color:var(--ink)}
-.kz-notes-body{flex:1;min-height:0;display:grid;grid-template-columns:220px minmax(0,1fr)}
-.kz-notes-side{
- display:flex;flex-direction:column;min-height:0;border-right:1px solid var(--rule);
- background:rgba(128,150,190,.04);
-}
-:root[data-theme="dark"] .kz-notes-side{background:rgba(11,16,27,.38)}
-.kz-notes-side-top{padding:12px;border-bottom:1px solid var(--rule);flex:none}
-.kz-notes-new{
- width:100%;justify-content:center;gap:6px;padding:9px 12px;border-radius:14px;
- font-size:13px;font-weight:600;
-}
-.kz-notes-list{
- flex:1;min-height:0;overflow-y:auto;padding:8px;display:flex;flex-direction:column;gap:4px;scrollbar-width:thin;
-}
-.kz-note-item{
- width:100%;text-align:left;justify-content:flex-start;flex-direction:column;align-items:flex-start;gap:3px;
- padding:10px 11px;border-radius:13px;border:1px solid transparent;background:transparent;
- color:var(--ink);transition:background .2s ease,border-color .2s ease,transform .2s ease;
-}
-.kz-note-item:hover{background:var(--fill)}
-.kz-note-item.act{background:var(--ring2);border-color:rgba(91,155,255,.32)}
-.kz-note-item-t{
- width:100%;font-size:13px;font-weight:600;line-height:1.35;color:var(--ink);
- white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.kz-note-item.blank .kz-note-item-t{color:var(--mut);font-weight:500}
-.kz-note-item-p{
- width:100%;font-size:11.5px;color:var(--mut);line-height:1.35;
- white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.kz-notes-editor{display:flex;flex-direction:column;min-width:0;min-height:0;padding:14px 16px 16px;gap:10px}
-.kz-notes-ed-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:32px;flex:none}
-.kz-notes-back{display:none;padding:6px 10px;border-radius:11px;background:var(--fill);font-size:12.5px}
-.kz-notes-del-wrap{margin-left:auto;display:inline-flex;align-items:center;gap:6px}
-.kz-notes-del{
- padding:6px 10px;border-radius:10px;font-size:12px;color:var(--mut);gap:5px;
-}
-.kz-notes-del:hover{background:rgba(242,116,125,.12);color:var(--red)}
-.kz-notes-del .i{width:14px;height:14px}
-.kz-notes-del-confirm{display:none;align-items:center;gap:6px}
-.kz-notes-del-wrap.arm .kz-notes-del{display:none}
-.kz-notes-del-wrap.arm .kz-notes-del-confirm{display:inline-flex}
-.kz-notes-del-yes{padding:6px 11px;border-radius:10px;font-size:12px;font-weight:600;background:var(--red);color:#fff}
-.kz-notes-del-yes:hover{background:var(--red);filter:brightness(1.08)}
-.kz-notes-del-no{padding:6px 10px;border-radius:10px;font-size:12px;background:var(--fill);color:var(--ink)}
-.kz-notes-fields{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px}
-#kz-note-title{
- flex:none;width:100%;border-radius:14px;padding:11px 14px;font-size:16px;font-weight:600;line-height:1.35;
- background:var(--fill);color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule);
-}
-#kz-note-body{
- flex:1;min-height:0;width:100%;border-radius:16px;padding:13px 14px;font-size:14px;line-height:1.65;
- background:var(--fill);color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule);resize:none;
-}
-:root[data-theme="dark"] #kz-note-title,:root[data-theme="dark"] #kz-note-body{
- background:#1A2438;box-shadow:inset 0 0 0 1px rgba(165,194,240,.14);
-}
-:root[data-theme="dark"] #kz-note-title::placeholder,:root[data-theme="dark"] #kz-note-body::placeholder{color:#7E8FAD;opacity:1}
-#kz-note-title:focus,#kz-note-body:focus{box-shadow:inset 0 0 0 1px var(--ac1),0 0 0 3px var(--ring2)}
-.kz-notes-empty{
- flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
- text-align:center;padding:24px;color:var(--mut);
-}
-.kz-notes-empty p{margin:0;font-size:13.5px;line-height:1.55;max-width:260px}
-.kz-notes-drawer[data-empty="1"] .kz-notes-fields,.kz-notes-drawer[data-empty="1"] .kz-notes-del-wrap{display:none}
-.kz-notes-drawer[data-empty="0"] .kz-notes-empty{display:none}
-@media(max-width:639px){
- .kz-notes-drawer{top:8px;bottom:8px;left:8px;right:8px;width:auto;max-width:calc(100% - 16px);border-radius:22px}
- .kz-notes-body{grid-template-columns:minmax(0,1fr)}
- .kz-notes-drawer[data-view="list"] .kz-notes-editor{display:none}
- .kz-notes-drawer[data-view="editor"] .kz-notes-side{display:none}
- .kz-notes-side{border-right:0}
- .kz-notes-back{display:inline-flex}
- #kz-note-title,#kz-note-body{font-size:16px}
-}
-.kz-notes-drawer [hidden]{display:none!important}
-.kz-notes-body{grid-template-rows:minmax(0,1fr)}
-.kz-notes-head-r{min-width:0}
-.kz-notes-state{overflow:hidden;text-overflow:ellipsis}
-.kz-notes-state:empty{display:none}
 .kz-notes-close{flex:none}
-.kz-notes-drawer[data-empty="1"] .kz-notes-ed-bar{display:none}
+@media(prefers-reduced-motion:reduce){.kz-notes-tab{transition:none!important}}
+</style>
+<style id="kz-notes-workspace-style">
+@property --kz-notes-paper-accent{syntax:"<color>";inherits:true;initial-value:#7664be}
+.kz-notes-drawer,.kz-note-gallery{
+ --nt-ink:#202637;--nt-muted:#5b667a;--nt-page:#eef1f6;--nt-sidebar:#f7f8fb;
+ --nt-paper:#fffefa;--nt-control:#fff;--nt-edge:#dce1ec;--nt-soft:#edf0f7;
+ --nt-accent:#5546b1;--nt-focus:#6858c6;--nt-glow:rgba(98,78,192,.16);
+ --nt-danger:#b42342;--nt-shadow:0 18px 64px rgba(38,43,74,.12),0 2px 7px rgba(38,43,74,.06);
+ --nt-default-color:#7664be;--nt-default-ink:#5849a4;
+}
+:root[data-theme="dark"] .kz-notes-drawer,:root[data-theme="dark"] .kz-note-gallery{
+ --nt-ink:#eff1fa;--nt-muted:#aeb9d0;--nt-page:#111624;--nt-sidebar:#181e2e;
+ --nt-paper:#1d2435;--nt-control:#232b40;--nt-edge:#363f56;--nt-soft:#282f44;
+ --nt-accent:#c4b5ff;--nt-focus:#b19af7;--nt-glow:rgba(158,122,255,.17);
+ --nt-danger:#ffacb8;--nt-shadow:0 20px 60px rgba(4,7,16,.34),0 2px 6px rgba(4,7,16,.32);
+ --nt-default-color:#a28bea;--nt-default-ink:#d6c9ff;
+}
+.kz-notes-drawer,.kz-note-item{
+ --nt-tag-color:var(--nt-default-color);--nt-tag-ink:var(--nt-default-ink);
+}
+:is(.kz-notes-drawer,.kz-note-item)[data-label="study"]{--nt-tag-color:#437de3;--nt-tag-ink:#274f9e}
+:is(.kz-notes-drawer,.kz-note-item)[data-label="work"]{--nt-tag-color:#138a72;--nt-tag-ink:#14624f}
+:is(.kz-notes-drawer,.kz-note-item)[data-label="personal"]{--nt-tag-color:#af5796;--nt-tag-ink:#8f3f78}
+:is(.kz-notes-drawer,.kz-note-item)[data-label="idea"]{--nt-tag-color:#bb741b;--nt-tag-ink:#815011}
+:is(.kz-notes-drawer,.kz-note-item)[data-label="important"]{--nt-tag-color:#ca4963;--nt-tag-ink:#a32246}
+:root[data-theme="dark"] :is(.kz-notes-drawer,.kz-note-item)[data-label="study"]{--nt-tag-color:#75a8ff;--nt-tag-ink:#bed5ff}
+:root[data-theme="dark"] :is(.kz-notes-drawer,.kz-note-item)[data-label="work"]{--nt-tag-color:#66d2ae;--nt-tag-ink:#94eccd}
+:root[data-theme="dark"] :is(.kz-notes-drawer,.kz-note-item)[data-label="personal"]{--nt-tag-color:#e191cb;--nt-tag-ink:#f7bee7}
+:root[data-theme="dark"] :is(.kz-notes-drawer,.kz-note-item)[data-label="idea"]{--nt-tag-color:#edb663;--nt-tag-ink:#f9d491}
+:root[data-theme="dark"] :is(.kz-notes-drawer,.kz-note-item)[data-label="important"]{--nt-tag-color:#f7829b;--nt-tag-ink:#ffb4c4}
+
+.kz-notes-drawer{
+ --kz-notes-paper-accent:var(--nt-tag-color);
+ position:fixed;inset:0 auto auto 0;width:100%;height:100vh;height:100dvh;
+ max-width:none;max-height:none;min-height:0;margin:0;padding:0;border:0;border-radius:0;
+ overflow:hidden;isolation:isolate;color:var(--nt-ink);background:var(--nt-page);
+ box-shadow:none;backdrop-filter:none;transition:--kz-notes-paper-accent .42s cubic-bezier(.2,.75,.24,1);
+}
+.kz-notes-drawer[open]{display:flex;flex-direction:column;animation:kzNotesWorkspaceIn .36s cubic-bezier(.2,.75,.24,1) both}
+.kz-notes-drawer::backdrop{background:var(--nt-page)}
+.kz-notes-drawer.glass::before,.kz-notes-drawer.glass::after{display:none}
+.kz-notes-drawer [hidden],.kz-note-gallery [hidden]{display:none!important}
+@media(min-width:1000px) and (pointer:fine){.kz-notes-drawer{zoom:.8}}
+@keyframes kzNotesWorkspaceIn{from{opacity:0;transform:translateY(11px)}to{opacity:1;transform:none}}
+@keyframes kzNotesPaperIn{from{opacity:.7;transform:translateY(7px)}to{opacity:1;transform:none}}
+
+.kz-notes-head{
+ position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none;
+ min-height:72px;padding:12px max(clamp(21px,3vw,46px),env(safe-area-inset-right)) 12px max(clamp(21px,3vw,46px),env(safe-area-inset-left));
+ border-bottom:1px solid var(--nt-edge);background:linear-gradient(110deg,var(--nt-control),var(--nt-sidebar));
+}
+.kz-notes-brand,.kz-notes-head-r{display:flex;align-items:center;min-width:0;gap:10px}
+.kz-notes-mark{
+ display:grid;place-items:center;flex:none;width:39px;height:39px;border-radius:13px;color:#fff;
+ background:linear-gradient(145deg,#7662de,#4d42a8 72%,#445fa2);box-shadow:0 5px 12px rgba(85,70,177,.28);
+}
+.kz-notes-mark .i{width:21px;height:21px}
+.kz-notes-brand h2{margin:0;font-size:clamp(20px,2.2vw,25px);line-height:1.14;font-weight:730;letter-spacing:-.055em;white-space:nowrap}
+.kz-notes-state{
+ display:flex;align-items:center;gap:6px;border:1px solid var(--nt-edge);border-radius:999px;
+ color:var(--nt-muted);background:var(--nt-sidebar);padding:6px 10px;font-size:11px;line-height:1.2;white-space:nowrap;
+}
+.kz-notes-state:empty{display:none}
+.kz-notes-drawer .kz-notes-close{
+ width:42px;height:42px;min-height:42px;justify-content:center;flex:none;padding:0;border:1px solid var(--nt-edge);
+ border-radius:13px;background:var(--nt-control);color:var(--nt-muted);
+}
+.kz-notes-drawer .kz-notes-close:hover{background:var(--nt-soft);color:var(--nt-ink)}
+
+.kz-notes-body{display:grid;grid-template-columns:clamp(275px,26vw,352px) minmax(0,1fr);grid-template-rows:minmax(0,1fr);flex:1;min-height:0}
+.kz-notes-side{
+ min-width:0;min-height:0;display:flex;flex-direction:column;overflow:hidden;
+ border-right:1px solid var(--nt-edge);background:var(--nt-sidebar);
+}
+.kz-notes-side-top{padding:16px 20px 0;flex:none}
+.kz-notes-side-tools{display:grid;gap:10px;padding-top:12px}
+#kz-notes-drawer .kz-notes-new,#kz-notes-drawer .kz-notes-empty .p{
+ position:relative;isolation:isolate;overflow:hidden;justify-content:center;gap:7px;min-height:44px;
+ width:100%;padding:9px 13px;border-radius:12px;color:#fff;font-size:13px;font-weight:690;
+ background:linear-gradient(110deg,#6250c0,#5142ab 58%,#4568b8);box-shadow:0 6px 18px rgba(75,62,165,.24);
+}
+#kz-notes-drawer .kz-notes-new:hover,#kz-notes-drawer .kz-notes-empty .p:hover{background:linear-gradient(110deg,#6250c0,#5142ab 58%,#4568b8)}
+.kz-notes-new::after,.kz-notes-empty .p::after{
+ position:absolute;inset:-25% auto -25% -50%;width:32%;content:"";pointer-events:none;
+ background:linear-gradient(90deg,transparent,rgba(255,255,255,.34),transparent);
+ transform:skewX(-21deg);transition:left .67s cubic-bezier(.2,.75,.25,1);
+}
+.kz-notes-new:hover::after,.kz-notes-empty .p:hover::after{left:130%}
+.kz-notes-new .i,.kz-notes-empty .p .i{width:16px;height:16px;color:inherit}
+.kz-notes-search{
+ display:flex;align-items:center;gap:8px;min-width:0;min-height:43px;padding:0 10px;
+ border:1px solid var(--nt-edge);border-radius:12px;background:var(--nt-control);color:var(--nt-muted);
+ transition:box-shadow .2s ease,border-color .2s ease;
+}
+.kz-notes-search:focus-within{border-color:var(--nt-focus);box-shadow:0 0 0 3px var(--nt-glow)}
+.kz-notes-search .i{width:16px;height:16px}
+#kz-notes-search{
+ min-width:0;width:100%;min-height:41px;padding:3px 0;border:0;border-radius:0;
+ background:transparent;color:var(--nt-ink);font-size:13px;box-shadow:none;outline:none;
+}
+#kz-notes-search:focus{box-shadow:none;outline:none}
+#kz-notes-search::placeholder{color:var(--nt-muted);opacity:1}
+.kz-notes-filter-field,.kz-notes-label-field{display:flex;align-items:center;gap:7px;min-width:0;color:var(--nt-muted);font-size:11px;font-weight:630}
+.kz-notes-filter-field .i,.kz-notes-label-field .i{width:15px;height:15px;margin-left:1px}
+.kz-notes-filter-field select,#kz-note-label{
+ flex:1;min-width:0;min-height:35px;padding:5px 8px;border:1px solid var(--nt-edge);border-radius:10px;
+ background:var(--nt-control);color:var(--nt-ink);font:inherit;font-size:12px;box-shadow:none;
+}
+.kz-notes-filter-field select{width:100%}
+.kz-notes-list-meta{
+ display:flex;align-items:center;min-height:38px;flex:none;padding:5px 1px 3px;
+ font-size:11px;font-weight:650;color:var(--nt-muted);line-height:1.4;
+}
+.kz-notes-library{display:flex;flex:1;flex-direction:column;min-width:0;min-height:0;overflow:hidden}
+.kz-notes-list{
+ display:flex;flex:1;flex-direction:column;min-width:0;min-height:0;gap:9px;padding:3px 17px max(20px,env(safe-area-inset-bottom));
+ overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--nt-edge) transparent;
+}
+#kz-notes-list-empty{margin:3px 17px 15px;padding:13px;border:1px dashed var(--nt-edge);border-radius:11px;color:var(--nt-muted);font-size:12px;line-height:1.5}
+.kz-note-item{
+ position:relative;display:flex;flex:none;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:5px;
+ width:100%;min-width:0;padding:11px 12px 10px 14px;text-align:left;overflow:hidden;border-radius:12px;
+ border:1px solid var(--nt-edge);background:var(--nt-control);color:var(--nt-ink);
+ transition:background-color .24s ease,border-color .24s ease,transform .24s ease,box-shadow .24s ease;
+}
+.kz-note-item[data-label]:not([data-label="none"]){
+ border-color:color-mix(in srgb,var(--nt-tag-color) 26%,var(--nt-edge));
+ background:linear-gradient(123deg,color-mix(in srgb,var(--nt-tag-color) 14%,var(--nt-control)),color-mix(in srgb,var(--nt-tag-color) 6%,var(--nt-control)));
+}
+.kz-note-item::before{
+ position:absolute;inset:10px auto 10px 0;width:3px;border-radius:0 4px 4px 0;content:"";
+ background:var(--nt-tag-color);opacity:0;transition:opacity .22s ease;
+}
+.kz-note-item[data-label]:not([data-label="none"])::before,.kz-note-item.act::before{opacity:1}
+.kz-note-item:hover{transform:translateY(-1px);border-color:color-mix(in srgb,var(--nt-tag-color) 48%,var(--nt-edge));background-color:var(--nt-soft)}
+.kz-note-item.act{
+ border-color:color-mix(in srgb,var(--nt-tag-color) 62%,var(--nt-edge));
+ box-shadow:0 3px 11px color-mix(in srgb,var(--nt-tag-color) 20%,transparent);
+}
+.kz-note-item-head,.kz-note-item-meta{display:flex;align-items:center;min-width:0;gap:6px}
+.kz-note-item-head{justify-content:space-between}
+.kz-note-item-t,.kz-note-item-p{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kz-note-item-t{flex:1;color:var(--nt-ink);font-size:13px;line-height:1.34;font-weight:680}
+.kz-note-item.blank .kz-note-item-t{font-style:italic;font-weight:550}
+.kz-note-item-p{color:var(--nt-muted);font-size:11px;line-height:1.4}
+.kz-note-item-pin{width:13px;height:13px;flex:none;color:var(--nt-tag-ink)}
+.kz-note-item-meta{min-height:20px;flex-wrap:wrap;justify-content:space-between;color:var(--nt-muted);font-size:10.5px;font-weight:580;line-height:1.3}
+.kz-note-item-label{
+ display:inline-flex;gap:4px;align-items:center;min-height:19px;padding:2px 6px;border-radius:999px;
+ background:color-mix(in srgb,var(--nt-tag-color) 17%,var(--nt-control));color:var(--nt-tag-ink);font-weight:690;
+}
+.kz-note-item-label::before{content:"";width:5px;height:5px;flex:none;border-radius:50%;background:var(--nt-tag-color)}
+.kz-note-item-date{margin-left:auto;white-space:nowrap}
+
+.kz-notes-editor{
+ position:relative;display:flex;flex-direction:column;min-width:0;min-height:0;gap:16px;
+ padding:clamp(20px,3vw,46px) clamp(20px,4.5vw,78px) max(32px,env(safe-area-inset-bottom));
+ overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--nt-edge) transparent;
+ background:radial-gradient(ellipse at 91% 3%,color-mix(in srgb,var(--kz-notes-paper-accent) 16%,transparent),transparent 50%),var(--nt-page);
+}
+.kz-notes-ed-bar,.kz-notes-fields{width:min(100%,950px);margin-inline:auto}
+.kz-notes-ed-bar{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px;flex:none}
+.kz-notes-note-tools{display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:6px;min-width:0}
+.kz-notes-note-actions{display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:6px;min-width:0}
+.kz-notes-note-tools button,.kz-notes-back,.kz-note-image-count,.kz-note-image-import,.kz-note-gallery-controls button{
+ min-height:38px;padding:6px 10px;gap:6px;border:1px solid var(--nt-edge);border-radius:11px;
+ justify-content:center;background:var(--nt-control);color:var(--nt-ink);font-size:11.5px;font-weight:650;white-space:nowrap;
+}
+.kz-notes-note-tools button:hover,.kz-notes-back:hover,.kz-note-image-count:hover,.kz-note-image-import:hover,
+.kz-note-gallery-controls button:hover{background:var(--nt-soft);border-color:color-mix(in srgb,var(--nt-focus) 38%,var(--nt-edge))}
+.kz-notes-note-tools button .i,.kz-notes-back .i,.kz-note-image-count .i,.kz-note-image-import .i{width:15px;height:15px;flex:none}
+.kz-notes-note-tools button[aria-pressed="true"]{
+ border-color:color-mix(in srgb,var(--nt-focus) 48%,var(--nt-edge));color:var(--nt-accent);
+ background:color-mix(in srgb,var(--nt-focus) 14%,var(--nt-control));
+}
+#kz-note-label{
+ flex:initial;min-height:38px;max-width:160px;font-weight:670;color:var(--nt-tag-ink);
+ background:color-mix(in srgb,var(--nt-tag-color) 11%,var(--nt-control));border-color:color-mix(in srgb,var(--nt-tag-color) 30%,var(--nt-edge));
+}
+.kz-notes-back{display:none}
+.kz-notes-del-wrap{display:inline-flex;align-items:center;gap:6px}
+.kz-notes-del-wrap.arm .kz-notes-del,.kz-notes-del-confirm{display:none}
+.kz-notes-del-wrap.arm .kz-notes-del-confirm{display:inline-flex;align-items:center;gap:5px}
+.kz-notes-note-tools .kz-notes-del,.kz-note-gallery-controls .kz-notes-del{color:var(--nt-danger)}
+.kz-notes-note-tools .kz-notes-del:hover,.kz-note-gallery-controls .kz-notes-del:hover{background:color-mix(in srgb,var(--nt-danger) 10%,var(--nt-control))}
+.kz-notes-note-tools .kz-notes-del-yes,.kz-note-gallery-controls .kz-notes-del-yes{border-color:transparent;background:#ac2847;color:#fff;white-space:nowrap}
+.kz-notes-note-tools .kz-notes-del-yes:hover,.kz-note-gallery-controls .kz-notes-del-yes:hover{background:#8d1f39;color:#fff}
+
+.kz-notes-fields{display:flex;flex:none;flex-direction:column;gap:15px;min-width:0}
+.kz-notes-paper{
+ position:relative;isolation:isolate;min-width:0;display:flex;flex-direction:column;gap:16px;
+ padding:clamp(20px,3.5vw,54px) clamp(24px,5.2vw,80px) 21px;
+ overflow:hidden;border:1px solid color-mix(in srgb,var(--kz-notes-paper-accent) 21%,var(--nt-edge));border-radius:24px;
+ background:radial-gradient(ellipse at 93% -6%,color-mix(in srgb,var(--kz-notes-paper-accent) 14%,transparent),transparent 65%),var(--nt-paper);
+ box-shadow:var(--nt-shadow);transition:border-color .26s ease,box-shadow .26s ease;
+}
+.kz-notes-drawer[open] .kz-notes-paper{animation:kzNotesPaperIn .42s cubic-bezier(.2,.75,.24,1) both}
+.kz-notes-paper::before{
+ position:absolute;inset:0 0 auto;height:4px;content:"";
+ background:linear-gradient(90deg,var(--kz-notes-paper-accent),color-mix(in srgb,var(--kz-notes-paper-accent) 40%,transparent) 65%,transparent);
+}
+.kz-notes-paper:focus-within{
+ border-color:color-mix(in srgb,var(--nt-tag-color) 43%,var(--nt-edge));
+ box-shadow:var(--nt-shadow),0 0 0 3px color-mix(in srgb,var(--nt-tag-color) 8%,transparent);
+}
+.kz-note-title-row{display:flex;align-items:center;gap:10px;min-width:0;border-bottom:1px solid var(--nt-edge)}
+#kz-note-title,#kz-note-body{
+ width:100%;min-width:0;border:0;border-radius:0;background:transparent;color:var(--nt-ink);
+ box-shadow:none;outline:none;caret-color:var(--nt-tag-color);font-family:inherit;
+}
+#kz-note-title:focus,#kz-note-body:focus{box-shadow:none;outline:none}
+#kz-note-title{flex:1;padding:0 0 14px;font-size:clamp(29px,4.7vw,56px);line-height:1.18;font-weight:730;letter-spacing:-.055em}
+#kz-note-body{
+ display:block;min-height:clamp(270px,43dvh,650px);max-height:70dvh;padding:1px 3px 8px 0;resize:vertical;
+ font-size:16.5px;line-height:1.76;letter-spacing:.002em;scrollbar-color:var(--nt-edge) transparent;scrollbar-width:thin;
+}
+#kz-note-title::placeholder,#kz-note-body::placeholder{opacity:1;color:var(--nt-muted)}
+#kz-note-editor-meta{display:block;margin:0;color:var(--nt-muted);font-size:11px;line-height:1.4;min-height:15px}
+.kz-notes-empty{
+ display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;min-height:240px;gap:13px;
+ text-align:center;padding:27px 20px;color:var(--nt-muted);
+}
+.kz-notes-empty h3{margin:0;color:var(--nt-ink);font-size:clamp(20px,3vw,30px);font-weight:670;line-height:1.3;letter-spacing:-.035em}
+.kz-notes-empty p{margin:0;max-width:33ch;color:var(--nt-muted);font-size:13px;line-height:1.55}
+.kz-notes-empty-art{position:relative;display:grid;place-items:center;isolation:isolate;width:146px;height:122px;margin-bottom:7px}
+.kz-notes-empty-art::before{
+ position:absolute;inset:-12px -20px;z-index:-1;content:"";pointer-events:none;
+ background:radial-gradient(ellipse,var(--nt-glow),transparent 70%);
+}
+.kz-notes-empty-art span{
+ grid-area:1 / 1;display:grid;place-items:center;width:73px;height:92px;border:1px solid var(--nt-edge);border-radius:17px;
+ background:var(--nt-control);color:var(--nt-accent);box-shadow:0 10px 22px rgba(28,30,68,.12);
+}
+.kz-notes-empty-art span:nth-child(1){transform:translateX(-26px) rotate(-15deg);background:color-mix(in srgb,#60a288 16%,var(--nt-control))}
+.kz-notes-empty-art span:nth-child(2){transform:translateX(27px) rotate(14deg);background:color-mix(in srgb,#af65ad 15%,var(--nt-control))}
+.kz-notes-empty-art span:nth-child(3){
+ transform:translateY(-6px) rotate(-4deg);border-color:color-mix(in srgb,var(--nt-accent) 31%,var(--nt-edge));
+ background:linear-gradient(135deg,var(--nt-control),color-mix(in srgb,var(--nt-accent) 15%,var(--nt-control)));
+}
+.kz-notes-empty-art .i{width:32px;height:32px}
+.kz-notes-drawer[open] .kz-notes-empty-art{animation:kzNotesPaperIn .5s .1s cubic-bezier(.2,.75,.24,1) both}
+#kz-notes-drawer .kz-notes-empty .p{width:auto;min-width:165px;margin-top:2px}
+.kz-notes-drawer[data-empty="1"] .kz-notes-fields,.kz-notes-drawer[data-empty="1"] .kz-notes-ed-bar,
+.kz-notes-drawer[data-empty="0"] .kz-notes-empty{display:none}
 .kz-notes-drawer[data-library-empty="1"][data-empty="1"] .kz-notes-side{display:none}
 .kz-notes-drawer[data-library-empty="1"][data-empty="1"] .kz-notes-editor{display:flex;grid-column:1/-1}
-.kz-notes-empty > .i{width:28px;height:28px;color:var(--ac1);opacity:.85}
-.kz-notes-empty .p .i{width:16px;height:16px;color:inherit}
-.kz-note-title-row{display:flex;align-items:center;gap:8px;flex:none}
-#kz-note-title{flex:1;min-width:0}
-.kz-note-image-count,.kz-note-image-import{
- flex:none;justify-content:center;gap:6px;min-height:34px;padding:6px 10px;border-radius:10px;
- font-size:12px;font-weight:600;white-space:nowrap;color:var(--ink);background:var(--fill);
+
+.kz-note-attachments{
+ min-width:0;padding:13px 14px;border:1px solid var(--nt-edge);border-radius:16px;
+ background:color-mix(in srgb,var(--nt-control) 85%,transparent);
+ transition:background .24s ease,border-color .24s ease,box-shadow .24s ease;
 }
-.kz-note-image-count:hover,.kz-note-image-import:hover{background:var(--ring2)}
-.kz-note-image-count .i,.kz-note-image-import .i{width:15px;height:15px;color:var(--ac1)}
-.kz-note-image-tools{display:flex;align-items:center;flex-wrap:wrap;gap:5px 10px;flex:none}
-.kz-note-image-hint{color:var(--mut);font-size:11.5px;line-height:1.4}
+.kz-note-attachments[data-dragging="true"]{
+ border-color:var(--nt-tag-color);background:color-mix(in srgb,var(--nt-tag-color) 14%,var(--nt-control));box-shadow:0 0 0 4px var(--nt-glow);
+}
+.kz-note-attachments :is(h3,h4){margin:0;color:var(--nt-ink);font-size:12px;font-weight:680}
+.kz-note-attachments-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:7px 12px}
+.kz-note-attachments-label{display:flex;align-items:center;gap:9px}
+.kz-note-attachments-icon{
+ display:grid;place-items:center;flex:none;width:35px;height:35px;border:1px solid var(--nt-edge);border-radius:10px;
+ background:color-mix(in srgb,var(--nt-accent) 11%,var(--nt-control));color:var(--nt-accent);
+}
+.kz-note-attachments-icon .i{width:16px;height:16px}
+.kz-note-image-tools{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+.kz-note-image-count,.kz-note-image-import{min-height:35px}
+.kz-note-image-count .i,.kz-note-image-import .i{color:var(--nt-accent)}
+.kz-note-image-hint{margin:3px 0 0;color:var(--nt-muted);font-size:11px;line-height:1.4}
 .kz-note-images{
- display:flex;gap:7px;flex:none;min-width:0;overflow-x:auto;scrollbar-width:thin;padding:3px 3px 5px;
+ display:flex;gap:10px;min-width:0;margin-top:7px;padding:4px 2px 6px;
+ overflow:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--nt-edge) transparent;
 }
 .kz-note-thumb,.kz-note-item-thumb{
  position:relative;display:grid;place-items:center;overflow:hidden;flex:none;isolation:isolate;
- box-shadow:inset 0 0 0 1px var(--rule);background:var(--fill);color:var(--mut);
+ border:1px solid var(--nt-edge);background:var(--nt-soft);color:var(--nt-muted);
 }
-.kz-note-thumb{width:62px;height:53px;border-radius:10px;padding:0}
-.kz-note-thumb:hover{box-shadow:inset 0 0 0 1px var(--ac1);background:var(--ring2)}
+.kz-note-thumb{width:114px;height:83px;padding:0;border-radius:10px;transition:border-color .2s ease,transform .25s ease}
+.kz-note-thumb:hover{border-color:var(--nt-focus);transform:translateY(-2px)}
 .kz-note-thumb img,.kz-note-item-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.kz-note-thumb img{transition:transform .39s cubic-bezier(.2,.75,.25,1)}
+.kz-note-thumb:hover img{transform:scale(1.08)}
 .kz-note-thumb .i,.kz-note-item-thumb .i{width:16px;height:16px}
-.kz-note-item{flex:none}
-.kz-note-item-photos{display:flex;max-width:100%;align-items:center;gap:5px;margin-top:3px}
-.kz-note-item-thumb{width:36px;height:30px;border-radius:6px}
-.kz-note-item-thumb:hover{outline:1px solid var(--ac1);outline-offset:1px}
-.kz-note-item-more{color:var(--mut);font-size:10.5px;font-weight:650;white-space:nowrap}
+.kz-note-item-photos{display:flex;max-width:100%;align-items:center;gap:4px;margin-top:3px}
+.kz-note-item-thumb{width:38px;height:28px;border-radius:5px}
+.kz-note-item-more{color:var(--nt-muted);font-size:10.5px;font-weight:650;white-space:nowrap}
+
 .kz-note-gallery{
- width:min(820px,calc(100% - 28px));max-width:none;max-height:calc(100% - 28px);padding:0;
- overflow:auto;border:1px solid var(--rule);border-radius:20px;color:var(--ink);background:var(--bg);
- box-shadow:0 24px 88px rgba(4,9,19,.45);
+ width:min(1090px,calc(100% - 32px));height:min(86dvh,870px);max-width:none;max-height:none;padding:0;
+ overflow:hidden;border:1px solid var(--nt-edge);border-radius:22px;
+ color:var(--nt-ink);background:var(--nt-control);box-shadow:0 24px 88px rgba(4,9,19,.5);
 }
-.kz-note-gallery::backdrop{background:rgba(5,10,20,.72);backdrop-filter:blur(5px)}
-.kz-note-gallery-inner{display:grid;gap:12px;padding:14px}
-.kz-note-gallery-head,.kz-note-gallery-controls{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.kz-note-gallery-head h3{margin:0;font-size:14px;font-weight:650;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kz-note-gallery[open]{animation:kzNotesPaperIn .26s cubic-bezier(.2,.75,.24,1) both}
+.kz-note-gallery::backdrop{background:rgba(8,10,21,.73);backdrop-filter:blur(7px)}
+.kz-note-gallery-inner{display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:11px;height:100%;min-height:0;padding:13px}
+.kz-note-gallery-head,.kz-note-gallery-controls{display:flex;align-items:center;justify-content:space-between;min-width:0;gap:8px}
+.kz-note-gallery-head h3{margin:0;color:var(--nt-ink);font-size:13px;font-weight:680;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .kz-note-gallery-frame{
- display:grid;place-items:center;min-height:min(180px,35dvh);height:min(58dvh,575px);overflow:hidden;
- border-radius:12px;background:var(--fill);box-shadow:inset 0 0 0 1px var(--rule);
+ display:grid;place-items:center;min-height:0;padding:8px;overflow:hidden;border-radius:13px;
+ background:radial-gradient(ellipse at 50% 0%,#26324a 0%,#151c2e 60%,#101625 100%);
 }
 .kz-note-gallery-frame img{display:block;width:100%;height:100%;min-height:0;object-fit:contain}
-.kz-note-gallery-message{padding:16px;text-align:center;color:var(--mut);font-size:13px}
-.kz-note-gallery-nav,.kz-note-gallery-remove{display:flex;align-items:center;gap:5px}
-.kz-note-gallery-position{min-width:42px;text-align:center;font-size:12px;color:var(--mut);white-space:nowrap}
-.kz-note-gallery-controls button{min-height:32px}
-.kz-note-gallery-controls .kz-notes-del{padding-inline:8px;white-space:nowrap}
-@media(max-width:639px){
- .kz-note-gallery-inner{gap:9px;padding:10px}
- .kz-note-gallery-frame{height:min(53dvh,575px)}
- .kz-note-thumb{width:57px;height:49px}
+.kz-note-gallery-message{padding:15px;text-align:center;color:#eef2fd;font-size:13px;line-height:1.5}
+.kz-note-gallery-nav,.kz-note-gallery-remove,.kz-note-gallery-actions{display:flex;align-items:center;flex-wrap:wrap;gap:5px;min-width:0}
+.kz-note-gallery-position{min-width:40px;text-align:center;font-size:12px;color:var(--nt-muted);white-space:nowrap}
+.kz-note-gallery-controls .kz-notes-close{width:37px;padding:0}
+.kz-notes-drawer :is(button,select):focus-visible,.kz-note-gallery :is(button,a):focus-visible{outline:2px solid var(--nt-focus);outline-offset:2px}
+
+@media(min-width:761px){
+ .kz-notes-ed-bar{position:sticky;top:5px;z-index:1}
+ .kz-notes-editor:has(.kz-note-images:not([hidden])) #kz-note-body{min-height:clamp(220px,34dvh,540px)}
+}
+@media(max-width:980px){
+ .kz-notes-side-top{padding-inline:14px}
+ .kz-notes-list{padding-inline:12px}
+ #kz-notes-list-empty{margin-inline:12px}
+ .kz-notes-editor{padding-inline:clamp(17px,3vw,32px)}
+ .kz-notes-paper{padding-inline:clamp(22px,4.2vw,44px)}
+}
+@media(max-width:760px){
+ .kz-notes-head{min-height:61px;padding:8px max(13px,env(safe-area-inset-right)) 8px max(13px,env(safe-area-inset-left))}
+ .kz-notes-mark{width:35px;height:35px;border-radius:11px}
+ .kz-notes-mark .i{width:19px;height:19px}
+ .kz-notes-head-r{gap:6px}
+ .kz-notes-state{max-width:145px;display:block;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
+ .kz-notes-drawer .kz-notes-close{width:40px;height:40px;min-height:40px}
+ .kz-notes-body{grid-template-columns:minmax(0,1fr)}
+ .kz-notes-drawer[data-view="list"] .kz-notes-editor{display:none}
+ .kz-notes-drawer[data-view="editor"] .kz-notes-side{display:none}
+ .kz-notes-drawer[data-library-empty="1"][data-empty="1"] .kz-notes-editor{display:flex}
+ .kz-notes-side{border:0}
+ .kz-notes-side-top{padding:12px max(13px,env(safe-area-inset-left),env(safe-area-inset-right)) 0}
+ .kz-notes-side-tools{gap:8px;padding-top:9px}
+ #kz-notes-search,#kz-notes-filter,#kz-note-label{font-size:16px}
+ .kz-notes-list{gap:8px;padding-inline:max(12px,env(safe-area-inset-left),env(safe-area-inset-right))}
+ .kz-notes-editor{gap:10px;padding:10px max(12px,env(safe-area-inset-left),env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom))}
+ .kz-notes-ed-bar{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:6px}
+ .kz-notes-back{display:inline-flex;min-height:40px;align-self:flex-start}
+ .kz-notes-note-tools{display:contents}
+ .kz-notes-label-field{grid-row:1;grid-column:2;justify-content:flex-end}
+ .kz-notes-note-actions{grid-column:1/-1;gap:4px}
+ .kz-notes-note-tools button,#kz-note-label{min-height:40px}
+ #kz-note-label{max-width:145px}
+ .kz-notes-fields{gap:10px}
+ .kz-notes-paper{gap:12px;padding:19px 16px 13px;border-radius:16px}
+ #kz-note-title{padding-bottom:11px;font-size:clamp(25px,7.1vw,36px)}
+ #kz-note-body{min-height:clamp(180px,35dvh,460px);font-size:16px;line-height:1.65}
+ .kz-note-attachments{padding:9px;border-radius:13px}
+ .kz-note-thumb{width:94px;height:68px}
+ .kz-note-gallery{width:calc(100% - 16px);height:83dvh;border-radius:16px}
+ .kz-note-gallery-inner{gap:8px;padding:8px}
+ .kz-note-gallery-controls{flex-wrap:wrap}
+}
+@media(max-height:540px){
+ .kz-notes-head{min-height:53px;padding-block:6px}
+ .kz-notes-editor{padding-top:10px}
+ .kz-notes-side-tools{gap:6px;padding-top:7px}
+ .kz-notes-side-top{padding-top:7px}
+ .kz-notes-list-meta{min-height:29px}
 }
 @media(prefers-reduced-motion:reduce){
- .kz-notes-tab,.kz-notes-scrim,.kz-notes-drawer,.kz-note-item{transition:none!important}
+ .kz-notes-tab,.kz-notes-drawer,.kz-notes-drawer *, .kz-notes-drawer *::before,.kz-notes-drawer *::after,.kz-note-gallery{animation:none!important;transition:none!important}
+ .kz-note-item:hover,.kz-note-thumb:hover,.kz-note-thumb:hover img{transform:none}
 }
+</style>
+<style id="kz-journal-style">
+.kz-journal-tab{top:202px}
+@media(max-width:639px){.kz-journal-tab{top:165px}}
+
+#kz-journal-drawer{
+ --journal-ink:#302441;--journal-muted:#645572;--journal-accent:#733ea2;--journal-focus:#9c68c7;
+ --journal-base:#f5eef8;--journal-control:#fffafd;--journal-edge:#e5d8eb;--journal-danger:#a62953;
+ --journal-halo:#e1c9f2;--journal-peach:#f7d4c9;--journal-pink:#d97aa9;
+ --nt-tag-color:var(--journal-focus);--kz-notes-paper-accent:var(--journal-focus);--nt-paper:#fffaf6;--nt-edge:var(--journal-edge);
+ --nt-shadow:0 18px 58px rgba(78,45,98,.13),0 2px 10px rgba(78,45,98,.07);
+ position:fixed;inset:12px auto auto 12px;width:min(650px,calc(100% - 24px));height:calc(100vh - 24px);height:calc(100dvh - 24px);
+ max-width:none;max-height:none;margin:0;padding:0;border:1px solid var(--journal-edge);border-radius:26px;
+ color:var(--journal-ink);overflow:hidden;
+ background:radial-gradient(ellipse at 100% 4%,var(--journal-halo),transparent 60%),radial-gradient(ellipse at 0 92%,var(--journal-peach),transparent 62%),var(--journal-base);
+ box-shadow:0 24px 70px rgba(38,23,57,.28);
+}
+:root[data-theme="dark"] #kz-journal-drawer{
+ --journal-ink:#f5edf9;--journal-muted:#c1b1ce;--journal-accent:#e0bdfa;--journal-focus:#b688eb;
+ --journal-base:#21182b;--journal-control:#302139;--journal-edge:#513e5f;--journal-danger:#ffafc7;
+ --journal-halo:#39274e;--journal-peach:#422332;--journal-pink:#dc8bb7;
+ --nt-paper:#261b30;--nt-shadow:0 18px 56px rgba(10,4,16,.42),0 2px 10px rgba(10,4,16,.22);
+}
+#kz-journal-drawer[open]{display:flex;flex-direction:column;animation:kzJournalEnter .31s cubic-bezier(.22,1,.36,1) both}
+#kz-journal-drawer::backdrop{background:rgba(31,22,49,.33);backdrop-filter:blur(4px);animation:kzJournalBackdrop .24s ease both}
+:root[data-theme="dark"] #kz-journal-drawer::backdrop{background:rgba(9,5,14,.58)}
+@keyframes kzJournalEnter{from{opacity:0;transform:translateX(-22px)}to{opacity:1;transform:none}}
+@keyframes kzJournalBackdrop{from{opacity:0}to{opacity:1}}
+@keyframes kzJournalPaperIn{from{opacity:.55;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes kzJournalSheen{from{translate:-115%}to{translate:390%}}
+#kz-journal-drawer [hidden]{display:none!important}
+#kz-journal-drawer button{min-height:38px}
+#kz-journal-drawer button:focus-visible,#kz-journal-drawer input:focus-visible{outline:2px solid var(--journal-focus);outline-offset:2px}
+.kz-journal-header{
+ display:flex;align-items:center;justify-content:space-between;gap:12px;flex:none;
+ padding:13px 22px;border-bottom:1px solid var(--journal-edge);
+ background:color-mix(in srgb,var(--journal-control) 72%,transparent);
+}
+.kz-journal-header h2{display:flex;align-items:center;gap:10px;margin:0;font-size:19px;font-weight:720;letter-spacing:-.04em}
+.kz-journal-mark{
+ display:grid;place-items:center;width:38px;height:38px;border-radius:12px;color:#fff;
+ background:linear-gradient(140deg,#8251b9,#9c4b94 60%,#c06684);box-shadow:0 6px 15px rgba(135,68,139,.24);
+}
+.kz-journal-mark .i{width:19px;height:19px;color:inherit}
+#kz-journal-close{
+ width:38px;flex:none;border:1px solid var(--journal-edge);border-radius:12px;
+ color:var(--journal-muted);background:var(--journal-control);
+}
+#kz-journal-close:hover{color:var(--journal-ink);background:color-mix(in srgb,var(--journal-halo) 42%,var(--journal-control))}
+.kz-journal-main{
+ flex:1;min-height:0;display:flex;flex-direction:column;overflow:auto;overscroll-behavior:contain;
+ padding:22px 24px;scrollbar-width:thin;scrollbar-color:var(--journal-edge) transparent;
+}
+.kz-notes-paper.kz-journal-paper{
+ flex:1 0 auto;gap:20px;padding:24px 27px 22px;
+ background:radial-gradient(ellipse at 92% -7%,color-mix(in srgb,var(--journal-halo) 65%,transparent),transparent 65%),
+  radial-gradient(ellipse at -10% 120%,color-mix(in srgb,var(--journal-peach) 46%,transparent),transparent 64%),var(--nt-paper);
+}
+#kz-journal-drawer[open] .kz-journal-paper{animation:kzJournalPaperIn .43s .03s cubic-bezier(.2,.75,.24,1) both}
+.kz-journal-paper::before{background:linear-gradient(90deg,var(--journal-focus),var(--journal-pink) 56%,#efa780 100%)}
+.kz-journal-paper::after{
+ position:absolute;inset:0 auto auto 0;width:26%;height:4px;content:"";pointer-events:none;
+ background:linear-gradient(90deg,transparent,rgba(255,255,255,.61),transparent);translate:-115%;
+}
+#kz-journal-drawer[open] .kz-journal-paper::after{animation:kzJournalSheen .8s .2s ease-out both}
+.kz-journal-datebar{display:grid;justify-items:start;gap:10px;padding-bottom:17px;border-bottom:1px solid var(--journal-edge)}
+#kz-journal-date{font-size:clamp(25px,3.6vw,38px);font-weight:730;line-height:1.13;letter-spacing:-.047em;color:var(--journal-ink);text-wrap:balance}
+#kz-journal-date::first-letter{text-transform:uppercase}
+.kz-journal-secondary{
+ display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:6px 10px;
+ background:var(--journal-control);color:var(--journal-accent);border:1px solid var(--journal-edge);border-radius:11px;font-size:12px;white-space:nowrap;
+}
+.kz-journal-secondary:hover{background:color-mix(in srgb,var(--journal-halo) 36%,var(--journal-control));color:var(--journal-ink)}
+.kz-journal-secondary .i{width:15px;height:15px;color:inherit}
+.kz-journal-fields{display:flex;flex:1;flex-direction:column;gap:16px;min-width:0}
+.kz-journal-entry{display:flex;flex:1 0 auto;flex-direction:column;gap:6px;min-width:0;font-size:13px;font-weight:650;color:var(--journal-accent)}
+#kz-journal-drawer .kz-journal-entry textarea{
+ width:100%;flex:1 0 auto;min-height:210px;resize:vertical;border:0;border-radius:0;
+ background:transparent;box-shadow:none;color:var(--journal-ink);caret-color:var(--journal-focus);padding:4px 5px 4px 0;
+ font-family:inherit;font-size:16.5px;font-weight:400;line-height:1.76;
+}
+#kz-journal-drawer .kz-journal-entry textarea:focus{outline:none;box-shadow:none}
+#kz-journal-drawer .kz-journal-entry textarea::placeholder{opacity:1;color:var(--journal-muted)}
+.kz-journal-legacy{flex:0 0 auto;padding-top:12px;border-top:1px solid var(--journal-edge)}
+#kz-journal-drawer .kz-journal-legacy textarea{min-height:75px;font-size:15px}
+.kz-journal-footer{
+ flex:none;display:grid;gap:12px;padding:13px 22px;border-top:1px solid var(--journal-edge);
+ background:color-mix(in srgb,var(--journal-control) 82%,transparent);
+}
+.kz-journal-footer-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+#kz-journal-drawer .kz-journal-footer .p{
+ justify-content:center;white-space:nowrap;padding-inline:15px;color:#fff;
+ border-radius:11px;background:linear-gradient(105deg,#7244aa,#934782 74%,#a64b79);box-shadow:0 5px 14px rgba(121,62,129,.23);
+}
+#kz-journal-drawer .kz-journal-footer .p:hover{background:linear-gradient(105deg,#8050b8,#9e518d 74%,#b45583);filter:none}
+.kz-journal-footer .p .i{width:15px;height:15px}
+.kz-journal-save{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;color:var(--journal-muted);font-size:12px}
+#kz-journal-saved{display:inline-flex;align-items:center;gap:7px}
+#kz-journal-saved::before{width:7px;height:7px;border-radius:50%;background:var(--journal-focus);content:""}
+#kz-journal-saved[data-failed="true"]{color:var(--journal-danger)}
+#kz-journal-saved[data-failed="true"]::before{background:currentColor}
+#kz-journal-start-form{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:7px 8px;padding-top:11px;border-top:1px solid var(--journal-edge)}
+#kz-journal-start-form label{grid-column:1/-1;color:var(--journal-ink);font-size:12px;font-weight:650}
+#kz-journal-start{min-width:0;min-height:40px;font-size:16px;padding:7px 10px;background:var(--journal-control);color:var(--journal-ink);border:1px solid var(--journal-edge);border-radius:10px}
+:root[data-theme="dark"] #kz-journal-start{color-scheme:dark}
+@media(max-width:620px){
+ #kz-journal-drawer{inset:8px auto auto 8px;width:calc(100% - 16px);height:calc(100vh - 16px);height:calc(100dvh - 16px);border-radius:20px}
+ .kz-journal-header,.kz-journal-footer{padding-inline:13px}
+ .kz-journal-footer{padding-bottom:max(11px,env(safe-area-inset-bottom))}
+ .kz-journal-main{padding:12px}
+ .kz-notes-paper.kz-journal-paper{gap:15px;padding:18px 17px 16px;border-radius:17px}
+ .kz-journal-datebar{gap:8px 12px;padding-bottom:12px}
+ #kz-journal-date{font-size:clamp(24px,6.8vw,33px)}
+ #kz-journal-drawer button{min-height:40px}
+ #kz-journal-drawer .kz-journal-entry textarea{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){
+ #kz-journal-drawer[open],#kz-journal-drawer::backdrop,#kz-journal-drawer[open] .kz-journal-paper,#kz-journal-drawer[open] .kz-journal-paper::after{animation:none}
+}
+
+.kz-replay {
+ --replay-bg: #f8f5f1;
+ --replay-glow: #e9e4fc;
+ --replay-ink: #221f38;
+ --replay-muted: #5d5775;
+ --replay-line: #c9bfdc;
+ --replay-edge: #ddd4e8;
+ --replay-accent: #654bb2;
+ --replay-light: #8766d4;
+ --replay-primary: #5e43a7;
+ --replay-primary-ink: #fff;
+ --replay-control: rgba(255, 255, 255, .55);
+ --replay-hover: #ede6fa;
+ position: fixed;
+ inset: 0;
+ box-sizing: border-box;
+ width: 100%;
+ height: 100%;
+ height: 100dvh;
+ max-width: none;
+ max-height: none;
+ margin: 0;
+ padding: max(22px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right))
+          max(22px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+ border: 0;
+ overflow: hidden;
+ color: var(--replay-ink);
+ background: radial-gradient(ellipse at 50% 2%, var(--replay-glow), transparent 70%), var(--replay-bg);
+ color-scheme: light;
+}
+:root[data-theme="dark"] .kz-replay {
+ --replay-bg: #101323;
+ --replay-glow: #232243;
+ --replay-ink: #f2eefb;
+ --replay-muted: #beb6d1;
+ --replay-line: #554d72;
+ --replay-edge: #4b4361;
+ --replay-accent: #c7b0ff;
+ --replay-light: #b99aff;
+ --replay-primary: #d7c6ff;
+ --replay-primary-ink: #231745;
+ --replay-control: rgba(66, 56, 93, .38);
+ --replay-hover: #403456;
+ color-scheme: dark;
+}
+.kz-replay[open] {
+ display: grid;
+ grid-template-rows: auto auto minmax(0, 1fr) auto;
+ gap: clamp(12px, 3vh, 36px);
+}
+.kz-replay [hidden] { display: none !important; }
+.kz-replay::backdrop { background: var(--replay-bg); }
+.kz-replay-header, .kz-replay-footer {
+ width: min(100%, 1000px);
+ min-width: 0;
+ justify-self: center;
+}
+.kz-replay-header {
+ display: flex;
+ align-items: flex-start;
+ justify-content: space-between;
+ gap: 12px;
+}
+.kz-replay-header h2 {
+ margin: 0;
+ font-size: clamp(21px, 4vw, 30px);
+ font-weight: 700;
+ letter-spacing: -.035em;
+ line-height: 1.22;
+}
+.kz-replay-range {
+ margin: 5px 0 0;
+ color: var(--replay-muted);
+ font-size: 12px;
+ font-variant-numeric: tabular-nums;
+ line-height: 1.4;
+}
+.kz-replay-button {
+ min-height: 44px;
+ justify-content: center;
+ gap: 6px;
+ padding: 8px 15px;
+ border: 1px solid var(--replay-edge);
+ background: var(--replay-control);
+ color: var(--replay-ink);
+ font-weight: 600;
+ line-height: 1.25;
+ text-align: center;
+}
+.kz-replay-button:hover { background: var(--replay-hover); }
+.kz-replay-button:focus-visible, .kz-replay-reading:focus-visible {
+ outline: 2px solid var(--replay-accent);
+ outline-offset: 2px;
+}
+.kz-replay-button .i { width: 16px; height: 16px; flex: none; }
+.kz-replay-close { flex: none; }
+.kz-replay-primary {
+ border-color: transparent;
+ background: var(--replay-primary);
+ color: var(--replay-primary-ink);
+}
+.kz-replay-primary:hover { background: var(--replay-primary); filter: brightness(1.08); }
+.kz-replay-rail {
+ position: relative;
+ display: grid;
+ grid-template-columns: repeat(3, minmax(0, 1fr));
+ width: min(100%, 620px);
+ min-height: 34px;
+ justify-self: center;
+ align-items: start;
+}
+.kz-replay-track {
+ position: absolute;
+ top: 5px;
+ left: calc(100% / 6);
+ right: calc(100% / 6);
+ height: 1px;
+ background: var(--replay-line);
+}
+.kz-replay-track i {
+ position: absolute;
+ top: -1px;
+ left: 50%;
+ width: 22%;
+ height: 3px;
+ border-radius: 999px;
+ background: linear-gradient(90deg, transparent, var(--replay-light));
+ box-shadow: 0 0 12px var(--replay-light);
+ opacity: 0;
+ pointer-events: none;
+}
+.kz-replay[data-phase="transition"] .kz-replay-track i {
+ animation: kzReplayWave .7s ease-in-out both;
+}
+@keyframes kzReplayWave {
+ 0% { left: 50%; transform: translateX(-100%) scaleX(.15); opacity: 0; }
+ 22% { opacity: .9; }
+ 82% { opacity: .78; }
+ 100% { left: 100%; transform: translateX(-100%) scaleX(1); opacity: 0; }
+}
+.kz-replay-node {
+ z-index: 1;
+ display: flex;
+ grid-row: 1;
+ min-width: 0;
+ flex-direction: column;
+ align-items: center;
+ gap: 7px;
+ color: var(--replay-muted);
+ font-size: 11px;
+ font-variant-numeric: tabular-nums;
+ text-align: center;
+ line-height: 1.25;
+}
+#kz-replay-rail-prev { grid-column: 1; }
+#kz-replay-rail-current { grid-column: 2; }
+#kz-replay-rail-next { grid-column: 3; }
+.kz-replay-node i {
+ width: 9px;
+ height: 9px;
+ box-sizing: border-box;
+ margin-top: 1px;
+ border: 1px solid var(--replay-line);
+ border-radius: 50%;
+ background: var(--replay-bg);
+}
+.kz-replay-node-current { color: var(--replay-ink); font-weight: 700; }
+.kz-replay-node-current i {
+ width: 11px;
+ height: 11px;
+ margin-top: 0;
+ border-color: var(--replay-accent);
+ background: var(--replay-accent);
+ box-shadow: 0 0 0 4px color-mix(in srgb, var(--replay-accent) 20%, transparent);
+}
+.kz-replay-frame, .kz-replay-end {
+ width: min(100%, 780px);
+ min-height: 0;
+ min-width: 0;
+ justify-self: center;
+}
+.kz-replay-frame {
+ display: grid;
+ grid-template-rows: auto minmax(0, 1fr);
+ gap: clamp(10px, 3vh, 28px);
+ align-content: start;
+ padding-top: clamp(0px, 3vh, 30px);
+}
+.kz-replay-date {
+ margin: 0;
+ color: var(--replay-ink);
+ font-size: clamp(27px, 5.8vw, 63px);
+ font-weight: 680;
+ letter-spacing: -.05em;
+ line-height: 1.12;
+ text-align: center;
+ text-wrap: balance;
+}
+.kz-replay-date-text {
+ display: block;
+ animation: kzReplayReveal .6s cubic-bezier(.2, .72, .3, 1) both;
+}
+.kz-replay-reading {
+ min-height: 0;
+ min-width: 0;
+ margin: 0 2px;
+ padding: 8px clamp(10px, 3vw, 32px) 22px;
+ overflow: auto;
+ overscroll-behavior: contain;
+ scrollbar-gutter: stable both-edges;
+ border-radius: 12px;
+ color: var(--replay-ink);
+}
+.kz-replay-copy {
+ width: min(100%, 64ch);
+ margin-inline: auto;
+ font-size: clamp(16px, 2.2vw, 22px);
+ line-height: 1.68;
+}
+.kz-replay-copy h4 {
+ margin: 1em 0 .4em;
+ color: var(--replay-muted);
+ font-size: .74em;
+ font-weight: 650;
+}
+.kz-replay-copy h4:first-child { margin-top: 0; }
+.kz-replay-copy p {
+ margin: 0;
+ white-space: pre-wrap;
+ overflow-wrap: anywhere;
+}
+.kz-replay-copy p + p { margin-top: .72em; }
+.kz-replay-copy .kz-replay-empty {
+ color: var(--replay-muted);
+ text-align: center;
+}
+.kz-replay-reveal {
+ animation: kzReplayReveal .8s cubic-bezier(.2, .72, .3, 1) var(--kz-reveal-delay, .45s) both;
+}
+@keyframes kzReplayReveal {
+ from { opacity: 0; transform: translateY(7px); }
+ to { opacity: 1; transform: translateY(0); }
+}
+.kz-replay[data-paused="true"] .kz-replay-track i,
+.kz-replay[data-paused="true"] .kz-replay-date-text,
+.kz-replay[data-paused="true"] .kz-replay-reveal { animation-play-state: paused; }
+.kz-replay[data-instant="true"] .kz-replay-date-text,
+.kz-replay[data-instant="true"] .kz-replay-reveal { animation: none; }
+.kz-replay-end {
+ display: grid;
+ align-content: center;
+ justify-items: center;
+ gap: clamp(14px, 4vh, 34px);
+ overflow: auto;
+ padding: 5px;
+}
+.kz-replay-end-actions {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ gap: 8px;
+}
+.kz-replay-footer {
+ align-self: end;
+ display: grid;
+ justify-items: center;
+ gap: 8px;
+}
+.kz-replay-meta {
+ display: flex;
+ min-height: 17px;
+ align-items: center;
+ justify-content: center;
+ flex-wrap: wrap;
+ gap: 3px 12px;
+ color: var(--replay-muted);
+ font-size: 12px;
+ font-variant-numeric: tabular-nums;
+ text-align: center;
+}
+.kz-replay-controls {
+ display: grid;
+ width: min(100%, 500px);
+ grid-template-columns: repeat(3, minmax(0, 1fr));
+ gap: 8px;
+}
+.kz-replay-sr {
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ overflow: hidden;
+ clip-path: inset(50%);
+ white-space: nowrap;
+}
+@media (max-width: 520px) {
+ .kz-replay {
+  padding: max(14px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right))
+           max(14px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
+ }
+ .kz-replay-controls { gap: 5px; }
+ .kz-replay-controls .kz-replay-button { padding-inline: 5px; font-size: 12px; gap: 3px; }
+ .kz-replay-controls .i { width: 14px; height: 14px; }
+}
+@media (max-height: 500px) {
+ .kz-replay[open] { gap: 7px; }
+ .kz-replay-header h2 { font-size: 20px; }
+ .kz-replay-frame { padding-top: 0; gap: 4px; }
+ .kz-replay-date { font-size: clamp(23px, 5vw, 36px); }
+ .kz-replay-reading { padding-block: 4px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .kz-replay .kz-replay-date-text, .kz-replay .kz-replay-reveal,
+ .kz-replay[data-phase="transition"] .kz-replay-track i { animation: none; }
+}
+@media(min-width:1000px) and (pointer:fine){#kz-journal-drawer,#kz-journal-replay{zoom:.8}}
 </style>
 </head><body>
 <svg style="display:none"><defs>
@@ -2880,6 +3463,12 @@ button:disabled,[aria-disabled="true"]{opacity:.48;cursor:not-allowed;filter:non
 <symbol id="i-theme" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v16"/></symbol>
 <symbol id="i-kz-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.25 5.25l1.45 1.45M17.3 17.3l1.45 1.45M5.25 18.75l1.45-1.45M17.3 6.7l1.45-1.45"/></symbol>
 <symbol id="i-kz-moon" viewBox="0 0 24 24"><path d="M20.6 15.6A8.8 8.8 0 0 1 8.4 3.4 8.8 8.8 0 1 0 20.6 15.6Z"/></symbol>
+<symbol id="i-kz-notes-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="5.8"/><path d="m15 15 4.2 4.2"/></symbol>
+<symbol id="i-kz-notes-filter" viewBox="0 0 24 24"><path d="M4 7h16M7 12h10m-7 5h4"/></symbol>
+<symbol id="i-kz-notes-tag" viewBox="0 0 24 24"><path d="M3.8 5.8V12l7.5 7.4 8-8L11.8 4H5.6a1.8 1.8 0 0 0-1.8 1.8Z"/><circle cx="8.3" cy="8.4" r=".8"/></symbol>
+<symbol id="i-kz-notes-pin" viewBox="0 0 24 24"><path d="M16.1 4.1 20 8l-2.6 1.2-2.2 4.2.1 2.6-1.3 1.3-7.3-7.3L8 8.7l2.6.1 4.2-2.2 1.3-2.5ZM10.3 13.7 4 20"/></symbol>
+<symbol id="i-kz-notes-download" viewBox="0 0 24 24"><path d="M12 4v11m-4-4 4 4 4-4M5 15v4a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-4"/></symbol>
+<symbol id="i-kz-journal" viewBox="0 0 24 24"><rect x="5.5" y="3.5" width="13" height="17" rx="2"/><path d="M9.5 3.5v17m3-12h3.5m-3.5 4h3.5"/></symbol>
 <symbol id="i-kz-calendar" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="15.5" rx="2.5"/><path d="M7.5 3v5M16.5 3v5M3 10.5h18M8 14.5h2M14 14.5h2M8 18h2"/></symbol>
 <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4.5 6h.01M4.5 12h.01M4.5 18h.01"/></symbol>
 <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/></symbol>
@@ -3422,7 +4011,6 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
       </div>
       <aside class="d-aside">
        <section class="d-card d-section d-calendar" aria-label="Lịch theo dõi"><div class="d-calendar-head"><div class="d-cal-titlebar"><h2 class="d-title">Lịch</h2><button class="d-go-today" type="button" data-dact="gotoday" title="Quay về ngày hôm nay" aria-label="Về hôm nay"><svg class="i" aria-hidden="true"><use href="#i-redo"/></svg><span>Về hôm nay</span></button></div><div class="d-calnav"><button type="button" class="d-icon-btn" data-dact="prevmonth" aria-label="Tháng trước"><svg class="i"><use href="#i-prev"/></svg></button><div class="d-cal-month" id="dMonth"></div><button type="button" class="d-icon-btn" data-dact="nextmonth" aria-label="Tháng sau"><svg class="i"><use href="#i-next"/></svg></button></div></div><div class="d-weekdays"><span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span></div><div id="dCalGrid" class="d-calgrid"></div><div class="d-legend"><span title="Hoàn thành"><i class="ok"></i> Xong</span><span title="Đang thực hiện"><i class="mid"></i> Đang làm</span><span title="Ngày bỏ lỡ"><i class="bad"></i> Bỏ lỡ</span><span title="Không có việc"><i></i> Trống</span></div></section>
-       <section class="d-card d-section d-journal" aria-label="Nhật ký"><div class="d-journal-head"><h2 class="d-title">Nhật ký</h2><span class="d-journal-date" id="dJournalDate"></span></div><div class="d-journal-fields" id="dJournalFields"></div><div class="d-journal-bottom"><p class="d-journal-save" id="dJournalSaved" aria-live="polite"></p><span class="d-journal-hint" title="Nhật ký không ảnh hưởng đến việc hoàn thành mục tiêu">Tự động lưu · Chỉ trên thiết bị này</span></div></section>
       </aside>
      </div>
     </div>
@@ -3430,41 +4018,146 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
    <div class="sig"><b>@kzmd128</b><a href="https://github.com/KZMD-128" target="_blank" rel="noopener">github.com/KZMD-128<svg class="i"><use href="#i-github"/></svg></a><a href="mailto:hongphucmod@gmail.com">hongphucmod@gmail.com<svg class="i"><use href="#i-mail"/></svg></a><a href="tel:0399030650">0399030650<svg class="i"><use href="#i-phone"/></svg></a></div>
   </div>
  </div>
- <button type="button" class="kz-notes-tab glass" id="kz-notes-tab" aria-label="Mở Ghi chú (Notes)" aria-controls="kz-notes-drawer" aria-expanded="false" title="Ghi chú nhanh (Notes)"><svg class="i" aria-hidden="true"><use href="#i-note"/></svg><span class="kz-notes-tab-lbl">Notes</span></button>
- <div class="kz-notes-scrim" id="kz-notes-scrim" aria-hidden="true"></div>
- <aside class="kz-notes-drawer glass" id="kz-notes-drawer" role="dialog" aria-modal="true" aria-labelledby="kz-notes-heading" aria-hidden="true" data-view="list" data-empty="1" data-library-empty="1">
+ <button type="button" class="kz-notes-tab glass" id="kz-notes-tab" aria-haspopup="dialog" aria-label="Mở Ghi chú (Notes)" aria-controls="kz-notes-drawer" aria-expanded="false" title="Ghi chú nhanh (Notes)"><svg class="i" aria-hidden="true"><use href="#i-note"/></svg><span class="kz-notes-tab-lbl">Notes</span></button>
+ <button type="button" class="kz-notes-tab kz-journal-tab glass" id="kz-journal-tab" aria-label="Mở Nhật ký" aria-controls="kz-journal-drawer" aria-expanded="false" title="Nhật ký"><svg class="i" aria-hidden="true"><use href="#i-kz-journal"/></svg><span class="kz-notes-tab-lbl">Nhật ký</span></button>
+ <dialog id="kz-journal-drawer" aria-labelledby="kz-journal-heading">
+  <header class="kz-journal-header">
+   <h2 id="kz-journal-heading"><span class="kz-journal-mark"><svg class="i" aria-hidden="true"><use href="#i-kz-journal"/></svg></span>Nhật ký</h2>
+   <button type="button" class="kz-notes-close" id="kz-journal-close" aria-label="Đóng nhật ký" title="Đóng nhật ký"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </header>
+  <div class="kz-journal-main">
+   <div class="kz-notes-paper kz-journal-paper">
+    <div class="kz-journal-datebar">
+     <time id="kz-journal-date"></time>
+     <button type="button" id="kz-journal-calendar" class="kz-journal-secondary"><svg class="i" aria-hidden="true"><use href="#i-kz-calendar"/></svg><span>Đổi ngày trên lịch</span></button>
+    </div>
+    <div class="kz-journal-fields" id="kz-journal-fields">
+     <label class="kz-journal-entry"><span>Ngày của mình thế nào?</span><textarea data-djournal="did" placeholder="Viết vài dòng về ngày của bạn…"></textarea></label>
+     <label class="kz-journal-entry kz-journal-legacy" hidden><span>Mình đã học được gì?</span><textarea data-djournal="learned" rows="3"></textarea></label>
+     <label class="kz-journal-entry kz-journal-legacy" hidden><span>Ghi chú khác</span><textarea data-djournal="notes" rows="3"></textarea></label>
+    </div>
+   </div>
+  </div>
+  <footer class="kz-journal-footer">
+   <div class="kz-journal-footer-row">
+    <div class="kz-journal-save"><span id="kz-journal-saved" role="status" aria-atomic="true">Tự động lưu</span><button type="button" id="kz-journal-retry" class="kz-journal-secondary" hidden>Thử lưu lại</button></div>
+    <button type="button" class="p" id="kz-journal-lookback" aria-controls="kz-journal-start-form" aria-expanded="false"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>Nhìn lại</button>
+   </div>
+   <form id="kz-journal-start-form" hidden>
+    <label for="kz-journal-start">Ngày bắt đầu</label>
+    <input id="kz-journal-start" type="date" min="0001-01-01" required>
+    <button type="submit" class="p" id="kz-journal-start-button">Bắt đầu xem</button>
+   </form>
+  </footer>
+ </dialog>
+<dialog id="kz-journal-replay" class="kz-replay" aria-labelledby="kz-replay-title">
+ <header class="kz-replay-header">
+  <div>
+   <h2 id="kz-replay-title">Nhìn lại</h2>
+   <p id="kz-replay-range" class="kz-replay-range"></p>
+  </div>
+  <button id="kz-replay-close" class="kz-replay-button kz-replay-close" type="button" autofocus>
+   <svg class="i" aria-hidden="true"><use href="#i-x"/></svg><span>Thoát</span>
+  </button>
+ </header>
+ <div id="kz-replay-rail" class="kz-replay-rail" aria-hidden="true">
+  <div class="kz-replay-track"><i></i></div>
+  <div id="kz-replay-rail-prev" class="kz-replay-node"><i></i><span></span></div>
+  <div id="kz-replay-rail-current" class="kz-replay-node kz-replay-node-current"><i></i><span></span></div>
+  <div id="kz-replay-rail-next" class="kz-replay-node"><i></i><span></span></div>
+ </div>
+ <div id="kz-replay-frame" class="kz-replay-frame">
+  <h3 id="kz-replay-date" class="kz-replay-date"></h3>
+  <div id="kz-replay-reading" class="kz-replay-reading" tabindex="0" role="region" aria-label="Nội dung nhật ký">
+   <article id="kz-replay-copy" class="kz-replay-copy"></article>
+  </div>
+ </div>
+ <div id="kz-replay-end" class="kz-replay-end" hidden>
+  <h3 class="kz-replay-date">Đã đến hôm nay</h3>
+  <div class="kz-replay-end-actions">
+   <button id="kz-replay-restart" class="kz-replay-button" type="button">Xem lại từ đầu</button>
+   <button id="kz-replay-write" class="kz-replay-button kz-replay-primary" type="button">Viết hôm nay</button>
+  </div>
+ </div>
+ <footer class="kz-replay-footer">
+  <div class="kz-replay-meta">
+   <span id="kz-replay-position"></span>
+   <span id="kz-replay-scroll-tip" role="status" hidden>Cuộn để đọc hết bài.</span>
+  </div>
+  <div class="kz-replay-controls">
+   <button id="kz-replay-prev" class="kz-replay-button" type="button">
+    <svg class="i" aria-hidden="true"><use href="#i-prev"/></svg><span>Ngày trước</span>
+   </button>
+   <button id="kz-replay-pause" class="kz-replay-button kz-replay-primary" type="button">
+    <svg class="i" aria-hidden="true"><use href="#i-pause"/></svg><span>Tạm dừng</span>
+   </button>
+   <button id="kz-replay-next" class="kz-replay-button" type="button">
+    <span>Ngày sau</span><svg class="i" aria-hidden="true"><use href="#i-next"/></svg>
+   </button>
+  </div>
+ </footer>
+ <span id="kz-replay-status" class="kz-replay-sr" role="status" aria-atomic="true"></span>
+</dialog>
+ <dialog class="kz-notes-drawer" id="kz-notes-drawer" aria-labelledby="kz-notes-heading" data-view="list" data-empty="1" data-library-empty="1" data-label="none">
   <header class="kz-notes-head">
-   <div class="kz-notes-brand"><svg class="i" aria-hidden="true"><use href="#i-note"/></svg><h2 id="kz-notes-heading">Ghi chú</h2></div>
-   <div class="kz-notes-head-r"><span class="kz-notes-state" id="kz-notes-state" aria-live="polite">Đã lưu</span><button type="button" class="kz-notes-close" id="kz-notes-close" aria-label="Đóng ghi chú"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+   <div class="kz-notes-brand"><span class="kz-notes-mark"><svg class="i" aria-hidden="true"><use href="#i-note"/></svg></span><h2 id="kz-notes-heading">Ghi chú</h2></div>
+   <div class="kz-notes-head-r"><span class="kz-notes-state" id="kz-notes-state" role="status" aria-atomic="true"></span><button type="button" class="kz-notes-close" id="kz-notes-close" aria-label="Đóng ghi chú" title="Đóng ghi chú"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button></div>
   </header>
   <div class="kz-notes-body">
-   <div class="kz-notes-side">
-    <div class="kz-notes-side-top"><button type="button" class="p kz-notes-new" id="kz-notes-new"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span>Ghi chú mới</span></button></div>
-    <div class="kz-notes-list" id="kz-notes-list" role="listbox" aria-label="Danh sách ghi chú"></div>
-   </div>
-   <div class="kz-notes-editor">
+   <aside class="kz-notes-side" aria-label="Thư viện ghi chú">
+    <div class="kz-notes-side-top">
+     <button type="button" class="p kz-notes-new" id="kz-notes-new"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span>Ghi chú mới</span></button>
+     <div class="kz-notes-side-tools">
+      <label class="kz-notes-search"><svg class="i" aria-hidden="true"><use href="#i-kz-notes-search"/></svg><input type="search" id="kz-notes-search" placeholder="Tìm trong ghi chú…" aria-label="Tìm trong tiêu đề và nội dung" autocomplete="off"></label>
+      <label class="kz-notes-filter-field"><svg class="i" aria-hidden="true"><use href="#i-kz-notes-filter"/></svg><select id="kz-notes-filter" aria-label="Lọc theo nhãn"></select></label>
+     </div>
+     <div class="kz-notes-list-meta"><span id="kz-notes-count" aria-live="polite" aria-atomic="true"></span></div>
+    </div>
+    <div class="kz-notes-library">
+     <div class="kz-notes-list" id="kz-notes-list" role="listbox" aria-label="Danh sách ghi chú"></div>
+     <p id="kz-notes-list-empty" hidden></p>
+    </div>
+   </aside>
+   <main class="kz-notes-editor" aria-label="Khung viết ghi chú">
     <div class="kz-notes-ed-bar">
      <button type="button" class="kz-notes-back" id="kz-notes-back"><svg class="i" aria-hidden="true"><use href="#i-prev"/></svg><span>Danh sách</span></button>
-     <div class="kz-notes-del-wrap" id="kz-notes-del-wrap">
-      <button type="button" class="kz-notes-del" id="kz-notes-del" aria-label="Xóa ghi chú này"><svg class="i" aria-hidden="true"><use href="#i-trash"/></svg><span>Xóa</span></button>
-      <div class="kz-notes-del-confirm"><button type="button" class="kz-notes-del-yes" id="kz-notes-del-yes">Xác nhận xóa</button><button type="button" class="kz-notes-del-no" id="kz-notes-del-no">Hủy</button></div>
+     <div class="kz-notes-note-tools">
+      <label class="kz-notes-label-field"><svg class="i" aria-hidden="true"><use href="#i-kz-notes-tag"/></svg><select id="kz-note-label" aria-label="Nhãn ghi chú"></select></label>
+      <div class="kz-notes-note-actions">
+       <button type="button" id="kz-note-pin" class="kz-notes-action" aria-pressed="false"><svg class="i" aria-hidden="true"><use href="#i-kz-notes-pin"/></svg><span data-note-action-label>Ghim</span></button>
+       <button type="button" id="kz-note-export" class="kz-notes-action" title="Tải ghi chú dạng .txt"><svg class="i" aria-hidden="true"><use href="#i-kz-notes-download"/></svg><span>Tải .txt</span></button>
+       <div class="kz-notes-del-wrap" id="kz-notes-del-wrap">
+        <button type="button" class="kz-notes-del" id="kz-notes-del" aria-label="Xóa ghi chú này"><svg class="i" aria-hidden="true"><use href="#i-trash"/></svg><span>Xóa</span></button>
+        <div class="kz-notes-del-confirm"><button type="button" class="kz-notes-del-yes" id="kz-notes-del-yes">Xác nhận xóa</button><button type="button" class="kz-notes-del-no" id="kz-notes-del-no">Hủy</button></div>
+       </div>
+      </div>
      </div>
     </div>
     <div class="kz-notes-fields" id="kz-notes-fields">
-     <div class="kz-note-title-row">
-      <input id="kz-note-title" type="text" maxlength="160" placeholder="Tiêu đề ghi chú…" aria-label="Tiêu đề ghi chú" autocomplete="off">
-      <button type="button" class="kz-note-image-count" id="kz-note-image-count" aria-haspopup="dialog" aria-controls="kz-note-gallery" hidden><svg class="i" aria-hidden="true"><use href="#i-note-image"/></svg><span></span></button>
+     <div class="kz-notes-paper">
+      <div class="kz-note-title-row"><input id="kz-note-title" type="text" maxlength="160" placeholder="Tiêu đề ghi chú" aria-label="Tiêu đề ghi chú" autocomplete="off"></div>
+      <textarea id="kz-note-body" placeholder="Viết ở đây…" aria-label="Nội dung ghi chú"></textarea>
+      <div id="kz-note-editor-meta" class="kz-note-editor-meta"></div>
      </div>
-     <div class="kz-note-images" id="kz-note-images" role="group" aria-label="Ảnh đính kèm" hidden></div>
-     <textarea id="kz-note-body" placeholder="Viết nội dung ghi chú…" aria-label="Nội dung ghi chú" aria-describedby="kz-note-image-hint"></textarea>
-     <div class="kz-note-image-tools">
-      <button type="button" id="kz-note-image-import" class="kz-note-image-import"><svg class="i" aria-hidden="true"><use href="#i-note-image"/></svg><span>Thêm ảnh</span></button>
-      <span class="kz-note-image-hint" id="kz-note-image-hint">Dán ảnh vào nội dung</span>
-      <input id="kz-note-image-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif,image/bmp,image/x-icon,image/vnd.microsoft.icon" multiple hidden>
-     </div>
+     <section class="kz-note-attachments" id="kz-note-attachments" aria-labelledby="kz-note-attachment-title">
+      <header class="kz-note-attachments-head">
+       <div class="kz-note-attachments-label"><span class="kz-note-attachments-icon"><svg class="i" aria-hidden="true"><use href="#i-note-image"/></svg></span><div><h3 id="kz-note-attachment-title">Ảnh đính kèm</h3><p class="kz-note-image-hint" id="kz-note-image-hint">Thả ảnh vào đây hoặc dán vào khung viết.</p></div></div>
+       <div class="kz-note-image-tools">
+        <button type="button" class="kz-note-image-count" id="kz-note-image-count" aria-haspopup="dialog" aria-controls="kz-note-gallery" hidden><svg class="i" aria-hidden="true"><use href="#i-note-image"/></svg><span></span></button>
+        <button type="button" id="kz-note-image-import" class="kz-note-image-import"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span>Thêm ảnh</span></button>
+        <input id="kz-note-image-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif,image/bmp,image/x-icon,image/vnd.microsoft.icon" multiple hidden>
+       </div>
+      </header>
+      <div class="kz-note-images" id="kz-note-images" role="group" aria-label="Danh sách ảnh đính kèm" hidden></div>
+     </section>
     </div>
-    <div class="kz-notes-empty"><svg class="i" aria-hidden="true"><use href="#i-note"/></svg><p>Chưa có ghi chú nào</p><button type="button" class="p" id="kz-notes-empty-new"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span>Tạo ghi chú mới</span></button></div>
-   </div>
+    <div class="kz-notes-empty">
+     <div class="kz-notes-empty-art" aria-hidden="true"><span></span><span></span><span><svg class="i"><use href="#i-note"/></svg></span></div>
+     <h3 id="kz-notes-empty-title">Chỗ cho những điều muốn giữ lại</h3>
+     <p>Ghi nhanh một ý tưởng, lưu tài liệu học hoặc gom ảnh vào cùng một ghi chú.</p>
+     <button type="button" class="p" id="kz-notes-empty-new"><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg><span>Tạo ghi chú mới</span></button>
+    </div>
+   </main>
   </div>
   <dialog class="kz-note-gallery" id="kz-note-gallery" aria-labelledby="kz-note-gallery-title">
    <div class="kz-note-gallery-inner">
@@ -3483,6 +4176,7 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
       <button type="button" class="kz-notes-close" id="kz-note-gallery-next" aria-label="Ảnh sau"><svg class="i" aria-hidden="true"><use href="#i-next"/></svg></button>
      </div>
      <div class="kz-note-gallery-remove">
+      <button type="button" class="kz-notes-action" id="kz-note-image-download" aria-label="Tải ảnh gốc" title="Tải ảnh gốc" disabled><svg class="i" aria-hidden="true"><use href="#i-kz-notes-download"/></svg><span>Tải ảnh gốc</span></button>
       <button type="button" class="kz-notes-del" id="kz-note-gallery-remove"><svg class="i" aria-hidden="true"><use href="#i-trash"/></svg><span>Xóa ảnh</span></button>
       <button type="button" class="kz-notes-del-no" id="kz-note-gallery-remove-no" hidden>Hủy</button>
       <button type="button" class="kz-notes-del-yes" id="kz-note-gallery-remove-yes" hidden>Xóa ảnh này</button>
@@ -3490,7 +4184,7 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
     </div>
    </div>
   </dialog>
- </aside>
+ </dialog>
  <div class="mask hide" id="mask"></div><div id="toasts"></div>
 </div>
 <div class="sfs" id="sfs" aria-hidden="true" role="dialog" aria-label="Chế độ học">
@@ -3769,7 +4463,7 @@ $('#lb').onclick=()=>setP('I',true);$('#rb').onclick=()=>setP('H',true);
 $('#rmIdeasQuick').onclick=()=>setP('I');$('#rmHwQuick').onclick=()=>setP('H');
 /* nút X + phím Esc */
 document.querySelectorAll('.px').forEach(b=>b.onclick=()=>setP(b.dataset.c,false));
-addEventListener('keydown',e=>{if(e.key=='Escape'&&$('#mask').classList.contains('hide')&&!(window.KZNotes&&window.KZNotes.isOpen())){setP('H',false);setP('I',false)}});
+addEventListener('keydown',e=>{if(e.key=='Escape'&&$('#mask').classList.contains('hide')&&!(window.KZNotes?.isOpen()||window.KZDaily?.journalOpen())){setP('H',false);setP('I',false)}});
 /* tự đóng khi chuột rời panel (chỉ với chuột; nếu đang gõ dở thì giữ lại, đợi bỏ focus rồi mới đóng) */
 const pcl={};
 const typing=p=>{const a=document.activeElement;return p.contains(a)&&(a.tagName=='TEXTAREA'||(a.tagName=='INPUT'&&a.type!='checkbox'))};
@@ -4029,7 +4723,7 @@ const VIEWS=['dy','en','rm'];
 fmb.addEventListener('keydown',e=>{if(e.key!='ArrowLeft'&&e.key!='ArrowRight')return;const i=VIEWS.indexOf(VW)+(e.key=='ArrowRight'?1:-1),v=VIEWS[(i+VIEWS.length)%VIEWS.length];setView(v);fmb.querySelector(`.fi[data-v="${v}"]`).focus()});
 /* chấm "Mới" trên nút English / Study cho tới khi người dùng bấm vào lần đầu */
 const newDots=()=>{$('#enbtn').classList.toggle('new',!CF().seenEn);$('#stbtn').classList.remove('new')};newDots();
-function setView(v){if(v==VW){placeSharedSig(v);return}VW=v;placeSharedSig(v);if(v!='en')fxSet(false);cset('view',v);app.classList.toggle('en',v=='en');app.classList.toggle('st',false);app.classList.toggle('dy',v=='dy');
+function setView(v){if(v!=='dy')window.KZDaily?.cancelJournalCalendar();if(v==VW){placeSharedSig(v);return}VW=v;placeSharedSig(v);if(v!='en')fxSet(false);cset('view',v);app.classList.toggle('en',v=='en');app.classList.toggle('st',false);app.classList.toggle('dy',v=='dy');
  if(v=='en'&&!CF().seenEn){cset('seenEn',1);newDots()}
  if(v=='dy'&&!CF().seenSt){cset('seenSt',1);newDots()}
  fmb.dataset.v=v;fmb.querySelectorAll('.fi').forEach(b=>{const on=b.dataset.v==v;b.classList.toggle('act',on);b.setAttribute('aria-selected',on)});
@@ -4192,7 +4886,7 @@ $('#wl').onclick=e=>{if(e.target.closest('.wmi'))return;const ed=e.target.closes
  if(e.target.closest('[data-star]'))return;const d=e.target.closest('[data-wd]')?.dataset.wd;
  if(d){D.words=D.words.filter(x=>x.id!=d);save();enRender();fSwap(fi);fTimer();return}
  const r=e.target.closest('[data-j]');if(r){$('#en').scrollTo({top:0,behavior:RM?'auto':'smooth'});fGo(0,+r.dataset.j)}};
-addEventListener('keydown',e=>{if(VW!='en'||ET!='v'||/INPUT|TEXTAREA/.test(e.target.tagName)||(window.KZNotes&&window.KZNotes.isOpen()))return;
+addEventListener('keydown',e=>{if(VW!='en'||ET!='v'||/INPUT|TEXTAREA/.test(e.target.tagName)||(window.KZNotes?.isOpen()||window.KZDaily?.journalOpen()))return;
  if(e.key=='ArrowRight')fGo(1);else if(e.key=='ArrowLeft')fGo(-1)});
 /* ===== Sắp xếp từ vựng (A → Z / thứ tự nhập) ===== */
 function wtbSync(){const m=CF().wsort=='az'?'az':'in',n=WALL().length,w=$('#wseg');if(!w)return;
@@ -4452,7 +5146,7 @@ function dkRender(){wtabRender();wtotSync();const k=DKE(),key=JSON.stringify(D.d
   if(on&&e.scrollWidth>e.clientWidth+2){const l=(on.getBoundingClientRect().left-e.getBoundingClientRect().left)/kzZoom()+e.scrollLeft-(e.clientWidth-on.offsetWidth)/2;e.scrollTo({left:Math.max(0,l),behavior:RM||!e._dkSc?'auto':'smooth'});e._dkSc=1}});
  if(dkAdd||dkRen){const i=[...document.querySelectorAll('.dkin')].find(x=>x.offsetParent);if(i){i.focus({preventScroll:true});if(dkRen)i.select()}}
  promptSync()}
-function wFocus(){const go=()=>{if(VW!='en'||(window.KZNotes&&window.KZNotes.isOpen()))return;
+function wFocus(){const go=()=>{if(VW!='en'||(window.KZNotes?.isOpen()||window.KZDaily?.journalOpen()))return;
   if(ET=='h'){if(lqCur&&lqSt=='ask'&&lqA.offsetParent&&!lqA.readOnly)lqA.focus({preventScroll:true});return} /* tab Học: trỏ vào ô gõ nghĩa */
   if(ET=='v'){const t=$('#w_in');if(t&&t.offsetParent)t.focus({preventScroll:true})}}; /* tab Từ vựng: trỏ vào ô nhập từ */
  setTimeout(go,140);setTimeout(go,700)} /* lần 2 phòng khi hiệu ứng chuyển bộ còn đang chạy */
@@ -4492,7 +5186,7 @@ document.addEventListener('fullscreenchange',()=>{if(!fsOn()&&app.classList.cont
 try{matchMedia('(display-mode: fullscreen)').addEventListener('change',e=>{if(VW!='en')return;const f=app.classList.contains('fx');if(e.matches&&!f)fxSet(true,true);else if(!e.matches&&f)fxSet(false,true)})}catch(e){}
 addEventListener('resize',()=>{if(app.classList.contains('fx'))fxBH()});
 $('#efx').onclick=()=>fxSet(!app.classList.contains('fx'));
-addEventListener('keydown',e=>{if(VW!='en'||e.ctrlKey||e.metaKey||e.altKey||(window.KZNotes&&window.KZNotes.isOpen()))return;
+addEventListener('keydown',e=>{if(VW!='en'||e.ctrlKey||e.metaKey||e.altKey||(window.KZNotes?.isOpen()||window.KZDaily?.journalOpen()))return;
  if(e.key=='Escape'&&app.classList.contains('fx'))fxSet(false);
  else if((e.key=='f'||e.key=='F')&&!/INPUT|TEXTAREA|BUTTON|SELECT/.test(e.target.tagName)&&!e.target.isContentEditable)fxSet(!app.classList.contains('fx'))});
 addEventListener('resize',()=>{etThumb();if(app.classList.contains('fx'))app.style.setProperty('--bh',(document.querySelector('.bar').offsetHeight+12)+'px')});
@@ -4700,7 +5394,7 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 
 /* --- Phím tắt --- */
 let lqCtl=false,lqTabT=0; /* Tab (Bỏ qua) cách nhau tối thiểu 0,8 giây, giữ phím không bị chạy liên tục */
-const lqKeyOK=e=>{if(VW!='en'||ET!='h'||e.altKey||e.metaKey||e.isComposing||e.keyCode==229||(window.KZNotes&&window.KZNotes.isOpen()))return false;
+const lqKeyOK=e=>{if(VW!='en'||ET!='h'||e.altKey||e.metaKey||e.isComposing||e.keyCode==229||(window.KZNotes?.isOpen()||window.KZDaily?.journalOpen()))return false;
  const m=$('#mask');if(m&&!m.classList.contains('hide'))return false;
  const t=e.target,tg=t&&t.tagName;if((tg=='INPUT'||tg=='TEXTAREA'||tg=='SELECT')&&t!==lqA)return false;
  if(t&&t.isContentEditable)return false;return true};
@@ -5388,29 +6082,499 @@ BOOT=false;
   const first=(new Date(y,m-1,1).getDay()+6)%7,num=new Date(y,m,0).getDate();
   $d('#dMonth').textContent=head;
   let html='';for(let z=0;z<first;z++)html+='<span class="d-calday blank"></span>';
-  for(let j=1;j<=num;j++){const d=`${month}-${String(j).padStart(2,'0')}`,s=daySummary(d),hasJournal=['did','learned','notes'].some(k=>String(root().journals[d]?.[k]||'').trim());
-   html+=`<button type="button" data-dact="pickdate" data-date="${d}" data-state="${s.state}" class="d-calday${dateKey()===d?' today':''}${select===d?' selected':''}" aria-label="${dtShort(d)}: ${{complete:'Hoàn thành',missed:'Chưa xong',progress:'Đang làm',todo:'Chưa bắt đầu',none:'Không có mục tiêu'}[s.state]}" ${d===dateKey()?'aria-current="date"':''}>${j}${hasJournal?'<i title="Có nhật ký"></i>':''}${s.late?'<em title="Có nhiệm vụ hoàn thành muộn">↗</em>':''}</button>`;}
+  for(let j=1;j<=num;j++){const d=`${month}-${String(j).padStart(2,'0')}`,s=daySummary(d),hasJournal=journal.hasEntry(d);
+   html+=`<button type="button" data-dact="pickdate" data-date="${d}" data-state="${s.state}" class="d-calday${dateKey()===d?' today':''}${select===d?' selected':''}" aria-label="${dtShort(d)}: ${{complete:'Hoàn thành',missed:'Chưa xong',progress:'Đang làm',todo:'Chưa bắt đầu',none:'Không có mục tiêu'}[s.state]}" aria-pressed="${select===d}" ${d===dateKey()?'aria-current="date"':''}${hasJournal?' aria-description="Có nhật ký"':''}>${j}${hasJournal?'<i title="Có nhật ký" aria-hidden="true"></i>':''}${s.late?'<em title="Có nhiệm vụ hoàn thành muộn">↗</em>':''}</button>`;}
   $d('#dCalGrid').innerHTML=html;
  }
- let journalDate=null,saveTimer=null,journalDirty=false;
- function renderJournal(){const d=safeDate(root().cfg.selected)||dateKey();if(journalDate===d)return;journalDate=d;
-  const j=root().journals[d]||{};$d('#dJournalDate').textContent=dtShort(d);
-  // Older saved journals may contain additional fields from the previous Daily UI.
-  // Show those existing fields for their exact date instead of silently hiding them.
-  const legacy=[['learned','Mình đã học được gì?'],['notes','Ghi chú khác']].filter(([key])=>String(j[key]||'').trim());
-  $d('#dJournalFields').innerHTML=`<label class="d-journal-entry"><span class="d-journal-prompt">Hôm nay mình đã làm gì?</span><textarea data-djournal="did" aria-label="Hôm nay mình đã làm gì?" placeholder="Viết vài dòng về ngày của bạn…">${ehtml(j.did||'')}</textarea></label>${legacy.map(([key,label])=>`<label class="d-journal-entry" style="margin-top:12px"><span class="d-journal-prompt">${label} (đã lưu)</span><textarea data-djournal="${key}" aria-label="${label}">${ehtml(j[key]||'')}</textarea></label>`).join('')}`;
-  journalDirty=false;$d('#dJournalSaved').textContent=j.updatedAt?'Đã lưu':'Tự động lưu';$d('#dJournalSaved').classList.remove('failed');}
- function saveJournal(){if(!journalDate||!journalDirty)return; journalDirty=false;
-  const obj=root().journals[journalDate]||{};
-  $d('#dJournalFields').querySelectorAll('[data-djournal]').forEach(e=>obj[e.dataset.djournal]=e.value);
-  obj.updatedAt=new Date().toISOString();root().journals[journalDate]=obj;
-  const ok=saveDaily();$d('#dJournalSaved').textContent=ok?'Đã lưu':'Lưu thất bại';$d('#dJournalSaved').classList.toggle('failed',!ok);
-  // update journal markers without recreating the textareas or interrupting typing
-  const btn=$d(`#dCalGrid [data-date="${journalDate}"]`);
-  if(btn){const any=['did','learned','notes'].some(k=>String(obj[k]||'').trim());let mark=btn.querySelector('i');if(any&&!mark){mark=document.createElement('i');mark.title='Có nhật ký';btn.appendChild(mark)}else if(!any&&mark)mark.remove()}}
+function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToday}) {
+ const dialog = document.getElementById('kz-journal-replay');
+ const find = name => dialog.querySelector(`#kz-replay-${name}`);
+ const closeButton = find('close');
+ const dateHeading = find('date');
+ const range = find('range');
+ const framePanel = find('frame');
+ const reading = find('reading');
+ const copy = find('copy');
+ const endPanel = find('end');
+ const scrollTip = find('scroll-tip');
+ const status = find('status');
+ const positionLabel = find('position');
+ const prevButton = find('prev');
+ const pauseButton = find('pause');
+ const nextButton = find('next');
+ const restartButton = find('restart');
+ const writeButton = find('write');
+ const railNodes = ['rail-prev', 'rail-current', 'rail-next'].map(find);
+ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+ const entryFields = [
+  ['did', ''],
+  ['learned', 'Mình đã học được gì?'],
+  ['notes', 'Ghi chú khác']
+ ];
+ const transitionDuration = 700;
+ const dayDuration = 86_400_000;
+ let frames = [];
+ let startDate = '';
+ let position = 0;
+ let restoreFocus = null;
+ let phase = 'reading';
+ let paused = false;
+ let timer = null;
+ let began = 0;
+ let remaining = 0;
+
+ function sectionsFor(entry) {
+  return entryFields.flatMap(([key, label]) => {
+   const text = String(entry?.[key] ?? '');
+   return text.trim() ? [{label, text}] : [];
+  });
+ }
+
+ function datedEntries(entries, firstDate, lastDate) {
+  return Object.keys(entries)
+   .filter(day => day >= firstDate && day <= lastDate && safeDate(day) && sectionsFor(entries[day]).length)
+   .sort();
+ }
+
+ function defaultStart() {
+  const lastDate = today();
+  return datedEntries(getEntries(), '0001-01-01', lastDate)[0] || lastDate;
+ }
+
+ function offsetDate(day, distance) {
+  return new Date(Date.parse(`${day}T00:00:00Z`) + distance * dayDuration).toISOString().slice(0, 10);
+ }
+
+ function buildFrames(firstDate, lastDate, entries) {
+  const anchors = [...new Set([firstDate, ...datedEntries(entries, firstDate, lastDate), lastDate])];
+  const result = [];
+  let previous = '';
+  for (const day of anchors) {
+   if (previous) {
+    const from = offsetDate(previous, 1);
+    if (from < day) result.push({from, to: offsetDate(day, -1), sections: []});
+   }
+   result.push({from: day, to: day, sections: sectionsFor(entries[day])});
+   previous = day;
+  }
+  return result;
+ }
+
+ function shortDate(day, year = false) {
+  const [y, m, d] = day.split('-');
+  return year ? `${d}/${m}/${y}` : `${d}/${m}`;
+ }
+
+ function setPhase(nextPhase) {
+  phase = nextPhase;
+  dialog.dataset.phase = phase;
+ }
+
+ function setRailNode(node, frame) {
+  node.hidden = !frame;
+  const label = node.querySelector('span');
+  if (!frame) label.textContent = '';
+  else label.textContent = frame.from === frame.to ? shortDate(frame.from) : `${shortDate(frame.from)} – ${shortDate(frame.to)}`;
+ }
+
+ function updateControls() {
+  const atEnd = phase === 'ended';
+  const lastDate = position === frames.length - 1;
+  prevButton.disabled = position === 0 && !atEnd;
+  pauseButton.disabled = nextButton.disabled = atEnd;
+  pauseButton.querySelector('span').textContent = paused ? 'Tiếp tục' : 'Tạm dừng';
+  pauseButton.querySelector('use').setAttribute('href', paused ? '#i-play' : '#i-pause');
+  nextButton.querySelector('span').textContent = lastDate ? 'Kết thúc' : 'Ngày sau';
+  positionLabel.textContent = `Mốc ${position + 1} / ${frames.length}`;
+  scrollTip.hidden = phase !== 'scroll';
+  dialog.dataset.paused = String(paused);
+ }
+
+ function makeText(tag, text, index) {
+  const element = document.createElement(tag);
+  element.className = 'kz-replay-reveal';
+  element.style.setProperty('--kz-reveal-delay', `${450 + Math.min(index, 5) * 180}ms`);
+  element.textContent = text;
+  return element;
+ }
+
+ function fillCopy(frame) {
+  if (!frame.sections.length) {
+   const empty = makeText('p', 'Bạn chưa viết nhật ký.', 0);
+   empty.classList.add('kz-replay-empty');
+   copy.replaceChildren(empty);
+   return;
+  }
+  const content = document.createDocumentFragment();
+  let index = 0;
+  for (const {label, text} of frame.sections) {
+   if (label) content.append(makeText('h4', label, index++));
+   for (const paragraph of text.split(/\r?\n(?:[ \t]*\r?\n)+/u)) {
+    content.append(makeText('p', paragraph, index++));
+   }
+  }
+  copy.replaceChildren(content);
+ }
+
+ function cancelTimer() {
+  if (timer === null) return;
+  clearTimeout(timer);
+  timer = null;
+  remaining = Math.max(0, remaining - (performance.now() - began));
+ }
+
+ function beginTimer() {
+  if (!dialog.open || paused || timer !== null || phase === 'ended' || phase === 'scroll') return;
+  if (remaining <= 0) {
+   finishPhase();
+   return;
+  }
+  began = performance.now();
+  const duration = Math.min(remaining, 2_147_000_000);
+  timer = setTimeout(() => {
+   timer = null;
+   remaining = Math.max(0, remaining - Math.max(duration, performance.now() - began));
+   beginTimer();
+  }, duration);
+ }
+
+ function readingAtBottom() {
+  return reading.scrollHeight - reading.clientHeight - reading.scrollTop <= 2;
+ }
+
+ function finishPhase() {
+  if (!dialog.open || paused) return;
+  if (phase === 'transition') {
+   renderFrame(position + 1);
+  } else if (!readingAtBottom()) {
+   setPhase('scroll');
+   updateControls();
+  } else if (position === frames.length - 1) {
+   finishReplay();
+  } else if (reducedMotion.matches) {
+   renderFrame(position + 1);
+  } else {
+   remaining = transitionDuration;
+   setPhase('transition');
+   updateControls();
+   beginTimer();
+  }
+ }
+
+ function renderFrame(nextPosition, instant = false) {
+  cancelTimer();
+  position = nextPosition;
+  const frame = frames[position];
+  const title = frame.from === frame.to
+   ? dateLong(frame.from)
+   : `${shortDate(frame.from, true)} – ${shortDate(frame.to, true)}`;
+  const animatedDate = document.createElement('span');
+  animatedDate.className = 'kz-replay-date-text';
+  animatedDate.textContent = title;
+  dateHeading.replaceChildren(animatedDate);
+  framePanel.hidden = false;
+  endPanel.hidden = true;
+  dialog.dataset.instant = String(instant || paused);
+  setPhase('reading');
+  fillCopy(frame);
+  reading.scrollTop = 0;
+  setRailNode(railNodes[0], frames[position - 1]);
+  setRailNode(railNodes[1], frame);
+  setRailNode(railNodes[2], frames[position + 1]);
+  const words = frame.sections.reduce((count, {text}) => count + (text.match(/\S+/gu)?.length || 0), 0);
+  remaining = words ? Math.max(6000, 2000 + words * 60_000 / 170) : (frame.from === frame.to ? 3500 : 4200);
+  updateControls();
+  status.textContent = `${title}. ${positionLabel.textContent}`;
+  beginTimer();
+ }
+
+ function finishReplay() {
+  cancelTimer();
+  setPhase('ended');
+  framePanel.hidden = true;
+  endPanel.hidden = false;
+  updateControls();
+  status.textContent = 'Đã đến hôm nay';
+  restartButton.focus({preventScroll: true});
+ }
+
+ function setPaused(value) {
+  if (!dialog.open || phase === 'ended' || paused === value) return;
+  paused = value;
+  if (paused) cancelTimer();
+  if (paused && phase === 'reading') dialog.dataset.instant = 'true';
+  updateControls();
+  if (!paused && phase === 'scroll' && readingAtBottom()) finishPhase();
+  else if (!paused) beginTimer();
+ }
+
+ function step(direction) {
+  if (phase === 'ended') {
+   if (direction < 0) {
+    paused = true;
+    renderFrame(position, true);
+   }
+   return;
+  }
+  const nextPosition = position + direction;
+  if (nextPosition < 0) return;
+  if (nextPosition >= frames.length) finishReplay();
+  else renderFrame(nextPosition, paused);
+ }
+
+ function start() {
+  const lastDate = today();
+  frames = buildFrames(startDate, lastDate, getEntries());
+  range.textContent = startDate === lastDate
+   ? shortDate(lastDate, true)
+   : `${shortDate(startDate, true)} – ${shortDate(lastDate, true)}`;
+  paused = document.hidden;
+  renderFrame(0);
+ }
+
+ function open(firstDate, trigger = document.activeElement) {
+  if (dialog.open || !safeDate(firstDate) || firstDate > today()) return false;
+  restoreFocus = trigger;
+  startDate = firstDate;
+  dialog.showModal();
+  start();
+  return true;
+ }
+
+ function clearSession() {
+  cancelTimer();
+  frames = [];
+  copy.replaceChildren();
+  if (restoreFocus instanceof HTMLElement && restoreFocus.isConnected) restoreFocus.focus({preventScroll: true});
+  restoreFocus = null;
+ }
+
+ function close() {
+  if (!dialog.open) return;
+  dialog.close();
+  clearSession();
+ }
+
+ function onScrollOrResize() {
+  if (dialog.open && phase === 'scroll' && !paused && readingAtBottom()) finishPhase();
+ }
+
+ closeButton.addEventListener('click', close);
+ prevButton.addEventListener('click', () => step(-1));
+ pauseButton.addEventListener('click', () => setPaused(!paused));
+ nextButton.addEventListener('click', () => step(1));
+ restartButton.addEventListener('click', () => { start(); closeButton.focus({preventScroll: true}); });
+ writeButton.addEventListener('click', () => { close(); onWriteToday(); });
+ dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
+ dialog.addEventListener('close', () => { if (!dialog.open && frames.length) clearSession(); });
+ dialog.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+   event.preventDefault();
+   event.stopPropagation();
+   close();
+   return;
+  }
+  if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+  if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+   event.preventDefault();
+   event.stopPropagation();
+   step(event.key === 'ArrowLeft' ? -1 : 1);
+  }
+ });
+ reading.addEventListener('scroll', onScrollOrResize, {passive: true});
+ window.addEventListener('resize', onScrollOrResize);
+ document.addEventListener('visibilitychange', () => { if (document.hidden) setPaused(true); });
+ reducedMotion.addEventListener('change', () => {
+  if (dialog.open && phase === 'transition' && reducedMotion.matches) {
+   cancelTimer();
+   remaining = 0;
+   beginTimer();
+  }
+ });
+
+ return {open, close, defaultStart, isOpen: () => dialog.open};
+}
+ function createDailyJournal(){
+  const get=id=>document.getElementById('kz-journal-'+id);
+  const tab=get('tab'),drawer=get('drawer'),dateLabel=get('date'),fields=get('fields');
+  const status=get('saved'),retry=get('retry'),lookback=get('lookback'),startForm=get('start-form'),startInput=get('start');
+  const inputs=[...fields.querySelectorAll('[data-djournal]')],editor=inputs[0];
+  let journalDate=null,saveTimer=null,pending=false,saveFailed=false,calendarPick=false;
+
+  const replay=createJournalReplay({getEntries:()=>root().journals,today:dateKey,dateLong,safeDate,
+   onWriteToday:()=>{
+    selectDailyDate(dateKey());
+    if(!drawer.open)open();
+    editor.focus({preventScroll:true});
+   }
+  });
+
+  function entryFor(date){
+   const entry=root().journals[date];
+   return entry&&typeof entry==='object'&&!Array.isArray(entry)?entry:null;
+  }
+  function hasEntry(date){
+   const entry=entryFor(date);
+   return inputs.some(field=>String(entry?.[field.dataset.djournal]??'').trim());
+  }
+  function showStatus(){
+   status.dataset.failed=String(saveFailed);
+   retry.hidden=!saveFailed;
+   const message=saveFailed?'Chưa lưu được bản nháp':pending?'Đang lưu…':entryFor(journalDate)?.updatedAt?'Đã lưu':'Tự động lưu';
+   if(status.textContent!==message)status.textContent=message;
+  }
+  function render(){
+   if(!drawer.open)return;
+   const date=selectedDate();
+   if(journalDate!==date){
+    journalDate=date;
+    dateLabel.dateTime=date;
+    dateLabel.textContent=dateLong(date);
+    const entry=entryFor(date);
+    for(const field of inputs){
+     field.value=String(entry?.[field.dataset.djournal]??'');
+     if(field!==editor)field.closest('label').hidden=!field.value.trim();
+    }
+    editor.scrollTop=0;
+    drawer.querySelector('.kz-journal-main').scrollTop=0;
+   }
+   if(!startForm.hidden)startInput.max=dateKey();
+   showStatus();
+  }
+  function markPersisted(){
+   if(!pending)return;
+   clearTimeout(saveTimer);
+   pending=false;
+   saveFailed=false;
+   showStatus();
+  }
+  function flush(){
+   clearTimeout(saveTimer);
+   if(!pending)return;
+   if(saveDaily())markPersisted();
+   else{
+    saveFailed=true;
+    showStatus();
+   }
+  }
+  function updateCalendarMark(date){
+   const day=$d(`#dCalGrid [data-date="${date}"]`);
+   if(!day)return;
+   const existing=day.querySelector('i');
+   if(hasEntry(date)){
+    day.setAttribute('aria-description','Có nhật ký');
+    if(!existing){
+     const mark=document.createElement('i');
+     mark.title='Có nhật ký';
+     mark.setAttribute('aria-hidden','true');
+     day.append(mark);
+    }
+   }else{
+    day.removeAttribute('aria-description');
+    existing?.remove();
+   }
+  }
+  function showStart(show){
+   startForm.hidden=!show;
+   lookback.setAttribute('aria-expanded',String(show));
+   if(show){
+    startInput.max=dateKey();
+    startInput.value=replay.defaultStart();
+    startInput.focus({preventScroll:true});
+   }
+  }
+  function open(){
+   if(drawer.open)return;
+   calendarPick=false;
+   syncDay();
+   window.KZNotes?.close();
+   flush();
+   drawer.showModal();
+   tab.setAttribute('aria-expanded','true');
+   render();
+   editor.focus({preventScroll:true});
+  }
+  function close({restoreFocus=true,save=true}={}){
+   if(!drawer.open)return;
+   if(save)flush();
+   drawer.close();
+   tab.setAttribute('aria-expanded','false');
+   showStart(false);
+   if(restoreFocus)tab.focus({preventScroll:true});
+  }
+  function finishCalendarPick(){
+   if(!calendarPick)return false;
+   open();
+   return true;
+  }
+  function reset(){
+   clearTimeout(saveTimer);
+   saveFailed=pending=calendarPick=false;
+   journalDate=null;
+   replay.close();
+   close({restoreFocus:false,save:false});
+  }
+
+  tab.addEventListener('click',open);
+  get('close').addEventListener('click',()=>close());
+  drawer.addEventListener('cancel',event=>{event.preventDefault();close()});
+  drawer.addEventListener('click',event=>{
+   if(event.target!==drawer)return;
+   const rect=drawer.getBoundingClientRect();
+   if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)close();
+  });
+  get('calendar').addEventListener('click',()=>{
+   calendarPick=true;
+   close({restoreFocus:false});
+   setView('dy');
+   const day=$d('#dCalGrid .selected')||$d('[data-dact="gotoday"]');
+   day?.focus({preventScroll:true});
+   $d('.d-calendar').scrollIntoView({block:'nearest'});
+  });
+  fields.addEventListener('input',event=>{
+   const field=event.target;
+   if(!journalDate||!inputs.includes(field))return;
+   const key=field.dataset.djournal,entry=entryFor(journalDate)||{};
+   if(String(entry[key]??'')===field.value)return;
+   entry[key]=field.value;
+   entry.updatedAt=new Date().toISOString();
+   root().journals[journalDate]=entry;
+   pending=true;
+   showStatus();
+   updateCalendarMark(journalDate);
+   clearTimeout(saveTimer);
+   saveTimer=setTimeout(flush,350);
+  });
+  fields.addEventListener('focusout',flush);
+  retry.addEventListener('click',()=>{flush();if(!saveFailed)editor.focus({preventScroll:true})});
+  lookback.addEventListener('click',()=>showStart(startForm.hidden));
+  startForm.addEventListener('submit',event=>{
+   event.preventDefault();
+   flush();
+   if(replay.open(startInput.value,lookback))showStart(false);
+  });
+  window.addEventListener('pagehide',flush);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)flush()});
+
+  return {render,flush,markPersisted,hasEntry,finishCalendarPick,reset,
+   cancelCalendarPick:()=>{calendarPick=false},isOpen:()=>drawer.open||replay.isOpen()};
+ }
+ const journal=createDailyJournal();
+
+ function selectDailyDate(date){
+  if(!safeDate(date))return;
+  journal.flush();
+  saveVisibleNotes();
+  const cfg=root().cfg;
+  cfg.selected=date;
+  cfg.month=monthKey(date);
+  if(saveDaily())journal.markPersisted();
+  renderAll();
+  if(!journal.finishCalendarPick()&&!journal.isOpen())$d('#dCalGrid .selected')?.focus({preventScroll:true});
+ }
  let lastDay=dateKey();
  function renderAll(){
-  root();renderHero();renderToday();renderMilestones();const pending=allPending();renderPending(pending);renderCalendar(pending);renderJournal();
+  root();renderHero();renderToday();renderMilestones();const pending=allPending();renderPending(pending);renderCalendar(pending);journal.render();
  }
  function completionMotion(gid,date,from,to,rect,dayBefore,dayAfter){
   if(from!==to){const a=dayBefore??from,b=dayAfter??to;window.KZSound?.progress(a,b,'daily');}
@@ -5425,7 +6589,7 @@ BOOT=false;
    const a=n*Math.PI*2/9,rad=39+(n%3)*15;return `<i class="d-spark" style="--x:${(Math.cos(a)*rad).toFixed(0)}px;--y:${(Math.sin(a)*rad-14).toFixed(0)}px;--delay:${n*14}ms;--c:${n%2?'#5bbde8':'#40cfa3'}"></i>`}).join('');
   document.body.appendChild(burst);setTimeout(()=>burst.remove(),1250);
  }
- function refresh(){journalDate=null;lastDay=dateKey();root().cfg.selected=safeDate(root().cfg.selected)||dateKey();root().cfg.month=monthKey(root().cfg.selected);reconcileRecordModes();renderAll();}
+ function refresh(){journal.reset();lastDay=dateKey();root().cfg.selected=safeDate(root().cfg.selected)||dateKey();root().cfg.month=monthKey(root().cfg.selected);reconcileRecordModes();renderAll();}
  function updateGoalForm(form){const schedule=form.querySelector('[name=schedule]').value,progress=form.querySelector('[name=progress]').value;
   form.querySelectorAll('[data-only]').forEach(s=>s.hidden=!s.dataset.only.split(' ').includes(schedule)&&!s.dataset.only.split(' ').includes(progress));
   form.querySelectorAll('[data-week]').forEach(b=>b.classList.toggle('on',(form.dataset.week||'').split(',').map(Number).includes(+b.dataset.week)));}
@@ -5491,9 +6655,9 @@ BOOT=false;
   if(k==='entry'){openEntry(gid,d);return}
   if(k==='showmore'){pendingMax+=10;renderPending(allPending());return}
   if(k==='togglepending'){pendingExpanded=!pendingExpanded;renderPending(allPending());return}
-  if(k==='pickdate'){clearTimeout(saveTimer);saveJournal();saveVisibleNotes();root().cfg.selected=d;root().cfg.month=monthKey(d);journalDate=null;saveDaily();renderAll();return}
+  if(k==='pickdate'){selectDailyDate(d);return}
   if(k==='prevmonth'||k==='nextmonth'){let [y,m]=root().cfg.month.split('-').map(Number);const x=new Date(y,m-1+(k==='prevmonth'?-1:1),1);root().cfg.month=x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0');saveDaily();renderCalendar(allPending());return}
-  if(k==='gotoday'){clearTimeout(saveTimer);saveJournal();saveVisibleNotes();root().cfg.selected=dateKey();root().cfg.month=monthKey(dateKey());journalDate=null;saveDaily();renderAll();return}
+  if(k==='gotoday'){selectDailyDate(dateKey());return}
   if(k==='archive'){const g=getGoal(gid);if(!g)return;if(g.archivedAt)g.archivedAt=null;else if(confirm('Lưu trữ mục tiêu? Lịch sử được giữ, những ngày tương lai ngừng tạo nhiệm vụ.'))g.archivedAt=dateKey();else return;saveDaily();renderAll();openManage();return}
   if(k==='delete'){const g=getGoal(gid);if(!g)return;const name=g.versions.at(-1)?.name||'';if(!confirm(`Xóa vĩnh viễn "${name}" và tất cả tiến độ của mục tiêu này? Sao lưu JSON trước nếu muốn giữ lại.`))return;
    root().goals=root().goals.filter(x=>x.id!==gid);Object.keys(root().records).filter(key=>key.startsWith(gid+'|')).forEach(key=>delete root().records[key]);saveDaily();renderAll();openManage();return}
@@ -5557,19 +6721,17 @@ BOOT=false;
  }});
  window.addEventListener('pagehide',()=>el.querySelectorAll('[data-dinline-note]').forEach(persistInlineNote));
  document.addEventListener('input',e=>{if(e.target.matches('[data-dpct]')){const card=e.target.closest('.d-task');if(card){const num=card.querySelector('[data-dpercent]');if(num)num.value=e.target.value;const badge=card.querySelector('.d-task-badge');if(badge)badge.textContent=e.target.value+'% hoàn thành';const bar=card.querySelector('.d-mini-track i');if(bar)moveTrack(bar,e.target.value);}}});
- el.addEventListener('input',e=>{if(e.target.matches('[data-djournal]')){journalDirty=true;$d('#dJournalSaved').textContent='Đang lưu…';clearTimeout(saveTimer);saveTimer=setTimeout(saveJournal,350)}});
- el.addEventListener('focusout',e=>{if(e.target.matches('[data-djournal]')){clearTimeout(saveTimer);saveJournal()}});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.querySelector('.d-modalshade')){closeShade();entryTarget=null}});
  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')syncDay()});
  window.addEventListener('focus',syncDay);
- function syncDay(){const now=dateKey();if(now!==lastDay){const previousDay=lastDay;clearTimeout(saveTimer);if(journalDate)saveJournal();lastDay=now;const old=root().cfg.selected;
+ function syncDay(){const now=dateKey();if(now!==lastDay){const previousDay=lastDay;journal.flush();lastDay=now;const old=root().cfg.selected;
    if(!old||old===previousDay)root().cfg.selected=now;
-   root().cfg.month=monthKey(root().cfg.selected||now);root().cfg.lastSeenDay=now;journalDate=null;saveDaily();renderAll();}
+   root().cfg.month=monthKey(root().cfg.selected||now);root().cfg.lastSeenDay=now;if(saveDaily())journal.markPersisted();renderAll();}
  }
  setInterval(syncDay,12000);
  root();reconcileRecordModes();const prevSeen=safeDate(root().cfg.lastSeenDay),currentSelected=safeDate(root().cfg.selected);if(!currentSelected||currentSelected===prevSeen)root().cfg.selected=dateKey();root().cfg.lastSeenDay=dateKey();if(!/^\d{4}-\d{2}$/.test(root().cfg.month||'')||(currentSelected===prevSeen&&prevSeen!==dateKey()))root().cfg.month=monthKey(root().cfg.selected);
  renderAll();
- window.KZDaily={open:()=>{syncDay();renderAll()},refresh,syncDay,
+ window.KZDaily={open:()=>{syncDay();renderAll()},refresh,syncDay,journalOpen:journal.isOpen,cancelJournalCalendar:journal.cancelCalendarPick,
   // pure-ish data helpers exposed for tests and manual inspection
   inspect:{dayTask,tasksOn,progress,daySummary,allPending,addDate,diff,mutate,root,dayMetrics,completedOnTime,milestoneStats,streakStats}};
 })();
@@ -6507,7 +7669,7 @@ document.addEventListener('click',e=>{
  if(x.closest('[data-dact="check"],[data-dact="plus"],[data-dact="minus"],[data-dact="backup"],[data-kz-nosound],#lqk,#lqz,#lqnx,#lqre'))return;
  if(performance.now()<activeUntil)return;
  if(x.closest('#kspeak')&&x.matches('[id*="play"],[id*="listen"]'))return;
- const k=x.matches('[role="tab"],.fi,.tb,[data-dact="journaltab"]')?'nav':x.matches('.px,[data-dact="close"]')?'close':x.matches('.p,.d-primary-btn,.stgo,#lqk')?'confirm':'tap';
+ const k=x.matches('[role="tab"],.fi,.tb')?'nav':x.matches('.px,[data-dact="close"]')?'close':x.matches('.p,.d-primary-btn,.stgo,#lqk')?'confirm':'tap';
  warm(k);
 },false);
 document.addEventListener('change',e=>{const x=e.target;if(!enabled)return;
@@ -6527,9 +7689,11 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
  const MAX_IMAGE_BYTES=25*1024*1024;
  const IMAGE_TYPES=new Set(['image/png','image/jpeg','image/webp','image/gif','image/avif','image/bmp','image/x-icon','image/vnd.microsoft.icon']);
  const IMAGE_EXTENSIONS={png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg',webp:'image/webp',gif:'image/gif',avif:'image/avif',bmp:'image/bmp',ico:'image/x-icon'};
+ const labels=new Map([['none','Không nhãn'],['study','Học tập'],['work','Công việc'],['personal','Cá nhân'],['idea','Ý tưởng'],['important','Quan trọng']]);
+ const shortDate=new Intl.DateTimeFormat('vi-VN',{dateStyle:'short'});
+ const updatedDate=new Intl.DateTimeFormat('vi-VN',{dateStyle:'short',timeStyle:'short'});
  const get=id=>document.getElementById(id);
  const tab=get('kz-notes-tab');
- const scrim=get('kz-notes-scrim');
  const drawer=get('kz-notes-drawer');
  const closeBtn=get('kz-notes-close');
  const newBtn=get('kz-notes-new');
@@ -6540,6 +7704,15 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
  const titleEl=get('kz-note-title');
  const bodyEl=get('kz-note-body');
  const fields=get('kz-notes-fields');
+ const searchEl=get('kz-notes-search');
+ const filterEl=get('kz-notes-filter');
+ const listEmpty=get('kz-notes-list-empty');
+ const listCount=get('kz-notes-count');
+ const labelEl=get('kz-note-label');
+ const pinBtn=get('kz-note-pin');
+ const exportBtn=get('kz-note-export');
+ const editorMeta=get('kz-note-editor-meta');
+ const attachments=get('kz-note-attachments');
  const input=get('kz-note-image-input');
  const countBtn=get('kz-note-image-count');
  const strip=get('kz-note-images');
@@ -6554,9 +7727,9 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
  const galleryRemove=get('kz-note-gallery-remove');
  const galleryRemoveNo=get('kz-note-gallery-remove-no');
  const galleryRemoveYes=get('kz-note-gallery-remove-yes');
- if(!tab||!scrim||!drawer||!listEl||!titleEl||!bodyEl)return;
+ const galleryDownload=get('kz-note-image-download');
 
- const media=matchMedia('(max-width:639px)');
+ const media=matchMedia('(max-width:760px)');
  const pendingUploads=new Map();
  const thumbnails=new Map();
  let notes=[];
@@ -6572,12 +7745,41 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
  let galleryImageId=null;
  let galleryRequest=0;
  let galleryUrl=null;
+ let galleryRecord=null;
+ let dragDepth=0;
 
  const uid=prefix=>prefix+'_'+Array.from(crypto.getRandomValues(new Uint32Array(3)),part=>part.toString(36)).join('_');
  const activeNote=()=>notes.find(note=>note.id===activeId);
  const isBlank=note=>!note||(!note.title.trim()&&!note.content.trim()&&!note.images.length);
- const sortNewest=arr=>arr.slice().sort((a,b)=>(b.updatedAt-a.updatedAt)||(b.createdAt-a.createdAt));
- const setStatus=text=>{stateEl.textContent=text};
+ const sortNewest=arr=>arr.slice().sort((a,b)=>Number(b.pinned)-Number(a.pinned)||(b.updatedAt-a.updatedAt)||(b.createdAt-a.createdAt));
+ const setStatus=text=>{if(stateEl.textContent!==text)stateEl.textContent=text};
+ const normalizeText=text=>text.toLocaleLowerCase('vi').normalize('NFD').replace(/\p{M}/gu,'').replaceAll('đ','d');
+ const validTimestamp=value=>Number.isFinite(value)&&Math.abs(value)<=8.64e15;
+
+ labelEl.replaceChildren(...Array.from(labels,([key,label])=>new Option(label,key)));
+ filterEl.replaceChildren(new Option('Tất cả nhãn','all'),...Array.from(labels,([key,label])=>new Option(label,key)));
+
+ function savedStatus(note=activeNote()){
+  if(storageDirty)return 'Lỗi lưu ghi chú';
+  if(!note)return '';
+  if(pendingUploads.has(note.id))return 'Đang lưu ảnh…';
+  return isBlank(note)?'Bản nháp':'Đã lưu';
+ }
+
+ function visibleNotes(){
+  const terms=normalizeText(searchEl.value).trim().split(/\s+/u).filter(Boolean);
+  return notes.filter(note=>{
+   if(isBlank(note)||(filterEl.value!=='all'&&note.label!==filterEl.value))return false;
+   if(!terms.length)return true;
+   const text=normalizeText(`${note.title} ${note.content} ${labels.get(note.label)}`);
+   return terms.every(term=>text.includes(term));
+  });
+ }
+
+ function resetFilters(){
+  searchEl.value='';
+  filterEl.value='all';
+ }
 
  function loadStore(){
   try{
@@ -6587,8 +7789,8 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
    const clean=[];
    for(const item of list){
     if(!item||typeof item.id!=='string'||!item.id||seen.has(item.id))continue;
-    const createdAt=Number.isFinite(item.createdAt)?item.createdAt:Date.now();
-    const updatedAt=Number.isFinite(item.updatedAt)?item.updatedAt:createdAt;
+    const createdAt=validTimestamp(item.createdAt)?item.createdAt:Date.now();
+    const updatedAt=validTimestamp(item.updatedAt)?item.updatedAt:createdAt;
     const images=[];
     const imageIds=new Set();
     for(const image of Array.isArray(item.images)?item.images:[]){
@@ -6601,7 +7803,8 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
      id:item.id,
      title:typeof item.title==='string'?item.title.slice(0,160):'',
      content:typeof item.content==='string'?item.content:'',
-     createdAt,updatedAt,images
+     createdAt,updatedAt,images,
+     label:labels.has(item.label)?item.label:'none',pinned:item.pinned===true
     };
     if(isBlank(note))continue;
     seen.add(note.id);
@@ -6739,29 +7942,47 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
 
  function pruneBlanks(keepId=null){
   notes=notes.filter(note=>note.id===keepId||pendingUploads.has(note.id)||!isBlank(note));
-  if(activeId!==keepId&&isBlank(activeNote()))activeId=notes.find(note=>!isBlank(note))?.id||null;
+  if(activeId!==keepId&&isBlank(activeNote()))activeId=visibleNotes()[0]?.id||null;
  }
 
  function renderList(){
-  const savedNotes=notes.filter(note=>!isBlank(note));
-  drawer.dataset.libraryEmpty=savedNotes.length?'0':'1';
+  const savedNotes=visibleNotes();
+  drawer.dataset.libraryEmpty=notes.some(note=>!isBlank(note))?'0':'1';
+  const hasFilter=filterEl.value!=='all'||Boolean(searchEl.value.trim());
+  const count=savedNotes.length+' ghi chú';
+  if(listCount.textContent!==count)listCount.textContent=count;
+  listEmpty.hidden=savedNotes.length>0;
+  listEmpty.textContent=hasFilter?'Không tìm thấy ghi chú phù hợp.':'Chưa có ghi chú nào.';
   const frag=document.createDocumentFragment();
   for(const note of savedNotes){
    const btn=document.createElement('button');
    btn.type='button';
    btn.className='kz-note-item'+(note.id===activeId?' act':'')+(note.title.trim()?'':' blank');
    btn.dataset.nid=note.id;
+   btn.dataset.label=note.label;
+   btn.dataset.pinned=String(note.pinned);
    btn.setAttribute('role','option');
    btn.setAttribute('aria-selected',String(note.id===activeId));
+   const head=document.createElement('span');
+   head.className='kz-note-item-head';
    const title=document.createElement('span');
    title.className='kz-note-item-t';
    title.textContent=note.title.trim()||'Ghi chú chưa đặt tên';
-   btn.appendChild(title);
+   head.appendChild(title);
+   if(note.pinned){
+    const pin=document.createElement('span');
+    pin.className='kz-note-item-pin';
+    pin.title='Đã ghim';
+    pin.setAttribute('aria-label','Đã ghim');
+    pin.innerHTML='<svg class="i" aria-hidden="true"><use href="#i-kz-notes-pin"/></svg>';
+    head.appendChild(pin);
+   }
+   btn.appendChild(head);
    const content=note.content.replace(/\s+/g,' ').trim();
    if(content){
     const snippet=document.createElement('span');
     snippet.className='kz-note-item-p';
-    snippet.textContent=content.length>56?content.slice(0,55)+'…':content;
+    snippet.textContent=content.length>120?content.slice(0,119)+'…':content;
     btn.appendChild(snippet);
    }
    if(note.images.length){
@@ -6777,6 +7998,21 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
     }
     btn.appendChild(row);
    }
+   const meta=document.createElement('span');
+   meta.className='kz-note-item-meta';
+   if(note.label!=='none'){
+    const badge=document.createElement('span');
+    badge.className='kz-note-item-label';
+    badge.textContent=labels.get(note.label);
+    meta.appendChild(badge);
+   }
+   const date=document.createElement('time');
+   date.className='kz-note-item-date';
+   date.dateTime=new Date(note.updatedAt).toISOString();
+   date.title='Cập nhật '+updatedDate.format(note.updatedAt);
+   date.textContent=shortDate.format(note.updatedAt);
+   meta.appendChild(date);
+   btn.appendChild(meta);
    frag.appendChild(btn);
   }
   listEl.replaceChildren(frag);
@@ -6791,12 +8027,31 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   strip.replaceChildren(...images.map(image=>makeThumbnail(image,true)));
  }
 
+ function renderEditorDetails(note=activeNote()){
+  const label=note?.label||'none';
+  drawer.dataset.label=label;
+  labelEl.dataset.label=label;
+  labelEl.value=label;
+  labelEl.disabled=!note;
+  const hasText=Boolean(titleEl.value.trim()||bodyEl.value.trim());
+  const hasContent=hasText||Boolean(note?.images.length);
+  pinBtn.disabled=!hasContent;
+  exportBtn.disabled=!hasText;
+  const pinLabel=note?.pinned?'Bỏ ghim':'Ghim';
+  pinBtn.querySelector('[data-note-action-label]').textContent=pinLabel;
+  pinBtn.setAttribute('aria-pressed',String(note?.pinned===true));
+  pinBtn.title=pinLabel;
+  const words=bodyEl.value.match(/\S+/gu)?.length||0;
+  editorMeta.textContent=note?`${words} từ · Cập nhật ${updatedDate.format(note.updatedAt)}`:'';
+ }
+
  function syncEditorFields(){
   const note=activeNote();
   drawer.dataset.empty=note?'0':'1';
   titleEl.value=note?.title||'';
   bodyEl.value=note?.content||'';
   renderImages(note);
+  renderEditorDetails(note);
  }
 
  function commitCurrentDraft(){
@@ -6806,25 +8061,28 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   if(!dirty||!note)return false;
   dirty=false;
   if(note.title===titleEl.value&&note.content===bodyEl.value){
-   setStatus(pendingUploads.has(note.id)?'Đang lưu ảnh…':(storageDirty?'Lỗi lưu ghi chú':(isBlank(note)?'Bản nháp':'Đã lưu')));
+   setStatus(savedStatus(note));
    return false;
   }
   note.title=titleEl.value.slice(0,160);
   note.content=bodyEl.value;
   note.updatedAt=Date.now();
   notes=sortNewest(notes);
-  if(persistStore())setStatus(pendingUploads.has(note.id)?'Đang lưu ảnh…':(isBlank(note)?'Bản nháp':'Đã lưu'));
+  if(persistStore())setStatus(savedStatus(note));
+  renderEditorDetails(note);
   return true;
  }
 
  function scheduleSave(){
   dirty=true;
   setStatus('Đang lưu…');
+  renderEditorDetails();
   clearTimeout(saveTimer);
   saveTimer=setTimeout(()=>{if(commitCurrentDraft())renderList()},280);
  }
 
  function selectNote(id,focusTarget){
+  if(!notes.some(note=>note.id===id))return;
   commitCurrentDraft();
   const changed=activeId!==id;
   pruneBlanks(id);
@@ -6835,7 +8093,7 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   const note=activeNote();
   renderList();
   if((!storageDirty&&isBlank(note))||persistStore()){
-   setStatus(pendingUploads.has(id)?'Đang lưu ảnh…':(isBlank(note)?'Bản nháp':'Đã lưu'));
+   setStatus(savedStatus(note));
   }
   if(focusTarget)requestAnimationFrame(()=>{
    if(isDrawerOpen&&activeId===id&&!gallery.open)focusTarget.focus({preventScroll:true});
@@ -6844,15 +8102,57 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
 
  function createNewNote(){
   commitCurrentDraft();
+  resetFilters();
   const current=activeNote();
   if(current&&isBlank(current)){
    selectNote(current.id,titleEl);
    return;
   }
   const now=Date.now();
-  const note={id:uid('n'),title:'',content:'',createdAt:now,updatedAt:now,images:[]};
+  const note={id:uid('n'),title:'',content:'',createdAt:now,updatedAt:now,images:[],label:'none',pinned:false};
   notes.unshift(note);
   selectNote(note.id,titleEl);
+ }
+
+ function changeMetadata(key,value){
+  const note=activeNote();
+  if(!note||note[key]===value)return;
+  commitCurrentDraft();
+  const blank=isBlank(note);
+  if(blank&&key!=='label')return;
+  const previous=note[key];
+  note[key]=value;
+  if(!blank&&!persistStore()){
+   note[key]=previous;
+   renderEditorDetails(note);
+   return;
+  }
+  notes=sortNewest(notes);
+  renderEditorDetails(note);
+  renderList();
+  setStatus(savedStatus(note));
+ }
+
+ function downloadFile(blob,name){
+  const url=URL.createObjectURL(blob);
+  const link=document.createElement('a');
+  link.href=url;
+  link.download=name;
+  (gallery.open?gallery:drawer).appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),30_000);
+ }
+
+ function exportText(){
+  const note=activeNote();
+  if(!note)return;
+  if(commitCurrentDraft())renderList();
+  const title=note.title.trim();
+  const content=title?[title,note.content].filter(Boolean).join('\n\n'):note.content;
+  if(!content.trim())return;
+  const base=title.replace(/[<>:"/\\|?*\u0000-\u001f]/gu,'_').slice(0,100).replace(/[. ]+$/u,'')||'ghi-chu';
+  downloadFile(new Blob([content],{type:'text/plain;charset=utf-8'}),`${base}.txt`);
  }
 
  function queueImages(files,id,pasted=false){
@@ -6892,8 +8192,8 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
     notes=sortNewest(notes);
     if(isDrawerOpen){
      renderList();
-     if(activeId===id)renderImages(note);
-     if(!activeId&&!media.matches)selectNote(id);
+     if(activeId===id){renderImages(note);renderEditorDetails(note)}
+     if(!activeId&&!media.matches&&visibleNotes().includes(note))selectNote(id);
      if(gallery.open&&activeId===id)showGalleryImage();
     }
     if(skipped)status='Đã lưu '+records.length+' ảnh · Bỏ qua '+skipped+' ảnh';
@@ -6915,9 +8215,10 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   commitCurrentDraft();
   disarmDelete();
   const before=notes;
-  const index=notes.indexOf(note);
+  const index=visibleNotes().indexOf(note);
   notes=notes.filter(item=>item!==note);
-  activeId=(notes[index]||notes[index-1])?.id||null;
+  const remaining=visibleNotes();
+  activeId=(remaining[index]||remaining[index-1]||remaining[0])?.id||null;
   pruneBlanks();
   if(!persistStore()){
    notes=before;
@@ -6930,7 +8231,8 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   syncEditorFields();
   renderList();
   setStatus('Đã xóa');
-  (media.matches||!activeId?(activeId?newBtn:get('kz-notes-empty-new')):bodyEl).focus({preventScroll:true});
+  const focus=drawer.dataset.libraryEmpty==='1'?get('kz-notes-empty-new'):media.matches||!activeId?newBtn:bodyEl;
+  focus.focus({preventScroll:true});
  }
 
  function setImageDelete(armed){
@@ -6942,6 +8244,8 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
  function clearGalleryImage(){
   if(galleryUrl)URL.revokeObjectURL(galleryUrl);
   galleryUrl=null;
+  galleryRecord=null;
+  galleryDownload.disabled=true;
   galleryImage.hidden=true;
   galleryImage.removeAttribute('src');
  }
@@ -6971,6 +8275,8 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
    galleryImage.src=galleryUrl;
    await galleryImage.decode();
    if(request!==galleryRequest||!gallery.open)return;
+   galleryRecord=record;
+   galleryDownload.disabled=false;
    galleryImage.hidden=false;
    galleryMessage.hidden=true;
   }catch(e){
@@ -7017,6 +8323,7 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   notes=sortNewest(notes);
   renderList();
   renderImages(note);
+  renderEditorDetails(note);
   setStatus('Đã xóa ảnh');
   galleryImageId=(note.images[index]||note.images[index-1])?.id||null;
   if(galleryImageId){
@@ -7031,17 +8338,17 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   if(isDrawerOpen)return;
   lastTrigger=document.activeElement instanceof HTMLElement?document.activeElement:tab;
   if(!storageDirty&&!pendingUploads.size)loadStore();
+  resetFilters();
+  if(!activeNote())activeId=visibleNotes()[0]?.id||null;
   drawer.dataset.view=media.matches||!activeId?'list':'editor';
   disarmDelete();
   syncEditorFields();
   renderList();
-  setStatus(storageDirty?'Lỗi lưu ghi chú':(pendingUploads.has(activeId)?'Đang lưu ảnh…':(activeId?'Đã lưu':'')));
+  setStatus(savedStatus());
   isDrawerOpen=true;
   tab.setAttribute('aria-expanded','true');
-  scrim.classList.add('open');
-  scrim.setAttribute('aria-hidden','false');
   drawer.classList.add('open');
-  drawer.setAttribute('aria-hidden','false');
+  drawer.showModal();
   requestAnimationFrame(()=>{
    if(isDrawerOpen)(!media.matches&&activeId?bodyEl:closeBtn).focus({preventScroll:true});
   });
@@ -7056,17 +8363,25 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   isDrawerOpen=false;
   if(gallery.open)gallery.close();
   tab.setAttribute('aria-expanded','false');
-  scrim.classList.remove('open');
-  scrim.setAttribute('aria-hidden','true');
   drawer.classList.remove('open');
-  drawer.setAttribute('aria-hidden','true');
+  if(drawer.open)drawer.close();
+  dragDepth=0;
+  delete attachments.dataset.dragging;
   for(const id of thumbnails.keys())releaseThumbnail(id);
   if(lastTrigger?.isConnected)requestAnimationFrame(()=>lastTrigger.focus({preventScroll:true}));
  }
 
  tab.addEventListener('click',()=>isDrawerOpen?closeDrawer():openDrawer());
  closeBtn.addEventListener('click',closeDrawer);
- scrim.addEventListener('click',closeDrawer);
+ drawer.addEventListener('close',event=>{if(event.target===drawer&&!drawer.open)closeDrawer()});
+ drawer.addEventListener('cancel',event=>{
+  if(event.target!==drawer||gallery.open)return;
+  event.preventDefault();
+  if(delWrap.classList.contains('arm')){
+   disarmDelete();
+   get('kz-notes-del').focus({preventScroll:true});
+  }else closeDrawer();
+ });
  newBtn.addEventListener('click',createNewNote);
  get('kz-notes-empty-new').addEventListener('click',createNewNote);
  backBtn.addEventListener('click',()=>{
@@ -7076,14 +8391,32 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   drawer.dataset.view='list';
   syncEditorFields();
   renderList();
-  (activeId?newBtn:get('kz-notes-empty-new')).focus({preventScroll:true});
+  (drawer.dataset.libraryEmpty==='1'?get('kz-notes-empty-new'):newBtn).focus({preventScroll:true});
  });
+ function refreshFilter(){
+  commitCurrentDraft();
+  renderList();
+ }
+ searchEl.addEventListener('input',refreshFilter);
+ filterEl.addEventListener('change',refreshFilter);
+ labelEl.addEventListener('change',()=>{if(labels.has(labelEl.value))changeMetadata('label',labelEl.value)});
+ pinBtn.addEventListener('click',()=>changeMetadata('pinned',!activeNote()?.pinned));
+ exportBtn.addEventListener('click',exportText);
  listEl.addEventListener('click',e=>{
   const item=e.target.closest('.kz-note-item[data-nid]');
   if(!item)return;
   const image=e.target.closest('[data-image-id]');
   selectNote(item.dataset.nid,image?null:(media.matches?backBtn:bodyEl));
   if(image)openGallery(image.dataset.imageId);
+ });
+ listEl.addEventListener('keydown',event=>{
+  if(!['ArrowUp','ArrowDown','Home','End'].includes(event.key))return;
+  const items=[...listEl.children];
+  const index=items.indexOf(event.target);
+  if(index<0)return;
+  const target=event.key==='Home'?0:event.key==='End'?items.length-1:index+(event.key==='ArrowUp'?-1:1);
+  event.preventDefault();
+  items[Math.min(items.length-1,Math.max(0,target))]?.focus();
  });
  titleEl.addEventListener('input',scheduleSave);
  bodyEl.addEventListener('input',scheduleSave);
@@ -7093,9 +8426,17 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
  get('kz-notes-del').addEventListener('click',()=>{
   disarmDelete();
   delWrap.classList.add('arm');
-  armTimer=setTimeout(disarmDelete,5000);
+  get('kz-notes-del-no').focus({preventScroll:true});
+  armTimer=setTimeout(()=>{
+   const restore=delWrap.contains(document.activeElement);
+   disarmDelete();
+   if(restore)get('kz-notes-del').focus({preventScroll:true});
+  },5000);
  });
- get('kz-notes-del-no').addEventListener('click',disarmDelete);
+ get('kz-notes-del-no').addEventListener('click',()=>{
+  disarmDelete();
+  get('kz-notes-del').focus({preventScroll:true});
+ });
  get('kz-notes-del-yes').addEventListener('click',deleteActiveNote);
 
  let pickerTarget=null;
@@ -7118,6 +8459,29 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   event.preventDefault();
   queueImages(images,activeId,true);
  });
+ const fileDrag=event=>Array.from(event.dataTransfer?.types||[]).includes('Files');
+ attachments.addEventListener('dragenter',event=>{
+  if(!fileDrag(event))return;
+  event.preventDefault();
+  dragDepth++;
+  attachments.dataset.dragging='true';
+ });
+ attachments.addEventListener('dragover',event=>{
+  if(!fileDrag(event))return;
+  event.preventDefault();
+  event.dataTransfer.dropEffect='copy';
+ });
+ attachments.addEventListener('dragleave',()=>{
+  dragDepth=Math.max(0,dragDepth-1);
+  if(!dragDepth)delete attachments.dataset.dragging;
+ });
+ attachments.addEventListener('drop',event=>{
+  if(!fileDrag(event))return;
+  event.preventDefault();
+  dragDepth=0;
+  delete attachments.dataset.dragging;
+  queueImages(Array.from(event.dataTransfer.files),activeId);
+ });
  countBtn.addEventListener('click',()=>openGallery());
  strip.addEventListener('click',event=>{
   const item=event.target.closest('[data-image-id]');
@@ -7126,6 +8490,12 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
  galleryClose.addEventListener('click',()=>gallery.close());
  galleryPrev.addEventListener('click',()=>stepGallery(-1));
  galleryNext.addEventListener('click',()=>stepGallery(1));
+ galleryDownload.addEventListener('click',()=>{
+  if(!galleryRecord?.blob)return;
+  const name=galleryTitle.textContent||'anh-dinh-kem';
+  const extension=Object.keys(IMAGE_EXTENSIONS).find(key=>IMAGE_EXTENSIONS[key]===galleryRecord.blob.type);
+  downloadFile(galleryRecord.blob,extension&&!/\.[a-z0-9]{2,5}$/iu.test(name)?`${name}.${extension}`:name);
+ });
  galleryRemove.addEventListener('click',()=>{setImageDelete(true);galleryRemoveNo.focus()});
  galleryRemoveNo.addEventListener('click',()=>{setImageDelete(false);galleryRemove.focus()});
  galleryRemoveYes.addEventListener('click',removeGalleryImage);
@@ -7150,16 +8520,6 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   }
  });
 
- document.addEventListener('keydown',e=>{
-  if(!isDrawerOpen||gallery.open||e.key!=='Escape')return;
-  const mask=get('mask');
-  if(mask&&!mask.classList.contains('hide'))return;
-  if(document.querySelector('.d-modalshade:not([hidden]),#sfs.on,.kz2-announcement.show'))return;
-  e.preventDefault();
-  e.stopPropagation();
-  if(delWrap.classList.contains('arm')){disarmDelete();return}
-  closeDrawer();
- });
  media.addEventListener('change',()=>{
   if(isDrawerOpen&&!media.matches)drawer.dataset.view='editor';
  });
