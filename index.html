@@ -3014,6 +3014,56 @@ button:disabled,[aria-disabled="true"]{opacity:.48;cursor:not-allowed;filter:non
  .kz-note-item:hover,.kz-note-thumb:hover,.kz-note-thumb:hover img{transform:none}
 }
 </style>
+<style id="kz-notes-fit-style">
+@property --kz-notes-ring-angle{syntax:"<angle>";inherits:false;initial-value:0deg}
+
+#kz-notes-drawer .kz-notes-brand{gap:9px}
+.kz-notes-close-group{display:flex;align-items:center;margin-inline-start:3px;padding-inline-start:10px;border-inline-start:1px solid var(--nt-edge)}
+#kz-notes-close{width:36px;height:36px;min-height:36px;border-radius:10px}
+#kz-notes-close:hover{color:var(--nt-accent);border-color:color-mix(in srgb,var(--nt-focus) 33%,var(--nt-edge))}
+
+#kz-notes-drawer #kz-note-title{
+ field-sizing:content;align-self:start;resize:none;overflow-wrap:anywhere;
+ min-height:calc(1.14em + 12px);padding:0 0 12px;font-size:clamp(28px,3.4vw,45px);line-height:1.14;
+}
+#kz-notes-drawer .kz-notes-paper{gap:13px}
+@media(min-width:761px){
+ #kz-notes-drawer .kz-notes-editor{gap:13px;padding:clamp(15px,2vw,32px) clamp(18px,3.3vw,58px) max(25px,env(safe-area-inset-bottom))}
+ #kz-notes-drawer :is(.kz-notes-ed-bar,.kz-notes-fields){width:min(100%,1060px)}
+ #kz-notes-drawer .kz-notes-paper{padding:clamp(22px,2.5vw,38px) clamp(23px,4vw,62px) 19px}
+ #kz-notes-drawer #kz-note-body{min-height:clamp(275px,51dvh,670px)}
+ #kz-notes-drawer .kz-notes-editor:has(.kz-note-images:not([hidden])) #kz-note-body{min-height:clamp(225px,39dvh,565px)}
+}
+@media(max-width:760px){
+ .kz-notes-close-group{margin-inline-start:0;padding-inline-start:7px}
+ #kz-notes-close{width:40px;height:40px;min-height:40px}
+ #kz-notes-drawer #kz-note-title{min-height:calc(1.14em + 10px);padding-bottom:10px;font-size:clamp(24px,6.9vw,34px)}
+ #kz-notes-drawer #kz-note-body{min-height:clamp(185px,39dvh,460px)}
+ #kz-notes-drawer .kz-notes-paper{gap:11px;padding:17px 15px 13px}
+}
+
+@supports ((mask-composite:exclude) or (-webkit-mask-composite:xor)){
+ #kz-notes-drawer .kz-notes-paper::before{
+  inset:0;height:auto;padding:2px;border-radius:inherit;pointer-events:none;
+  background:conic-gradient(from var(--kz-notes-ring-angle),
+   color-mix(in srgb,var(--kz-notes-paper-accent) 52%,var(--nt-edge)),
+   var(--kz-notes-paper-accent) 15%,
+   color-mix(in srgb,var(--kz-notes-paper-accent) 68%,#edc2a4) 27%,
+   color-mix(in srgb,var(--kz-notes-paper-accent) 51%,#d8b1ec) 39%,
+   color-mix(in srgb,var(--kz-notes-paper-accent) 57%,var(--nt-edge)) 57%,
+   var(--kz-notes-paper-accent) 72%,
+   color-mix(in srgb,var(--kz-notes-paper-accent) 67%,#9dcff1) 85%,
+   color-mix(in srgb,var(--kz-notes-paper-accent) 52%,var(--nt-edge)));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  mask-composite:exclude;
+ }
+ #kz-notes-drawer[open] .kz-notes-paper::before{animation:kzNotesRing 11s linear infinite}
+}
+@keyframes kzNotesRing{to{--kz-notes-ring-angle:360deg}}
+@media(prefers-reduced-motion:reduce){#kz-notes-drawer[open] .kz-notes-paper::before{animation:none}}
+</style>
 <style id="kz-journal-style">
 .kz-journal-tab{top:202px}
 @media(max-width:639px){.kz-journal-tab{top:165px}}
@@ -3134,318 +3184,273 @@ button:disabled,[aria-disabled="true"]{opacity:.48;cursor:not-allowed;filter:non
 }
 
 .kz-replay {
- --replay-bg: #f8f5f1;
- --replay-glow: #e9e4fc;
- --replay-ink: #221f38;
- --replay-muted: #5d5775;
- --replay-line: #c9bfdc;
- --replay-edge: #ddd4e8;
- --replay-accent: #654bb2;
- --replay-light: #8766d4;
- --replay-primary: #5e43a7;
- --replay-primary-ink: #fff;
- --replay-control: rgba(255, 255, 255, .55);
- --replay-hover: #ede6fa;
- position: fixed;
- inset: 0;
- box-sizing: border-box;
- width: 100%;
- height: 100%;
- height: 100dvh;
- max-width: none;
- max-height: none;
- margin: 0;
- padding: max(22px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right))
-          max(22px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
- border: 0;
- overflow: hidden;
- color: var(--replay-ink);
- background: radial-gradient(ellipse at 50% 2%, var(--replay-glow), transparent 70%), var(--replay-bg);
- color-scheme: light;
+ --replay-bg:#faf2f5;
+ --replay-ink:#35233d;
+ --replay-muted:#6e5069;
+ --replay-edge:#e3c8dc;
+ --replay-line:#c999c5;
+ --replay-accent:#8a3d8c;
+ --replay-focus:#9c4a9f;
+ --replay-lilac:#e6cef2;
+ --replay-rose:#f3b9cf;
+ --replay-peach:#f7c7b1;
+ --replay-paper:#fffbfb;
+ --replay-control:#fff9fc;
+ --replay-hover:#f5e6f2;
+ --replay-title-start:#422849;
+ --replay-title-end:#894267;
+ --replay-shadow:0 16px 54px rgba(89,43,91,.12),0 3px 10px rgba(105,50,100,.06);
+ --replay-rainbow:linear-gradient(100deg,#a061c7,#cc71a6 55%,#e89170);
+ --replay-action:linear-gradient(110deg,#7540a2,#a04380);
+ position:fixed;inset:0;isolation:isolate;box-sizing:border-box;
+ width:100%;height:100%;height:100dvh;max-width:none;max-height:none;margin:0;border:0;
+ padding:max(22px,env(safe-area-inset-top)) max(24px,env(safe-area-inset-right)) max(21px,env(safe-area-inset-bottom)) max(24px,env(safe-area-inset-left));
+ overflow:hidden;color:var(--replay-ink);background:var(--replay-bg);color-scheme:light;
 }
 :root[data-theme="dark"] .kz-replay {
- --replay-bg: #101323;
- --replay-glow: #232243;
- --replay-ink: #f2eefb;
- --replay-muted: #beb6d1;
- --replay-line: #554d72;
- --replay-edge: #4b4361;
- --replay-accent: #c7b0ff;
- --replay-light: #b99aff;
- --replay-primary: #d7c6ff;
- --replay-primary-ink: #231745;
- --replay-control: rgba(66, 56, 93, .38);
- --replay-hover: #403456;
- color-scheme: dark;
+ --replay-bg:#1c1425;
+ --replay-ink:#fbecf8;
+ --replay-muted:#d2b8d0;
+ --replay-edge:#634661;
+ --replay-line:#906286;
+ --replay-accent:#ebadd8;
+ --replay-focus:#e5a8da;
+ --replay-lilac:#57366e;
+ --replay-rose:#5f2e50;
+ --replay-peach:#603544;
+ --replay-paper:#302037;
+ --replay-control:#38273f;
+ --replay-hover:#4e3554;
+ --replay-title-start:#fff3fa;
+ --replay-title-end:#ecb8d7;
+ --replay-shadow:0 22px 65px rgba(8,4,14,.39),0 3px 12px rgba(8,4,14,.25);
+ --replay-rainbow:linear-gradient(100deg,#b68ae9,#e381bf 55%,#f1ac87);
+ --replay-action:linear-gradient(110deg,#8549af,#af528c);
+ color-scheme:dark;
 }
-.kz-replay[open] {
- display: grid;
- grid-template-rows: auto auto minmax(0, 1fr) auto;
- gap: clamp(12px, 3vh, 36px);
+.kz-replay::before,.kz-replay::after{content:"";position:absolute;pointer-events:none;z-index:-1}
+.kz-replay::before{
+ inset:-12%;
+ background:radial-gradient(ellipse at 18% 6%,var(--replay-lilac),transparent 56%),
+  radial-gradient(ellipse at 86% 21%,var(--replay-rose),transparent 47%),
+  radial-gradient(ellipse at 70% 102%,var(--replay-peach),transparent 47%);
+ opacity:.83;
 }
-.kz-replay [hidden] { display: none !important; }
-.kz-replay::backdrop { background: var(--replay-bg); }
-.kz-replay-header, .kz-replay-footer {
- width: min(100%, 1000px);
- min-width: 0;
- justify-self: center;
+.kz-replay::after{
+ inset:0;
+ background:radial-gradient(circle,color-mix(in srgb,var(--replay-accent) 26%,transparent) .7px,transparent 1.05px) 2px 2px/9px 9px;
+ mask-image:radial-gradient(ellipse at 50% 44%,transparent 32%,#000 100%);opacity:.23;
 }
-.kz-replay-header {
- display: flex;
- align-items: flex-start;
- justify-content: space-between;
- gap: 12px;
+.kz-replay[open]{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;gap:clamp(11px,2.1dvh,23px)}
+.kz-replay[open]::before{animation:kzReplayAtmosphere 15s ease-in-out infinite alternate}
+.kz-replay[data-paused="true"]::before,.kz-replay[data-phase="ended"]::before{animation-play-state:paused}
+@keyframes kzReplayAtmosphere{from{transform:translate3d(-1.4%,0,0) scale(1)}to{transform:translate3d(2%,-1.2%,0) scale(1.065)}}
+.kz-replay [hidden]{display:none!important}
+.kz-replay::backdrop{background:var(--replay-bg)}
+
+.kz-replay-header,.kz-replay-footer{width:min(100%,1000px);min-width:0;justify-self:center}
+.kz-replay-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.kz-replay-brand{display:flex;align-items:center;gap:12px;min-width:0}
+.kz-replay-mark{
+ display:grid;place-items:center;flex:none;width:43px;height:43px;border-radius:14px;
+ color:#fff;background:var(--replay-action);box-shadow:0 6px 16px color-mix(in srgb,var(--replay-accent) 28%,transparent);
 }
-.kz-replay-header h2 {
- margin: 0;
- font-size: clamp(21px, 4vw, 30px);
- font-weight: 700;
- letter-spacing: -.035em;
- line-height: 1.22;
+.kz-replay-mark .i{width:20px;height:20px}
+.kz-replay-header h2{margin:0;font-size:clamp(21px,3.1vw,29px);font-weight:735;letter-spacing:-.048em;line-height:1.14}
+.kz-replay-range{margin:4px 0 0;color:var(--replay-muted);font-size:12px;font-variant-numeric:tabular-nums;line-height:1.35}
+.kz-replay-button{
+ display:inline-flex;justify-content:center;align-items:center;gap:7px;min-height:44px;
+ padding:7px 15px;border:1px solid var(--replay-edge);border-radius:12px;
+ background:var(--replay-control);color:var(--replay-ink);font-size:13px;font-weight:660;line-height:1.2;text-align:center;
+ transition:background .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease;
 }
-.kz-replay-range {
- margin: 5px 0 0;
- color: var(--replay-muted);
- font-size: 12px;
- font-variant-numeric: tabular-nums;
- line-height: 1.4;
+.kz-replay-button:hover{background:var(--replay-hover);border-color:var(--replay-line);transform:translateY(-1px)}
+.kz-replay :is(button,input,select,.kz-replay-reading):focus-visible{outline:2px solid var(--replay-focus);outline-offset:3px}
+.kz-replay-button .i{width:16px;height:16px;flex:none}
+.kz-replay-close{flex:none;min-width:78px}
+.kz-replay-primary{border-color:transparent;background:var(--replay-action);color:#fff;box-shadow:0 5px 15px color-mix(in srgb,var(--replay-accent) 26%,transparent)}
+.kz-replay-primary:hover{border-color:transparent;background:var(--replay-action);filter:brightness(1.12)}
+
+.kz-replay-rail{
+ position:relative;isolation:isolate;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ width:min(100%,710px);min-height:40px;padding-top:2px;justify-self:center;align-items:start;
 }
-.kz-replay-button {
- min-height: 44px;
- justify-content: center;
- gap: 6px;
- padding: 8px 15px;
- border: 1px solid var(--replay-edge);
- background: var(--replay-control);
- color: var(--replay-ink);
- font-weight: 600;
- line-height: 1.25;
- text-align: center;
+.kz-replay-track{
+ position:absolute;top:9px;left:calc(100% / 6);right:calc(100% / 6);height:2px;border-radius:4px;
+ background:linear-gradient(90deg,color-mix(in srgb,var(--replay-accent) 75%,transparent) 0 50%,var(--replay-line) 50% 100%);
 }
-.kz-replay-button:hover { background: var(--replay-hover); }
-.kz-replay-button:focus-visible, .kz-replay-reading:focus-visible {
- outline: 2px solid var(--replay-accent);
- outline-offset: 2px;
+.kz-replay-rail:has(#kz-replay-rail-prev[hidden]) .kz-replay-track{background:linear-gradient(90deg,transparent,var(--replay-line) 52%,var(--replay-line))}
+.kz-replay-rail:has(#kz-replay-rail-next[hidden]) .kz-replay-track{background:linear-gradient(90deg,var(--replay-accent),var(--replay-line) 48%,transparent)}
+.kz-replay-rail:has(#kz-replay-rail-prev[hidden]):has(#kz-replay-rail-next[hidden]) .kz-replay-track{opacity:0}
+.kz-replay-track i{
+ position:absolute;top:-1px;left:50%;width:27%;height:4px;border-radius:999px;
+ background:linear-gradient(90deg,transparent,#d090d8 53%,#f58cb2 80%,#fff1d4);
+ box-shadow:0 0 14px var(--replay-accent);opacity:0;pointer-events:none;
 }
-.kz-replay-button .i { width: 16px; height: 16px; flex: none; }
-.kz-replay-close { flex: none; }
-.kz-replay-primary {
- border-color: transparent;
- background: var(--replay-primary);
- color: var(--replay-primary-ink);
+.kz-replay-track i::after{
+ content:"";position:absolute;right:0;top:-4px;width:12px;height:12px;border-radius:50%;
+ background:radial-gradient(circle,#fffcf3 0%,#ffd6b5 34%,transparent 70%);
+ box-shadow:0 0 12px #ffd6b5;
 }
-.kz-replay-primary:hover { background: var(--replay-primary); filter: brightness(1.08); }
-.kz-replay-rail {
- position: relative;
- display: grid;
- grid-template-columns: repeat(3, minmax(0, 1fr));
- width: min(100%, 620px);
- min-height: 34px;
- justify-self: center;
- align-items: start;
+.kz-replay[data-phase="transition"] .kz-replay-track i{animation:kzReplayWave .7s cubic-bezier(.22,.64,.25,1) both}
+@keyframes kzReplayWave{
+ 0%{left:50%;transform:translateX(-100%) scaleX(.2);opacity:0}
+ 24%{opacity:1}
+ 83%{opacity:1}
+ 100%{left:100%;transform:translateX(-100%) scaleX(1);opacity:0}
 }
-.kz-replay-track {
- position: absolute;
- top: 5px;
- left: calc(100% / 6);
- right: calc(100% / 6);
- height: 1px;
- background: var(--replay-line);
+.kz-replay-node{
+ z-index:1;display:flex;grid-row:1;min-width:0;flex-direction:column;align-items:center;gap:7px;
+ color:var(--replay-muted);font-size:11px;font-variant-numeric:tabular-nums;text-align:center;line-height:1.2;
 }
-.kz-replay-track i {
- position: absolute;
- top: -1px;
- left: 50%;
- width: 22%;
- height: 3px;
- border-radius: 999px;
- background: linear-gradient(90deg, transparent, var(--replay-light));
- box-shadow: 0 0 12px var(--replay-light);
- opacity: 0;
- pointer-events: none;
+#kz-replay-rail-prev{grid-column:1}
+#kz-replay-rail-current{grid-column:2}
+#kz-replay-rail-next{grid-column:3}
+.kz-replay-node i{
+ position:relative;width:9px;height:9px;box-sizing:border-box;margin-top:3px;border:1px solid var(--replay-line);
+ border-radius:50%;background:var(--replay-paper);
 }
-.kz-replay[data-phase="transition"] .kz-replay-track i {
- animation: kzReplayWave .7s ease-in-out both;
+.kz-replay-node-current{color:var(--replay-ink);font-weight:740}
+.kz-replay-node-current i{
+ width:14px;height:14px;margin-top:1px;border:2px solid var(--replay-paper);background:var(--replay-accent);
+ box-shadow:0 0 0 4px color-mix(in srgb,var(--replay-accent) 22%,transparent);
 }
-@keyframes kzReplayWave {
- 0% { left: 50%; transform: translateX(-100%) scaleX(.15); opacity: 0; }
- 22% { opacity: .9; }
- 82% { opacity: .78; }
- 100% { left: 100%; transform: translateX(-100%) scaleX(1); opacity: 0; }
+.kz-replay-node-current i::after{
+ position:absolute;inset:-5px;content:"";border:1px solid var(--replay-accent);border-radius:50%;opacity:0;
 }
-.kz-replay-node {
- z-index: 1;
- display: flex;
- grid-row: 1;
- min-width: 0;
- flex-direction: column;
- align-items: center;
- gap: 7px;
- color: var(--replay-muted);
- font-size: 11px;
- font-variant-numeric: tabular-nums;
- text-align: center;
- line-height: 1.25;
+.kz-replay[data-phase="transition"] .kz-replay-node-current i::after{animation:kzReplayNode .7s ease-out both}
+@keyframes kzReplayNode{from{opacity:.8;transform:scale(.7)}to{opacity:0;transform:scale(2.15)}}
+
+.kz-replay-frame,.kz-replay-end{width:min(100%,900px);min-height:0;min-width:0;justify-self:center}
+.kz-replay-frame{display:grid;grid-template-rows:auto minmax(0,1fr);align-content:start;gap:clamp(11px,2.2dvh,23px);padding-top:clamp(2px,1.6dvh,16px)}
+.kz-replay-date{
+ margin:0;color:var(--replay-ink);font-size:clamp(28px,5vw,63px);font-weight:740;
+ letter-spacing:-.063em;line-height:1.07;text-align:center;text-wrap:balance;
 }
-#kz-replay-rail-prev { grid-column: 1; }
-#kz-replay-rail-current { grid-column: 2; }
-#kz-replay-rail-next { grid-column: 3; }
-.kz-replay-node i {
- width: 9px;
- height: 9px;
- box-sizing: border-box;
- margin-top: 1px;
- border: 1px solid var(--replay-line);
- border-radius: 50%;
- background: var(--replay-bg);
+.kz-replay-date-text{
+ display:block;color:var(--replay-title-start);background:linear-gradient(95deg,var(--replay-title-start) 29%,var(--replay-title-end) 73%);
+ background-clip:text;-webkit-text-fill-color:transparent;
+ animation:kzReplayReveal calc(.66s / var(--kz-replay-speed,1)) cubic-bezier(.2,.72,.3,1) both;
 }
-.kz-replay-node-current { color: var(--replay-ink); font-weight: 700; }
-.kz-replay-node-current i {
- width: 11px;
- height: 11px;
- margin-top: 0;
- border-color: var(--replay-accent);
- background: var(--replay-accent);
- box-shadow: 0 0 0 4px color-mix(in srgb, var(--replay-accent) 20%, transparent);
+.kz-replay-reading{
+ position:relative;isolation:isolate;min-height:0;min-width:0;margin:0 3px;
+ padding:clamp(22px,3dvh,36px) clamp(19px,4vw,66px);overflow:auto;overscroll-behavior:contain;
+ scrollbar-gutter:stable both-edges;scrollbar-width:thin;scrollbar-color:var(--replay-line) transparent;
+ border:1px solid var(--replay-edge);border-radius:21px;color:var(--replay-ink);box-shadow:var(--replay-shadow);
+ background:var(--replay-rainbow) top/100% 3px no-repeat,
+  radial-gradient(ellipse at 93% -13%,color-mix(in srgb,var(--replay-rose) 31%,transparent),transparent 65%),var(--replay-paper);
+ transition:border-color .25s ease,box-shadow .25s ease;
 }
-.kz-replay-frame, .kz-replay-end {
- width: min(100%, 780px);
- min-height: 0;
- min-width: 0;
- justify-self: center;
+.kz-replay[data-is-today="true"] .kz-replay-reading{border-color:color-mix(in srgb,var(--replay-accent) 66%,var(--replay-edge))}
+.kz-replay[data-frame-kind="gap"] .kz-replay-reading,.kz-replay[data-frame-kind="empty"] .kz-replay-reading{
+ align-self:start;justify-self:center;width:min(calc(100% - 6px),560px);
+ padding-block:clamp(20px,4.8dvh,49px);border-style:dashed;box-shadow:none;
+ background:color-mix(in srgb,var(--replay-paper) 79%,transparent);
 }
-.kz-replay-frame {
- display: grid;
- grid-template-rows: auto minmax(0, 1fr);
- gap: clamp(10px, 3vh, 28px);
- align-content: start;
- padding-top: clamp(0px, 3vh, 30px);
+.kz-replay-copy{width:min(100%,63ch);margin-inline:auto;font-size:clamp(16px,2vw,21px);line-height:1.75}
+.kz-replay-copy h4{margin:1.2em 0 .4em;color:var(--replay-accent);font-size:.72em;font-weight:710}
+.kz-replay-copy h4:first-child{margin-top:0}
+.kz-replay-copy p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.kz-replay-copy p+p{margin-top:.75em}
+.kz-replay-copy .kz-replay-empty{color:var(--replay-muted);text-align:center;font-size:.9em;line-height:1.55}
+.kz-replay-reveal{
+ animation:kzReplayReveal calc(.85s / var(--kz-replay-speed,1)) cubic-bezier(.2,.72,.3,1)
+  calc(var(--kz-reveal-delay,.44s) / var(--kz-replay-speed,1)) both;
 }
-.kz-replay-date {
- margin: 0;
- color: var(--replay-ink);
- font-size: clamp(27px, 5.8vw, 63px);
- font-weight: 680;
- letter-spacing: -.05em;
- line-height: 1.12;
- text-align: center;
- text-wrap: balance;
+@keyframes kzReplayReveal{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+.kz-replay[data-paused="true"] .kz-replay-track i,.kz-replay[data-paused="true"] .kz-replay-node-current i::after,
+.kz-replay[data-paused="true"] .kz-replay-date-text,.kz-replay[data-paused="true"] .kz-replay-reveal{animation-play-state:paused}
+.kz-replay[data-instant="true"] .kz-replay-date-text,.kz-replay[data-instant="true"] .kz-replay-reveal{animation:none}
+
+.kz-replay-end{
+ display:grid;align-content:center;justify-items:center;gap:clamp(12px,2.9dvh,26px);overflow:auto;
+ border:1px solid var(--replay-edge);border-radius:24px;padding:clamp(13px,3vh,27px);
+ background:var(--replay-rainbow) top/100% 3px no-repeat,
+  radial-gradient(ellipse at 55% -25%,color-mix(in srgb,var(--replay-rose) 47%,transparent),transparent 70%),var(--replay-paper);
+ box-shadow:var(--replay-shadow);animation:kzReplayReveal .5s cubic-bezier(.2,.72,.3,1) both;
 }
-.kz-replay-date-text {
- display: block;
- animation: kzReplayReveal .6s cubic-bezier(.2, .72, .3, 1) both;
+.kz-replay-finish-mark{
+ display:grid;place-items:center;flex:none;width:57px;height:57px;border-radius:17px;color:var(--replay-accent);
+ border:1px solid var(--replay-edge);background:var(--replay-hover);box-shadow:0 0 0 6px color-mix(in srgb,var(--replay-lilac) 50%,transparent);
 }
-.kz-replay-reading {
- min-height: 0;
- min-width: 0;
- margin: 0 2px;
- padding: 8px clamp(10px, 3vw, 32px) 22px;
- overflow: auto;
- overscroll-behavior: contain;
- scrollbar-gutter: stable both-edges;
- border-radius: 12px;
- color: var(--replay-ink);
+.kz-replay-finish-mark .i{width:26px;height:26px}
+#kz-replay-summary{margin:0;max-width:44ch;color:var(--replay-muted);font-size:clamp(13px,1.8vw,17px);line-height:1.55;text-align:center}
+.kz-replay-end-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+
+.kz-replay-footer{
+ align-self:end;display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,auto);grid-template-areas:"scrub scrub" "meta controls";
+ gap:9px 15px;align-items:center;padding:10px 13px;border:1px solid var(--replay-edge);border-radius:16px;
+ background:color-mix(in srgb,var(--replay-paper) 85%,transparent);box-shadow:0 7px 24px color-mix(in srgb,var(--replay-ink) 8%,transparent);
 }
-.kz-replay-copy {
- width: min(100%, 64ch);
- margin-inline: auto;
- font-size: clamp(16px, 2.2vw, 22px);
- line-height: 1.68;
+.kz-replay-scrub{grid-area:scrub;min-width:0;display:grid;gap:0}
+.kz-replay-scrub-caption{display:flex;justify-content:space-between;align-items:center;gap:8px;min-width:0;color:var(--replay-muted);font-size:11px;line-height:1.25}
+#kz-replay-scrub-date{color:var(--replay-accent);font-variant-numeric:tabular-nums;text-align:right}
+#kz-replay-scrubber{
+ --kz-replay-progress:0%;display:block;appearance:none;width:100%;height:24px;min-height:24px;
+ margin:0;padding:0;border:0;background:transparent;box-shadow:none;accent-color:var(--replay-accent);cursor:ew-resize;
 }
-.kz-replay-copy h4 {
- margin: 1em 0 .4em;
- color: var(--replay-muted);
- font-size: .74em;
- font-weight: 650;
+#kz-replay-scrubber:disabled{cursor:default;opacity:.65}
+#kz-replay-scrubber::-webkit-slider-runnable-track{
+ height:5px;border-radius:12px;background:linear-gradient(90deg,var(--replay-accent) var(--kz-replay-progress),var(--replay-edge) var(--kz-replay-progress));
 }
-.kz-replay-copy h4:first-child { margin-top: 0; }
-.kz-replay-copy p {
- margin: 0;
- white-space: pre-wrap;
- overflow-wrap: anywhere;
+#kz-replay-scrubber::-moz-range-track{height:5px;border-radius:12px;background:var(--replay-edge)}
+#kz-replay-scrubber::-moz-range-progress{height:5px;border-radius:12px;background:var(--replay-accent)}
+#kz-replay-scrubber::-webkit-slider-thumb{
+ appearance:none;width:15px;height:15px;margin-top:-5px;border:2px solid var(--replay-paper);border-radius:50%;
+ background:var(--replay-accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--replay-accent) 51%,transparent);
 }
-.kz-replay-copy p + p { margin-top: .72em; }
-.kz-replay-copy .kz-replay-empty {
- color: var(--replay-muted);
- text-align: center;
+#kz-replay-scrubber::-moz-range-thumb{width:12px;height:12px;border:2px solid var(--replay-paper);border-radius:50%;background:var(--replay-accent)}
+.kz-replay-meta{
+ grid-area:meta;display:flex;min-width:0;min-height:22px;align-items:center;flex-wrap:wrap;gap:5px 13px;
+ color:var(--replay-muted);font-size:12px;font-variant-numeric:tabular-nums;
 }
-.kz-replay-reveal {
- animation: kzReplayReveal .8s cubic-bezier(.2, .72, .3, 1) var(--kz-reveal-delay, .45s) both;
+.kz-replay-pace{display:inline-flex;align-items:center;gap:6px;min-width:0}
+#kz-replay-speed{
+ min-width:0;min-height:32px;max-width:100%;padding:4px 5px;border:1px solid var(--replay-edge);border-radius:8px;
+ background:var(--replay-control);color:var(--replay-ink);font:inherit;font-size:13px;box-shadow:none;
 }
-@keyframes kzReplayReveal {
- from { opacity: 0; transform: translateY(7px); }
- to { opacity: 1; transform: translateY(0); }
+.kz-replay-controls{grid-area:controls;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));min-width:0;gap:6px}
+.kz-replay-controls .kz-replay-button{white-space:nowrap}
+.kz-replay-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+@media(max-width:730px){
+ .kz-replay{padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))}
+ .kz-replay[open]{gap:10px}
+ .kz-replay-brand{gap:8px}
+ .kz-replay-mark{width:36px;height:36px;border-radius:11px}
+ .kz-replay-mark .i{width:18px;height:18px}
+ .kz-replay-range{font-size:11px}
+ .kz-replay-rail{width:100%;min-height:33px}
+ .kz-replay-frame{gap:11px;padding-top:2px}
+ .kz-replay-date{font-size:clamp(27px,7.3vw,42px);letter-spacing:-.05em}
+ .kz-replay-reading{margin:0 1px;padding:16px 15px 18px;border-radius:14px}
+ .kz-replay-end{border-radius:16px}
+ .kz-replay-copy{font-size:16px;line-height:1.68}
+ .kz-replay-footer{grid-template-columns:minmax(0,1fr);grid-template-areas:"scrub" "meta" "controls";gap:6px;padding:8px;border-radius:13px}
+ .kz-replay-meta{gap:3px 7px;justify-content:space-between;font-size:11px}
+ #kz-replay-speed{font-size:16px;min-height:35px;padding-inline:5px}
+ .kz-replay-controls{gap:4px}
+ .kz-replay-controls .kz-replay-button{padding-inline:4px;font-size:11.5px;gap:3px}
+ .kz-replay-controls .i{width:13px;height:13px}
 }
-.kz-replay[data-paused="true"] .kz-replay-track i,
-.kz-replay[data-paused="true"] .kz-replay-date-text,
-.kz-replay[data-paused="true"] .kz-replay-reveal { animation-play-state: paused; }
-.kz-replay[data-instant="true"] .kz-replay-date-text,
-.kz-replay[data-instant="true"] .kz-replay-reveal { animation: none; }
-.kz-replay-end {
- display: grid;
- align-content: center;
- justify-items: center;
- gap: clamp(14px, 4vh, 34px);
- overflow: auto;
- padding: 5px;
+@media(max-height:540px){
+ .kz-replay[open]{gap:6px;padding-block:max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-bottom))}
+ .kz-replay-header h2{font-size:20px}
+ .kz-replay-mark{width:33px;height:33px;border-radius:10px}
+ .kz-replay-rail{min-height:30px}
+ .kz-replay-frame{padding-top:0;gap:6px}
+ .kz-replay-date{font-size:clamp(23px,5vw,35px)}
+ .kz-replay-reading{padding-block:11px 14px}
+ .kz-replay-footer{gap:4px 10px;padding-block:5px}
+ .kz-replay-button{min-height:38px}
+ .kz-replay-finish-mark{width:39px;height:39px;border-radius:13px}
+ .kz-replay-finish-mark .i{width:22px;height:22px}
 }
-.kz-replay-end-actions {
- display: flex;
- flex-wrap: wrap;
- justify-content: center;
- gap: 8px;
-}
-.kz-replay-footer {
- align-self: end;
- display: grid;
- justify-items: center;
- gap: 8px;
-}
-.kz-replay-meta {
- display: flex;
- min-height: 17px;
- align-items: center;
- justify-content: center;
- flex-wrap: wrap;
- gap: 3px 12px;
- color: var(--replay-muted);
- font-size: 12px;
- font-variant-numeric: tabular-nums;
- text-align: center;
-}
-.kz-replay-controls {
- display: grid;
- width: min(100%, 500px);
- grid-template-columns: repeat(3, minmax(0, 1fr));
- gap: 8px;
-}
-.kz-replay-sr {
- position: absolute;
- width: 1px;
- height: 1px;
- overflow: hidden;
- clip-path: inset(50%);
- white-space: nowrap;
-}
-@media (max-width: 520px) {
- .kz-replay {
-  padding: max(14px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right))
-           max(14px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
- }
- .kz-replay-controls { gap: 5px; }
- .kz-replay-controls .kz-replay-button { padding-inline: 5px; font-size: 12px; gap: 3px; }
- .kz-replay-controls .i { width: 14px; height: 14px; }
-}
-@media (max-height: 500px) {
- .kz-replay[open] { gap: 7px; }
- .kz-replay-header h2 { font-size: 20px; }
- .kz-replay-frame { padding-top: 0; gap: 4px; }
- .kz-replay-date { font-size: clamp(23px, 5vw, 36px); }
- .kz-replay-reading { padding-block: 4px 12px; }
-}
-@media (prefers-reduced-motion: reduce) {
- .kz-replay .kz-replay-date-text, .kz-replay .kz-replay-reveal,
- .kz-replay[data-phase="transition"] .kz-replay-track i { animation: none; }
+@media(prefers-reduced-motion:reduce){
+ .kz-replay[open]::before,.kz-replay .kz-replay-date-text,.kz-replay .kz-replay-reveal,.kz-replay .kz-replay-end,
+ .kz-replay[data-phase="transition"] .kz-replay-track i,.kz-replay[data-phase="transition"] .kz-replay-node-current i::after{animation:none}
+ .kz-replay .kz-replay-button,.kz-replay .kz-replay-reading{transition:none}
+ .kz-replay .kz-replay-button:hover{transform:none}
 }
 @media(min-width:1000px) and (pointer:fine){#kz-journal-drawer,#kz-journal-replay{zoom:.8}}
 </style>
@@ -4052,9 +4057,12 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
  </dialog>
 <dialog id="kz-journal-replay" class="kz-replay" aria-labelledby="kz-replay-title">
  <header class="kz-replay-header">
-  <div>
-   <h2 id="kz-replay-title">Nhìn lại</h2>
-   <p id="kz-replay-range" class="kz-replay-range"></p>
+  <div class="kz-replay-brand">
+   <span class="kz-replay-mark" aria-hidden="true"><svg class="i"><use href="#i-kz-journal"/></svg></span>
+   <div>
+    <h2 id="kz-replay-title">Nhìn lại</h2>
+    <p id="kz-replay-range" class="kz-replay-range"></p>
+   </div>
   </div>
   <button id="kz-replay-close" class="kz-replay-button kz-replay-close" type="button" autofocus>
    <svg class="i" aria-hidden="true"><use href="#i-x"/></svg><span>Thoát</span>
@@ -4073,16 +4081,28 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
   </div>
  </div>
  <div id="kz-replay-end" class="kz-replay-end" hidden>
+  <span class="kz-replay-finish-mark" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></span>
   <h3 class="kz-replay-date">Đã đến hôm nay</h3>
+  <p id="kz-replay-summary" class="kz-replay-summary"></p>
   <div class="kz-replay-end-actions">
-   <button id="kz-replay-restart" class="kz-replay-button" type="button">Xem lại từ đầu</button>
+   <button id="kz-replay-restart" class="kz-replay-button" type="button"><svg class="i" aria-hidden="true"><use href="#i-redo"/></svg>Xem lại từ đầu</button>
    <button id="kz-replay-write" class="kz-replay-button kz-replay-primary" type="button">Viết hôm nay</button>
   </div>
  </div>
  <footer class="kz-replay-footer">
+  <div class="kz-replay-scrub">
+   <div class="kz-replay-scrub-caption">
+    <label for="kz-replay-scrubber">Dòng thời gian</label>
+    <span id="kz-replay-scrub-date"></span>
+   </div>
+   <input id="kz-replay-scrubber" type="range" min="1" max="1" value="1" step="1">
+  </div>
   <div class="kz-replay-meta">
-   <span id="kz-replay-position"></span>
-   <span id="kz-replay-scroll-tip" role="status" hidden>Cuộn để đọc hết bài.</span>
+   <div class="kz-replay-state">
+    <span id="kz-replay-position"></span>
+    <span id="kz-replay-scroll-tip" role="status" hidden>Cuộn để đọc hết bài.</span>
+   </div>
+   <label class="kz-replay-pace" for="kz-replay-speed"><span>Tốc độ đọc</span><select id="kz-replay-speed"><option value="0.75">Chậm</option><option value="1" selected>Vừa</option><option value="1.35">Nhanh</option></select></label>
   </div>
   <div class="kz-replay-controls">
    <button id="kz-replay-prev" class="kz-replay-button" type="button">
@@ -4100,8 +4120,8 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
 </dialog>
  <dialog class="kz-notes-drawer" id="kz-notes-drawer" aria-labelledby="kz-notes-heading" data-view="list" data-empty="1" data-library-empty="1" data-label="none">
   <header class="kz-notes-head">
-   <div class="kz-notes-brand"><span class="kz-notes-mark"><svg class="i" aria-hidden="true"><use href="#i-note"/></svg></span><h2 id="kz-notes-heading">Ghi chú</h2></div>
-   <div class="kz-notes-head-r"><span class="kz-notes-state" id="kz-notes-state" role="status" aria-atomic="true"></span><button type="button" class="kz-notes-close" id="kz-notes-close" aria-label="Đóng ghi chú" title="Đóng ghi chú"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+   <div class="kz-notes-brand"><span class="kz-notes-mark"><svg class="i" aria-hidden="true"><use href="#i-note"/></svg></span><h2 id="kz-notes-heading">Ghi chú</h2><span class="kz-notes-close-group"><button type="button" class="kz-notes-close" id="kz-notes-close" aria-label="Đóng ghi chú" title="Đóng ghi chú"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button></span></div>
+   <div class="kz-notes-head-r"><span class="kz-notes-state" id="kz-notes-state" role="status" aria-atomic="true"></span></div>
   </header>
   <div class="kz-notes-body">
    <aside class="kz-notes-side" aria-label="Thư viện ghi chú">
@@ -4135,7 +4155,7 @@ Các từ tôi cần học (mỗi từ một dòng, tối đa 10 từ):
     </div>
     <div class="kz-notes-fields" id="kz-notes-fields">
      <div class="kz-notes-paper">
-      <div class="kz-note-title-row"><input id="kz-note-title" type="text" maxlength="160" placeholder="Tiêu đề ghi chú" aria-label="Tiêu đề ghi chú" autocomplete="off"></div>
+      <div class="kz-note-title-row"><textarea id="kz-note-title" rows="1" maxlength="160" placeholder="Tiêu đề ghi chú" aria-label="Tiêu đề ghi chú" autocomplete="off"></textarea></div>
       <textarea id="kz-note-body" placeholder="Viết ở đây…" aria-label="Nội dung ghi chú"></textarea>
       <div id="kz-note-editor-meta" class="kz-note-editor-meta"></div>
      </div>
@@ -6104,6 +6124,10 @@ function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToda
  const nextButton = find('next');
  const restartButton = find('restart');
  const writeButton = find('write');
+ const speedControl = find('speed');
+ const scrubber = find('scrubber');
+ const scrubDate = find('scrub-date');
+ const summary = find('summary');
  const railNodes = ['rail-prev', 'rail-current', 'rail-next'].map(find);
  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
  const entryFields = [
@@ -6113,14 +6137,19 @@ function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToda
  ];
  const transitionDuration = 700;
  const dayDuration = 86_400_000;
+ const speedChoices = [0.75, 1, 1.35];
+ const numberFormat = new Intl.NumberFormat('vi-VN');
  let frames = [];
  let startDate = '';
  let position = 0;
+ let speed = 1;
+ let scrubPointer = null;
  let restoreFocus = null;
  let phase = 'reading';
  let paused = false;
  let timer = null;
  let began = 0;
+ let timerRate = 1;
  let remaining = 0;
 
  function sectionsFor(entry) {
@@ -6165,6 +6194,25 @@ function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToda
   return year ? `${d}/${m}/${y}` : `${d}/${m}`;
  }
 
+ function frameTitle(frame) {
+  return frame.from === frame.to ? dateLong(frame.from) : `${shortDate(frame.from, true)} – ${shortDate(frame.to, true)}`;
+ }
+
+ function updateScrubPreview(index) {
+  const frame = frames[index];
+  if (!frame) return;
+  const title = frameTitle(frame);
+  scrubber.setAttribute('aria-valuetext', `${title}, mốc ${index + 1} trên ${frames.length}`);
+  if (scrubDate) scrubDate.textContent = frame.from === frame.to ? shortDate(frame.from, true) : title;
+  const progress = frames.length > 1 ? index * 100 / (frames.length - 1) : 100;
+  scrubber.style.setProperty('--kz-replay-progress', `${progress}%`);
+ }
+
+ function updateScrubber() {
+  scrubber.value = String(position + 1);
+  updateScrubPreview(position);
+ }
+
  function setPhase(nextPhase) {
   phase = nextPhase;
   dialog.dataset.phase = phase;
@@ -6200,7 +6248,8 @@ function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToda
 
  function fillCopy(frame) {
   if (!frame.sections.length) {
-   const empty = makeText('p', 'Bạn chưa viết nhật ký.', 0);
+   const message = frame.from === frame.to ? 'Bạn chưa viết nhật ký.' : 'Bạn chưa viết nhật ký trong khoảng ngày này.';
+   const empty = makeText('p', message, 0);
    empty.classList.add('kz-replay-empty');
    copy.replaceChildren(empty);
    return;
@@ -6220,20 +6269,21 @@ function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToda
   if (timer === null) return;
   clearTimeout(timer);
   timer = null;
-  remaining = Math.max(0, remaining - (performance.now() - began));
+  remaining = Math.max(0, remaining - (performance.now() - began) * timerRate);
  }
 
  function beginTimer() {
-  if (!dialog.open || paused || timer !== null || phase === 'ended' || phase === 'scroll') return;
+  if (!dialog.open || paused || scrubPointer !== null || timer !== null || phase === 'ended' || phase === 'scroll') return;
   if (remaining <= 0) {
    finishPhase();
    return;
   }
   began = performance.now();
-  const duration = Math.min(remaining, 2_147_000_000);
+  timerRate = phase === 'reading' ? speed : 1;
+  const duration = Math.min(Math.ceil(remaining / timerRate), 2_147_000_000);
   timer = setTimeout(() => {
    timer = null;
-   remaining = Math.max(0, remaining - Math.max(duration, performance.now() - began));
+   remaining = Math.max(0, remaining - Math.max(duration, performance.now() - began) * timerRate);
    beginTimer();
   }, duration);
  }
@@ -6243,7 +6293,7 @@ function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToda
  }
 
  function finishPhase() {
-  if (!dialog.open || paused) return;
+  if (!dialog.open || paused || scrubPointer !== null) return;
   if (phase === 'transition') {
    renderFrame(position + 1);
   } else if (!readingAtBottom()) {
@@ -6265,15 +6315,17 @@ function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToda
   cancelTimer();
   position = nextPosition;
   const frame = frames[position];
-  const title = frame.from === frame.to
-   ? dateLong(frame.from)
-   : `${shortDate(frame.from, true)} – ${shortDate(frame.to, true)}`;
-  const animatedDate = document.createElement('span');
+  const singleDay = frame.from === frame.to;
+  const title = frameTitle(frame);
+  const animatedDate = document.createElement(singleDay ? 'time' : 'span');
+  if (singleDay) animatedDate.dateTime = frame.from;
   animatedDate.className = 'kz-replay-date-text';
   animatedDate.textContent = title;
   dateHeading.replaceChildren(animatedDate);
   framePanel.hidden = false;
   endPanel.hidden = true;
+  dialog.dataset.frameKind = frame.sections.length ? 'entry' : singleDay ? 'empty' : 'gap';
+  dialog.dataset.isToday = String(position === frames.length - 1);
   dialog.dataset.instant = String(instant || paused);
   setPhase('reading');
   fillCopy(frame);
@@ -6282,7 +6334,8 @@ function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToda
   setRailNode(railNodes[1], frame);
   setRailNode(railNodes[2], frames[position + 1]);
   const words = frame.sections.reduce((count, {text}) => count + (text.match(/\S+/gu)?.length || 0), 0);
-  remaining = words ? Math.max(6000, 2000 + words * 60_000 / 170) : (frame.from === frame.to ? 3500 : 4200);
+  remaining = words ? Math.max(6300, 2300 + words * 60_000 / 155) : singleDay ? 3600 : 4400;
+  updateScrubber();
   updateControls();
   status.textContent = `${title}. ${positionLabel.textContent}`;
   beginTimer();
@@ -6322,12 +6375,56 @@ function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToda
   else renderFrame(nextPosition, paused);
  }
 
+ function applySpeed(value) {
+  if (!speedChoices.includes(value) || value === speed) return;
+  if (phase === 'reading') cancelTimer();
+  speed = value;
+  dialog.style.setProperty('--kz-replay-speed', String(speed));
+  beginTimer();
+ }
+
+ function scrubToValue() {
+  if (!dialog.open || scrubber.disabled) return;
+  const index = Number(scrubber.value) - 1;
+  if (!frames[index]) return;
+  if (scrubPointer !== null) {
+   updateScrubPreview(index);
+   return;
+  }
+  if (phase === 'ended') paused = true;
+  if (index !== position || phase === 'ended') renderFrame(index, true);
+  else {
+   updateScrubber();
+   if (phase === 'scroll' && readingAtBottom()) finishPhase();
+   else beginTimer();
+  }
+ }
+
+ function finishScrubbing(event) {
+  if (event.pointerId !== scrubPointer) return;
+  scrubPointer = null;
+  dialog.dataset.scrubbing = 'false';
+  if (event.type !== 'pointercancel') scrubToValue();
+  else {
+   updateScrubber();
+   if (phase === 'scroll' && readingAtBottom()) finishPhase();
+   else beginTimer();
+  }
+ }
+
  function start() {
   const lastDate = today();
   frames = buildFrames(startDate, lastDate, getEntries());
   range.textContent = startDate === lastDate
    ? shortDate(lastDate, true)
    : `${shortDate(startDate, true)} – ${shortDate(lastDate, true)}`;
+  const countWritten = frames.filter(frame => frame.sections.length).length;
+  const countDays = (Date.parse(`${lastDate}T00:00:00Z`) - Date.parse(`${startDate}T00:00:00Z`)) / dayDuration + 1;
+  summary.textContent = `${numberFormat.format(countWritten)} ngày có nhật ký · ${numberFormat.format(countDays - countWritten)} ngày chưa viết`;
+  scrubber.max = String(frames.length);
+  scrubber.disabled = frames.length === 1;
+  scrubPointer = null;
+  dialog.dataset.scrubbing = 'false';
   paused = document.hidden;
   renderFrame(0);
  }
@@ -6336,6 +6433,9 @@ function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToda
   if (dialog.open || !safeDate(firstDate) || firstDate > today()) return false;
   restoreFocus = trigger;
   startDate = firstDate;
+  speed = 1;
+  speedControl.value = '1';
+  dialog.style.setProperty('--kz-replay-speed', '1');
   dialog.showModal();
   start();
   return true;
@@ -6343,6 +6443,8 @@ function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToda
 
  function clearSession() {
   cancelTimer();
+  scrubPointer = null;
+  dialog.dataset.scrubbing = 'false';
   frames = [];
   copy.replaceChildren();
   if (restoreFocus instanceof HTMLElement && restoreFocus.isConnected) restoreFocus.focus({preventScroll: true});
@@ -6365,6 +6467,17 @@ function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToda
  nextButton.addEventListener('click', () => step(1));
  restartButton.addEventListener('click', () => { start(); closeButton.focus({preventScroll: true}); });
  writeButton.addEventListener('click', () => { close(); onWriteToday(); });
+ speedControl.addEventListener('change', () => applySpeed(Number(speedControl.value)));
+ scrubber.addEventListener('pointerdown', event => {
+  if (scrubber.disabled || scrubPointer !== null || event.button !== 0) return;
+  scrubPointer = event.pointerId;
+  dialog.dataset.scrubbing = 'true';
+  cancelTimer();
+ });
+ scrubber.addEventListener('input', scrubToValue);
+ scrubber.addEventListener('change', scrubToValue);
+ window.addEventListener('pointerup', finishScrubbing, {capture: true});
+ window.addEventListener('pointercancel', finishScrubbing, {capture: true});
  dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
  dialog.addEventListener('close', () => { if (!dialog.open && frames.length) clearSession(); });
  dialog.addEventListener('keydown', event => {
@@ -6374,7 +6487,7 @@ function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToda
    close();
    return;
   }
-  if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+  if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || event.target.closest?.('input,select')) return;
   if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
    event.preventDefault();
    event.stopPropagation();
@@ -6383,7 +6496,15 @@ function createJournalReplay({getEntries, today, dateLong, safeDate, onWriteToda
  });
  reading.addEventListener('scroll', onScrollOrResize, {passive: true});
  window.addEventListener('resize', onScrollOrResize);
- document.addEventListener('visibilitychange', () => { if (document.hidden) setPaused(true); });
+ document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) return;
+  setPaused(true);
+  if (scrubPointer !== null) {
+   scrubPointer = null;
+   dialog.dataset.scrubbing = 'false';
+   updateScrubber();
+  }
+ });
  reducedMotion.addEventListener('change', () => {
   if (dialog.open && phase === 'transition' && reducedMotion.matches) {
    cancelTimer();
@@ -8045,10 +8166,18 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   editorMeta.textContent=note?`${words} từ · Cập nhật ${updatedDate.format(note.updatedAt)}`:'';
  }
 
+ const fitTitle=CSS.supports('field-sizing:content')?()=>{}:()=>{
+  if(!titleEl.clientWidth)return;
+  titleEl.style.height='auto';
+  titleEl.style.height=titleEl.scrollHeight+'px';
+ };
+ window.addEventListener('resize',fitTitle);
+
  function syncEditorFields(){
   const note=activeNote();
   drawer.dataset.empty=note?'0':'1';
   titleEl.value=note?.title||'';
+  requestAnimationFrame(fitTitle);
   bodyEl.value=note?.content||'';
   renderImages(note);
   renderEditorDetails(note);
@@ -8418,7 +8547,15 @@ window.KZSound={warm,progress,grade,setEnabled,getSettings:()=>({enabled,volume}
   event.preventDefault();
   items[Math.min(items.length-1,Math.max(0,target))]?.focus();
  });
- titleEl.addEventListener('input',scheduleSave);
+ titleEl.addEventListener('input',()=>{
+  if(titleEl.value.includes('\n')){
+   const {selectionStart,selectionEnd}=titleEl;
+   titleEl.value=titleEl.value.replaceAll('\n',' ');
+   titleEl.setSelectionRange(selectionStart,selectionEnd);
+  }
+  fitTitle();
+  scheduleSave();
+ });
  bodyEl.addEventListener('input',scheduleSave);
  titleEl.addEventListener('keydown',e=>{
   if(e.key==='Enter'&&!e.isComposing){e.preventDefault();bodyEl.focus({preventScroll:true})}
